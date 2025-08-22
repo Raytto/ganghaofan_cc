@@ -12,43 +12,13 @@
 
 ## 基础操作
 
-### 1. 数据库连接管理
+### 1. 导入和初始化
 
 ```python
-import duckdb
 import json
 from datetime import datetime
 from typing import List, Optional, Dict, Any
-
-class DatabaseManager:
-    def __init__(self, db_path: str):
-        self.db_path = db_path
-        self.conn = None
-    
-    def connect(self):
-        """建立数据库连接"""
-        self.conn = duckdb.connect(self.db_path)
-        return self.conn
-    
-    def close(self):
-        """关闭数据库连接"""
-        if self.conn:
-            self.conn.close()
-            self.conn = None
-    
-    def execute_transaction(self, operations: List[callable]):
-        """串行执行事务操作"""
-        try:
-            self.conn.begin()
-            results = []
-            for operation in operations:
-                result = operation()
-                results.append(result)
-            self.conn.commit()
-            return results
-        except Exception as e:
-            self.conn.rollback()
-            raise e
+from db_manager import DatabaseManager
 
 class CoreOperations:
     def __init__(self, db_manager: DatabaseManager):
@@ -803,8 +773,9 @@ def _process_refund(self, user_id: int, amount_cents: int, order_id: int,
 
 ```python
 # 初始化
-db_manager = DatabaseManager("gang_hao_fan.db")
-db_manager.connect()
+from db_manager import DatabaseManager
+
+db_manager = DatabaseManager("gang_hao_fan.db", auto_connect=True)
 core_ops = CoreOperations(db_manager)
 
 try:

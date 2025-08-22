@@ -13,10 +13,10 @@
 ## 基础查询类
 
 ```python
-import duckdb
 import json
 from datetime import datetime
 from typing import List, Optional, Dict, Any
+from db_manager import DatabaseManager
 
 class QueryOperations:
     def __init__(self, db_manager):
@@ -547,8 +547,9 @@ def query_user_ledger_history(self, user_id: int, offset: int = 0, limit: int = 
 
 ```python
 # 初始化
-db_manager = DatabaseManager("gang_hao_fan.db")
-db_manager.connect()
+from db_manager import DatabaseManager
+
+db_manager = DatabaseManager("gang_hao_fan.db", auto_connect=True)
 query_ops = QueryOperations(db_manager)
 
 try:
