@@ -7,7 +7,7 @@ from typing import Dict, Any
 from fastapi import APIRouter, HTTPException, Depends, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
-from .models import WeChatLoginRequest, LoginResponse, RefreshTokenResponse, TokenData, UserInfo
+from .models import WeChatLoginRequest, RegisterRequest, LoginResponse, RefreshTokenResponse, TokenData, UserInfo
 from .wechat_service import WeChatService
 from db.manager import DatabaseManager
 from db.supporting_operations import SupportingOperations
@@ -87,9 +87,9 @@ async def wechat_login(
     db: DatabaseManager = Depends(get_database)
 ):
     """
-    微信登录
+    微信静默登录 - 获取或创建用户
     
-    参考文档: doc/api.md - 1.1 微信登录
+    参考文档: doc/api.md - 1.1 微信静默登录
     """
     try:
         # 1. 通过微信code获取openid
@@ -97,34 +97,15 @@ async def wechat_login(
         wechat_data = await wechat_service.get_access_token(login_request.code)
         openid = wechat_data["openid"]
         
-        # 2. 查询或创建用户
+        # 2. 微信静默登录（获取或创建用户）
         support_ops = SupportingOperations(db)
+        login_result = support_ops.wechat_silent_login(openid)
         
-        # 尝试登录现有用户
-        login_result = support_ops.user_login(openid)
+        if not login_result["success"]:
+            logger.error(f"微信静默登录失败: {login_result.get('error')}")
+            return create_error_response(login_result.get('error', '登录失败'))
         
-        is_new_user = False
-        user_data = None
-        
-        if login_result["success"]:
-            # 现有用户登录成功
-            user_data = login_result["data"]
-            logger.info(f"现有用户登录: {user_data['wechat_name']} ({user_data['open_id']})")
-        else:
-            # 新用户注册
-            register_result = support_ops.register_user(
-                open_id=openid,
-                wechat_name=login_request.wechat_name,
-                avatar_url=login_request.avatar_url
-            )
-            
-            if not register_result["success"]:
-                logger.error(f"用户注册失败: {register_result['message']}")
-                return create_error_response(f"注册失败: {register_result['message']}")
-            
-            user_data = register_result["data"]
-            is_new_user = True
-            logger.info(f"新用户注册: {user_data['wechat_name']} ({user_data['open_id']})")
+        user_data = login_result["data"]
         
         # 3. 生成JWT Token
         token_payload = {
@@ -139,12 +120,12 @@ async def wechat_login(
         user_info = UserInfo(
             user_id=user_data["user_id"],
             open_id=user_data["open_id"],
-            wechat_name=user_data["wechat_name"],
+            wechat_name=user_data.get("wechat_name"),
             avatar_url=user_data.get("avatar_url"),
             balance_cents=user_data["balance_cents"],
-            balance_yuan=user_data["balance_cents"] / 100.0,
+            balance_yuan=user_data["balance_yuan"],
             is_admin=user_data["is_admin"],
-            is_new_user=is_new_user
+            is_registered=user_data["is_registered"]
         )
         
         response_data = LoginResponse(
@@ -152,14 +133,58 @@ async def wechat_login(
             user_info=user_info
         )
         
+        # 记录日志
+        if user_data["is_registered"]:
+            logger.info(f"已注册用户登录: {user_data['wechat_name']} ({user_data['open_id']})")
+        else:
+            logger.info(f"未注册用户登录: {user_data['open_id']}")
+        
         return create_success_response(
             data=response_data.dict(),
-            message="登录成功"
+            message=login_result.get('message', '登录成功')
         )
         
     except Exception as e:
         logger.error(f"微信登录失败: {str(e)}")
         return create_error_response(f"登录失败: {str(e)}")
+
+
+@router.post("/register", response_model=Dict[str, Any])
+async def complete_user_registration(
+    register_request: RegisterRequest,
+    current_user: TokenData = Depends(get_current_user),
+    db: DatabaseManager = Depends(get_database)
+):
+    """
+    完成用户注册 - 更新用户个人信息
+    
+    参考文档: doc/api.md - 1.2 完成用户注册
+    """
+    try:
+        # 完成用户注册
+        support_ops = SupportingOperations(db)
+        register_result = support_ops.complete_user_registration(
+            open_id=current_user.open_id,
+            wechat_name=register_request.wechat_name,
+            avatar_url=register_request.avatar_url
+        )
+        
+        if not register_result["success"]:
+            logger.error(f"完成用户注册失败: {register_result.get('error')}")
+            return create_error_response(register_result.get('error', '注册失败'))
+        
+        user_data = register_result["data"]
+        
+        logger.info(f"用户注册完成: {user_data['wechat_name']} ({user_data['open_id']})")
+        
+        return create_success_response(
+            data=user_data,
+            message=register_result.get('message', '注册完成')
+        )
+        
+    except Exception as e:
+        logger.error(f"完成用户注册失败: {str(e)}")
+        return create_error_response(f"注册失败: {str(e)}")
 
 
 @router.post("/refresh", response_model=Dict[str, Any])

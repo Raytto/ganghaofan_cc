@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # 参考文档: doc/db/supporting_operations.md
 # 周边支持业务操作Python+DuckDB实现，包括用户注册、登录、权限管理等辅助功能
 
@@ -49,6 +50,40 @@ class SupportingOperations:
                 'last_login_at': result[7]
             }
         return None
+
+    def _check_admin_whitelist(self, open_id: str) -> bool:
+        """
+        检查OpenID是否在管理员白名单中
+        
+        Args:
+            open_id: 微信OpenID
+            
+        Returns:
+            是否为管理员
+        """
+        try:
+            # 导入配置
+            from utils.config import Config
+            config = Config()
+            
+            # 获取管理员白名单
+            whitelist = config.get('admin.whitelist_open_ids', [])
+            
+            # 如果白名单包含 "__any__"，则所有用户都是管理员（仅开发环境使用）
+            if "__any__" in whitelist:
+                self.db.logger.debug(f"开发模式: __any__ 存在于白名单，{open_id} 设为管理员")
+                return True
+            
+            # 检查是否在白名单中
+            is_admin = open_id in whitelist
+            if is_admin:
+                self.db.logger.info(f"用户 {open_id} 在管理员白名单中")
+            
+            return is_admin
+            
+        except Exception as e:
+            self.db.logger.error(f"检查管理员白名单失败: {str(e)}")
+            return False
 
     def register_user(self, open_id: str, wechat_name: str = None, avatar_url: str = None) -> Dict[str, Any]:
         """
@@ -318,8 +353,8 @@ class SupportingOperations:
                 raise PermissionError("操作用户不是管理员或账户已停用")
             
             # 验证状态值
-            if status not in ['active', 'suspended']:
-                raise ValueError("状态值必须为 active 或 suspended")
+            if status not in ['unregistered', 'active', 'suspended']:
+                raise ValueError("状态值必须为 unregistered, active 或 suspended")
             
             # 获取目标用户信息
             target_user = self.db.conn.execute("""
@@ -494,3 +529,241 @@ class SupportingOperations:
         except Exception as e:
             self.db.logger.error(f"获取用户ID {user_id} 信息失败: {str(e)}")
             return None
+
+    # ===== 新增：三状态用户管理方法 =====
+    
+    def wechat_silent_login(self, open_id: str) -> Dict[str, Any]:
+        """
+        微信静默登录 - 获取或创建用户
+        
+        逻辑：
+        - 如果用户不存在，创建未注册用户
+        - 如果用户存在，返回用户信息和注册状态
+        
+        Args:
+            open_id: 微信OpenID
+            
+        Returns:
+            包含用户信息和注册状态的字典
+        """
+        try:
+            # 验证OpenID格式
+            self._validate_wechat_info(open_id)
+            
+            # 检查用户是否存在
+            existing_user = self._check_user_exists(open_id)
+            
+            if existing_user:
+                # 用户存在，判断注册状态（基于status字段）
+                is_registered = existing_user.get('status') == 'active'
+                
+                # 更新最后登录时间
+                self.db.conn.execute("""
+                    UPDATE users 
+                    SET last_login_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP
+                    WHERE open_id = ?
+                """, [open_id])
+                
+                return {
+                    'success': True,
+                    'data': {
+                        'user_id': existing_user['user_id'],
+                        'open_id': open_id,
+                        'wechat_name': existing_user.get('wechat_name'),
+                        'avatar_url': existing_user.get('avatar_url'),
+                        'balance_cents': existing_user.get('balance_cents', 0),
+                        'balance_yuan': existing_user.get('balance_cents', 0) / 100.0,
+                        'is_admin': existing_user.get('is_admin', False),
+                        'status': existing_user.get('status', 'active'),
+                        'is_registered': is_registered,
+                        'created_at': existing_user.get('created_at'),
+                        'last_login_at': existing_user.get('last_login_at')
+                    },
+                    'message': "登录成功" if is_registered else "登录成功，请完善个人信息"
+                }
+            else:
+                # 用户不存在，创建未注册用户
+                return self._create_unregistered_user(open_id)
+                
+        except Exception as e:
+            self.db.logger.error(f"微信静默登录失败 - OpenID: {open_id}, 错误: {str(e)}")
+            return {
+                'success': False,
+                'error': f"登录失败: {str(e)}",
+                'data': None
+            }
+
+    def _create_unregistered_user(self, open_id: str) -> Dict[str, Any]:
+        """
+        创建未注册用户
+        
+        Args:
+            open_id: 微信OpenID
+            
+        Returns:
+            创建的用户信息
+        """
+        def create_user_operation():
+            # 获取下一个用户ID
+            max_id = self.db.conn.execute("SELECT COALESCE(MAX(user_id), 0) + 1 FROM users").fetchone()[0]
+            
+            # 检查是否在管理员白名单中
+            is_admin = self._check_admin_whitelist(open_id)
+            
+            # 创建未注册用户（status为'unregistered'）
+            self.db.conn.execute("""
+                INSERT INTO users (user_id, open_id, wechat_name, avatar_url, balance_cents, 
+                                 is_admin, status, created_at, updated_at, last_login_at)
+                VALUES (?, ?, NULL, NULL, 0, ?, 'unregistered', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+            """, [max_id, open_id, is_admin])
+            
+            return {
+                'success': True,
+                'data': {
+                    'user_id': max_id,
+                    'open_id': open_id,
+                    'wechat_name': None,
+                    'avatar_url': None,
+                    'balance_cents': 0,
+                    'balance_yuan': 0.0,
+                    'is_admin': is_admin,
+                    'status': 'unregistered',
+                    'is_registered': False,
+                    'created_at': datetime.now(),
+                    'last_login_at': datetime.now()
+                },
+                'message': "登录成功，请完善个人信息"
+            }
+        
+        return self.db.execute_transaction([create_user_operation])[0]
+
+    def complete_user_registration(self, open_id: str, wechat_name: str, avatar_url: str = None) -> Dict[str, Any]:
+        """
+        完成用户注册 - 更新用户信息
+        
+        将未注册用户转换为已注册用户
+        
+        Args:
+            open_id: 用户OpenID
+            wechat_name: 用户昵称（必填）
+            avatar_url: 用户头像URL（可选）
+            
+        Returns:
+            更新后的用户信息
+        """
+        try:
+            # 验证输入参数
+            self._validate_wechat_info(open_id, wechat_name)
+            
+            if not wechat_name or not wechat_name.strip():
+                raise ValueError("用户昵称不能为空")
+            
+            # 检查用户是否存在
+            existing_user = self._check_user_exists(open_id)
+            if not existing_user:
+                raise ValueError(f"用户OpenID {open_id} 不存在")
+            
+            # 检查用户状态
+            if existing_user.get('status') == 'suspended':
+                raise ValueError("用户账户已停用")
+            if existing_user.get('status') == 'active':
+                raise ValueError("用户已完成注册")
+                
+            def update_user_operation():
+                # 更新用户信息，并将状态改为active
+                self.db.conn.execute("""
+                    UPDATE users 
+                    SET wechat_name = ?, avatar_url = ?, status = 'active', updated_at = CURRENT_TIMESTAMP
+                    WHERE open_id = ?
+                """, [wechat_name.strip(), avatar_url, open_id])
+                
+                # 获取更新后的用户信息
+                updated_user = self._check_user_exists(open_id)
+                
+                return {
+                    'success': True,
+                    'data': {
+                        'user_id': updated_user['user_id'],
+                        'open_id': open_id,
+                        'wechat_name': updated_user['wechat_name'],
+                        'avatar_url': updated_user['avatar_url'],
+                        'balance_cents': updated_user['balance_cents'],
+                        'balance_yuan': updated_user['balance_cents'] / 100.0,
+                        'is_admin': updated_user['is_admin'],
+                        'status': updated_user['status'],
+                        'is_registered': True,
+                        'created_at': updated_user['created_at'],
+                        'last_login_at': updated_user['last_login_at']
+                    },
+                    'message': "注册完成"
+                }
+            
+            return self.db.execute_transaction([update_user_operation])[0]
+            
+        except Exception as e:
+            self.db.logger.error(f"完成用户注册失败 - OpenID: {open_id}, 错误: {str(e)}")
+            return {
+                'success': False,
+                'error': f"注册失败: {str(e)}",
+                'data': None
+            }
+
+    def get_user_registration_status(self, open_id: str) -> Dict[str, Any]:
+        """
+        获取用户注册状态
+        
+        Args:
+            open_id: 用户OpenID
+            
+        Returns:
+            用户注册状态信息
+        """
+        try:
+            # 验证OpenID格式
+            self._validate_wechat_info(open_id)
+            
+            # 检查用户是否存在
+            existing_user = self._check_user_exists(open_id)
+            
+            if not existing_user:
+                return {
+                    'success': True,
+                    'data': {
+                        'exists': False,
+                        'is_registered': False
+                    },
+                    'message': "用户不存在"
+                }
+            
+            # 判断注册状态（基于status字段）
+            is_registered = existing_user.get('status') == 'active'
+            
+            result = {
+                'success': True,
+                'data': {
+                    'exists': True,
+                    'is_registered': is_registered
+                },
+                'message': "用户已注册" if is_registered else "用户未注册"
+            }
+            
+            if is_registered:
+                result['data']['user_info'] = {
+                    'user_id': existing_user['user_id'],
+                    'open_id': open_id,
+                    'wechat_name': existing_user['wechat_name'],
+                    'avatar_url': existing_user['avatar_url'],
+                    'balance_cents': existing_user['balance_cents'],
+                    'balance_yuan': existing_user['balance_cents'] / 100.0,
+                    'is_admin': existing_user['is_admin']
+                }
+            
+            return result
+            
+        except Exception as e:
+            self.db.logger.error(f"获取用户注册状态失败 - OpenID: {open_id}, 错误: {str(e)}")
+            return {
+                'success': False,
+                'error': f"获取状态失败: {str(e)}",
+                'data': None
+            }

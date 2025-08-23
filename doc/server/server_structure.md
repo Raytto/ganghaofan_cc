@@ -44,8 +44,9 @@ server/
 │   ├── main.py          # FastAPI应用入口
 │   ├── auth/            # 微信认证模块
 │   │   ├── __init__.py
-│   │   ├── routes.py    # 认证路由
-│   │   └── wechat.py    # 微信OAuth集成
+│   │   ├── routes.py    # 认证路由（静默登录+注册）
+│   │   ├── models.py    # 认证数据模型
+│   │   └── wechat_service.py    # 微信OAuth集成
 │   ├── meals/           # 餐次管理模块
 │   │   ├── __init__.py
 │   │   ├── routes.py    # 餐次API路由
@@ -277,6 +278,34 @@ uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload --log-level debug
 
 ### 4. api/ - API业务逻辑层
 **作用**: FastAPI路由和业务逻辑，严格对应doc/api.md文档
+
+#### 4.1 认证模块设计 (api/auth/)
+**新的三状态用户管理系统**:
+
+1. **未知用户**: OpenID 不存在于数据库
+2. **未注册用户**: OpenID 存在但 wechat_name 为空
+3. **已注册用户**: OpenID 存在且 wechat_name 非空
+
+**API接口设计**:
+- `POST /api/auth/wechat/login` - 微信静默登录（获取或创建用户）
+- `POST /api/auth/register` - 完成用户注册（更新个人信息）
+
+**认证流程**:
+```mermaid
+graph TD
+    A[小程序启动] --> B[调用微信登录API]
+    B --> C{用户是否存在?}
+    C -->|不存在| D[创建未注册用户]
+    C -->|存在| E{是否已注册?}
+    D --> F[返回未注册状态]
+    E -->|未注册| F
+    E -->|已注册| G[返回用户信息]
+    F --> H[跳转注册页面]
+    H --> I[调用注册API]
+    I --> J[更新用户信息]
+    J --> G[返回用户信息]
+    G --> K[显示欢迎页面]
+```
 
 **main.py (应用入口)**
 ```python

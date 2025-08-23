@@ -21,7 +21,7 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     last_login_at TIMESTAMP,                   -- 最后登录时间
-    status VARCHAR(20) DEFAULT 'active'        -- 账户状态: active/suspended
+    status VARCHAR(20) DEFAULT 'active'        -- 账户状态: unregisted/active/suspended
 );
 
 -- 索引

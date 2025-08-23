@@ -1,0 +1,119 @@
+/* register.wxss */
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx 50rpx 50rpx;
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 80rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #666;
+  display: block;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 80rpx;
+}
+
+.avatar-wrapper {
+  padding: 0;
+  width: 120rpx !important;
+  height: 120rpx !important;
+  border-radius: 50%;
+  margin-bottom: 60rpx;
+  background: none;
+  border: 2rpx solid #ddd;
+}
+
+.avatar {
+  display: block;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.nickname-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 32rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #eee;
+  border-radius: 16rpx;
+  background: #fafafa;
+  align-items: center;
+}
+
+.nickname-label {
+  width: 120rpx;
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.nickname-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.button-container {
+  width: 100%;
+  margin-top: 100rpx;
+}
+
+.register-button {
+  width: 100%;
+  height: 88rpx;
+  background-color: #07c160;
+  color: white;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-button:hover {
+  background-color: #06ad56;
+}
+
+.register-button.disabled {
+  background-color: #cccccc;
+  color: #999999;
+}
+
+.register-button.disabled:hover {
+  background-color: #cccccc;
+}

@@ -6,9 +6,13 @@ from pydantic import BaseModel, Field
 
 
 class WeChatLoginRequest(BaseModel):
-    """微信登录请求模型"""
+    """微信静默登录请求模型"""
     code: str = Field(..., description="微信授权码")
-    wechat_name: str = Field(..., min_length=1, max_length=100, description="微信昵称")
+
+
+class RegisterRequest(BaseModel):
+    """用户注册请求模型"""
+    wechat_name: str = Field(..., min_length=1, max_length=100, description="用户昵称")
     avatar_url: Optional[str] = Field(None, max_length=500, description="头像URL")
 
 
@@ -16,12 +20,12 @@ class UserInfo(BaseModel):
     """用户信息模型"""
     user_id: int
     open_id: str
-    wechat_name: str
+    wechat_name: Optional[str] = None
     avatar_url: Optional[str] = None
     balance_cents: int
     balance_yuan: float
     is_admin: bool
-    is_new_user: bool = False
+    is_registered: bool = False
 
 
 class LoginResponse(BaseModel):

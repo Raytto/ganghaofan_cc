@@ -28,7 +28,9 @@
   "admin": {
     "whitelist_open_ids": [
       "admin_openid_mock",
-      "dev_admin_openid"
+      "dev_admin_openid",
+      "mock_openid_8669f3e1e9c6db4",
+      "__any__"
     ]
   },
   "logging": {

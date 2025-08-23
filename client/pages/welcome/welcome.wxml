@@ -1,16 +1,23 @@
 <!--welcome.wxml-->
 <scroll-view class="scrollarea" scroll-y type="list">
   <view class="container">
-    <view class="userinfo">
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <text class="userinfo-openid">OpenID: {{openid}}</text>
+    <view wx:if="{{loading}}" class="loading">
+      <text>加载中...</text>
     </view>
-    <view class="welcome-message">
-      <text class="welcome-text">欢迎和罡子哥一起健康每一天</text>
-    </view>
-    <view class="button-container">
-      <button class="start-button" bindtap="onStartTap">开始</button>
+    <view wx:else class="content">
+      <view class="userinfo">
+        <text wx:if="{{isRegistered}}" class="welcome-title">{{isAdmin ? '欢迎管理员' : '欢迎同学'}}</text>
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        <text class="userinfo-openid">OpenID: {{openid}}</text>
+        <text wx:if="{{!isRegistered}}" class="unregistered-info">暂未注册</text>
+      </view>
+      <view class="welcome-message">
+        <text class="welcome-text">欢迎和罡子哥一起健康每一天</text>
+      </view>
+      <view class="button-container">
+        <button class="start-button {{isRegistered ? '' : 'disabled'}}" bindtap="onStartTap">开始</button>
+      </view>
     </view>
   </view>
 </scroll-view>

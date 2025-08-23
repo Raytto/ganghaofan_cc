@@ -68,21 +68,23 @@ Authorization: Bearer <jwt_token>
 
 ### 1. 认证模块 `/api/auth`
 
-#### 1.1 微信登录
+#### 1.1 微信静默登录
 ```
 POST /api/auth/wechat/login
 ```
 
+**说明**: 微信小程序静默登录，获取或创建用户
+
 **请求参数**:
 ```json
 {
-    "code": "微信授权码",
-    "wechat_name": "微信昵称",
-    "avatar_url": "头像URL"
+    "code": "微信授权码"
 }
 ```
 
 **响应数据**:
+
+**已注册用户**:
 ```json
 {
     "success": true,
@@ -98,14 +100,74 @@ POST /api/auth/wechat/login
             "balance_cents": 5000,
             "balance_yuan": 50.0,
             "is_admin": false,
-            "is_new_user": false
+            "status": "active",
+            "is_registered": true
         }
     },
     "message": "登录成功"
 }
 ```
 
-#### 1.2 刷新 Token
+**未注册用户**:
+```json
+{
+    "success": true,
+    "data": {
+        "access_token": "jwt_token_string",
+        "token_type": "Bearer", 
+        "expires_in": 86400,
+        "user_info": {
+            "user_id": 1,
+            "open_id": "wx_openid_123",
+            "wechat_name": null,
+            "avatar_url": null,
+            "balance_cents": 0,
+            "balance_yuan": 0.0,
+            "is_admin": false,
+            "status": "unregistered",
+            "is_registered": false
+        }
+    },
+    "message": "登录成功，请完善个人信息"
+}
+```
+
+#### 1.2 完成用户注册
+```
+POST /api/auth/register
+```
+
+**权限**: 用户（未注册用户，status='unregistered'）
+
+**说明**: 完善用户个人信息，将status从'unregistered'改为'active'
+
+**请求参数**:
+```json
+{
+    "wechat_name": "用户昵称",
+    "avatar_url": "头像URL（可选）"
+}
+```
+
+**响应数据**:
+```json
+{
+    "success": true,
+    "data": {
+        "user_id": 1,
+        "open_id": "wx_openid_123",
+        "wechat_name": "用户昵称",
+        "avatar_url": "https://wx.avatar.com/123.jpg",
+        "balance_cents": 0,
+        "balance_yuan": 0.0,
+        "is_admin": false,
+        "is_registered": true
+    },
+    "message": "注册完成"
+}
+```
+
+#### 1.3 刷新 Token
 ```
 POST /api/auth/refresh
 ```

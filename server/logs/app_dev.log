@@ -4625,3 +4625,974 @@ wechat_name
 2025-08-23 11:25:51,876 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
 2025-08-23 11:25:51,876 - api.main - INFO - [main.py:35] - 环境: development
 2025-08-23 11:25:51,877 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 12:45:16,146 - api.middleware.logging - INFO - [logging.py:31] - [44f0cc9c] GET /api/v1/users/profile - Client: 127.0.0.1
+2025-08-23 12:45:16,151 - api.middleware.logging - INFO - [logging.py:44] - [44f0cc9c] 404 - Time: 0.005s
+2025-08-23 12:51:23,275 - api.middleware.logging - INFO - [logging.py:31] - [8cbce925] GET /api/v1/users/profile - Client: 127.0.0.1
+2025-08-23 12:51:23,278 - api.middleware.logging - INFO - [logging.py:44] - [8cbce925] 404 - Time: 0.003s
+2025-08-23 12:52:09,557 - api.middleware.logging - INFO - [logging.py:31] - [10cbb1d2] GET /api/v1/users/profile - Client: 127.0.0.1
+2025-08-23 12:52:09,559 - api.middleware.logging - INFO - [logging.py:44] - [10cbb1d2] 404 - Time: 0.002s
+2025-08-23 12:52:35,323 - api.middleware.logging - INFO - [logging.py:31] - [500edb02] GET /api/v1/users/profile - Client: 127.0.0.1
+2025-08-23 12:52:35,325 - api.middleware.logging - INFO - [logging.py:44] - [500edb02] 404 - Time: 0.002s
+2025-08-23 12:53:17,108 - api.middleware.logging - INFO - [logging.py:31] - [57f3c3cf] GET /api/v1/users/profile - Client: 127.0.0.1
+2025-08-23 12:53:17,109 - api.middleware.logging - INFO - [logging.py:44] - [57f3c3cf] 404 - Time: 0.001s
+2025-08-23 12:56:00,998 - api.middleware.logging - INFO - [logging.py:31] - [cf2af8c9] POST /api/v1/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 12:56:00,999 - api.middleware.logging - INFO - [logging.py:44] - [cf2af8c9] 404 - Time: 0.001s
+2025-08-23 12:56:18,532 - api.middleware.logging - INFO - [logging.py:31] - [fd1d9c41] POST /api/v1/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 12:56:18,534 - api.middleware.logging - INFO - [logging.py:44] - [fd1d9c41] 404 - Time: 0.002s
+2025-08-23 12:56:30,323 - api.middleware.logging - INFO - [logging.py:31] - [13def4c1] POST /api/v1/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 12:56:30,325 - api.middleware.logging - INFO - [logging.py:44] - [13def4c1] 404 - Time: 0.002s
+2025-08-23 12:57:15,376 - api.middleware.logging - INFO - [logging.py:31] - [dfe3cf2d] POST /api/v1/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 12:57:15,378 - api.middleware.logging - INFO - [logging.py:44] - [dfe3cf2d] 404 - Time: 0.002s
+2025-08-23 12:57:52,257 - api.middleware.logging - INFO - [logging.py:31] - [5097264b] POST /api/v1/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 12:57:52,260 - api.middleware.logging - INFO - [logging.py:44] - [5097264b] 404 - Time: 0.003s
+2025-08-23 12:58:00,022 - api.middleware.logging - INFO - [logging.py:31] - [d29eee8d] POST /api/v1/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 12:58:00,024 - api.middleware.logging - INFO - [logging.py:44] - [d29eee8d] 404 - Time: 0.002s
+2025-08-23 12:59:12,463 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 12:59:13,302 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 12:59:13,325 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 12:59:13,325 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 12:59:13,326 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:00:37,912 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:01:27,581 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:01:27,600 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:01:27,601 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:01:27,601 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:01:50,949 - api.middleware.logging - INFO - [logging.py:31] - [fa79d18a] POST /api/v1/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 13:01:50,958 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:01:50,959 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:01:50,960 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 13:01:50,964 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 13:01:50,964 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0d35XA100rvzQU10GO3004tTva35XA1w
+2025-08-23 13:01:50,965 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823130150965341，包含 1 个操作
+2025-08-23 13:01:50,965 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823130150965341 中的操作 1/1
+2025-08-23 13:01:50,978 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823130150965341 提交成功
+2025-08-23 13:01:50,984 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_5e632ec0395a4213)
+2025-08-23 13:01:50,985 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-23 13:01:50,986 - api.middleware.logging - INFO - [logging.py:44] - [fa79d18a] 200 - Time: 0.038s
+2025-08-23 13:01:50,997 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:02:37,519 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:02:38,318 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:02:38,337 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:02:38,338 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:02:38,338 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:02:47,597 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:03:40,898 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:03:40,919 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:03:40,919 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:03:40,919 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:03:49,016 - api.middleware.logging - INFO - [logging.py:31] - [0bf0a4af] POST /api/v1/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 13:03:49,025 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:03:49,026 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:03:49,028 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 13:03:49,028 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 13:03:49,029 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0d3oSu000y7tPU1yDh200Rm1iu4oSu0H
+2025-08-23 13:03:49,029 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823130349029703，包含 1 个操作
+2025-08-23 13:03:49,030 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823130349029703 中的操作 1/1
+2025-08-23 13:03:49,047 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823130349029703 提交成功
+2025-08-23 13:03:49,047 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_daae37be3aafc266)
+2025-08-23 13:03:49,061 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:03:49,062 - api.middleware.logging - INFO - [logging.py:44] - [0bf0a4af] 200 - Time: 0.046s
+2025-08-23 13:03:49,073 - api.middleware.logging - INFO - [logging.py:31] - [73b84eec] GET /api/v1/users/profile - Client: 127.0.0.1
+2025-08-23 13:03:49,075 - api.middleware.logging - INFO - [logging.py:44] - [73b84eec] 404 - Time: 0.002s
+2025-08-23 13:04:10,393 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:04:11,134 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:04:11,156 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:04:11,157 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:04:11,157 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:04:35,756 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:04:36,529 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:04:36,550 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:04:36,551 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:04:36,551 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:04:46,036 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:04:46,815 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:04:46,834 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:04:46,835 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:04:46,836 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:04:56,220 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:04:56,968 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:04:56,990 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:04:56,990 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:04:56,991 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:06:16,235 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:06:16,968 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:06:16,988 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:06:16,994 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:06:16,994 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:06:27,340 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:06:28,093 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:06:28,115 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:06:28,117 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:06:28,117 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:06:38,691 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:06:39,411 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:06:39,433 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:06:39,433 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:06:39,433 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:06:50,207 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:06:50,970 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:06:50,992 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:06:50,992 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:06:50,993 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:07:01,789 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:07:02,535 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:07:02,554 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:07:02,555 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:07:02,556 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:07:25,885 - api.middleware.logging - INFO - [logging.py:31] - [b4de2740] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:07:25,894 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:07:25,895 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:07:25,903 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:07:25,905 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:07:25,905 - api.users.routes - ERROR - [routes.py:78] - 获取用户档案失败: 3 validation errors for UserProfileResponse
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+created_at
+  Input should be a valid string [type=string_type, input_value=datetime.datetime(2025, 8, 23, 13, 3, 49, 30000), input_type=datetime]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+last_login_at
+  Input should be a valid string [type=string_type, input_value=datetime.datetime(2025, 8, 23, 13, 3, 49, 30000), input_type=datetime]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-23 13:07:25,906 - api.middleware.logging - INFO - [logging.py:44] - [b4de2740] 200 - Time: 0.021s
+2025-08-23 13:07:25,908 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:07:35,072 - api.middleware.logging - INFO - [logging.py:31] - [884e8b4d] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:07:35,082 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:07:35,083 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:07:35,091 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:07:35,093 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:07:35,094 - api.users.routes - ERROR - [routes.py:78] - 获取用户档案失败: 3 validation errors for UserProfileResponse
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+created_at
+  Input should be a valid string [type=string_type, input_value=datetime.datetime(2025, 8, 23, 13, 3, 49, 30000), input_type=datetime]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+last_login_at
+  Input should be a valid string [type=string_type, input_value=datetime.datetime(2025, 8, 23, 13, 3, 49, 30000), input_type=datetime]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-23 13:07:35,095 - api.middleware.logging - INFO - [logging.py:44] - [884e8b4d] 200 - Time: 0.024s
+2025-08-23 13:07:35,098 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:08:11,393 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:08:45,405 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:08:45,425 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:08:45,425 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:08:45,426 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:08:51,512 - api.middleware.logging - INFO - [logging.py:31] - [46984580] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:08:51,521 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:08:51,523 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:08:51,529 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:08:51,531 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:08:51,532 - api.users.routes - ERROR - [routes.py:78] - 获取用户档案失败: 3 validation errors for UserProfileResponse
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+created_at
+  Input should be a valid string [type=string_type, input_value=datetime.datetime(2025, 8, 23, 13, 3, 49, 30000), input_type=datetime]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+last_login_at
+  Input should be a valid string [type=string_type, input_value=datetime.datetime(2025, 8, 23, 13, 3, 49, 30000), input_type=datetime]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-23 13:08:51,534 - api.middleware.logging - INFO - [logging.py:44] - [46984580] 200 - Time: 0.023s
+2025-08-23 13:08:51,536 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:11:46,269 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:11:47,025 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:11:47,046 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:11:47,051 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:11:47,051 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:11:54,326 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:12:26,456 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:12:26,481 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:12:26,481 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:12:26,481 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:12:32,755 - api.middleware.logging - INFO - [logging.py:31] - [5fa8e06e] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:12:32,763 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:12:32,764 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:12:32,769 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:12:32,773 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:12:32,775 - api.middleware.logging - INFO - [logging.py:44] - [5fa8e06e] 200 - Time: 0.019s
+2025-08-23 13:12:32,776 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:12:49,890 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:13:24,542 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:13:24,562 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:13:24,563 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:13:24,563 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:13:30,612 - api.middleware.logging - INFO - [logging.py:31] - [2274fd6e] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:13:30,621 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:13:30,622 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:13:30,624 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 13:13:30,627 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:13:30,627 - api.middleware.logging - INFO - [logging.py:44] - [2274fd6e] 401 - Time: 0.016s
+2025-08-23 13:16:44,107 - api.middleware.logging - INFO - [logging.py:31] - [137cf114] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 13:16:44,113 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:16:44,114 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:16:44,115 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 13:16:44,116 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 13:16:44,116 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0e3wEknl2pvU7g4QZjll2zPLfe1wEknb
+2025-08-23 13:16:44,116 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823131644116948，包含 1 个操作
+2025-08-23 13:16:44,117 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823131644116948 中的操作 1/1
+2025-08-23 13:16:44,127 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823131644116948 提交成功
+2025-08-23 13:16:44,128 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_ab73d6612ed191c1)
+2025-08-23 13:16:44,129 - api.middleware.logging - INFO - [logging.py:44] - [137cf114] 200 - Time: 0.022s
+2025-08-23 13:16:44,140 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:16:44,152 - api.middleware.logging - INFO - [logging.py:31] - [f6692fb9] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:16:44,158 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:16:44,160 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:16:44,165 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:16:44,167 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:16:44,171 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:16:44,171 - api.middleware.logging - INFO - [logging.py:44] - [f6692fb9] 200 - Time: 0.019s
+2025-08-23 13:16:57,935 - api.middleware.logging - INFO - [logging.py:31] - [5a67fcbd] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:16:57,944 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:16:57,946 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:16:57,953 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:16:57,957 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:16:57,961 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:16:57,961 - api.middleware.logging - INFO - [logging.py:44] - [5a67fcbd] 200 - Time: 0.026s
+2025-08-23 13:17:26,074 - api.middleware.logging - INFO - [logging.py:31] - [06217eed] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:17:26,082 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:17:26,084 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:17:26,089 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:17:26,093 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:17:26,094 - api.middleware.logging - INFO - [logging.py:44] - [06217eed] 200 - Time: 0.020s
+2025-08-23 13:17:26,096 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:17:43,642 - api.middleware.logging - INFO - [logging.py:31] - [fa5d2418] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:17:43,651 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:17:43,653 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:17:43,661 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:17:43,663 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:17:43,664 - api.middleware.logging - INFO - [logging.py:44] - [fa5d2418] 200 - Time: 0.022s
+2025-08-23 13:17:43,666 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:17:49,332 - api.middleware.logging - INFO - [logging.py:31] - [4d599db3] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:17:49,340 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:17:49,341 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:17:49,350 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:17:49,353 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:17:49,354 - api.middleware.logging - INFO - [logging.py:44] - [4d599db3] 200 - Time: 0.021s
+2025-08-23 13:17:49,356 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:18:06,966 - api.middleware.logging - INFO - [logging.py:31] - [3ca56428] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:18:06,974 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:18:06,975 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:18:06,982 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:18:06,985 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:18:06,986 - api.middleware.logging - INFO - [logging.py:44] - [3ca56428] 200 - Time: 0.020s
+2025-08-23 13:18:06,988 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:18:15,585 - api.middleware.logging - INFO - [logging.py:31] - [972bfb7b] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:18:15,593 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:18:15,593 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:18:15,599 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:18:15,602 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:18:15,605 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:18:15,606 - api.middleware.logging - INFO - [logging.py:44] - [972bfb7b] 200 - Time: 0.020s
+2025-08-23 13:18:48,769 - api.middleware.logging - INFO - [logging.py:31] - [9194da88] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:18:48,776 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:18:48,778 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:18:48,784 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:18:48,786 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:18:48,788 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:18:48,788 - api.middleware.logging - INFO - [logging.py:44] - [9194da88] 200 - Time: 0.019s
+2025-08-23 13:19:02,078 - api.middleware.logging - INFO - [logging.py:31] - [92bd2267] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:19:02,087 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:19:02,088 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:19:02,095 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:19:02,097 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:19:02,100 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:19:02,101 - api.middleware.logging - INFO - [logging.py:44] - [92bd2267] 200 - Time: 0.023s
+2025-08-23 13:19:08,841 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:19:41,731 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:19:41,753 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:19:41,754 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:19:41,754 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:19:47,021 - api.middleware.logging - INFO - [logging.py:31] - [b6b8080e] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:19:47,029 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:19:47,030 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:19:47,033 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 13:19:47,035 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:19:47,036 - api.middleware.logging - INFO - [logging.py:44] - [b6b8080e] 401 - Time: 0.015s
+2025-08-23 13:20:34,271 - api.middleware.logging - INFO - [logging.py:31] - [eb2b1a3e] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 13:20:34,279 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:20:34,280 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:20:34,281 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 13:20:34,281 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 13:20:34,281 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0f3mTZ0w34plv536rd0w3PhBES0mTZ07
+2025-08-23 13:20:34,282 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823132034282413，包含 1 个操作
+2025-08-23 13:20:34,282 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823132034282413 中的操作 1/1
+2025-08-23 13:20:34,302 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823132034282413 提交成功
+2025-08-23 13:20:34,303 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_0590f497868a59fb)
+2025-08-23 13:20:34,384 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:20:34,384 - api.middleware.logging - INFO - [logging.py:44] - [eb2b1a3e] 200 - Time: 0.113s
+2025-08-23 13:20:34,395 - api.middleware.logging - INFO - [logging.py:31] - [77ff5d78] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:20:34,402 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:20:34,403 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:20:34,409 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:20:34,411 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:20:34,415 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:20:34,415 - api.middleware.logging - INFO - [logging.py:44] - [77ff5d78] 200 - Time: 0.019s
+2025-08-23 13:20:46,040 - api.middleware.logging - INFO - [logging.py:31] - [2bdfa48e] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:20:46,047 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:20:46,048 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:20:46,054 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:20:46,057 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:20:46,059 - api.middleware.logging - INFO - [logging.py:44] - [2bdfa48e] 200 - Time: 0.018s
+2025-08-23 13:20:46,060 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:20:54,293 - api.middleware.logging - INFO - [logging.py:31] - [d6a61de3] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:20:54,301 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:20:54,303 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:20:54,309 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:20:54,312 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:20:54,315 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:20:54,316 - api.middleware.logging - INFO - [logging.py:44] - [d6a61de3] 200 - Time: 0.022s
+2025-08-23 13:21:07,495 - api.middleware.logging - INFO - [logging.py:31] - [e7f15925] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:21:07,502 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:21:07,503 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:21:07,509 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:21:07,513 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 13:21:07,515 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:21:07,515 - api.middleware.logging - INFO - [logging.py:44] - [e7f15925] 200 - Time: 0.019s
+2025-08-23 13:39:57,530 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:54:06,631 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:54:06,651 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:54:06,652 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:54:06,652 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:54:15,473 - api.middleware.logging - INFO - [logging.py:31] - [df8ad317] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 13:54:15,479 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:54:15,482 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:54:15,485 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 13:54:15,487 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:54:15,488 - api.middleware.logging - INFO - [logging.py:44] - [df8ad317] 401 - Time: 0.014s
+2025-08-23 13:55:06,867 - api.middleware.logging - INFO - [logging.py:31] - [884ab86b] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 13:55:06,874 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:55:06,876 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:55:06,876 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 13:55:06,877 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 13:55:06,877 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0a3XZ11w3hZmv53J2h4w36Bu8V3XZ11m
+2025-08-23 13:55:06,879 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823135506879672，包含 1 个操作
+2025-08-23 13:55:06,879 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823135506879672 中的操作 1/1
+2025-08-23 13:55:06,888 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823135506879672 提交成功
+2025-08-23 13:55:06,888 - api.auth.routes - INFO - [routes.py:140] - 未注册用户登录: mock_openid_df2dcb3b3eb222d1
+2025-08-23 13:55:06,889 - api.middleware.logging - INFO - [logging.py:44] - [884ab86b] 200 - Time: 0.023s
+2025-08-23 13:55:06,900 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:56:44,872 - api.middleware.logging - INFO - [logging.py:31] - [8f70390b] GET /api/auth/me - Client: 127.0.0.1
+2025-08-23 13:56:44,884 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:56:44,886 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:56:44,894 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:56:44,895 - api.middleware.logging - INFO - [logging.py:44] - [8f70390b] 200 - Time: 0.024s
+2025-08-23 13:56:55,700 - api.middleware.logging - INFO - [logging.py:31] - [c12912ff] POST /api/auth/register - Client: 127.0.0.1
+2025-08-23 13:56:55,712 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:56:55,714 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:56:55,720 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823135655720374，包含 1 个操作
+2025-08-23 13:56:55,721 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823135655720374 中的操作 1/1
+2025-08-23 13:56:55,731 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823135655720374 提交成功
+2025-08-23 13:56:55,731 - api.auth.routes - INFO - [routes.py:178] - 用户注册完成: PP (mock_openid_df2dcb3b3eb222d1)
+2025-08-23 13:56:55,732 - api.middleware.logging - INFO - [logging.py:44] - [c12912ff] 200 - Time: 0.032s
+2025-08-23 13:56:55,744 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:56:57,502 - api.middleware.logging - INFO - [logging.py:31] - [ef75f2a8] GET /api/auth/me - Client: 127.0.0.1
+2025-08-23 13:56:57,514 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:56:57,515 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:56:57,523 - api.middleware.logging - INFO - [logging.py:44] - [ef75f2a8] 200 - Time: 0.022s
+2025-08-23 13:56:57,525 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:57:03,225 - api.middleware.logging - INFO - [logging.py:31] - [d84dad3e] GET /api/auth/me - Client: 127.0.0.1
+2025-08-23 13:57:03,233 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:57:03,234 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:57:03,239 - api.middleware.logging - INFO - [logging.py:44] - [d84dad3e] 200 - Time: 0.015s
+2025-08-23 13:57:03,241 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:58:50,700 - api.middleware.logging - INFO - [logging.py:31] - [76512946] GET /api/auth/me - Client: 127.0.0.1
+2025-08-23 13:58:50,710 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:58:50,711 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:58:50,715 - api.middleware.logging - INFO - [logging.py:44] - [76512946] 200 - Time: 0.015s
+2025-08-23 13:58:50,716 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:58:55,398 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 13:59:35,936 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 13:59:35,960 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 13:59:35,960 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 13:59:35,961 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 13:59:42,529 - api.middleware.logging - INFO - [logging.py:31] - [19e1ddcf] GET /api/auth/me - Client: 127.0.0.1
+2025-08-23 13:59:42,537 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:59:42,537 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:59:42,540 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 13:59:42,542 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:59:42,544 - api.middleware.logging - INFO - [logging.py:44] - [19e1ddcf] 401 - Time: 0.014s
+2025-08-23 13:59:57,573 - api.middleware.logging - INFO - [logging.py:31] - [ab5526e0] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 13:59:57,581 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 13:59:57,582 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 13:59:57,583 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 13:59:57,583 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 13:59:57,583 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0c3a9d0w3TJJu53vQE1w38J6am1a9d0j
+2025-08-23 13:59:57,586 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823135957586089，包含 1 个操作
+2025-08-23 13:59:57,586 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823135957586089 中的操作 1/1
+2025-08-23 13:59:57,595 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823135957586089 提交成功
+2025-08-23 13:59:57,595 - api.auth.routes - INFO - [routes.py:140] - 未注册用户登录: mock_openid_a8669f3e1e9c6db4
+2025-08-23 13:59:57,607 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 13:59:57,607 - api.middleware.logging - INFO - [logging.py:44] - [ab5526e0] 200 - Time: 0.034s
+2025-08-23 14:00:03,548 - api.middleware.logging - INFO - [logging.py:31] - [2e70d8f9] POST /api/auth/register - Client: 127.0.0.1
+2025-08-23 14:00:03,554 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:00:03,556 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:00:03,560 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823140003560007，包含 1 个操作
+2025-08-23 14:00:03,561 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823140003560007 中的操作 1/1
+2025-08-23 14:00:03,572 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823140003560007 提交成功
+2025-08-23 14:00:03,572 - api.auth.routes - INFO - [routes.py:178] - 用户注册完成: PP (mock_openid_a8669f3e1e9c6db4)
+2025-08-23 14:00:03,584 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:00:03,585 - api.middleware.logging - INFO - [logging.py:44] - [2e70d8f9] 200 - Time: 0.038s
+2025-08-23 14:00:05,319 - api.middleware.logging - INFO - [logging.py:31] - [38bbd4e2] GET /api/auth/me - Client: 127.0.0.1
+2025-08-23 14:00:05,326 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:00:05,327 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:00:05,333 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:00:05,333 - api.middleware.logging - INFO - [logging.py:44] - [38bbd4e2] 200 - Time: 0.014s
+2025-08-23 14:24:22,374 - api.middleware.logging - INFO - [logging.py:31] - [6db275d8] GET /api/auth/me - Client: 127.0.0.1
+2025-08-23 14:24:22,382 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:24:22,383 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:24:22,388 - api.middleware.logging - INFO - [logging.py:44] - [6db275d8] 200 - Time: 0.014s
+2025-08-23 14:24:22,389 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:24:39,599 - api.middleware.logging - INFO - [logging.py:31] - [1af774c5] GET /api/meals/calendar - Client: 127.0.0.1
+2025-08-23 14:24:39,607 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:24:39,608 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:24:39,613 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:24:39,615 - api.middleware.logging - INFO - [logging.py:44] - [1af774c5] 422 - Time: 0.016s
+2025-08-23 14:24:39,619 - api.middleware.logging - INFO - [logging.py:31] - [a6591278] GET /api/meals/calendar - Client: 127.0.0.1
+2025-08-23 14:24:39,627 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:24:39,628 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:24:39,632 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:24:39,633 - api.middleware.logging - INFO - [logging.py:44] - [a6591278] 422 - Time: 0.015s
+2025-08-23 14:25:30,463 - api.middleware.logging - INFO - [logging.py:31] - [cce29467] GET /api/meals/calendar - Client: 127.0.0.1
+2025-08-23 14:25:30,470 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:25:30,471 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:25:30,475 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:25:30,475 - api.middleware.logging - INFO - [logging.py:44] - [cce29467] 422 - Time: 0.012s
+2025-08-23 14:27:34,024 - api.middleware.logging - INFO - [logging.py:31] - [9f8db5bf] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:27:34,030 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:27:34,032 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:27:34,043 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:27:34,044 - api.middleware.logging - INFO - [logging.py:44] - [9f8db5bf] 200 - Time: 0.021s
+2025-08-23 14:27:34,047 - api.middleware.logging - INFO - [logging.py:31] - [407d9ce4] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:27:34,053 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:27:34,054 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:27:34,062 - api.middleware.logging - INFO - [logging.py:44] - [407d9ce4] 200 - Time: 0.016s
+2025-08-23 14:27:34,064 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:27:48,063 - api.middleware.logging - INFO - [logging.py:31] - [25b4255e] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:27:48,070 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:27:48,071 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:27:48,079 - api.middleware.logging - INFO - [logging.py:44] - [25b4255e] 200 - Time: 0.016s
+2025-08-23 14:27:48,081 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:27:48,082 - api.middleware.logging - INFO - [logging.py:31] - [5c39fbca] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:27:48,089 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:27:48,091 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:27:48,098 - api.middleware.logging - INFO - [logging.py:44] - [5c39fbca] 200 - Time: 0.016s
+2025-08-23 14:27:48,099 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:28:00,449 - api.middleware.logging - INFO - [logging.py:31] - [6ef2b330] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:28:00,459 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:28:00,460 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:28:00,467 - api.middleware.logging - INFO - [logging.py:44] - [6ef2b330] 200 - Time: 0.018s
+2025-08-23 14:28:00,469 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:28:00,472 - api.middleware.logging - INFO - [logging.py:31] - [61d70abe] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:28:00,477 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:28:00,479 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:28:00,487 - api.middleware.logging - INFO - [logging.py:44] - [61d70abe] 200 - Time: 0.015s
+2025-08-23 14:28:00,488 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:28:22,508 - api.middleware.logging - INFO - [logging.py:31] - [c92ab3cc] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:28:22,517 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:28:22,518 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:28:22,526 - api.middleware.logging - INFO - [logging.py:44] - [c92ab3cc] 200 - Time: 0.018s
+2025-08-23 14:28:22,528 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:28:22,530 - api.middleware.logging - INFO - [logging.py:31] - [95cd6c84] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:28:22,537 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:28:22,538 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:28:22,547 - api.middleware.logging - INFO - [logging.py:44] - [95cd6c84] 200 - Time: 0.017s
+2025-08-23 14:28:22,548 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:35:30,067 - api.middleware.logging - INFO - [logging.py:31] - [03f7a57e] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:35:30,075 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:35:30,076 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:35:30,086 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:35:30,086 - api.middleware.logging - INFO - [logging.py:44] - [03f7a57e] 200 - Time: 0.019s
+2025-08-23 14:35:31,325 - api.middleware.logging - INFO - [logging.py:31] - [e451c5cd] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:35:31,334 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:35:31,334 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:35:31,344 - api.middleware.logging - INFO - [logging.py:44] - [e451c5cd] 200 - Time: 0.019s
+2025-08-23 14:35:31,347 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:45:36,520 - api.middleware.logging - INFO - [logging.py:31] - [e1a2e97b] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:45:36,528 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:45:36,529 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:45:36,536 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:45:36,539 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:45:36,540 - api.middleware.logging - INFO - [logging.py:44] - [e1a2e97b] 200 - Time: 0.020s
+2025-08-23 14:45:36,541 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:45:36,543 - api.middleware.logging - INFO - [logging.py:31] - [f9c6312b] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:45:36,550 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:45:36,554 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:45:36,560 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:45:36,562 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:45:36,564 - api.middleware.logging - INFO - [logging.py:44] - [f9c6312b] 200 - Time: 0.020s
+2025-08-23 14:45:36,566 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:46:10,611 - api.middleware.logging - INFO - [logging.py:31] - [bfad927b] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:46:10,617 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:46:10,619 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:46:10,627 - api.middleware.logging - INFO - [logging.py:44] - [bfad927b] 200 - Time: 0.016s
+2025-08-23 14:46:10,629 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:46:10,631 - api.middleware.logging - INFO - [logging.py:31] - [08183ce9] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:46:10,638 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:46:10,639 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:46:10,647 - api.middleware.logging - INFO - [logging.py:44] - [08183ce9] 200 - Time: 0.017s
+2025-08-23 14:46:10,649 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:46:47,740 - api.middleware.logging - INFO - [logging.py:31] - [ae04bddf] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:46:47,750 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:46:47,751 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:46:47,758 - api.middleware.logging - INFO - [logging.py:44] - [ae04bddf] 200 - Time: 0.018s
+2025-08-23 14:46:47,759 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:46:47,762 - api.middleware.logging - INFO - [logging.py:31] - [d983ade4] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:46:47,769 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:46:47,770 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:46:47,778 - api.middleware.logging - INFO - [logging.py:44] - [d983ade4] 200 - Time: 0.016s
+2025-08-23 14:46:47,779 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:46:51,249 - api.middleware.logging - INFO - [logging.py:31] - [1214992e] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:46:51,257 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:46:51,258 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:46:51,263 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:46:51,266 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:46:51,269 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:46:51,269 - api.middleware.logging - INFO - [logging.py:44] - [1214992e] 200 - Time: 0.020s
+2025-08-23 14:46:51,271 - api.middleware.logging - INFO - [logging.py:31] - [8f5d2a40] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:46:51,277 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:46:51,278 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:46:51,285 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:46:51,287 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:46:51,288 - api.middleware.logging - INFO - [logging.py:44] - [8f5d2a40] 200 - Time: 0.017s
+2025-08-23 14:46:51,290 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:47:11,860 - api.middleware.logging - INFO - [logging.py:31] - [a4da5283] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:47:11,873 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:47:11,874 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:47:11,882 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:47:11,884 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:47:11,886 - api.middleware.logging - INFO - [logging.py:44] - [a4da5283] 200 - Time: 0.026s
+2025-08-23 14:47:11,887 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:47:11,891 - api.middleware.logging - INFO - [logging.py:31] - [a92b88dc] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:47:11,898 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:47:11,899 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:47:11,908 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:47:11,911 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:47:11,916 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:47:11,917 - api.middleware.logging - INFO - [logging.py:44] - [a92b88dc] 200 - Time: 0.026s
+2025-08-23 14:49:16,357 - api.middleware.logging - INFO - [logging.py:31] - [d085b7cc] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:49:16,363 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:49:16,366 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:49:16,373 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:49:16,375 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:49:16,376 - api.middleware.logging - INFO - [logging.py:44] - [d085b7cc] 200 - Time: 0.019s
+2025-08-23 14:49:16,378 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:49:16,380 - api.middleware.logging - INFO - [logging.py:31] - [cc927247] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:49:16,388 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:49:16,390 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:49:16,397 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:49:16,399 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:49:16,400 - api.middleware.logging - INFO - [logging.py:44] - [cc927247] 200 - Time: 0.020s
+2025-08-23 14:49:16,402 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:52:08,791 - api.middleware.logging - INFO - [logging.py:31] - [e9986a28] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:52:08,799 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:52:08,800 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:52:08,808 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:52:08,811 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:52:08,813 - api.middleware.logging - INFO - [logging.py:44] - [e9986a28] 200 - Time: 0.022s
+2025-08-23 14:52:08,814 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:52:10,295 - api.middleware.logging - INFO - [logging.py:31] - [7f6fbc77] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:52:10,304 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:52:10,307 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:52:10,317 - api.middleware.logging - INFO - [logging.py:44] - [7f6fbc77] 200 - Time: 0.022s
+2025-08-23 14:52:10,319 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:52:10,320 - api.middleware.logging - INFO - [logging.py:31] - [8ca4884e] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:52:10,329 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:52:10,330 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:52:10,342 - api.middleware.logging - INFO - [logging.py:44] - [8ca4884e] 200 - Time: 0.021s
+2025-08-23 14:52:10,343 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:52:11,255 - api.middleware.logging - INFO - [logging.py:31] - [010efe36] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:52:11,261 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:52:11,263 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:52:11,272 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:52:11,275 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:52:11,277 - api.middleware.logging - INFO - [logging.py:44] - [010efe36] 200 - Time: 0.023s
+2025-08-23 14:52:11,280 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:52:11,284 - api.middleware.logging - INFO - [logging.py:31] - [8f4001a4] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:52:11,293 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:52:11,295 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:52:11,303 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:52:11,307 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:52:11,310 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:52:11,311 - api.middleware.logging - INFO - [logging.py:44] - [8f4001a4] 200 - Time: 0.027s
+2025-08-23 14:52:25,724 - api.middleware.logging - INFO - [logging.py:31] - [5c4c2c4a] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:52:25,731 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:52:25,732 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:52:25,739 - api.middleware.logging - INFO - [logging.py:44] - [5c4c2c4a] 200 - Time: 0.016s
+2025-08-23 14:52:25,741 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:52:26,982 - api.middleware.logging - INFO - [logging.py:31] - [e105f176] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:52:26,991 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:52:26,992 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:52:27,000 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:52:27,002 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:52:27,004 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:52:27,004 - api.middleware.logging - INFO - [logging.py:44] - [e105f176] 200 - Time: 0.023s
+2025-08-23 14:53:22,101 - api.middleware.logging - INFO - [logging.py:31] - [f807dca4] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:53:22,111 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:53:22,112 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:53:22,118 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:53:22,121 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:53:22,122 - api.middleware.logging - INFO - [logging.py:44] - [f807dca4] 200 - Time: 0.020s
+2025-08-23 14:53:22,124 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:54:03,364 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 14:54:35,863 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 14:54:35,887 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 14:54:35,888 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 14:54:35,888 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 14:54:41,454 - api.middleware.logging - INFO - [logging.py:31] - [c0b139c0] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:54:41,461 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:54:41,462 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:54:41,468 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:54:41,470 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:54:41,471 - api.middleware.logging - INFO - [logging.py:44] - [c0b139c0] 200 - Time: 0.017s
+2025-08-23 14:54:41,473 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:54:42,923 - api.middleware.logging - INFO - [logging.py:31] - [8d60d030] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:54:42,929 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:54:42,930 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:54:42,943 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:54:42,943 - api.middleware.logging - INFO - [logging.py:44] - [8d60d030] 200 - Time: 0.020s
+2025-08-23 14:54:42,945 - api.middleware.logging - INFO - [logging.py:31] - [87451f6d] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:54:42,952 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:54:42,953 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:54:42,963 - api.middleware.logging - INFO - [logging.py:44] - [87451f6d] 200 - Time: 0.018s
+2025-08-23 14:54:42,965 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:54:44,313 - api.middleware.logging - INFO - [logging.py:31] - [76109136] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:54:44,321 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:54:44,322 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:54:44,328 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:54:44,331 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:54:44,332 - api.middleware.logging - INFO - [logging.py:44] - [76109136] 200 - Time: 0.019s
+2025-08-23 14:54:44,334 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:54:44,335 - api.middleware.logging - INFO - [logging.py:31] - [a0c9a984] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:54:44,344 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:54:44,346 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:54:44,355 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:54:44,360 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:54:44,364 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:54:44,364 - api.middleware.logging - INFO - [logging.py:44] - [a0c9a984] 200 - Time: 0.029s
+2025-08-23 14:54:54,006 - api.middleware.logging - INFO - [logging.py:31] - [52ff2841] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:54:54,015 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:54:54,016 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:54:54,024 - api.middleware.logging - INFO - [logging.py:44] - [52ff2841] 200 - Time: 0.018s
+2025-08-23 14:54:54,026 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:54:55,409 - api.middleware.logging - INFO - [logging.py:31] - [acc19e50] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:54:55,415 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:54:55,417 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:54:55,426 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:54:55,428 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:54:55,429 - api.middleware.logging - INFO - [logging.py:44] - [acc19e50] 200 - Time: 0.020s
+2025-08-23 14:54:55,431 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:55:02,397 - api.middleware.logging - INFO - [logging.py:31] - [5767c40e] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:55:02,407 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:55:02,408 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:55:02,414 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:55:02,417 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:55:02,424 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:55:02,424 - api.middleware.logging - INFO - [logging.py:44] - [5767c40e] 200 - Time: 0.027s
+2025-08-23 14:56:28,589 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 14:57:02,094 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 14:57:02,115 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 14:57:02,116 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 14:57:02,116 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 14:57:07,100 - api.middleware.logging - INFO - [logging.py:31] - [8058b461] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:57:07,109 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:57:07,111 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:57:07,116 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 14:57:07,119 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:57:07,121 - api.middleware.logging - INFO - [logging.py:44] - [8058b461] 401 - Time: 0.021s
+2025-08-23 14:57:24,868 - api.middleware.logging - INFO - [logging.py:31] - [b1893bc7] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 14:57:24,875 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:57:24,876 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:57:24,877 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 14:57:24,878 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 14:57:24,878 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0e3WWq100KYvQU1j3u200i5NM33WWq1Z
+2025-08-23 14:57:24,880 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823145724880897，包含 1 个操作
+2025-08-23 14:57:24,880 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823145724880897 中的操作 1/1
+2025-08-23 14:57:24,890 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823145724880897 提交成功
+2025-08-23 14:57:24,891 - api.auth.routes - INFO - [routes.py:140] - 未注册用户登录: mock_openid_e6e66b20e909d9e5
+2025-08-23 14:57:24,892 - api.middleware.logging - INFO - [logging.py:44] - [b1893bc7] 200 - Time: 0.024s
+2025-08-23 14:57:24,903 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:57:31,914 - api.middleware.logging - INFO - [logging.py:31] - [6c1599c0] POST /api/auth/register - Client: 127.0.0.1
+2025-08-23 14:57:31,922 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:57:31,923 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:57:31,926 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823145731926970，包含 1 个操作
+2025-08-23 14:57:31,927 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823145731926970 中的操作 1/1
+2025-08-23 14:57:31,938 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823145731926970 提交成功
+2025-08-23 14:57:31,938 - api.auth.routes - INFO - [routes.py:178] - 用户注册完成: PP (mock_openid_e6e66b20e909d9e5)
+2025-08-23 14:57:31,939 - api.middleware.logging - INFO - [logging.py:44] - [6c1599c0] 200 - Time: 0.025s
+2025-08-23 14:57:31,949 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:57:33,946 - api.middleware.logging - INFO - [logging.py:31] - [1072a984] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:57:33,954 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:57:33,954 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:57:33,971 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:57:33,971 - api.middleware.logging - INFO - [logging.py:44] - [1072a984] 200 - Time: 0.024s
+2025-08-23 14:57:33,973 - api.middleware.logging - INFO - [logging.py:31] - [9bc36af9] GET /api/meals - Client: 127.0.0.1
+2025-08-23 14:57:33,980 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:57:33,982 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:57:33,991 - api.middleware.logging - INFO - [logging.py:44] - [9bc36af9] 200 - Time: 0.018s
+2025-08-23 14:57:33,993 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:57:43,702 - api.middleware.logging - INFO - [logging.py:31] - [37dc24b7] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:57:43,709 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:57:43,710 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:57:43,717 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:57:43,719 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:57:43,720 - api.middleware.logging - INFO - [logging.py:44] - [37dc24b7] 200 - Time: 0.018s
+2025-08-23 14:57:43,722 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:58:01,583 - api.middleware.logging - INFO - [logging.py:31] - [1bf153a4] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:58:01,594 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:58:01,595 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:58:01,602 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:58:01,605 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:58:01,608 - api.middleware.logging - INFO - [logging.py:44] - [1bf153a4] 200 - Time: 0.024s
+2025-08-23 14:58:01,609 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:59:33,073 - api.middleware.logging - INFO - [logging.py:31] - [cb3ca7de] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:59:33,080 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:59:33,082 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:59:33,088 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:59:33,090 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:59:33,091 - api.middleware.logging - INFO - [logging.py:44] - [cb3ca7de] 200 - Time: 0.018s
+2025-08-23 14:59:33,092 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:59:38,725 - api.middleware.logging - INFO - [logging.py:31] - [ac3a0009] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 14:59:38,733 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 14:59:38,738 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 14:59:38,745 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:59:38,748 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 14:59:38,750 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 14:59:38,751 - api.middleware.logging - INFO - [logging.py:44] - [ac3a0009] 200 - Time: 0.026s
+2025-08-23 15:01:06,124 - api.middleware.logging - INFO - [logging.py:31] - [49f8dcff] GET /api/meals - Client: 127.0.0.1
+2025-08-23 15:01:06,132 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:01:06,133 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:01:06,141 - api.middleware.logging - INFO - [logging.py:44] - [49f8dcff] 200 - Time: 0.017s
+2025-08-23 15:01:06,143 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:01:06,145 - api.middleware.logging - INFO - [logging.py:31] - [4779963e] GET /api/meals - Client: 127.0.0.1
+2025-08-23 15:01:06,151 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:01:06,152 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:01:06,161 - api.middleware.logging - INFO - [logging.py:44] - [4779963e] 200 - Time: 0.015s
+2025-08-23 15:01:06,162 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:08:07,763 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 15:08:08,520 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 15:08:08,541 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 15:08:08,542 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 15:08:08,542 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 15:08:43,107 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 15:08:43,848 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 15:08:43,868 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 15:08:43,868 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 15:08:43,868 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 15:09:09,673 - api.middleware.logging - INFO - [logging.py:31] - [36739bc4] GET /api/meals - Client: 127.0.0.1
+2025-08-23 15:09:09,683 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:09:09,684 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:09:09,695 - api.middleware.logging - INFO - [logging.py:44] - [36739bc4] 200 - Time: 0.021s
+2025-08-23 15:09:09,697 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:09:09,699 - api.middleware.logging - INFO - [logging.py:31] - [b62f9924] GET /api/meals - Client: 127.0.0.1
+2025-08-23 15:09:09,706 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:09:09,708 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:09:09,717 - api.middleware.logging - INFO - [logging.py:44] - [b62f9924] 200 - Time: 0.018s
+2025-08-23 15:09:09,718 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:09:11,802 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 15:09:12,591 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 15:09:12,612 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 15:09:12,613 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 15:09:12,614 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 15:10:22,251 - api.middleware.logging - INFO - [logging.py:31] - [0e0f4943] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 15:10:22,259 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:10:22,260 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:10:22,261 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 15:10:22,262 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 15:10:22,262 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0e3Ynlml2x7Vbg4PqInl22rfMn2Ynlmv
+2025-08-23 15:10:22,264 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823151022264544，包含 1 个操作
+2025-08-23 15:10:22,264 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823151022264544 中的操作 1/1
+2025-08-23 15:10:22,265 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 15:10:22,265 - DatabaseManager - DEBUG - [supporting_operations.py:73] - 开发模式: __any__ 存在于白名单，mock_openid_8d2962be106b98e1 设为管理员
+2025-08-23 15:10:22,273 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823151022264544 提交成功
+2025-08-23 15:10:22,274 - api.auth.routes - INFO - [routes.py:140] - 未注册用户登录: mock_openid_8d2962be106b98e1
+2025-08-23 15:10:22,286 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:10:22,286 - api.middleware.logging - INFO - [logging.py:44] - [0e0f4943] 200 - Time: 0.036s
+2025-08-23 15:10:46,719 - api.middleware.logging - INFO - [logging.py:31] - [206dd50a] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 15:10:46,727 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:10:46,728 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:10:46,733 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:10:46,735 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:10:46,736 - api.middleware.logging - INFO - [logging.py:44] - [206dd50a] 200 - Time: 0.017s
+2025-08-23 15:10:46,738 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:10:48,892 - api.middleware.logging - INFO - [logging.py:31] - [af8ebc2c] GET /api/meals - Client: 127.0.0.1
+2025-08-23 15:10:48,901 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:10:48,901 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:10:48,913 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:10:48,913 - api.middleware.logging - INFO - [logging.py:44] - [af8ebc2c] 200 - Time: 0.021s
+2025-08-23 15:10:48,915 - api.middleware.logging - INFO - [logging.py:31] - [547ce7a9] GET /api/meals - Client: 127.0.0.1
+2025-08-23 15:10:48,921 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:10:48,922 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:10:48,932 - api.middleware.logging - INFO - [logging.py:44] - [547ce7a9] 200 - Time: 0.017s
+2025-08-23 15:10:48,933 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:12:06,456 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 15:12:41,149 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 15:12:41,173 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 15:12:41,173 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 15:12:41,173 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 15:12:50,355 - api.middleware.logging - INFO - [logging.py:31] - [9e02e5d6] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 15:12:50,363 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:12:50,364 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:12:50,367 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 15:12:50,369 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:12:50,370 - api.middleware.logging - INFO - [logging.py:44] - [9e02e5d6] 401 - Time: 0.015s
+2025-08-23 15:13:07,769 - api.middleware.logging - INFO - [logging.py:31] - [da086fb9] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 15:13:07,780 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:13:07,781 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:13:07,782 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 15:13:07,782 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 15:13:07,783 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0e3bF40008jEPU1bjS200pvCco3bF40d
+2025-08-23 15:13:07,784 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823151307784820，包含 1 个操作
+2025-08-23 15:13:07,785 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823151307784820 中的操作 1/1
+2025-08-23 15:13:07,786 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 15:13:07,787 - DatabaseManager - DEBUG - [supporting_operations.py:73] - 开发模式: __any__ 存在于白名单，mock_openid_95e8b869c87a1e21 设为管理员
+2025-08-23 15:13:07,793 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823151307784820 提交成功
+2025-08-23 15:13:07,793 - api.auth.routes - INFO - [routes.py:140] - 未注册用户登录: mock_openid_95e8b869c87a1e21
+2025-08-23 15:13:07,794 - api.middleware.logging - INFO - [logging.py:44] - [da086fb9] 200 - Time: 0.025s
+2025-08-23 15:13:07,806 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:13:36,977 - api.middleware.logging - INFO - [logging.py:31] - [d7c3fe48] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 15:13:36,983 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:13:36,984 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:13:36,990 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:13:36,992 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:13:36,995 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:13:36,995 - api.middleware.logging - INFO - [logging.py:44] - [d7c3fe48] 200 - Time: 0.018s
+2025-08-23 15:13:39,344 - api.middleware.logging - INFO - [logging.py:31] - [61a2a42c] GET /api/meals - Client: 127.0.0.1
+2025-08-23 15:13:39,352 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:13:39,354 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:13:39,365 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:13:39,366 - api.middleware.logging - INFO - [logging.py:44] - [61a2a42c] 200 - Time: 0.022s
+2025-08-23 15:13:39,368 - api.middleware.logging - INFO - [logging.py:31] - [3690a415] GET /api/meals - Client: 127.0.0.1
+2025-08-23 15:13:39,375 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:13:39,376 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:13:39,387 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:13:39,387 - api.middleware.logging - INFO - [logging.py:44] - [3690a415] 200 - Time: 0.019s
+2025-08-23 15:13:45,591 - api.middleware.logging - INFO - [logging.py:31] - [451c17df] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 15:13:45,603 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:13:45,608 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:13:45,617 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:13:45,620 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:13:45,623 - api.middleware.logging - INFO - [logging.py:44] - [451c17df] 200 - Time: 0.031s
+2025-08-23 15:13:45,625 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:13:48,083 - api.middleware.logging - INFO - [logging.py:31] - [d05420fe] GET /api/meals - Client: 127.0.0.1
+2025-08-23 15:13:48,092 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:13:48,094 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:13:48,106 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:13:48,108 - api.middleware.logging - INFO - [logging.py:44] - [d05420fe] 200 - Time: 0.025s
+2025-08-23 15:13:48,108 - api.middleware.logging - INFO - [logging.py:31] - [6f64436b] GET /api/meals - Client: 127.0.0.1
+2025-08-23 15:13:48,116 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:13:48,117 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:13:48,128 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:13:48,128 - api.middleware.logging - INFO - [logging.py:44] - [6f64436b] 200 - Time: 0.020s
+2025-08-23 15:13:51,812 - api.middleware.logging - INFO - [logging.py:31] - [52da549a] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 15:13:51,821 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:13:51,822 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:13:51,831 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:13:51,834 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:13:51,836 - api.middleware.logging - INFO - [logging.py:44] - [52da549a] 200 - Time: 0.025s
+2025-08-23 15:13:51,838 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:15:56,485 - api.middleware.logging - INFO - [logging.py:31] - [05f8c1cc] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 15:15:56,491 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:15:56,492 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:15:56,498 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:15:56,501 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:15:56,502 - api.middleware.logging - INFO - [logging.py:44] - [05f8c1cc] 200 - Time: 0.017s
+2025-08-23 15:15:56,503 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:16:14,867 - api.middleware.logging - INFO - [logging.py:31] - [37a0d409] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 15:16:14,874 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:16:14,876 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:16:14,882 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:16:14,885 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:16:14,886 - api.middleware.logging - INFO - [logging.py:44] - [37a0d409] 200 - Time: 0.018s
+2025-08-23 15:16:14,887 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:16:17,350 - api.middleware.logging - INFO - [logging.py:31] - [f4c21ec3] GET /api/meals - Client: 127.0.0.1
+2025-08-23 15:16:17,360 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:16:17,360 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:16:17,370 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:16:17,371 - api.middleware.logging - INFO - [logging.py:44] - [f4c21ec3] 200 - Time: 0.021s
+2025-08-23 15:16:17,374 - api.middleware.logging - INFO - [logging.py:31] - [9a961dc6] GET /api/meals - Client: 127.0.0.1
+2025-08-23 15:16:17,384 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:16:17,386 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:16:17,397 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:16:17,398 - api.middleware.logging - INFO - [logging.py:44] - [9a961dc6] 200 - Time: 0.023s
+2025-08-23 15:16:22,078 - api.middleware.logging - INFO - [logging.py:31] - [39bd7288] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 15:16:22,086 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:16:22,087 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:16:22,094 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:16:22,097 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 15:16:22,099 - api.middleware.logging - INFO - [logging.py:44] - [39bd7288] 200 - Time: 0.022s
+2025-08-23 15:16:22,101 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:22:21,122 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 15:22:21,916 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 15:22:21,938 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 15:22:21,938 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 15:22:21,938 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 15:22:45,454 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 15:22:46,211 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 15:22:46,233 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 15:22:46,233 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 15:22:46,234 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 15:22:55,811 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 15:22:56,560 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 15:22:56,581 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 15:22:56,582 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 15:22:56,582 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 15:23:07,468 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 15:23:08,226 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 15:23:08,248 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 15:23:08,249 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 15:23:08,249 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 15:23:19,126 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 15:23:19,871 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 15:23:19,891 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 15:23:19,891 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 15:23:19,892 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 15:23:29,477 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 15:23:30,239 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 15:23:30,260 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 15:23:30,260 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 15:23:30,261 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 15:23:37,466 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 15:27:33,385 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 15:27:33,405 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 15:27:33,405 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 15:27:33,408 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 15:27:40,015 - api.middleware.logging - INFO - [logging.py:31] - [5c58c785] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 15:27:40,024 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:27:40,025 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:27:40,030 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 15:27:40,033 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:27:40,034 - api.middleware.logging - INFO - [logging.py:44] - [5c58c785] 401 - Time: 0.019s
+2025-08-23 15:33:08,677 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 15:33:09,457 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 15:33:09,477 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 15:33:09,477 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 15:33:09,478 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 15:34:33,734 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 15:35:04,953 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 15:35:04,974 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 15:35:04,974 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 15:35:04,974 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 15:35:11,090 - api.middleware.logging - INFO - [logging.py:31] - [fcbd3e7f] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 15:35:11,097 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:35:11,098 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:35:11,099 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 15:35:11,100 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 15:35:11,100 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0c37Xi0w3Z9Hu53hoe3w3lR8bh07Xi0t
+2025-08-23 15:35:11,102 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823153511102339，包含 1 个操作
+2025-08-23 15:35:11,104 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823153511102339 中的操作 1/1
+2025-08-23 15:35:11,105 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 15:35:11,105 - DatabaseManager - DEBUG - [supporting_operations.py:74] - 开发模式: __any__ 存在于白名单，mock_openid_61f995c218a42989 设为管理员
+2025-08-23 15:35:11,114 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823153511102339 提交成功
+2025-08-23 15:35:11,116 - api.auth.routes - INFO - [routes.py:140] - 未注册用户登录: mock_openid_61f995c218a42989
+2025-08-23 15:35:11,117 - api.middleware.logging - INFO - [logging.py:44] - [fcbd3e7f] 200 - Time: 0.027s
+2025-08-23 15:35:11,128 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:36:06,343 - api.middleware.logging - INFO - [logging.py:31] - [01b5878e] POST /api/auth/register - Client: 127.0.0.1
+2025-08-23 15:36:06,352 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 15:36:06,353 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 15:36:06,356 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 15:36:06,358 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 15:36:06,358 - api.middleware.logging - INFO - [logging.py:44] - [01b5878e] 401 - Time: 0.015s

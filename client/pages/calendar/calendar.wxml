@@ -1,0 +1,88 @@
+<!--calendar.wxml-->
+<view class="container">
+  <!-- 日历头部 -->
+  <view class="calendar-header">
+    <view class="month-year">{{currentMonth}}</view>
+    <view class="week-days">
+      <view class="day-name">日</view>
+      <view class="day-name">一</view>
+      <view class="day-name">二</view>
+      <view class="day-name">三</view>
+      <view class="day-name">四</view>
+      <view class="day-name">五</view>
+      <view class="day-name">六</view>
+    </view>
+  </view>
+
+  <!-- 三周日历视图 -->
+  <view class="calendar-weeks">
+    <block wx:for="{{weeks}}" wx:key="weekIndex">
+      <view class="week-row">
+        <block wx:for="{{item.days}}" wx:key="dayIndex">
+          <view class="day-cell {{item.isToday ? 'today' : ''}} {{item.isCurrentMonth ? '' : 'other-month'}}">
+            <!-- 日期 -->
+            <view class="date-number">{{item.date}}</view>
+            
+            <!-- 午餐信息 -->
+            <view class="meal-item lunch {{item.lunch.status}}">
+              <view class="meal-type">午餐</view>
+              <view class="meal-info">
+                <block wx:if="{{item.lunch.status === 'available'}}">
+                  ¥{{item.lunch.price}}
+                </block>
+                <block wx:elif="{{item.lunch.status === 'ordered'}}">
+                  已订
+                </block>
+                <block wx:elif="{{item.lunch.status === 'locked'}}">
+                  已锁
+                </block>
+                <block wx:else>
+                  未发布
+                </block>
+              </view>
+            </view>
+            
+            <!-- 晚餐信息 -->
+            <view class="meal-item dinner {{item.dinner.status}}">
+              <view class="meal-type">晚餐</view>
+              <view class="meal-info">
+                <block wx:if="{{item.dinner.status === 'available'}}">
+                  ¥{{item.dinner.price}}
+                </block>
+                <block wx:elif="{{item.dinner.status === 'ordered'}}">
+                  已订
+                </block>
+                <block wx:elif="{{item.dinner.status === 'locked'}}">
+                  已锁
+                </block>
+                <block wx:else>
+                  未发布
+                </block>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+
+  <!-- 底部说明 -->
+  <view class="legend">
+    <view class="legend-item">
+      <view class="legend-color available"></view>
+      <text>可预订</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-color ordered"></view>
+      <text>已预订</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-color locked"></view>
+      <text>已截止</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-color unpublished"></view>
+      <text>未发布</text>
+    </view>
+  </view>
+</view>

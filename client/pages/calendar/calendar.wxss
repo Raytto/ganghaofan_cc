@@ -1,0 +1,167 @@
+/* calendar.wxss */
+.container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 日历头部 */
+.calendar-header {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.month-year {
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.week-days {
+  display: flex;
+  justify-content: space-between;
+}
+
+.day-name {
+  flex: 1;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+  font-weight: bold;
+}
+
+/* 三周日历视图 */
+.calendar-weeks {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.week-row {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.week-row:last-child {
+  margin-bottom: 0;
+}
+
+.day-cell {
+  flex: 1;
+  margin: 0 4rpx;
+  background-color: #f8f8f8;
+  border-radius: 8rpx;
+  padding: 12rpx 8rpx;
+  min-height: 200rpx;
+  position: relative;
+}
+
+.day-cell.today {
+  background-color: #e8f5e8;
+  border: 2rpx solid #1aad19;
+}
+
+.day-cell.other-month {
+  opacity: 0.3;
+}
+
+.date-number {
+  text-align: center;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+/* 餐次信息 */
+.meal-item {
+  margin: 4rpx 0;
+  padding: 8rpx;
+  border-radius: 6rpx;
+  text-align: center;
+}
+
+.meal-type {
+  font-size: 20rpx;
+  margin-bottom: 4rpx;
+  font-weight: bold;
+}
+
+.meal-info {
+  font-size: 18rpx;
+  font-weight: bold;
+}
+
+/* 不同状态的样式 */
+.meal-item.available {
+  background-color: #fff2e8;
+  color: #d2691e;
+  border: 1rpx solid #ddd;
+}
+
+.meal-item.ordered {
+  background-color: #1aad19;
+  color: #fff;
+}
+
+.meal-item.locked {
+  background-color: #666;
+  color: #fff;
+}
+
+.meal-item.unpublished {
+  background-color: #f0f0f0;
+  color: #999;
+  border: 1rpx solid #ddd;
+}
+
+/* 底部说明 */
+.legend {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 5rpx 0;
+}
+
+.legend-color {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 4rpx;
+  margin-right: 8rpx;
+}
+
+.legend-color.available {
+  background-color: #fff2e8;
+  border: 1rpx solid #ddd;
+}
+
+.legend-color.ordered {
+  background-color: #1aad19;
+}
+
+.legend-color.locked {
+  background-color: #666;
+}
+
+.legend-color.unpublished {
+  background-color: #f0f0f0;
+  border: 1rpx solid #ddd;
+}
+
+.legend-item text {
+  font-size: 24rpx;
+  color: #666;
+}

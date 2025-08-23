@@ -58,13 +58,13 @@ async def get_user_profile(
         profile_data = UserProfileResponse(
             user_id=user_info["user_id"],
             open_id=user_info["open_id"],
-            wechat_name=user_info["wechat_name"],
+            wechat_name=user_info.get("wechat_name") or "未注册用户",
             avatar_url=user_info.get("avatar_url"),
             balance_cents=user_info["balance_cents"],
             balance_yuan=user_info["balance_cents"] / 100.0,
             is_admin=user_info["is_admin"],
-            created_at=user_info["created_at"],
-            last_login_at=user_info.get("last_login_at"),
+            created_at=user_info["created_at"].isoformat() + "Z" if user_info["created_at"] else None,
+            last_login_at=user_info["last_login_at"].isoformat() + "Z" if user_info.get("last_login_at") else None,
             order_statistics=order_statistics,
             transaction_statistics=transaction_statistics
         )

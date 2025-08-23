@@ -1,0 +1,31 @@
+<!--register.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view class="header">
+      <text class="title">用户注册</text>
+      <text class="subtitle">请完善您的个人信息</text>
+    </view>
+    
+    <view class="userinfo">
+      <block wx:if="{{canIUseNicknameComp}}">
+        <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+          <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+        </button>
+        <view class="nickname-wrapper">
+          <text class="nickname-label">昵称</text>
+          <input type="nickname" class="nickname-input" placeholder="请输入昵称" bindchange="onInputChange" value="{{userInfo.nickName}}" />
+        </view>
+      </block>
+      <block wx:else>
+        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile">获取头像昵称</button>
+        <view wx:else>请使用2.10.4及以上版本基础库</view>
+      </block>
+    </view>
+    
+    <view class="button-container">
+      <button class="register-button {{canRegister ? '' : 'disabled'}}" bindtap="onRegisterTap">
+        {{registering ? '注册中...' : '注册'}}
+      </button>
+    </view>
+  </view>
+</scroll-view>

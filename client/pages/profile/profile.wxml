@@ -1,0 +1,69 @@
+<!--profile.wxml-->
+<view class="container">
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading">
+    <view class="loading-text">加载中...</view>
+  </view>
+
+  <!-- 用户信息展示 -->
+  <view wx:else class="profile-content">
+    <!-- 用户基本信息 -->
+    <view class="user-info-card">
+      <view class="avatar-section">
+        <image class="avatar" src="{{userInfo.avatar_url || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+      </view>
+      <view class="info-section">
+        <view class="nickname">{{userInfo.wechat_name || '未设置昵称'}}</view>
+        <view class="user-id">用户ID: {{userInfo.user_id}}</view>
+        <view class="balance">余额: ¥{{userInfo.balance_yuan}}</view>
+        <view wx:if="{{isAdmin}}" class="admin-badge">管理员</view>
+      </view>
+    </view>
+
+    <!-- 管理员模式开关 -->
+    <view wx:if="{{isAdmin}}" class="admin-mode-section">
+      <view class="section-card">
+        <view class="section-header">
+          <view class="section-title">管理模式</view>
+          <view class="section-desc">开启后可使用管理员功能</view>
+        </view>
+        <view class="switch-container">
+          <switch 
+            checked="{{adminMode}}" 
+            bindchange="onAdminModeChange"
+            color="#1aad19">
+          </switch>
+        </view>
+      </view>
+    </view>
+
+    <!-- 其他功能区域 -->
+    <view class="functions-section">
+      <view class="section-card">
+        <view class="section-title">功能菜单</view>
+        <view class="function-list">
+          <view class="function-item">
+            <view class="function-icon">📋</view>
+            <view class="function-text">我的订单</view>
+            <view class="function-arrow">></view>
+          </view>
+          <view class="function-item">
+            <view class="function-icon">💰</view>
+            <view class="function-text">账单明细</view>
+            <view class="function-arrow">></view>
+          </view>
+          <view class="function-item">
+            <view class="function-icon">⚙️</view>
+            <view class="function-text">设置</view>
+            <view class="function-arrow">></view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 占位提示 -->
+    <view class="placeholder-section">
+      <view class="placeholder-text">更多功能正在开发中...</view>
+    </view>
+  </view>
+</view>
