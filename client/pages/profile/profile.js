@@ -107,10 +107,9 @@ Page({
       return
     }
     
-    // TODO: 跳转到附加项管理页面
-    wx.showToast({
-      title: '功能开发中',
-      icon: 'none'
+    // 跳转到附加项管理页面
+    wx.navigateTo({
+      url: '../admin/addon_manage/addon_manage'
     })
   },
 

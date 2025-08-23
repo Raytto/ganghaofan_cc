@@ -1,0 +1,59 @@
+<view class="addon-manage-container">
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-container">
+    <text>加载中...</text>
+  </view>
+
+  <view wx:else>
+    <!-- 生效附加项列表 -->
+    <view class="section">
+      <view class="section-title">生效中的附加项</view>
+      
+      <view wx:if="{{activeAddons.length === 0}}" class="empty-state">
+        <text class="empty-text">暂无附加项</text>
+      </view>
+      
+      <view wx:else class="addon-list">
+        <view wx:for="{{activeAddons}}" wx:key="addon_id" class="addon-item">
+          <view class="addon-info">
+            <text class="addon-name">{{item.name}}</text>
+            <text class="addon-price">¥{{item.price_yuan}}</text>
+          </view>
+          <view class="addon-actions">
+            <button class="delete-btn" size="mini" type="warn" bind:tap="onDeleteAddon" data-addon-id="{{item.addon_id}}" data-addon-name="{{item.name}}">
+              删除
+            </button>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 添加新附加项 -->
+    <view class="section">
+      <view class="section-title">添加新附加项</view>
+      
+      <view class="add-form">
+        <!-- 附加项名称输入 -->
+        <view class="form-item">
+          <text class="form-label">附加项名称:</text>
+          <input class="form-input" type="text" placeholder="请输入附加项名称" value="{{newAddon.name}}" bind:input="onNameInput" maxlength="20" />
+        </view>
+        
+        <!-- 价格设置 -->
+        <view class="form-item">
+          <text class="form-label">价格设置:</text>
+          <view class="price-input-group">
+            <input class="price-input" type="digit" placeholder="0" value="{{newAddon.price_yuan}}" bind:input="onPriceInput" />
+            <text class="price-unit">元</text>
+            <button class="price-plus-btn" size="mini" bind:tap="onPricePlus">+1</button>
+          </view>
+        </view>
+        
+        <!-- 提交按钮 -->
+        <button class="add-btn" type="primary" bind:tap="onAddAddon" disabled="{{submitting}}" loading="{{submitting}}">
+          {{submitting ? '添加中...' : '新增附加项'}}
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

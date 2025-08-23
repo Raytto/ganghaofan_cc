@@ -6243,3 +6243,259 @@ last_login_at
 2025-08-23 17:03:53,738 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
 2025-08-23 17:03:53,739 - api.middleware.logging - INFO - [logging.py:44] - [0db4e348] 200 - Time: 0.021s
 2025-08-23 17:03:53,741 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:14:24,978 - api.middleware.logging - INFO - [logging.py:31] - [29da214a] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:14:24,988 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:14:24,989 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:14:24,990 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:14:24,991 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:14:24,993 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:14:24,993 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:14:24,997 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:14:25,001 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:14:25,004 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:14:25,005 - api.middleware.logging - INFO - [logging.py:44] - [29da214a] 200 - Time: 0.026s
+2025-08-23 17:14:25,006 - api.middleware.logging - INFO - [logging.py:31] - [628950c8] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:14:25,013 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:14:25,015 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:14:25,015 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:14:25,016 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:14:25,018 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:14:25,019 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:14:25,023 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:14:25,025 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:14:25,027 - api.middleware.logging - INFO - [logging.py:44] - [628950c8] 200 - Time: 0.021s
+2025-08-23 17:14:25,028 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:14:44,122 - api.middleware.logging - INFO - [logging.py:31] - [6abf13b5] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:14:44,129 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:14:44,130 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:14:44,131 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:14:44,131 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:14:44,133 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:14:44,134 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:14:44,139 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:14:44,141 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:14:44,142 - api.middleware.logging - INFO - [logging.py:44] - [6abf13b5] 200 - Time: 0.020s
+2025-08-23 17:14:44,144 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:14:44,146 - api.middleware.logging - INFO - [logging.py:31] - [602e40ce] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:14:44,153 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:14:44,154 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:14:44,155 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:14:44,156 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:14:44,158 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:14:44,159 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:14:44,163 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:14:44,165 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:14:44,167 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:14:44,168 - api.middleware.logging - INFO - [logging.py:44] - [602e40ce] 200 - Time: 0.022s
+2025-08-23 17:15:00,211 - api.middleware.logging - INFO - [logging.py:31] - [ff126d70] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:15:00,218 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:15:00,219 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:15:00,220 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:15:00,221 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:15:00,224 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:15:00,225 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:15:00,229 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:00,232 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:00,233 - api.middleware.logging - INFO - [logging.py:44] - [ff126d70] 200 - Time: 0.021s
+2025-08-23 17:15:00,235 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:15:00,238 - api.middleware.logging - INFO - [logging.py:31] - [17864fd7] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:15:00,244 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:15:00,245 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:15:00,246 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:15:00,247 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:15:00,249 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:15:00,249 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:15:00,253 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:00,255 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:00,258 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:15:00,258 - api.middleware.logging - INFO - [logging.py:44] - [17864fd7] 200 - Time: 0.020s
+2025-08-23 17:15:28,161 - api.middleware.logging - INFO - [logging.py:31] - [8240f2e3] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:15:28,168 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:15:28,170 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:15:28,171 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:15:28,171 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:15:28,175 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:15:28,175 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:15:28,181 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:28,183 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:28,185 - api.middleware.logging - INFO - [logging.py:44] - [8240f2e3] 200 - Time: 0.023s
+2025-08-23 17:15:28,187 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:15:28,188 - api.middleware.logging - INFO - [logging.py:31] - [546b1a74] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:15:28,196 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:15:28,197 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:15:28,198 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:15:28,198 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:15:28,200 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:15:28,201 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:15:28,205 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:28,207 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:28,209 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:15:28,209 - api.middleware.logging - INFO - [logging.py:44] - [546b1a74] 200 - Time: 0.021s
+2025-08-23 17:15:33,023 - api.middleware.logging - INFO - [logging.py:31] - [77c59720] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:15:33,030 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:15:33,031 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:15:33,032 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:15:33,032 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:15:33,034 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:15:33,035 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:15:33,038 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:33,041 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:33,044 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:15:33,045 - api.middleware.logging - INFO - [logging.py:44] - [77c59720] 200 - Time: 0.022s
+2025-08-23 17:15:33,047 - api.middleware.logging - INFO - [logging.py:31] - [574bc4ae] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:15:33,054 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:15:33,055 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:15:33,055 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:15:33,056 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:15:33,058 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:15:33,059 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:15:33,063 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:33,065 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:33,066 - api.middleware.logging - INFO - [logging.py:44] - [574bc4ae] 200 - Time: 0.019s
+2025-08-23 17:15:33,068 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:15:51,970 - api.middleware.logging - INFO - [logging.py:31] - [808cf8d1] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:15:51,978 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:15:51,978 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:15:51,979 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:15:51,979 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:15:51,982 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:15:51,982 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:15:51,987 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:51,990 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:51,991 - api.middleware.logging - INFO - [logging.py:44] - [808cf8d1] 200 - Time: 0.021s
+2025-08-23 17:15:51,993 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:15:51,995 - api.middleware.logging - INFO - [logging.py:31] - [75df97b8] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:15:52,001 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:15:52,003 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:15:52,003 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:15:52,004 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:15:52,008 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:15:52,008 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:15:52,012 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:52,014 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:15:52,017 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:15:52,017 - api.middleware.logging - INFO - [logging.py:44] - [75df97b8] 200 - Time: 0.022s
+2025-08-23 17:16:10,216 - api.middleware.logging - INFO - [logging.py:31] - [44340ee4] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:16:10,223 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:16:10,224 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:16:10,225 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:16:10,225 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:16:10,228 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:16:10,228 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:16:10,232 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:16:10,235 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:16:10,236 - api.middleware.logging - INFO - [logging.py:44] - [44340ee4] 200 - Time: 0.021s
+2025-08-23 17:16:10,238 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:16:10,240 - api.middleware.logging - INFO - [logging.py:31] - [de9ea45f] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:16:10,265 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:16:10,266 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:16:10,267 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:16:10,267 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:16:10,270 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:16:10,270 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:16:10,274 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:16:10,277 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:16:10,280 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:16:10,280 - api.middleware.logging - INFO - [logging.py:44] - [de9ea45f] 200 - Time: 0.040s
+2025-08-23 17:16:45,950 - api.middleware.logging - INFO - [logging.py:31] - [bc0c8e69] GET /api/auth/me - Client: 127.0.0.1
+2025-08-23 17:16:45,958 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:16:45,959 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:16:45,960 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:16:45,961 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:16:45,964 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:16:45,964 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:16:45,969 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:16:45,969 - api.middleware.logging - INFO - [logging.py:44] - [bc0c8e69] 200 - Time: 0.019s
+2025-08-23 17:16:47,320 - api.middleware.logging - INFO - [logging.py:31] - [e511a88b] GET /api/meals - Client: 127.0.0.1
+2025-08-23 17:16:47,326 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:16:47,327 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:16:47,328 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:16:47,329 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:16:47,331 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:16:47,332 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:16:47,340 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:16:47,340 - api.middleware.logging - INFO - [logging.py:44] - [e511a88b] 200 - Time: 0.020s
+2025-08-23 17:16:47,345 - api.middleware.logging - INFO - [logging.py:31] - [7985811d] GET /api/meals - Client: 127.0.0.1
+2025-08-23 17:16:47,354 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:16:47,354 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:16:47,356 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:16:47,358 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:16:47,360 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:16:47,361 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:16:47,367 - api.middleware.logging - INFO - [logging.py:44] - [7985811d] 200 - Time: 0.022s
+2025-08-23 17:16:47,369 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:16:48,329 - api.middleware.logging - INFO - [logging.py:31] - [edad9d0d] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:16:48,336 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:16:48,338 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:16:48,338 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:16:48,339 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:16:48,341 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:16:48,341 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:16:48,347 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:16:48,350 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:16:48,355 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:16:48,355 - api.middleware.logging - INFO - [logging.py:44] - [edad9d0d] 200 - Time: 0.026s
+2025-08-23 17:16:48,357 - api.middleware.logging - INFO - [logging.py:31] - [169759a6] GET /api/users/profile - Client: 127.0.0.1
+2025-08-23 17:16:48,364 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:16:48,366 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:16:48,366 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:16:48,367 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:16:48,369 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:16:48,370 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:16:48,375 - DatabaseManager - ERROR - [query_operations.py:525] - 查询用户订单统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:16:48,378 - DatabaseManager - ERROR - [query_operations.py:576] - 查询用户交易统计失败: unsupported operand type(s) for /: 'NoneType' and 'float'
+2025-08-23 17:16:48,379 - api.middleware.logging - INFO - [logging.py:44] - [169759a6] 200 - Time: 0.022s
+2025-08-23 17:16:48,380 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:16:49,742 - api.middleware.logging - INFO - [logging.py:31] - [e4bb81e2] GET /api/admin/addons - Client: 127.0.0.1
+2025-08-23 17:16:49,751 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:16:49,752 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:16:49,754 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:16:49,756 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:16:49,760 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:16:49,761 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:16:49,767 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:16:49,767 - api.middleware.logging - INFO - [logging.py:44] - [e4bb81e2] 200 - Time: 0.026s
+2025-08-23 17:16:56,716 - api.middleware.logging - INFO - [logging.py:31] - [7db03c4e] DELETE /api/admin/addons/3 - Client: 127.0.0.1
+2025-08-23 17:16:56,723 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:16:56,726 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:16:56,727 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:16:56,727 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:16:56,732 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:16:56,734 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:16:56,736 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823171656735919，包含 1 个操作
+2025-08-23 17:16:56,736 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823171656735919 中的操作 1/1
+2025-08-23 17:16:56,751 - DatabaseManager - ERROR - [manager.py:161] - 事务 20250823171656735919 执行失败: Constraint Error: Duplicate key "addon_id: 3" violates primary key constraint. If this is an unexpected constraint violation please double check with the known index limitations section in our documentation (docs - sql - indexes).
+2025-08-23 17:16:56,752 - DatabaseManager - INFO - [manager.py:164] - 事务 20250823171656735919 已回滚
+2025-08-23 17:16:56,752 - api.admin.routes - ERROR - [routes.py:108] - 停用附加项失败: Constraint Error: Duplicate key "addon_id: 3" violates primary key constraint. If this is an unexpected constraint violation please double check with the known index limitations section in our documentation (docs - sql - indexes).
+2025-08-23 17:16:56,755 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:16:56,755 - api.middleware.logging - INFO - [logging.py:44] - [7db03c4e] 200 - Time: 0.039s
+2025-08-23 17:17:09,693 - api.middleware.logging - INFO - [logging.py:31] - [942b6b89] POST /api/admin/addons - Client: 127.0.0.1
+2025-08-23 17:17:09,700 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:17:09,702 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:17:09,703 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:17:09,703 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:17:09,706 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:17:09,706 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:17:09,707 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823171709707975，包含 1 个操作
+2025-08-23 17:17:09,707 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823171709707975 中的操作 1/1
+2025-08-23 17:17:09,720 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823171709707975 提交成功
+2025-08-23 17:17:09,741 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:17:09,741 - api.middleware.logging - INFO - [logging.py:44] - [942b6b89] 200 - Time: 0.048s
+2025-08-23 17:19:57,073 - api.middleware.logging - INFO - [logging.py:31] - [f14a1fe1] GET /api/admin/addons - Client: 127.0.0.1
+2025-08-23 17:19:57,081 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:19:57,082 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:19:57,083 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:19:57,083 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:19:57,085 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:19:57,086 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:19:57,091 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:19:57,091 - api.middleware.logging - INFO - [logging.py:44] - [f14a1fe1] 200 - Time: 0.018s
+2025-08-23 17:20:09,213 - api.middleware.logging - INFO - [logging.py:31] - [fda67d14] GET /api/admin/addons - Client: 127.0.0.1
+2025-08-23 17:20:09,221 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 17:20:09,222 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 17:20:09,223 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 17:20:09,223 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 17:20:09,225 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 17:20:09,226 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 17:20:09,231 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 17:20:09,232 - api.middleware.logging - INFO - [logging.py:44] - [fda67d14] 200 - Time: 0.019s

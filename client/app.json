@@ -3,7 +3,8 @@
     "pages/welcome/welcome",
     "pages/register/register",
     "pages/calendar/calendar",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/admin/addon_manage/addon_manage"
   ],
   "tabBar": {
     "color": "#666666",
