@@ -4621,3 +4621,7 @@ wechat_name
 2025-08-22 17:06:16,878 - api.middleware.logging - INFO - [logging.py:44] - [3e4c01d8] 404 - Time: 0.002s
 2025-08-22 17:06:16,880 - httpx - INFO - [_client.py:1013] - HTTP Request: GET http://testserver/api/users/statistics/orders "HTTP/1.1 404 Not Found"
 2025-08-22 17:08:50,624 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 11:25:51,854 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 11:25:51,876 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 11:25:51,876 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 11:25:51,877 - api.main - INFO - [main.py:36] - 调试模式: True
