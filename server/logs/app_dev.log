@@ -5596,3 +5596,219 @@ last_login_at
 2025-08-23 15:36:06,356 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
 2025-08-23 15:36:06,358 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
 2025-08-23 15:36:06,358 - api.middleware.logging - INFO - [logging.py:44] - [01b5878e] 401 - Time: 0.015s
+2025-08-23 16:07:45,054 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 16:07:45,075 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 16:07:45,077 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 16:07:45,078 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 16:08:05,914 - api.middleware.logging - INFO - [logging.py:31] - [e8ec0dc1] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 16:08:05,922 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:08:05,923 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:08:05,923 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:08:05,924 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 16:08:05,924 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0b3xU30w3AEVu53HBo3w3niRAw4xU30-
+2025-08-23 16:08:05,925 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823160805925906，包含 1 个操作
+2025-08-23 16:08:05,927 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823160805925906 中的操作 1/1
+2025-08-23 16:08:05,928 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:08:05,928 - DatabaseManager - DEBUG - [supporting_operations.py:74] - 开发模式: __any__ 存在于白名单，mock_openid_69b645528a2d8b7c 设为管理员
+2025-08-23 16:08:05,934 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823160805925906 提交成功
+2025-08-23 16:08:05,935 - api.auth.routes - INFO - [routes.py:140] - 未注册用户登录: mock_openid_69b645528a2d8b7c
+2025-08-23 16:08:05,935 - api.middleware.logging - INFO - [logging.py:44] - [e8ec0dc1] 200 - Time: 0.021s
+2025-08-23 16:08:05,947 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:08:17,144 - api.middleware.logging - INFO - [logging.py:31] - [94ecda4f] POST /api/auth/register - Client: 127.0.0.1
+2025-08-23 16:08:17,154 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:08:17,155 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:08:17,158 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 16:08:17,161 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:08:17,162 - api.middleware.logging - INFO - [logging.py:44] - [94ecda4f] 401 - Time: 0.019s
+2025-08-23 16:08:30,205 - api.middleware.logging - INFO - [logging.py:31] - [c00e0695] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 16:08:30,213 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:08:30,214 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:08:30,215 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:08:30,216 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 16:08:30,216 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0f3KVoml2odTbg4SCGml2u8WKM2KVom9
+2025-08-23 16:08:30,218 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823160830218439，包含 1 个操作
+2025-08-23 16:08:30,219 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823160830218439 中的操作 1/1
+2025-08-23 16:08:30,220 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:08:30,221 - DatabaseManager - DEBUG - [supporting_operations.py:74] - 开发模式: __any__ 存在于白名单，mock_openid_9427912df4b82822 设为管理员
+2025-08-23 16:08:30,230 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823160830218439 提交成功
+2025-08-23 16:08:30,230 - api.auth.routes - INFO - [routes.py:140] - 未注册用户登录: mock_openid_9427912df4b82822
+2025-08-23 16:08:30,242 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:08:30,242 - api.middleware.logging - INFO - [logging.py:44] - [c00e0695] 200 - Time: 0.037s
+2025-08-23 16:08:36,818 - api.middleware.logging - INFO - [logging.py:31] - [24efe370] POST /api/auth/register - Client: 127.0.0.1
+2025-08-23 16:08:36,824 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:08:36,825 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:08:36,829 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 16:08:36,831 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:08:36,832 - api.middleware.logging - INFO - [logging.py:44] - [24efe370] 401 - Time: 0.014s
+2025-08-23 16:08:59,696 - api.middleware.logging - INFO - [logging.py:31] - [1629872d] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 16:08:59,703 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:08:59,705 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:08:59,705 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:08:59,706 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 16:08:59,706 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0a3p7p000UglPU1Q9j200lUA0W0p7p0y
+2025-08-23 16:08:59,708 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823160859708541，包含 1 个操作
+2025-08-23 16:08:59,709 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823160859708541 中的操作 1/1
+2025-08-23 16:08:59,710 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:08:59,710 - DatabaseManager - DEBUG - [supporting_operations.py:74] - 开发模式: __any__ 存在于白名单，mock_openid_f79eac4d3b7eefa4 设为管理员
+2025-08-23 16:08:59,717 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823160859708541 提交成功
+2025-08-23 16:08:59,717 - api.auth.routes - INFO - [routes.py:140] - 未注册用户登录: mock_openid_f79eac4d3b7eefa4
+2025-08-23 16:08:59,729 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:08:59,729 - api.middleware.logging - INFO - [logging.py:44] - [1629872d] 200 - Time: 0.033s
+2025-08-23 16:09:07,908 - api.middleware.logging - INFO - [logging.py:31] - [4a08d9b7] POST /api/auth/register - Client: 127.0.0.1
+2025-08-23 16:09:07,918 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:09:07,918 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:09:07,921 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 16:09:07,923 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:09:07,925 - api.middleware.logging - INFO - [logging.py:44] - [4a08d9b7] 401 - Time: 0.017s
+2025-08-23 16:15:34,204 - api.middleware.logging - INFO - [logging.py:31] - [365720d6] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 16:15:34,212 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:15:34,213 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:15:34,214 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:15:34,215 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 16:15:34,216 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0c3oIv100E1rQU1iV2200grfRI1oIv14
+2025-08-23 16:15:34,218 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823161534218919，包含 1 个操作
+2025-08-23 16:15:34,219 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823161534218919 中的操作 1/1
+2025-08-23 16:15:34,220 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:15:34,220 - DatabaseManager - DEBUG - [supporting_operations.py:74] - 开发模式: __any__ 存在于白名单，mock_openid_89119cce1585946a 设为管理员
+2025-08-23 16:15:34,227 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823161534218919 提交成功
+2025-08-23 16:15:34,227 - api.auth.routes - INFO - [routes.py:140] - 未注册用户登录: mock_openid_89119cce1585946a
+2025-08-23 16:15:34,228 - api.middleware.logging - INFO - [logging.py:44] - [365720d6] 200 - Time: 0.023s
+2025-08-23 16:15:34,240 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:15:41,528 - api.middleware.logging - INFO - [logging.py:31] - [23ab52bd] POST /api/auth/register - Client: 127.0.0.1
+2025-08-23 16:15:41,538 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:15:41,539 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:15:41,542 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 16:15:41,546 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:15:41,548 - api.middleware.logging - INFO - [logging.py:44] - [23ab52bd] 401 - Time: 0.019s
+2025-08-23 16:20:30,248 - api.middleware.logging - INFO - [logging.py:31] - [b8b2ab96] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 16:20:30,256 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:20:30,257 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:20:30,258 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:20:30,258 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 16:20:30,259 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0b3SL8000s3SPU1OcA000o9Xmy3SL80Z
+2025-08-23 16:20:30,263 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823162030263455，包含 1 个操作
+2025-08-23 16:20:30,263 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823162030263455 中的操作 1/1
+2025-08-23 16:20:30,265 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:20:30,265 - DatabaseManager - DEBUG - [supporting_operations.py:74] - 开发模式: __any__ 存在于白名单，mock_openid_71b113a9fb38f7a0 设为管理员
+2025-08-23 16:20:30,278 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823162030263455 提交成功
+2025-08-23 16:20:30,279 - api.auth.routes - INFO - [routes.py:140] - 未注册用户登录: mock_openid_71b113a9fb38f7a0
+2025-08-23 16:20:30,294 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:20:30,294 - api.middleware.logging - INFO - [logging.py:44] - [b8b2ab96] 200 - Time: 0.045s
+2025-08-23 16:20:40,191 - api.middleware.logging - INFO - [logging.py:31] - [4a3b9513] GET /api/auth/me - Client: 127.0.0.1
+2025-08-23 16:20:40,199 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:20:40,201 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:20:40,205 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 16:20:40,209 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:20:40,212 - api.middleware.logging - INFO - [logging.py:44] - [4a3b9513] 401 - Time: 0.020s
+2025-08-23 16:20:40,632 - api.middleware.logging - INFO - [logging.py:31] - [587d42a9] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 16:20:40,639 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:20:40,640 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:20:40,641 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:20:40,642 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 16:20:40,642 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0a3JC8ml2BMjbg4zQcol2neI8V3JC8mq
+2025-08-23 16:20:40,644 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823162040644301，包含 1 个操作
+2025-08-23 16:20:40,644 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823162040644301 中的操作 1/1
+2025-08-23 16:20:40,645 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:20:40,645 - DatabaseManager - DEBUG - [supporting_operations.py:74] - 开发模式: __any__ 存在于白名单，mock_openid_5e08c7ac927e8782 设为管理员
+2025-08-23 16:20:40,655 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823162040644301 提交成功
+2025-08-23 16:20:40,656 - api.auth.routes - INFO - [routes.py:140] - 未注册用户登录: mock_openid_5e08c7ac927e8782
+2025-08-23 16:20:40,668 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:20:40,668 - api.middleware.logging - INFO - [logging.py:44] - [587d42a9] 200 - Time: 0.036s
+2025-08-23 16:20:48,480 - api.middleware.logging - INFO - [logging.py:31] - [c01a5972] POST /api/auth/register - Client: 127.0.0.1
+2025-08-23 16:20:48,490 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:20:48,491 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:20:48,494 - api.auth.routes - ERROR - [routes.py:67] - 用户认证失败: 
+2025-08-23 16:20:48,497 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:20:48,499 - api.middleware.logging - INFO - [logging.py:44] - [c01a5972] 401 - Time: 0.018s
+2025-08-23 16:22:59,551 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 16:23:00,352 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 16:23:00,373 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 16:23:00,373 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 16:23:00,374 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 16:23:31,537 - api.middleware.logging - INFO - [logging.py:31] - [3a6a0c78] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 16:23:31,546 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:23:31,547 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:23:31,548 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:23:31,549 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 16:23:31,549 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0e3k0q000TaBPU1HqO100SSjwn4k0q0o
+2025-08-23 16:23:31,552 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823162331552265，包含 1 个操作
+2025-08-23 16:23:31,552 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823162331552265 中的操作 1/1
+2025-08-23 16:23:31,553 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:23:31,554 - DatabaseManager - DEBUG - [supporting_operations.py:74] - 开发模式: __any__ 存在于白名单，mock_openid_cc360fa03685d7bf 设为管理员
+2025-08-23 16:23:31,562 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823162331552265 提交成功
+2025-08-23 16:23:31,563 - api.auth.routes - INFO - [routes.py:165] - 未注册用户登录: mock_openid_cc360fa03685d7bf
+2025-08-23 16:23:31,576 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:23:31,577 - api.middleware.logging - INFO - [logging.py:44] - [3a6a0c78] 200 - Time: 0.039s
+2025-08-23 16:23:38,153 - api.middleware.logging - INFO - [logging.py:31] - [50f0ad77] POST /api/auth/register - Client: 127.0.0.1
+2025-08-23 16:23:38,164 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:23:38,165 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:23:38,166 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 16:23:38,167 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=9, open_id=mock_openid_cc360fa03685d7bf
+2025-08-23 16:23:38,170 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=9, found=True
+2025-08-23 16:23:38,171 - api.auth.routes - ERROR - [routes.py:75] - 用户状态异常: user_id=9, status=unregistered
+2025-08-23 16:23:38,173 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:23:38,175 - api.middleware.logging - INFO - [logging.py:44] - [50f0ad77] 401 - Time: 0.022s
+2025-08-23 16:25:49,964 - api.middleware.logging - INFO - [logging.py:31] - [08feb269] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 16:25:49,971 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:25:49,972 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:25:49,973 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:25:49,973 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 16:25:49,973 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0b3zZ40w3yTav53Bnz3w3dhu212zZ40P
+2025-08-23 16:25:49,977 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823162549977138，包含 1 个操作
+2025-08-23 16:25:49,978 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823162549977138 中的操作 1/1
+2025-08-23 16:25:49,979 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:25:49,980 - DatabaseManager - DEBUG - [supporting_operations.py:74] - 开发模式: __any__ 存在于白名单，mock_openid_d1cd90a616a7619b 设为管理员
+2025-08-23 16:25:50,098 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823162549977138 提交成功
+2025-08-23 16:25:50,099 - api.auth.routes - INFO - [routes.py:165] - 未注册用户登录: mock_openid_d1cd90a616a7619b
+2025-08-23 16:25:50,112 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:25:50,112 - api.middleware.logging - INFO - [logging.py:44] - [08feb269] 200 - Time: 0.148s
+2025-08-23 16:26:06,269 - api.middleware.logging - INFO - [logging.py:31] - [11ef7b5d] POST /api/auth/register - Client: 127.0.0.1
+2025-08-23 16:26:06,277 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:26:06,278 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:26:06,279 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 16:26:06,279 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=10, open_id=mock_openid_d1cd90a616a7619b
+2025-08-23 16:26:06,281 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=10, found=True
+2025-08-23 16:26:06,283 - api.auth.routes - ERROR - [routes.py:75] - 用户状态异常: user_id=10, status=unregistered
+2025-08-23 16:26:06,285 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:26:06,287 - api.middleware.logging - INFO - [logging.py:44] - [11ef7b5d] 401 - Time: 0.018s
+2025-08-23 16:27:01,305 - api.main - INFO - [main.py:41] - 罡好饭API服务关闭中...
+2025-08-23 16:27:02,114 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-23 16:27:02,139 - api.main - INFO - [main.py:34] - 罡好饭API服务启动中...
+2025-08-23 16:27:02,139 - api.main - INFO - [main.py:35] - 环境: development
+2025-08-23 16:27:02,140 - api.main - INFO - [main.py:36] - 调试模式: True
+2025-08-23 16:27:16,810 - api.middleware.logging - INFO - [logging.py:31] - [d017e4b0] POST /api/auth/wechat/login - Client: 127.0.0.1
+2025-08-23 16:27:16,820 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:27:16,821 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:27:16,822 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:27:16,822 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-23 16:27:16,822 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: 0f3AkY000Kz8QU12Dm200kjCU14AkY0U
+2025-08-23 16:27:16,824 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823162716824523，包含 1 个操作
+2025-08-23 16:27:16,825 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823162716824523 中的操作 1/1
+2025-08-23 16:27:16,826 - root - INFO - [config.py:71] - 成功加载配置文件: E:\ppfiles\mp\ganghaofan_cc\server\config/config-dev.json
+2025-08-23 16:27:16,826 - DatabaseManager - DEBUG - [supporting_operations.py:74] - 开发模式: __any__ 存在于白名单，mock_openid_d27efb6bc93a9eb2 设为管理员
+2025-08-23 16:27:16,833 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823162716824523 提交成功
+2025-08-23 16:27:16,834 - api.auth.routes - INFO - [routes.py:165] - 未注册用户登录: mock_openid_d27efb6bc93a9eb2
+2025-08-23 16:27:16,835 - api.middleware.logging - INFO - [logging.py:44] - [d017e4b0] 200 - Time: 0.025s
+2025-08-23 16:27:16,849 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:27:23,529 - api.middleware.logging - INFO - [logging.py:31] - [2862c4a7] POST /api/auth/register - Client: 127.0.0.1
+2025-08-23 16:27:23,538 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:27:23,540 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:27:23,540 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 16:27:23,540 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 16:27:23,543 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 16:27:23,543 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 16:27:23,545 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250823162723545468，包含 1 个操作
+2025-08-23 16:27:23,546 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250823162723545468 中的操作 1/1
+2025-08-23 16:27:23,557 - DatabaseManager - INFO - [manager.py:156] - 事务 20250823162723545468 提交成功
+2025-08-23 16:27:23,558 - api.auth.routes - INFO - [routes.py:203] - 用户注册完成: PP (mock_openid_d27efb6bc93a9eb2)
+2025-08-23 16:27:23,559 - api.middleware.logging - INFO - [logging.py:44] - [2862c4a7] 200 - Time: 0.030s
+2025-08-23 16:27:23,570 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-23 16:27:25,278 - api.middleware.logging - INFO - [logging.py:31] - [49816133] GET /api/auth/me - Client: 127.0.0.1
+2025-08-23 16:27:25,285 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: E:\ppfiles\mp\ganghaofan_cc\data/gang_hao_fan_dev.db
+2025-08-23 16:27:25,286 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-23 16:27:25,286 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-23 16:27:25,287 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=11, open_id=mock_openid_d27efb6bc93a9eb2
+2025-08-23 16:27:25,291 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=11, found=True
+2025-08-23 16:27:25,292 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=11
+2025-08-23 16:27:25,295 - api.middleware.logging - INFO - [logging.py:44] - [49816133] 200 - Time: 0.017s
+2025-08-23 16:27:25,297 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭

@@ -8,7 +8,6 @@
 
 - **框架**: 微信小程序原生框架
 - **语言**: JavaScript (ES6+)
-- **样式**: WXSS (WeChat Style Sheets)
 - **模块系统**: CommonJS (require/module.exports)
 - **UI组件**: 微信小程序原生组件
 - **网络请求**: 封装的request工具库
@@ -19,7 +18,6 @@
 client/
 ├── app.js                 # 小程序主入口文件
 ├── app.json              # 小程序全局配置
-├── app.wxss              # 全局样式文件
 ├── config/               # 配置文件目录
 │   ├── index.js          # 配置入口文件
 │   ├── config.dev.js     # 开发环境配置

@@ -1,0 +1,24 @@
+<!--欢迎页面模板-->
+<view class="container" wx:if="{{!loading}}">
+  <view wx:if="{{isRegistered}}" class="welcome-content">
+    <!-- 用户信息展示 -->
+    <view class="user-info">
+      <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      <text class="nickname">{{userInfo.nickName}}</text>
+      <text class="openid">OpenID: {{openid}}</text>
+    </view>
+    
+    <!-- 欢迎文案 -->
+    <view class="welcome-text">
+      <text class="title">欢迎和罡子哥一起健康每一天</text>
+    </view>
+    
+    <!-- 开始按钮 -->
+    <button class="start-button" bindtap="onStartTap">开始使用</button>
+  </view>
+</view>
+
+<!-- 加载状态 -->
+<view class="container loading-container" wx:if="{{loading}}">
+  <text class="loading-text">加载中...</text>
+</view>

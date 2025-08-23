@@ -45,26 +45,51 @@ def get_current_user(
     """获取当前用户信息"""
     try:
         token = credentials.credentials
-        payload = jwt_manager.decode_token(token)
+        logger.debug(f"收到Token: {token[:50]}...")
         
-        # 验证用户是否存在且状态正常
-        support_ops = SupportingOperations(db)
-        user_info = support_ops.get_user_by_id(payload["user_id"])
+        # 1. JWT解码
+        try:
+            payload = jwt_manager.decode_token(token)
+            logger.debug(f"JWT解码成功: user_id={payload.get('user_id')}, open_id={payload.get('open_id')}")
+        except Exception as jwt_error:
+            logger.error(f"JWT解码失败: {str(jwt_error)}")
+            raise jwt_error
         
-        if not user_info or user_info["status"] != "active":
+        # 2. 验证用户是否存在且状态正常
+        try:
+            support_ops = SupportingOperations(db)
+            user_info = support_ops.get_user_by_id(payload["user_id"])
+            logger.debug(f"数据库查询用户: user_id={payload['user_id']}, found={bool(user_info)}")
+        except Exception as db_error:
+            logger.error(f"数据库查询用户失败: {str(db_error)}")
+            raise db_error
+        
+        if not user_info:
+            logger.error(f"用户不存在: user_id={payload['user_id']}")
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="用户不存在或已被禁用"
+                detail="用户不存在"
+            )
+            
+        if user_info["status"] not in ["active", "unregistered"]:
+            logger.error(f"用户状态异常: user_id={payload['user_id']}, status={user_info['status']}")
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="用户已被禁用"
             )
         
+        logger.debug(f"用户认证成功: user_id={payload['user_id']}")
         return TokenData(
             user_id=payload["user_id"],
             open_id=payload["open_id"],
             is_admin=payload.get("is_admin", False)
         )
         
+    except HTTPException:
+        # 重新抛出HTTPException
+        raise
     except Exception as e:
-        logger.error(f"用户认证失败: {str(e)}")
+        logger.error(f"用户认证失败 - 未知错误: {type(e).__name__}: {str(e)}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="认证失败，请重新登录"

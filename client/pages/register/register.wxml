@@ -1,0 +1,59 @@
+<!--注册页面模板-->
+<view class="container">
+  <view class="register-content">
+    <!-- 标题 -->
+    <view class="title">
+      <text>完善个人信息</text>
+    </view>
+    
+    <!-- 头像设置 -->
+    <view class="avatar-section">
+      <text class="section-title">设置头像</text>
+      <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+        <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+        <view class="avatar-tip">点击选择头像</view>
+      </button>
+    </view>
+    
+    <!-- 昵称设置 -->
+    <view class="nickname-section">
+      <text class="section-title">设置昵称</text>
+      <view class="input-wrapper">
+        <input 
+          wx:if="{{canIUseNicknameComp}}"
+          type="nickname" 
+          class="nickname-input"
+          placeholder="请输入昵称" 
+          value="{{userInfo.nickName}}"
+          bindchange="onInputChange"
+          bindconfirm="onInputConfirm"
+        />
+        <input 
+          wx:else
+          class="nickname-input"
+          placeholder="请输入昵称" 
+          value="{{userInfo.nickName}}"
+          bindchange="onInputChange"
+          bindconfirm="onInputConfirm"
+        />
+      </view>
+    </view>
+
+    <!-- 旧版本用户资料获取（兼容） -->
+    <view class="profile-section" wx:if="{{canIUseGetUserProfile && !canIUseNicknameComp}}">
+      <button class="profile-button" bindtap="getUserProfile">获取微信资料</button>
+    </view>
+    
+    <!-- 注册按钮 -->
+    <view class="register-section">
+      <button 
+        class="register-button {{canRegister ? 'active' : 'disabled'}}" 
+        disabled="{{!canRegister || registering}}"
+        loading="{{registering}}"
+        bindtap="onRegisterTap"
+      >
+        {{registering ? '注册中...' : '完成注册'}}
+      </button>
+    </view>
+  </view>
+</view>
