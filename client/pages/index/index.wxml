@@ -8,7 +8,7 @@
         </button>
         <view class="nickname-wrapper">
           <text class="nickname-label">昵称</text>
-          <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
+          <input type="nickname" class="nickname-input" placeholder="请选择微信名" bind:change="onInputChange" />
         </view>
       </block>
       <block wx:elif="{{!hasUserInfo}}">
@@ -19,9 +19,6 @@
         <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
         <text class="userinfo-nickname">{{userInfo.nickName}}</text>
       </block>
-    </view>
-    <view class="usermotto">
-      <text class="user-motto">{{motto}}</text>
     </view>
   </view>
 </scroll-view>

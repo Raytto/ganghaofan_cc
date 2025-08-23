@@ -1,8 +1,10 @@
 const ENV = 'development' // 或通过编译时变量确定
 
-const configs = {
-  development: () => import('./config.dev.js'),
-  production: () => import('./config.prod.js')
+const configFiles = {
+  development: require('./config.dev.json'),
+  production: require('./config.prod.json')
 }
 
-export default configs[ENV]
+const config = configFiles[ENV]
+
+export default config
