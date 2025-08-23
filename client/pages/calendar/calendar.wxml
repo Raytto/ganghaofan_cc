@@ -1,0 +1,44 @@
+<view class="calendar-container">
+  <!-- 日历头部 -->
+  <view class="calendar-header">
+    <text class="current-date">{{currentDate}}</text>
+  </view>
+
+  <!-- 星期标题 -->
+  <view class="week-header">
+    <text class="week-day">日</text>
+    <text class="week-day">一</text>
+    <text class="week-day">二</text>
+    <text class="week-day">三</text>
+    <text class="week-day">四</text>
+    <text class="week-day">五</text>
+    <text class="week-day">六</text>
+  </view>
+
+  <!-- 三周日历网格 -->
+  <view class="calendar-weeks">
+    <view wx:for="{{weeks}}" wx:key="weekIndex" class="calendar-week">
+      <view wx:for="{{item.days}}" wx:key="dayIndex" class="calendar-day {{item.isToday ? 'today' : ''}}" bind:tap="onDayTap" data-date="{{item.fullDate}}">
+        <!-- 日期数字 -->
+        <text class="day-number">{{item.date}}</text>
+        
+        <!-- 午餐信息 -->
+        <view class="meal-info lunch">
+          <text class="meal-label">午</text>
+          <text class="meal-status">{{item.lunch.meal_status || '未发布'}}</text>
+          <text class="meal-orders">{{item.lunch.left_orders || 0}}/{{item.lunch.max_orders || 0}}</text>
+          <text class="my-status">{{item.lunch.myorder_status === 'ordered' ? '已订' : '未订'}}</text>
+        </view>
+        
+        <!-- 晚餐信息 -->
+        <view class="meal-info dinner">
+          <text class="meal-label">晚</text>
+          <text class="meal-status">{{item.dinner.meal_status || '未发布'}}</text>
+          <text class="meal-orders">{{item.dinner.left_orders || 0}}/{{item.dinner.max_orders || 0}}</text>
+          <text class="my-status">{{item.dinner.myorder_status === 'ordered' ? '已订' : '未订'}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

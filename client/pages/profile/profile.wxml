@@ -1,0 +1,73 @@
+<view class="profile-container">
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-container">
+    <text>加载中...</text>
+  </view>
+
+  <view wx:else>
+    <!-- 用户信息卡片 -->
+    <view class="user-info-card">
+      <view class="user-header">
+        <image class="avatar" src="{{userInfo.avatar_url || '/images/default-avatar.png'}}" mode="aspectFill" />
+        <view class="user-details">
+          <text class="user-name">{{userInfo.wechat_name || '未设置昵称'}}</text>
+          <text class="user-id">用户ID: {{userInfo.user_id}}</text>
+          <text class="balance">余额: ¥{{userInfo.balance_yuan || '0.00'}}</text>
+          <view wx:if="{{isAdmin}}" class="admin-badge">
+            <text>管理员</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 管理模式开关（仅管理员） -->
+    <view wx:if="{{isAdmin}}" class="admin-section">
+      <view class="section-card">
+        <view class="admin-mode-item">
+          <view class="admin-mode-info">
+            <text class="admin-mode-title">管理模式</text>
+            <text class="admin-mode-desc">开启后可使用管理员功能</text>
+          </view>
+          <switch checked="{{adminMode}}" bind:change="onAdminModeChange" />
+        </view>
+        
+        <!-- 管理功能列表（管理模式开启时显示） -->
+        <view wx:if="{{adminMode}}" class="admin-functions">
+          <view class="function-item" bind:tap="goToAddonManage">
+            <text>附加项管理</text>
+            <text class="arrow">></text>
+          </view>
+          <view class="function-item" bind:tap="goToUserManage">
+            <text>用户余额管理</text>
+            <text class="arrow">></text>
+          </view>
+          <view class="function-item" bind:tap="goToMealManage">
+            <text>点餐信息管理</text>
+            <text class="arrow">></text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 功能菜单 -->
+    <view class="function-section">
+      <view class="section-card">
+        <view class="function-item" bind:tap="goToMyOrders">
+          <text class="function-icon">📋</text>
+          <text class="function-text">我的订单</text>
+          <text class="arrow">></text>
+        </view>
+        <view class="function-item" bind:tap="goToLedger">
+          <text class="function-icon">💰</text>
+          <text class="function-text">账单明细</text>
+          <text class="arrow">></text>
+        </view>
+        <view class="function-item" bind:tap="goToSettings">
+          <text class="function-icon">⚙️</text>
+          <text class="function-text">设置</text>
+          <text class="arrow">></text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

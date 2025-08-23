@@ -39,7 +39,7 @@
 ### data 字段
 ```javascript
 {
-  currentMonth: String,     // 当前月份显示文本 (如: "2024年8月")
+  currentDate: String,     // 当前月份显示文本 (如: "2024年8月23日")
   weeks: Array,            // 三周的数据结构
   today: Date              // 今天的日期对象
 }
@@ -49,21 +49,24 @@
 ```javascript
 [
   {
-    weekIndex: Number,       // 周索引 (0=上周, 1=本周, 2=下周)
+    weekIndex: Number,       // 周索引 (-1=上周, 0=本周, 1=下周)
     days: [
       {
-        dayIndex: Number,        // 日索引 (0-6, 0=周日)
+        dayIndex: Number,       // 日索引 (0-6, 0=周日)
         date: Number,           // 日期数字 (1-31)
         fullDate: Date,         // 完整日期对象
         isToday: Boolean,       // 是否为今天
-        isCurrentMonth: Boolean, // 是否为当前月份
         lunch: {                // 午餐信息
-          status: String,       // 状态: available/ordered/locked/unpublished
-          price: Number         // 价格（元）
+          meal_status: String,  // 餐的状态: published/locked/unpublished/completed
+          max_orders: Number,   // 最大可订数量
+          left_orders: Number,   // 剩余可订数量
+          myorder_status: String,// 我对此餐的状态: unordered/orderd
         },
         dinner: {               // 晚餐信息
-          status: String,
-          price: Number
+          meal_status: String,  // 餐的状态: published/locked/unpublished/completed
+          max_orders: Number,   // 最大可订数量
+          left_orders: Number,   // 剩余可订数量
+          myorder_status: String,// 我对此餐的状态: unordered/orderd
         }
       }
       // ... 7天
@@ -75,34 +78,20 @@
 
 ## 餐次状态系统
 
-### 状态类型
-1. **available** - 可预订
-   - 显示：价格 (如: ¥15)
-
-2. **ordered** - 已预订
-   - 显示：文字 "已订"
-
-3. **locked** - 已截止
-   - 显示：文字 "已锁"
-
-4. **unpublished** - 未发布
-   - 显示：文字 "未发布"
+### 每餐状态
+每餐显示三行文字来对应状态：
+1. 第一行，餐的状态 published/locked/unpublished/completed
+2. 第二行，剩余可订数量 current_orders/max_orders
+2. 第三行，我我对此餐的状态: unordered/orderd
 
 ### 状态映射逻辑
 ```javascript
 // 后端数据 -> 前端状态
-if (meal.user_order_status === 'ordered') {
-  return 'ordered'
-} else if (meal.meal_status === 'locked' || meal.meal_status === 'completed') {
-  return 'locked'
-} else if (meal.meal_status === 'published') {
-  return 'available'
-} else {
-  return 'unpublished'
-}
+待补充
 ```
 
 ## API 调用
+参考文档 doc/api.md
 
 ### 获取日历餐次数据
 - **接口**：`GET /meals/calendar`
@@ -118,17 +107,14 @@ if (meal.user_order_status === 'ordered') {
 ## 页面布局结构
 
 ### 1. 日历头部
-- **月份显示**：当前月份和年份
-- **星期标题**：周日到周六的列标题
+- **今天日子**：当前年月日
 
 ### 2. 三周日历网格
 - **7列布局**：对应一周七天
+- **1行星期**：对应周日到周六的列标题
 - **3行布局**：对应三周
 - **日期格子**：包含日期数字和两个餐次信息
 
-### 3. 底部图例
-- **状态说明**：用颜色块和文字说明各种状态的含义
-- **用户指导**：帮助用户理解不同颜色的含义
 
 ## 交互功能
 
@@ -142,9 +128,8 @@ if (meal.user_order_status === 'ordered') {
 页面显示 → 刷新餐次数据 → 更新页面状态
 ```
 
-### 3. 日期点击 (onDayTap) [预留]
-- **功能**：点击日期格子跳转到详情页
-- **条件**：只响应当前月份的日期点击
+### 3. 餐次点击 (onDayTap) [预留]
+- **功能**：点击日期格子跳转到餐次详情页
 - **扩展**：可跳转到具体日期的订餐页面
 
 ## 错误处理
@@ -157,63 +142,3 @@ if (!token) {
   return
 }
 ```
-
-### 2. API请求失败
-- **网络错误**：显示"网络错误"提示
-- **认证错误**：清除本地数据并跳转到欢迎页面
-- **数据错误**：显示"获取数据失败"提示
-
-### 3. 数据异常处理
-- **空数据**：显示默认的未发布状态
-- **日期格式错误**：使用fallback日期处理
-- **状态异常**：默认显示为未发布状态
-
-## 性能优化
-
-### 1. 数据结构优化
-- **预生成日历结构**：页面加载时一次性生成21天结构
-- **增量更新**：只更新餐次数据，不重新生成日历结构
-- **日期计算缓存**：避免重复的日期计算操作
-
-### 2. 渲染优化
-- **条件渲染**：使用wx:if减少不必要的DOM节点
-- **列表优化**：使用wx:key提升列表渲染性能
-
-### 3. 数据加载优化
-- **懒加载**：仅加载可见范围的数据
-- **缓存机制**：适当缓存餐次数据减少请求频率
-- **分页加载**：大数据量时分页处理
-
-## 扩展功能预留
-
-### 1. 日期跳转
-- **详情页面**：点击日期跳转到当天详细信息页
-- **订餐功能**：直接从日历跳转到订餐页面
-- **历史查看**：查看历史餐次记录
-
-### 2. 手势操作
-- **左右滑动**：切换不同周的数据
-- **上下滑动**：查看更多周的信息
-- **长按操作**：快速预订或取消预订
-
-### 3. 数据筛选
-- **餐次类型**：仅显示午餐或晚餐
-- **状态筛选**：仅显示特定状态的餐次
-- **价格排序**：按价格高低排序显示
-
-## 用户体验优化
-
-### 1. 功能反馈
-- **今日标识**：明确标识当前日期
-- **状态区分**：清晰区分不同餐次状态
-- **加载提示**：数据加载时的友好提示
-
-### 2. 操作便捷
-- **一屏显示**：三周信息在一屏内完整展示
-- **状态说明**：提供状态含义说明
-- **自动刷新**：页面显示时自动获取最新数据
-
-### 3. 信息清晰
-- **结构清晰**：头部、日历、说明的清晰分层
-- **信息完整**：日期、价格、状态信息一目了然
-- **状态明确**：不同状态的区分度足够

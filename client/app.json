@@ -1,8 +1,26 @@
 {
   "pages": [
     "pages/welcome/welcome",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/calendar/calendar",
+    "pages/profile/profile"
   ],
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#2196f3",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/calendar/calendar",
+        "text": "📅日历"
+      },
+      {
+        "pagePath": "pages/profile/profile", 
+        "text": "👤我的"
+      }
+    ]
+  },
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "罡好饭",

@@ -1,0 +1,10 @@
+<view class="tool-bar">
+  <view class="tool-bar-item" bind:tap="goToCalendar">
+    <text class="tool-bar-icon">📅</text>
+    <text class="tool-bar-text">日历</text>
+  </view>
+  <view class="tool-bar-item" bind:tap="goToProfile">
+    <text class="tool-bar-icon">👤</text>
+    <text class="tool-bar-text">我的</text>
+  </view>
+</view>

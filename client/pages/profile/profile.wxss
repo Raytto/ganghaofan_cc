@@ -1,0 +1,141 @@
+page {
+  background-color: #f5f5f5;
+}
+
+.profile-container {
+  padding: 20rpx;
+}
+
+.loading-container {
+  text-align: center;
+  padding: 100rpx 0;
+  color: #999;
+}
+
+.section-card {
+  background: #fff;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+/* 用户信息卡片 */
+.user-info-card {
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.user-header {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  margin-right: 30rpx;
+}
+
+.user-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.user-id {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 5rpx;
+}
+
+.balance {
+  font-size: 32rpx;
+  color: #2196f3;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.admin-badge {
+  background: #ff9800;
+  color: #fff;
+  padding: 5rpx 15rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  align-self: flex-start;
+}
+
+/* 管理模式部分 */
+.admin-section {
+  margin-bottom: 20rpx;
+}
+
+.admin-mode-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.admin-mode-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-mode-title {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 5rpx;
+}
+
+.admin-mode-desc {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.admin-functions {
+  background: #f8f8f8;
+}
+
+/* 功能项 */
+.function-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  position: relative;
+}
+
+.function-item:last-child {
+  border-bottom: none;
+}
+
+.function-item:active {
+  background: #f0f0f0;
+}
+
+.function-icon {
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.function-text {
+  flex: 1;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.arrow {
+  font-size: 28rpx;
+  color: #ccc;
+}

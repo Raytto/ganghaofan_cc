@@ -236,15 +236,9 @@ Page({
       return
     }
 
-    // 跳转到主要功能页面（暂时用navigateTo测试）
-    wx.showToast({
-      title: '功能开发中',
-      icon: 'none'
+    // 跳转到日历页面
+    wx.switchTab({
+      url: '../calendar/calendar'
     })
-    
-    // TODO: 等实现餐次页面后取消注释
-    // wx.navigateTo({
-    //   url: '../meals/meals'
-    // })
   }
 })

@@ -1,0 +1,8 @@
+图标占位文件 - 需要添加以下图标：
+- calendar.png (日历图标)
+- calendar-active.png (日历激活图标)
+- profile.png (个人中心图标)
+- profile-active.png (个人中心激活图标)
+- default-avatar.png (默认头像)
+
+实际开发中需要替换为真正的图标文件。
