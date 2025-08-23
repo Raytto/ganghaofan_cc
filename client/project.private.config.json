@@ -19,5 +19,5 @@
     "checkInvalidKey": true,
     "ignoreDevUnusedFiles": true
   },
-  "libVersion": "3.9.1"
+  "libVersion": "3.9.2"
 }

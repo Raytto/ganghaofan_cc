@@ -1,32 +1,11 @@
 {
   "pages": [
-    "pages/register/register",
     "pages/index/index",
-    "pages/welcome/welcome",
-    "pages/calendar/calendar",
-    "pages/profile/profile",
-    
     "pages/logs/logs"
   ],
-  "tabBar": {
-    "color": "#666666",
-    "selectedColor": "#1aad19",
-    "backgroundColor": "#ffffff",
-    "borderStyle": "black",
-    "list": [
-      {
-        "pagePath": "pages/calendar/calendar",
-        "text": "日历"
-      },
-      {
-        "pagePath": "pages/profile/profile", 
-        "text": "我的"
-      }
-    ]
-  },
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "罡好饭",
+    "navigationBarTitleText": "Weixin",
     "navigationBarBackgroundColor": "#ffffff"
   },
   "style": "v2",
