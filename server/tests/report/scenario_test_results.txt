@@ -1,0 +1,401 @@
+
+=== 开始业务情景测试 ===
+
+=== 设置测试数据 ===
+  ❌ 设置测试数据 执行异常: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 4:             FROM users 
+                         ^
+  异常详情: Traceback (most recent call last):
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 322, in run_all_tests
+    if test_func():
+       ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 58, in setup_test_data
+    admin_result = self.support_ops.register_user(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/supporting_operations.py", line 108, in register_user
+    return self.db.execute_transaction([register_user_operation])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 168, in execute_transaction
+    raise e
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 152, in execute_transaction
+    result = operation()
+             ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/supporting_operations.py", line 70, in register_user_operation
+    existing_user = self._check_user_exists(open_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/supporting_operations.py", line 38, in _check_user_exists
+    result = self.db.conn.execute(user_query, [open_id]).fetchone()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+duckdb.duckdb.CatalogException: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 4:             FROM users 
+                         ^
+
+
+=== 创建附加项 ===
+  ❌ 创建附加项 执行异常: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+  异常详情: Traceback (most recent call last):
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 322, in run_all_tests
+    if test_func():
+       ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 95, in test_create_addon
+    result = self.core_ops.admin_create_addon(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 283, in admin_create_addon
+    return self.db.execute_transaction([create_addon_operation])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 168, in execute_transaction
+    raise e
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 152, in execute_transaction
+    result = operation()
+             ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 253, in create_addon_operation
+    self._verify_admin_permission(admin_user_id)
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 20, in _verify_admin_permission
+    admin_check = self.db.conn.execute(
+                  ^^^^^^^^^^^^^^^^^^^^^
+duckdb.duckdb.CatalogException: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+
+
+=== 创建带附加项的餐次 ===
+  ❌ 创建带附加项的餐次 执行异常: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+  异常详情: Traceback (most recent call last):
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 322, in run_all_tests
+    if test_func():
+       ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 110, in test_create_meal_with_addon
+    result = self.core_ops.admin_publish_meal(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 381, in admin_publish_meal
+    return self.db.execute_transaction([publish_meal_operation])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 168, in execute_transaction
+    raise e
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 152, in execute_transaction
+    result = operation()
+             ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 347, in publish_meal_operation
+    self._verify_admin_permission(admin_user_id)
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 20, in _verify_admin_permission
+    admin_check = self.db.conn.execute(
+                  ^^^^^^^^^^^^^^^^^^^^^
+duckdb.duckdb.CatalogException: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+
+
+=== 创建订单（选择1个附加项） ===
+  ❌ 创建订单 执行异常: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: ...T balance_cents, status, is_admin FROM users WHERE user_id = ?
+                                                  ^
+  异常详情: Traceback (most recent call last):
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 322, in run_all_tests
+    if test_func():
+       ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 128, in test_create_order
+    result = self.core_ops.create_order(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 672, in create_order
+    return self.db.execute_transaction([create_order_operation])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 168, in execute_transaction
+    raise e
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 152, in execute_transaction
+    result = operation()
+             ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 573, in create_order_operation
+    user_info = self._verify_user_status(user_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 30, in _verify_user_status
+    user_info = self.db.conn.execute(
+                ^^^^^^^^^^^^^^^^^^^^^
+duckdb.duckdb.CatalogException: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: ...T balance_cents, status, is_admin FROM users WHERE user_id = ?
+                                                  ^
+
+
+=== 取消订单 ===
+  ❌ 取消订单 执行异常: Catalog Error: Table with name orders does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: ...id, meal_id, amount_cents, status FROM orders WHERE order_id = ?
+                                                  ^
+  异常详情: Traceback (most recent call last):
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 322, in run_all_tests
+    if test_func():
+       ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 151, in test_cancel_order
+    result = self.core_ops.cancel_order(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 743, in cancel_order
+    return self.db.execute_transaction([cancel_order_operation])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 168, in execute_transaction
+    raise e
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 152, in execute_transaction
+    result = operation()
+             ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 690, in cancel_order_operation
+    order_info = self._verify_order_exists_and_active(order_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 87, in _verify_order_exists_and_active
+    order_info = self.db.conn.execute(
+                 ^^^^^^^^^^^^^^^^^^^^^
+duckdb.duckdb.CatalogException: Catalog Error: Table with name orders does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: ...id, meal_id, amount_cents, status FROM orders WHERE order_id = ?
+                                                  ^
+
+
+=== 再次创建订单（选择2个附加项） ===
+  ❌ 再次创建订单 执行异常: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: ...T balance_cents, status, is_admin FROM users WHERE user_id = ?
+                                                  ^
+  异常详情: Traceback (most recent call last):
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 322, in run_all_tests
+    if test_func():
+       ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 171, in test_create_order_again
+    result = self.core_ops.create_order(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 672, in create_order
+    return self.db.execute_transaction([create_order_operation])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 168, in execute_transaction
+    raise e
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 152, in execute_transaction
+    result = operation()
+             ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 573, in create_order_operation
+    user_info = self._verify_user_status(user_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 30, in _verify_user_status
+    user_info = self.db.conn.execute(
+                ^^^^^^^^^^^^^^^^^^^^^
+duckdb.duckdb.CatalogException: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: ...T balance_cents, status, is_admin FROM users WHERE user_id = ?
+                                                  ^
+
+
+=== 取消餐次 ===
+  ❌ 取消餐次 执行异常: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+  异常详情: Traceback (most recent call last):
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 322, in run_all_tests
+    if test_func():
+       ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 194, in test_cancel_meal
+    result = self.core_ops.admin_cancel_meal(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 555, in admin_cancel_meal
+    return self.db.execute_transaction([cancel_meal_and_orders])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 168, in execute_transaction
+    raise e
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 152, in execute_transaction
+    result = operation()
+             ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 491, in cancel_meal_and_orders
+    self._verify_admin_permission(admin_user_id)
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 20, in _verify_admin_permission
+    admin_check = self.db.conn.execute(
+                  ^^^^^^^^^^^^^^^^^^^^^
+duckdb.duckdb.CatalogException: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+
+
+=== 再次创建餐次 ===
+  ❌ 再次创建餐次 执行异常: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+  异常详情: Traceback (most recent call last):
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 322, in run_all_tests
+    if test_func():
+       ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 214, in test_create_meal_again
+    result = self.core_ops.admin_publish_meal(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 381, in admin_publish_meal
+    return self.db.execute_transaction([publish_meal_operation])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 168, in execute_transaction
+    raise e
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 152, in execute_transaction
+    result = operation()
+             ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 347, in publish_meal_operation
+    self._verify_admin_permission(admin_user_id)
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 20, in _verify_admin_permission
+    admin_check = self.db.conn.execute(
+                  ^^^^^^^^^^^^^^^^^^^^^
+duckdb.duckdb.CatalogException: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+
+
+=== 在新餐次下单 ===
+  ❌ 在新餐次下单 执行异常: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: ...T balance_cents, status, is_admin FROM users WHERE user_id = ?
+                                                  ^
+  异常详情: Traceback (most recent call last):
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 322, in run_all_tests
+    if test_func():
+       ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 232, in test_create_order_new_meal
+    result = self.core_ops.create_order(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 672, in create_order
+    return self.db.execute_transaction([create_order_operation])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 168, in execute_transaction
+    raise e
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 152, in execute_transaction
+    result = operation()
+             ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 573, in create_order_operation
+    user_info = self._verify_user_status(user_id)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 30, in _verify_user_status
+    user_info = self.db.conn.execute(
+                ^^^^^^^^^^^^^^^^^^^^^
+duckdb.duckdb.CatalogException: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: ...T balance_cents, status, is_admin FROM users WHERE user_id = ?
+                                                  ^
+
+
+=== 锁定餐次 ===
+  ❌ 锁定餐次 执行异常: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+  异常详情: Traceback (most recent call last):
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 322, in run_all_tests
+    if test_func():
+       ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 255, in test_lock_meal
+    result = self.core_ops.admin_lock_meal(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 422, in admin_lock_meal
+    return self.db.execute_transaction([lock_meal_operation])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 168, in execute_transaction
+    raise e
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 152, in execute_transaction
+    result = operation()
+             ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 398, in lock_meal_operation
+    self._verify_admin_permission(admin_user_id)
+  File "/home/pp/mp/ganghaofan_cc/server/db/core_operations.py", line 20, in _verify_admin_permission
+    admin_check = self.db.conn.execute(
+                  ^^^^^^^^^^^^^^^^^^^^^
+duckdb.duckdb.CatalogException: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+
+
+=== 尝试在锁定餐次下单（应该失败） ===
+  ❌ 尝试在锁定餐次下单 执行异常: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 4:             FROM users 
+                         ^
+  异常详情: Traceback (most recent call last):
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 322, in run_all_tests
+    if test_func():
+       ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/tests/scenario_test.py", line 268, in test_create_order_locked_meal
+    user2_result = self.support_ops.register_user(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/supporting_operations.py", line 108, in register_user
+    return self.db.execute_transaction([register_user_operation])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 168, in execute_transaction
+    raise e
+  File "/home/pp/mp/ganghaofan_cc/server/db/manager.py", line 152, in execute_transaction
+    result = operation()
+             ^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/supporting_operations.py", line 70, in register_user_operation
+    existing_user = self._check_user_exists(open_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pp/mp/ganghaofan_cc/server/db/supporting_operations.py", line 38, in _check_user_exists
+    result = self.db.conn.execute(user_query, [open_id]).fetchone()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+duckdb.duckdb.CatalogException: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 4:             FROM users 
+                         ^
+
+
+=== 情景测试完成 ===
+  通过: 0/11
+  失败: 11/11
+  💥 部分情景测试失败
+事务 20250822170909098795 执行失败: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 4:             FROM users 
+                         ^
+事务 20250822170909121323 执行失败: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+事务 20250822170909122336 执行失败: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+事务 20250822170909123006 执行失败: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: ...T balance_cents, status, is_admin FROM users WHERE user_id = ?
+                                                  ^
+事务 20250822170909123676 执行失败: Catalog Error: Table with name orders does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: ...id, meal_id, amount_cents, status FROM orders WHERE order_id = ?
+                                                  ^
+事务 20250822170909124332 执行失败: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: ...T balance_cents, status, is_admin FROM users WHERE user_id = ?
+                                                  ^
+事务 20250822170909128762 执行失败: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+事务 20250822170909129574 执行失败: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+事务 20250822170909130819 执行失败: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: ...T balance_cents, status, is_admin FROM users WHERE user_id = ?
+                                                  ^
+事务 20250822170909131485 执行失败: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 1: SELECT is_admin FROM users WHERE user_id = ? AND status = 'a...
+                             ^
+事务 20250822170909132145 执行失败: Catalog Error: Table with name users does not exist!
+Did you mean "temp.information_schema.tables"?
+LINE 4:             FROM users 
+                         ^
+
+ERROR conda.cli.main_run:execute(127): `conda run python tests/scenario_test.py` failed. (See above for error)
+

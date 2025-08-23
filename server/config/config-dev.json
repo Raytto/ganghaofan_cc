@@ -1,0 +1,62 @@
+{
+  "_reference_doc": "doc/server_structure.md - 本地开发环境配置",
+  "app": {
+    "name": "罡好饭API服务 (开发)",
+    "version": "1.0.0-dev",
+    "debug": true,
+    "description": "内部餐饮预订系统API服务 - 开发环境"
+  },
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8000,
+    "workers": 1,
+    "reload": true
+  },
+  "database": {
+    "path": "data/gang_hao_fan_dev.db",
+    "memory_limit": "512MB",
+    "threads": 1,
+    "backup_enabled": false
+  },
+  "auth": {
+    "jwt_secret_key": "dev-secret-key-not-for-production",
+    "jwt_algorithm": "HS256",
+    "access_token_expire_minutes": 1440,
+    "wechat_app_id": "dev_wechat_app_id",
+    "wechat_app_secret": "dev_wechat_app_secret"
+  },
+  "admin": {
+    "whitelist_open_ids": [
+      "admin_openid_mock",
+      "dev_admin_openid"
+    ]
+  },
+  "logging": {
+    "level": "DEBUG",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - [%(filename)s:%(lineno)d] - %(message)s",
+    "file_enabled": true,
+    "file_path": "logs/app_dev.log",
+    "max_file_size": "5MB",
+    "backup_count": 3
+  },
+  "business": {
+    "order_deadline": {
+      "lunch": "10:30",
+      "dinner": "16:30"
+    },
+    "default_meal_capacity": 20,
+    "timezone": "Asia/Shanghai"
+  },
+  "cors": {
+    "allow_origins": [
+      "*"
+    ],
+    "allow_methods": [
+      "*"
+    ],
+    "allow_headers": [
+      "*"
+    ],
+    "allow_credentials": true
+  }
+}

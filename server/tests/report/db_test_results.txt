@@ -1,0 +1,61 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.13, pytest-7.4.3, pluggy-1.6.0 -- /home/pp/miniconda3/envs/ganghaofan_test/bin/python
+cachedir: .pytest_cache
+rootdir: /home/pp/mp/ganghaofan_cc/server
+plugins: asyncio-0.21.1, anyio-3.7.1
+asyncio: mode=Mode.STRICT
+collecting ... collected 45 items
+
+tests/test_db/test_core_operations.py::TestAdminOperations::test_admin_create_addon PASSED [  2%]
+tests/test_db/test_core_operations.py::TestAdminOperations::test_admin_create_addon_duplicate_name PASSED [  4%]
+tests/test_db/test_core_operations.py::TestAdminOperations::test_admin_deactivate_addon PASSED [  6%]
+tests/test_db/test_core_operations.py::TestAdminOperations::test_admin_publish_meal PASSED [  8%]
+tests/test_db/test_core_operations.py::TestAdminOperations::test_admin_lock_meal PASSED [ 11%]
+tests/test_db/test_core_operations.py::TestAdminOperations::test_admin_complete_meal PASSED [ 13%]
+tests/test_db/test_core_operations.py::TestAdminOperations::test_admin_cancel_meal PASSED [ 15%]
+tests/test_db/test_core_operations.py::TestAdminOperations::test_admin_adjust_balance PASSED [ 17%]
+tests/test_db/test_core_operations.py::TestUserOperations::test_create_order_success PASSED [ 20%]
+tests/test_db/test_core_operations.py::TestUserOperations::test_create_order_insufficient_balance PASSED [ 22%]
+tests/test_db/test_core_operations.py::TestUserOperations::test_cancel_order PASSED [ 24%]
+tests/test_db/test_core_operations.py::TestValidations::test_non_admin_operations_fail PASSED [ 26%]
+tests/test_db/test_core_operations.py::TestValidations::test_meal_capacity_limit PASSED [ 28%]
+tests/test_db/test_core_operations.py::TestValidations::test_duplicate_order_prevention PASSED [ 31%]
+tests/test_db/test_query_operations.py::TestMealQueries::test_query_meals_by_date_range PASSED [ 33%]
+tests/test_db/test_query_operations.py::TestMealQueries::test_query_meal_detail PASSED [ 35%]
+tests/test_db/test_query_operations.py::TestUserQueries::test_query_user_meal_order PASSED [ 37%]
+tests/test_db/test_query_operations.py::TestUserQueries::test_query_user_meal_order_no_order PASSED [ 40%]
+tests/test_db/test_query_operations.py::TestUserQueries::test_query_user_ledger_history PASSED [ 42%]
+tests/test_db/test_query_operations.py::TestUserQueries::test_query_user_order_statistics PASSED [ 44%]
+tests/test_db/test_query_operations.py::TestUserQueries::test_query_user_transaction_statistics PASSED [ 46%]
+tests/test_db/test_query_operations.py::TestUserQueries::test_query_user_orders PASSED [ 48%]
+tests/test_db/test_query_operations.py::TestPagination::test_meals_pagination PASSED [ 51%]
+tests/test_db/test_query_operations.py::TestErrorHandling::test_query_nonexistent_meal PASSED [ 53%]
+tests/test_db/test_query_operations.py::TestErrorHandling::test_query_nonexistent_user_orders PASSED [ 55%]
+tests/test_db/test_query_operations.py::TestErrorHandling::test_invalid_date_range PASSED [ 57%]
+tests/test_db/test_supporting_operations.py::TestUserManagement::test_register_user_success PASSED [ 60%]
+tests/test_db/test_supporting_operations.py::TestUserManagement::test_register_user_duplicate_open_id PASSED [ 62%]
+tests/test_db/test_supporting_operations.py::TestUserManagement::test_user_login_success PASSED [ 64%]
+tests/test_db/test_supporting_operations.py::TestUserManagement::test_user_login_nonexistent_user PASSED [ 66%]
+tests/test_db/test_supporting_operations.py::TestUserManagement::test_get_user_by_id PASSED [ 68%]
+tests/test_db/test_supporting_operations.py::TestUserManagement::test_get_user_by_id_nonexistent PASSED [ 71%]
+tests/test_db/test_supporting_operations.py::TestAdminManagement::test_admin_set_user_admin PASSED [ 73%]
+tests/test_db/test_supporting_operations.py::TestAdminManagement::test_admin_set_user_admin_no_change PASSED [ 75%]
+tests/test_db/test_supporting_operations.py::TestAdminManagement::test_admin_set_user_status PASSED [ 77%]
+tests/test_db/test_supporting_operations.py::TestAdminManagement::test_admin_cannot_suspend_self PASSED [ 80%]
+tests/test_db/test_supporting_operations.py::TestAdminManagement::test_non_admin_cannot_manage_users PASSED [ 82%]
+tests/test_db/test_supporting_operations.py::TestUsersList::test_query_users_list_all PASSED [ 84%]
+tests/test_db/test_supporting_operations.py::TestUsersList::test_query_users_list_filter_by_admin PASSED [ 86%]
+tests/test_db/test_supporting_operations.py::TestUsersList::test_query_users_list_filter_by_status PASSED [ 88%]
+tests/test_db/test_supporting_operations.py::TestUsersList::test_query_users_list_pagination PASSED [ 91%]
+tests/test_db/test_supporting_operations.py::TestValidations::test_invalid_open_id_registration PASSED [ 93%]
+tests/test_db/test_supporting_operations.py::TestValidations::test_long_wechat_name_registration PASSED [ 95%]
+tests/test_db/test_supporting_operations.py::TestValidations::test_invalid_status_value PASSED [ 97%]
+tests/test_db/test_supporting_operations.py::TestValidations::test_invalid_pagination_params PASSED [100%]
+
+=============================== warnings summary ===============================
+../../../miniconda3/envs/ganghaofan_test/lib/python3.11/site-packages/passlib/utils/__init__.py:854
+  /home/pp/miniconda3/envs/ganghaofan_test/lib/python3.11/site-packages/passlib/utils/__init__.py:854: DeprecationWarning: 'crypt' is deprecated and slated for removal in Python 3.13
+    from crypt import crypt as _crypt
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 45 passed, 1 warning in 1.02s =========================

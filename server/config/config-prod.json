@@ -1,0 +1,66 @@
+{
+  "_reference_doc": "doc/server_structure.md - 生产环境配置",
+  "app": {
+    "name": "罡好饭API服务",
+    "version": "1.0.0",
+    "debug": false,
+    "description": "内部餐饮预订系统API服务"
+  },
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "workers": 4,
+    "reload": false
+  },
+  "database": {
+    "path": "data/gang_hao_fan.db",
+    "memory_limit": "1GB",
+    "threads": 1,
+    "backup_enabled": true,
+    "backup_schedule": "0 2 * * *"
+  },
+  "auth": {
+    "jwt_secret_key": "${JWT_SECRET_KEY}",
+    "jwt_algorithm": "HS256",
+    "access_token_expire_minutes": 1440,
+    "wechat_app_id": "${WECHAT_APP_ID}",
+    "wechat_app_secret": "${WECHAT_APP_SECRET}"
+  },
+  "admin": {
+    "whitelist_open_ids": [
+      "${ADMIN_OPENID_1}",
+      "${ADMIN_OPENID_2}"
+    ]
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - [%(filename)s:%(lineno)d] - %(message)s",
+    "file_enabled": true,
+    "file_path": "logs/app.log",
+    "max_file_size": "10MB",
+    "backup_count": 5
+  },
+  "business": {
+    "order_deadline": {
+      "lunch": "10:30",
+      "dinner": "16:30"
+    },
+    "default_meal_capacity": 50,
+    "timezone": "Asia/Shanghai"
+  },
+  "cors": {
+    "allow_origins": [
+      "https://pangruitao.com"
+    ],
+    "allow_methods": [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE"
+    ],
+    "allow_headers": [
+      "*"
+    ],
+    "allow_credentials": true
+  }
+}

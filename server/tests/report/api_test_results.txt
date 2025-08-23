@@ -1,0 +1,2300 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.13, pytest-7.4.3, pluggy-1.6.0 -- /home/pp/miniconda3/envs/ganghaofan_test/bin/python
+cachedir: .pytest_cache
+rootdir: /home/pp/mp/ganghaofan_cc/server
+plugins: asyncio-0.21.1, anyio-3.7.1
+asyncio: mode=Mode.STRICT
+collecting ... collected 63 items
+
+tests/test_api/test_admin.py::TestAdminAddons::test_create_addon_success ERROR [  1%]
+tests/test_api/test_admin.py::TestAdminAddons::test_create_addon_duplicate_name ERROR [  3%]
+tests/test_api/test_admin.py::TestAdminAddons::test_create_addon_unauthorized ERROR [  4%]
+tests/test_api/test_admin.py::TestAdminAddons::test_deactivate_addon_success ERROR [  6%]
+tests/test_api/test_admin.py::TestAdminAddons::test_deactivate_addon_nonexistent ERROR [  7%]
+tests/test_api/test_admin.py::TestAdminMeals::test_publish_meal_success ERROR [  9%]
+tests/test_api/test_admin.py::TestAdminMeals::test_publish_meal_duplicate_slot ERROR [ 11%]
+tests/test_api/test_admin.py::TestAdminMeals::test_lock_meal_success ERROR [ 12%]
+tests/test_api/test_admin.py::TestAdminMeals::test_complete_meal_success ERROR [ 14%]
+tests/test_api/test_admin.py::TestAdminMeals::test_cancel_meal_success ERROR [ 15%]
+tests/test_api/test_admin.py::TestAdminUsers::test_get_users_list ERROR  [ 17%]
+tests/test_api/test_admin.py::TestAdminUsers::test_get_users_list_with_filters ERROR [ 19%]
+tests/test_api/test_admin.py::TestAdminUsers::test_set_user_admin_status ERROR [ 20%]
+tests/test_api/test_admin.py::TestAdminUsers::test_set_user_status ERROR [ 22%]
+tests/test_api/test_admin.py::TestAdminUsers::test_adjust_user_balance ERROR [ 23%]
+tests/test_api/test_admin.py::TestAdminPermissions::test_non_admin_access_denied ERROR [ 25%]
+tests/test_api/test_admin.py::TestAdminPermissions::test_unauthenticated_access_denied FAILED [ 26%]
+tests/test_api/test_auth.py::TestAuthRoutes::test_wechat_auth_success FAILED [ 28%]
+tests/test_api/test_auth.py::TestAuthRoutes::test_wechat_auth_missing_code PASSED [ 30%]
+tests/test_api/test_auth.py::TestAuthRoutes::test_token_refresh FAILED   [ 31%]
+tests/test_api/test_auth.py::TestAuthRoutes::test_token_refresh_invalid_token PASSED [ 33%]
+tests/test_api/test_auth.py::TestAuthRoutes::test_token_refresh_missing_token FAILED [ 34%]
+tests/test_api/test_auth.py::TestTokenValidation::test_valid_token_access FAILED [ 36%]
+tests/test_api/test_auth.py::TestTokenValidation::test_invalid_token_access PASSED [ 38%]
+tests/test_api/test_auth.py::TestTokenValidation::test_missing_token_access FAILED [ 39%]
+tests/test_api/test_meals.py::TestMealsList::test_get_meals_list ERROR   [ 41%]
+tests/test_api/test_meals.py::TestMealsList::test_get_meals_list_with_pagination ERROR [ 42%]
+tests/test_api/test_meals.py::TestMealsList::test_get_meals_missing_dates ERROR [ 44%]
+tests/test_api/test_meals.py::TestMealsList::test_get_meals_invalid_date_range ERROR [ 46%]
+tests/test_api/test_meals.py::TestMealsList::test_get_meals_unauthorized FAILED [ 47%]
+tests/test_api/test_meals.py::TestMealDetail::test_get_meal_detail ERROR [ 49%]
+tests/test_api/test_meals.py::TestMealDetail::test_get_meal_detail_nonexistent ERROR [ 50%]
+tests/test_api/test_meals.py::TestMealDetail::test_get_meal_detail_unauthorized FAILED [ 52%]
+tests/test_api/test_meals.py::TestMealOrder::test_check_user_meal_order ERROR [ 53%]
+tests/test_api/test_meals.py::TestMealOrder::test_check_user_meal_order_nonexistent_meal ERROR [ 55%]
+tests/test_api/test_meals.py::TestMealOrder::test_check_user_meal_order_unauthorized FAILED [ 57%]
+tests/test_api/test_orders.py::TestOrderCreation::test_create_order_success ERROR [ 58%]
+tests/test_api/test_orders.py::TestOrderCreation::test_create_order_missing_meal_id ERROR [ 60%]
+tests/test_api/test_orders.py::TestOrderCreation::test_create_order_nonexistent_meal ERROR [ 61%]
+tests/test_api/test_orders.py::TestOrderCreation::test_create_order_insufficient_balance ERROR [ 63%]
+tests/test_api/test_orders.py::TestOrderCreation::test_create_order_duplicate ERROR [ 65%]
+tests/test_api/test_orders.py::TestOrderCreation::test_create_order_unauthorized ERROR [ 66%]
+tests/test_api/test_orders.py::TestOrderCancellation::test_cancel_order_success ERROR [ 68%]
+tests/test_api/test_orders.py::TestOrderCancellation::test_cancel_order_nonexistent ERROR [ 69%]
+tests/test_api/test_orders.py::TestOrderCancellation::test_cancel_order_not_owned ERROR [ 71%]
+tests/test_api/test_orders.py::TestOrderCancellation::test_cancel_order_missing_reason ERROR [ 73%]
+tests/test_api/test_orders.py::TestOrderCancellation::test_cancel_order_unauthorized FAILED [ 74%]
+tests/test_api/test_orders.py::TestOrderDetail::test_get_order_detail ERROR [ 76%]
+tests/test_api/test_orders.py::TestOrderDetail::test_get_order_detail_nonexistent ERROR [ 77%]
+tests/test_api/test_orders.py::TestOrderDetail::test_get_order_detail_unauthorized FAILED [ 79%]
+tests/test_api/test_users.py::TestUserProfile::test_get_profile_success ERROR [ 80%]
+tests/test_api/test_users.py::TestUserProfile::test_get_profile_unauthorized FAILED [ 82%]
+tests/test_api/test_users.py::TestUserBalance::test_get_balance ERROR    [ 84%]
+tests/test_api/test_users.py::TestUserBalance::test_get_balance_unauthorized FAILED [ 85%]
+tests/test_api/test_users.py::TestUserLedger::test_get_ledger_history ERROR [ 87%]
+tests/test_api/test_users.py::TestUserLedger::test_get_ledger_history_with_pagination ERROR [ 88%]
+tests/test_api/test_users.py::TestUserLedger::test_get_ledger_unauthorized FAILED [ 90%]
+tests/test_api/test_users.py::TestUserOrders::test_get_user_orders ERROR [ 92%]
+tests/test_api/test_users.py::TestUserOrders::test_get_user_orders_with_pagination ERROR [ 93%]
+tests/test_api/test_users.py::TestUserOrders::test_get_user_orders_unauthorized FAILED [ 95%]
+tests/test_api/test_users.py::TestUserStatistics::test_get_order_statistics ERROR [ 96%]
+tests/test_api/test_users.py::TestUserStatistics::test_get_transaction_statistics ERROR [ 98%]
+tests/test_api/test_users.py::TestUserStatistics::test_get_statistics_unauthorized FAILED [100%]
+
+==================================== ERRORS ====================================
+_________ ERROR at setup of TestAdminAddons.test_create_addon_success __________
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,041 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,042 - api.middleware.logging - INFO - [logging.py:31] - [7a13f5cf] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,052 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,053 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,054 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,054 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,054 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,054 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614054954，包含 1 个操作
+2025-08-22 17:06:14,055 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614054954 中的操作 1/1
+2025-08-22 17:06:14,073 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614054954 提交成功
+2025-08-22 17:06:14,073 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,074 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,075 - api.middleware.logging - INFO - [logging.py:44] - [7a13f5cf] 200 - Time: 0.033s
+2025-08-22 17:06:14,109 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,113 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [7a13f5cf] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614054954，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614054954 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614054954 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [7a13f5cf] 200 - Time: 0.033s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+______ ERROR at setup of TestAdminAddons.test_create_addon_duplicate_name ______
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,142 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,143 - api.middleware.logging - INFO - [logging.py:31] - [070893c2] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,151 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,152 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,152 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,152 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,152 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,152 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614152940，包含 1 个操作
+2025-08-22 17:06:14,153 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614152940 中的操作 1/1
+2025-08-22 17:06:14,161 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614152940 提交成功
+2025-08-22 17:06:14,161 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,162 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,162 - api.middleware.logging - INFO - [logging.py:44] - [070893c2] 200 - Time: 0.019s
+2025-08-22 17:06:14,173 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,177 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [070893c2] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614152940，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614152940 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614152940 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [070893c2] 200 - Time: 0.019s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_______ ERROR at setup of TestAdminAddons.test_create_addon_unauthorized _______
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,182 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,183 - api.middleware.logging - INFO - [logging.py:31] - [72e81262] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,191 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,194 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,195 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,195 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,195 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:14,195 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614195759，包含 1 个操作
+2025-08-22 17:06:14,196 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614195759 中的操作 1/1
+2025-08-22 17:06:14,206 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614195759 提交成功
+2025-08-22 17:06:14,207 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:14,207 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,208 - api.middleware.logging - INFO - [logging.py:44] - [72e81262] 200 - Time: 0.025s
+2025-08-22 17:06:14,229 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,231 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [72e81262] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614195759，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614195759 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614195759 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [72e81262] 200 - Time: 0.025s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_______ ERROR at setup of TestAdminAddons.test_deactivate_addon_success ________
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,237 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,238 - api.middleware.logging - INFO - [logging.py:31] - [a5d052bd] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,247 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,248 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,248 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,248 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,248 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,249 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614248980，包含 1 个操作
+2025-08-22 17:06:14,249 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614248980 中的操作 1/1
+2025-08-22 17:06:14,259 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614248980 提交成功
+2025-08-22 17:06:14,259 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,259 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,260 - api.middleware.logging - INFO - [logging.py:44] - [a5d052bd] 200 - Time: 0.023s
+2025-08-22 17:06:14,274 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,276 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [a5d052bd] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614248980，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614248980 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614248980 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [a5d052bd] 200 - Time: 0.023s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_____ ERROR at setup of TestAdminAddons.test_deactivate_addon_nonexistent ______
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,281 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,282 - api.middleware.logging - INFO - [logging.py:31] - [fa4dd808] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,291 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,292 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,292 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,292 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,292 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,293 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614293092，包含 1 个操作
+2025-08-22 17:06:14,293 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614293092 中的操作 1/1
+2025-08-22 17:06:14,302 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614293092 提交成功
+2025-08-22 17:06:14,302 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,302 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,303 - api.middleware.logging - INFO - [logging.py:44] - [fa4dd808] 200 - Time: 0.021s
+2025-08-22 17:06:14,320 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,322 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [fa4dd808] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614293092，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614293092 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614293092 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [fa4dd808] 200 - Time: 0.021s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+__________ ERROR at setup of TestAdminMeals.test_publish_meal_success __________
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,328 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,329 - api.middleware.logging - INFO - [logging.py:31] - [185db873] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,337 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,337 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,338 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,338 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,338 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,338 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614338883，包含 1 个操作
+2025-08-22 17:06:14,339 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614338883 中的操作 1/1
+2025-08-22 17:06:14,348 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614338883 提交成功
+2025-08-22 17:06:14,348 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,348 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,349 - api.middleware.logging - INFO - [logging.py:44] - [185db873] 200 - Time: 0.021s
+2025-08-22 17:06:14,368 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,371 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [185db873] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614338883，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614338883 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614338883 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [185db873] 200 - Time: 0.021s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+______ ERROR at setup of TestAdminMeals.test_publish_meal_duplicate_slot _______
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,376 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,377 - api.middleware.logging - INFO - [logging.py:31] - [db849fb9] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,385 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,386 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,386 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,386 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,386 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,387 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614386986，包含 1 个操作
+2025-08-22 17:06:14,387 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614386986 中的操作 1/1
+2025-08-22 17:06:14,396 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614386986 提交成功
+2025-08-22 17:06:14,396 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,397 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,398 - api.middleware.logging - INFO - [logging.py:44] - [db849fb9] 200 - Time: 0.021s
+2025-08-22 17:06:14,422 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,424 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [db849fb9] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614386986，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614386986 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614386986 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [db849fb9] 200 - Time: 0.021s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+___________ ERROR at setup of TestAdminMeals.test_lock_meal_success ____________
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,429 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,430 - api.middleware.logging - INFO - [logging.py:31] - [be4f22b2] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,440 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,441 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,441 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,441 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,442 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,442 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614442157，包含 1 个操作
+2025-08-22 17:06:14,442 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614442157 中的操作 1/1
+2025-08-22 17:06:14,451 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614442157 提交成功
+2025-08-22 17:06:14,451 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,451 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,452 - api.middleware.logging - INFO - [logging.py:44] - [be4f22b2] 200 - Time: 0.021s
+2025-08-22 17:06:14,475 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,478 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [be4f22b2] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614442157，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614442157 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614442157 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [be4f22b2] 200 - Time: 0.021s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_________ ERROR at setup of TestAdminMeals.test_complete_meal_success __________
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,483 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,484 - api.middleware.logging - INFO - [logging.py:31] - [461149d9] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,494 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,495 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,495 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,496 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,496 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,496 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614496297，包含 1 个操作
+2025-08-22 17:06:14,496 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614496297 中的操作 1/1
+2025-08-22 17:06:14,505 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614496297 提交成功
+2025-08-22 17:06:14,505 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,505 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,506 - api.middleware.logging - INFO - [logging.py:44] - [461149d9] 200 - Time: 0.022s
+2025-08-22 17:06:14,540 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,543 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [461149d9] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614496297，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614496297 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614496297 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [461149d9] 200 - Time: 0.022s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+__________ ERROR at setup of TestAdminMeals.test_cancel_meal_success ___________
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,548 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,549 - api.middleware.logging - INFO - [logging.py:31] - [09b2e9a8] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,558 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,559 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,559 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,560 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,560 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,560 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614560422，包含 1 个操作
+2025-08-22 17:06:14,560 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614560422 中的操作 1/1
+2025-08-22 17:06:14,572 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614560422 提交成功
+2025-08-22 17:06:14,572 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,572 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,597 - api.middleware.logging - INFO - [logging.py:44] - [09b2e9a8] 200 - Time: 0.048s
+2025-08-22 17:06:14,598 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,600 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [09b2e9a8] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614560422，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614560422 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614560422 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [09b2e9a8] 200 - Time: 0.048s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_____________ ERROR at setup of TestAdminUsers.test_get_users_list _____________
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,605 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,607 - api.middleware.logging - INFO - [logging.py:31] - [3793bf1b] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,617 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,618 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,618 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,618 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,619 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,619 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614619110，包含 1 个操作
+2025-08-22 17:06:14,619 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614619110 中的操作 1/1
+2025-08-22 17:06:14,647 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614619110 提交成功
+2025-08-22 17:06:14,647 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,647 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,648 - api.middleware.logging - INFO - [logging.py:44] - [3793bf1b] 200 - Time: 0.041s
+2025-08-22 17:06:14,689 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,691 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [3793bf1b] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614619110，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614619110 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614619110 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [3793bf1b] 200 - Time: 0.041s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+______ ERROR at setup of TestAdminUsers.test_get_users_list_with_filters _______
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,696 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,697 - api.middleware.logging - INFO - [logging.py:31] - [9488db00] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,707 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,707 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,708 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,708 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,708 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,708 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614708580，包含 1 个操作
+2025-08-22 17:06:14,708 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614708580 中的操作 1/1
+2025-08-22 17:06:14,717 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614708580 提交成功
+2025-08-22 17:06:14,717 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,717 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,718 - api.middleware.logging - INFO - [logging.py:44] - [9488db00] 200 - Time: 0.021s
+2025-08-22 17:06:14,762 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,765 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [9488db00] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614708580，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614708580 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614708580 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [9488db00] 200 - Time: 0.021s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_________ ERROR at setup of TestAdminUsers.test_set_user_admin_status __________
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,771 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,772 - api.middleware.logging - INFO - [logging.py:31] - [77da004e] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,782 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,783 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,784 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,784 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,784 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,784 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614784827，包含 1 个操作
+2025-08-22 17:06:14,785 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614784827 中的操作 1/1
+2025-08-22 17:06:14,794 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614784827 提交成功
+2025-08-22 17:06:14,794 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,795 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,796 - api.middleware.logging - INFO - [logging.py:44] - [77da004e] 200 - Time: 0.024s
+2025-08-22 17:06:14,808 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,811 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [77da004e] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614784827，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614784827 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614784827 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [77da004e] 200 - Time: 0.024s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+____________ ERROR at setup of TestAdminUsers.test_set_user_status _____________
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,816 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,817 - api.middleware.logging - INFO - [logging.py:31] - [18541fc5] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,827 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,828 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,828 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,828 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,828 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,829 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614829000，包含 1 个操作
+2025-08-22 17:06:14,829 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614829000 中的操作 1/1
+2025-08-22 17:06:14,838 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614829000 提交成功
+2025-08-22 17:06:14,838 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,838 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,839 - api.middleware.logging - INFO - [logging.py:44] - [18541fc5] 200 - Time: 0.022s
+2025-08-22 17:06:14,851 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,854 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [18541fc5] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614829000，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614829000 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614829000 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [18541fc5] 200 - Time: 0.022s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+__________ ERROR at setup of TestAdminUsers.test_adjust_user_balance ___________
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,859 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,860 - api.middleware.logging - INFO - [logging.py:31] - [4956be7c] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,869 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,870 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,870 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,871 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,871 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:14,871 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614871342，包含 1 个操作
+2025-08-22 17:06:14,871 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614871342 中的操作 1/1
+2025-08-22 17:06:14,879 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614871342 提交成功
+2025-08-22 17:06:14,880 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:14,880 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,881 - api.middleware.logging - INFO - [logging.py:44] - [4956be7c] 200 - Time: 0.020s
+2025-08-22 17:06:14,893 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,895 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [4956be7c] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614871342，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614871342 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614871342 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [4956be7c] 200 - Time: 0.020s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_____ ERROR at setup of TestAdminPermissions.test_non_admin_access_denied ______
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:14,901 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,902 - api.middleware.logging - INFO - [logging.py:31] - [3a884609] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,910 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,911 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,911 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,911 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,912 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:14,912 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614912152，包含 1 个操作
+2025-08-22 17:06:14,912 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614912152 中的操作 1/1
+2025-08-22 17:06:14,922 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614912152 提交成功
+2025-08-22 17:06:14,922 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:14,922 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,923 - api.middleware.logging - INFO - [logging.py:44] - [3a884609] 200 - Time: 0.022s
+2025-08-22 17:06:14,937 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:14,940 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [3a884609] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614912152，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614912152 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614912152 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [3a884609] 200 - Time: 0.022s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_____________ ERROR at setup of TestMealsList.test_get_meals_list ______________
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,197 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,198 - api.middleware.logging - INFO - [logging.py:31] - [f2d9a623] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,208 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,209 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,209 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,209 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,209 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,210 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615210071，包含 1 个操作
+2025-08-22 17:06:15,210 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615210071 中的操作 1/1
+2025-08-22 17:06:15,220 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615210071 提交成功
+2025-08-22 17:06:15,220 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:15,220 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,221 - api.middleware.logging - INFO - [logging.py:44] - [f2d9a623] 200 - Time: 0.023s
+2025-08-22 17:06:15,237 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,239 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [f2d9a623] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615210071，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615210071 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615210071 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [f2d9a623] 200 - Time: 0.023s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_____ ERROR at setup of TestMealsList.test_get_meals_list_with_pagination ______
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,244 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,245 - api.middleware.logging - INFO - [logging.py:31] - [d703dbaa] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,255 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,256 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,256 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,256 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,256 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,256 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615256972，包含 1 个操作
+2025-08-22 17:06:15,257 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615256972 中的操作 1/1
+2025-08-22 17:06:15,266 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615256972 提交成功
+2025-08-22 17:06:15,266 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:15,266 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,267 - api.middleware.logging - INFO - [logging.py:44] - [d703dbaa] 200 - Time: 0.022s
+2025-08-22 17:06:15,281 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,284 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [d703dbaa] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615256972，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615256972 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615256972 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [d703dbaa] 200 - Time: 0.022s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_________ ERROR at setup of TestMealsList.test_get_meals_missing_dates _________
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,290 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,291 - api.middleware.logging - INFO - [logging.py:31] - [bda7d624] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,300 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,301 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,301 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,301 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,301 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,302 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615302030，包含 1 个操作
+2025-08-22 17:06:15,302 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615302030 中的操作 1/1
+2025-08-22 17:06:15,311 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615302030 提交成功
+2025-08-22 17:06:15,311 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:15,311 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,312 - api.middleware.logging - INFO - [logging.py:44] - [bda7d624] 200 - Time: 0.021s
+2025-08-22 17:06:15,360 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,362 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [bda7d624] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615302030，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615302030 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615302030 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [bda7d624] 200 - Time: 0.021s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+______ ERROR at setup of TestMealsList.test_get_meals_invalid_date_range _______
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,368 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,368 - api.middleware.logging - INFO - [logging.py:31] - [6f0cb6f1] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,376 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,377 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,378 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,378 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,378 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,378 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615378509，包含 1 个操作
+2025-08-22 17:06:15,378 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615378509 中的操作 1/1
+2025-08-22 17:06:15,387 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615378509 提交成功
+2025-08-22 17:06:15,388 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:15,388 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,389 - api.middleware.logging - INFO - [logging.py:44] - [6f0cb6f1] 200 - Time: 0.020s
+2025-08-22 17:06:15,404 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,407 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [6f0cb6f1] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615378509，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615378509 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615378509 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [6f0cb6f1] 200 - Time: 0.020s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+____________ ERROR at setup of TestMealDetail.test_get_meal_detail _____________
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,421 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,422 - api.middleware.logging - INFO - [logging.py:31] - [40a23019] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,430 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,431 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,431 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,432 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,432 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,432 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615432254，包含 1 个操作
+2025-08-22 17:06:15,432 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615432254 中的操作 1/1
+2025-08-22 17:06:15,441 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615432254 提交成功
+2025-08-22 17:06:15,442 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:15,442 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,443 - api.middleware.logging - INFO - [logging.py:44] - [40a23019] 200 - Time: 0.021s
+2025-08-22 17:06:15,463 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,465 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [40a23019] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615432254，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615432254 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615432254 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [40a23019] 200 - Time: 0.021s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+______ ERROR at setup of TestMealDetail.test_get_meal_detail_nonexistent _______
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,470 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,472 - api.middleware.logging - INFO - [logging.py:31] - [b91e09f4] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,480 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,480 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,481 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,481 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,481 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,481 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615481659，包含 1 个操作
+2025-08-22 17:06:15,481 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615481659 中的操作 1/1
+2025-08-22 17:06:15,492 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615481659 提交成功
+2025-08-22 17:06:15,493 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:15,493 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,494 - api.middleware.logging - INFO - [logging.py:44] - [b91e09f4] 200 - Time: 0.022s
+2025-08-22 17:06:15,507 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,509 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [b91e09f4] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615481659，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615481659 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615481659 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [b91e09f4] 200 - Time: 0.022s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+__________ ERROR at setup of TestMealOrder.test_check_user_meal_order __________
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,523 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,524 - api.middleware.logging - INFO - [logging.py:31] - [e8624e2c] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,534 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,535 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,535 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,535 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,535 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,536 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615536010，包含 1 个操作
+2025-08-22 17:06:15,536 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615536010 中的操作 1/1
+2025-08-22 17:06:15,546 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615536010 提交成功
+2025-08-22 17:06:15,546 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:15,546 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,547 - api.middleware.logging - INFO - [logging.py:44] - [e8624e2c] 200 - Time: 0.023s
+2025-08-22 17:06:15,559 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,561 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [e8624e2c] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615536010，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615536010 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615536010 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [e8624e2c] 200 - Time: 0.023s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_ ERROR at setup of TestMealOrder.test_check_user_meal_order_nonexistent_meal __
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,567 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,568 - api.middleware.logging - INFO - [logging.py:31] - [2a0f1a78] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,576 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,577 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,578 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,578 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,578 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,578 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615578518，包含 1 个操作
+2025-08-22 17:06:15,578 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615578518 中的操作 1/1
+2025-08-22 17:06:15,587 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615578518 提交成功
+2025-08-22 17:06:15,587 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:15,587 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,588 - api.middleware.logging - INFO - [logging.py:44] - [2a0f1a78] 200 - Time: 0.020s
+2025-08-22 17:06:15,625 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,628 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [2a0f1a78] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615578518，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615578518 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615578518 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [2a0f1a78] 200 - Time: 0.020s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+________ ERROR at setup of TestOrderCreation.test_create_order_success _________
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,641 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,642 - api.middleware.logging - INFO - [logging.py:31] - [aa3f6b0f] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,650 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,651 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,651 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,652 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,652 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,652 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615652334，包含 1 个操作
+2025-08-22 17:06:15,652 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615652334 中的操作 1/1
+2025-08-22 17:06:15,663 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615652334 提交成功
+2025-08-22 17:06:15,663 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:15,663 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,664 - api.middleware.logging - INFO - [logging.py:44] - [aa3f6b0f] 200 - Time: 0.022s
+2025-08-22 17:06:15,691 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,694 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [aa3f6b0f] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615652334，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615652334 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615652334 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [aa3f6b0f] 200 - Time: 0.022s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+____ ERROR at setup of TestOrderCreation.test_create_order_missing_meal_id _____
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,699 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,700 - api.middleware.logging - INFO - [logging.py:31] - [7edd3caf] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,713 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,714 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,714 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,714 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,714 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,714 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615714924，包含 1 个操作
+2025-08-22 17:06:15,715 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615714924 中的操作 1/1
+2025-08-22 17:06:15,727 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615714924 提交成功
+2025-08-22 17:06:15,727 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:15,727 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,728 - api.middleware.logging - INFO - [logging.py:44] - [7edd3caf] 200 - Time: 0.028s
+2025-08-22 17:06:15,755 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,757 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [7edd3caf] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615714924，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615714924 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615714924 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [7edd3caf] 200 - Time: 0.028s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+____ ERROR at setup of TestOrderCreation.test_create_order_nonexistent_meal ____
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,762 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,763 - api.middleware.logging - INFO - [logging.py:31] - [23407b66] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,771 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,772 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,772 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,772 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,772 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,773 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615772994，包含 1 个操作
+2025-08-22 17:06:15,773 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615772994 中的操作 1/1
+2025-08-22 17:06:15,789 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615772994 提交成功
+2025-08-22 17:06:15,789 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:15,789 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,790 - api.middleware.logging - INFO - [logging.py:44] - [23407b66] 200 - Time: 0.027s
+2025-08-22 17:06:15,812 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,815 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [23407b66] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615772994，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615772994 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615772994 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [23407b66] 200 - Time: 0.027s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+__ ERROR at setup of TestOrderCreation.test_create_order_insufficient_balance __
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,821 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,821 - api.middleware.logging - INFO - [logging.py:31] - [2cb9f575] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,831 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,832 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,833 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,833 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,833 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,833 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615833781，包含 1 个操作
+2025-08-22 17:06:15,834 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615833781 中的操作 1/1
+2025-08-22 17:06:15,844 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615833781 提交成功
+2025-08-22 17:06:15,844 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:15,844 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,845 - api.middleware.logging - INFO - [logging.py:44] - [2cb9f575] 200 - Time: 0.023s
+2025-08-22 17:06:15,863 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,866 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [2cb9f575] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615833781，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615833781 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615833781 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [2cb9f575] 200 - Time: 0.023s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_______ ERROR at setup of TestOrderCreation.test_create_order_duplicate ________
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,871 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,873 - api.middleware.logging - INFO - [logging.py:31] - [63de0928] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,881 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,882 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,882 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,882 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,882 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,882 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615882958，包含 1 个操作
+2025-08-22 17:06:15,883 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615882958 中的操作 1/1
+2025-08-22 17:06:15,892 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615882958 提交成功
+2025-08-22 17:06:15,892 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:15,892 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,893 - api.middleware.logging - INFO - [logging.py:44] - [63de0928] 200 - Time: 0.020s
+2025-08-22 17:06:15,919 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,922 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [63de0928] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615882958，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615882958 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615882958 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [63de0928] 200 - Time: 0.020s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+______ ERROR at setup of TestOrderCreation.test_create_order_unauthorized ______
+tests/test_api/conftest.py:47: in admin_auth_token
+    token = response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,927 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,928 - api.middleware.logging - INFO - [logging.py:31] - [67508128] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,937 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,937 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,938 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,938 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,938 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-22 17:06:15,938 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615938576，包含 1 个操作
+2025-08-22 17:06:15,938 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615938576 中的操作 1/1
+2025-08-22 17:06:15,947 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615938576 提交成功
+2025-08-22 17:06:15,947 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_3b77fd501946df1a)
+2025-08-22 17:06:15,948 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,949 - api.middleware.logging - INFO - [logging.py:44] - [67508128] 200 - Time: 0.020s
+2025-08-22 17:06:15,976 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,980 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [67508128] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_admin_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615938576，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615938576 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615938576 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_3b77fd501946df1a)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [67508128] 200 - Time: 0.020s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+______ ERROR at setup of TestOrderCancellation.test_cancel_order_success _______
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:15,986 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,987 - api.middleware.logging - INFO - [logging.py:31] - [d5fa1fa8] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,995 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,996 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,997 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,997 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,997 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:15,997 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615997560，包含 1 个操作
+2025-08-22 17:06:15,998 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615997560 中的操作 1/1
+2025-08-22 17:06:16,012 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615997560 提交成功
+2025-08-22 17:06:16,012 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,013 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,013 - api.middleware.logging - INFO - [logging.py:44] - [d5fa1fa8] 200 - Time: 0.026s
+2025-08-22 17:06:16,056 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,059 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [d5fa1fa8] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615997560，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615997560 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615997560 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [d5fa1fa8] 200 - Time: 0.026s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+____ ERROR at setup of TestOrderCancellation.test_cancel_order_nonexistent _____
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:16,065 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,066 - api.middleware.logging - INFO - [logging.py:31] - [ecf69121] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:16,075 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:16,076 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:16,076 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:16,077 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:16,077 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:16,077 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170616077359，包含 1 个操作
+2025-08-22 17:06:16,077 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170616077359 中的操作 1/1
+2025-08-22 17:06:16,108 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170616077359 提交成功
+2025-08-22 17:06:16,109 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,109 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,110 - api.middleware.logging - INFO - [logging.py:44] - [ecf69121] 200 - Time: 0.044s
+2025-08-22 17:06:16,137 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,140 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [ecf69121] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170616077359，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170616077359 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170616077359 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [ecf69121] 200 - Time: 0.044s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_____ ERROR at setup of TestOrderCancellation.test_cancel_order_not_owned ______
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:16,145 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,146 - api.middleware.logging - INFO - [logging.py:31] - [47b5fd8d] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:16,155 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:16,156 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:16,156 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:16,157 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:16,157 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:16,157 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170616157232，包含 1 个操作
+2025-08-22 17:06:16,157 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170616157232 中的操作 1/1
+2025-08-22 17:06:16,166 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170616157232 提交成功
+2025-08-22 17:06:16,166 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,166 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,167 - api.middleware.logging - INFO - [logging.py:44] - [47b5fd8d] 200 - Time: 0.021s
+2025-08-22 17:06:16,186 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,190 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [47b5fd8d] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170616157232，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170616157232 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170616157232 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [47b5fd8d] 200 - Time: 0.021s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+___ ERROR at setup of TestOrderCancellation.test_cancel_order_missing_reason ___
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:16,195 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,196 - api.middleware.logging - INFO - [logging.py:31] - [fbeb9111] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:16,205 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:16,206 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:16,207 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:16,207 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:16,207 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:16,207 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170616207491，包含 1 个操作
+2025-08-22 17:06:16,207 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170616207491 中的操作 1/1
+2025-08-22 17:06:16,217 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170616207491 提交成功
+2025-08-22 17:06:16,217 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,217 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,218 - api.middleware.logging - INFO - [logging.py:44] - [fbeb9111] 200 - Time: 0.021s
+2025-08-22 17:06:16,233 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,235 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [fbeb9111] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170616207491，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170616207491 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170616207491 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [fbeb9111] 200 - Time: 0.021s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+___________ ERROR at setup of TestOrderDetail.test_get_order_detail ____________
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:16,243 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,244 - api.middleware.logging - INFO - [logging.py:31] - [6da95f28] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:16,255 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:16,255 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:16,256 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:16,256 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:16,256 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:16,256 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170616256581，包含 1 个操作
+2025-08-22 17:06:16,256 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170616256581 中的操作 1/1
+2025-08-22 17:06:16,266 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170616256581 提交成功
+2025-08-22 17:06:16,266 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,266 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,267 - api.middleware.logging - INFO - [logging.py:44] - [6da95f28] 200 - Time: 0.022s
+2025-08-22 17:06:16,289 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,292 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [6da95f28] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170616256581，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170616256581 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170616256581 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [6da95f28] 200 - Time: 0.022s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_____ ERROR at setup of TestOrderDetail.test_get_order_detail_nonexistent ______
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:16,297 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,297 - api.middleware.logging - INFO - [logging.py:31] - [2c2785b2] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:16,305 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:16,306 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:16,307 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:16,307 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:16,307 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:16,307 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170616307518，包含 1 个操作
+2025-08-22 17:06:16,307 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170616307518 中的操作 1/1
+2025-08-22 17:06:16,316 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170616307518 提交成功
+2025-08-22 17:06:16,316 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,316 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,317 - api.middleware.logging - INFO - [logging.py:44] - [2c2785b2] 200 - Time: 0.019s
+2025-08-22 17:06:16,340 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,343 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [2c2785b2] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170616307518，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170616307518 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170616307518 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [2c2785b2] 200 - Time: 0.019s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+__________ ERROR at setup of TestUserProfile.test_get_profile_success __________
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:16,357 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,358 - api.middleware.logging - INFO - [logging.py:31] - [3b6dcb19] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:16,369 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:16,370 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:16,370 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:16,370 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:16,371 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:16,371 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170616371169，包含 1 个操作
+2025-08-22 17:06:16,371 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170616371169 中的操作 1/1
+2025-08-22 17:06:16,385 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170616371169 提交成功
+2025-08-22 17:06:16,385 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,385 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,386 - api.middleware.logging - INFO - [logging.py:44] - [3b6dcb19] 200 - Time: 0.028s
+2025-08-22 17:06:16,424 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,427 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [3b6dcb19] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170616371169，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170616371169 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170616371169 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [3b6dcb19] 200 - Time: 0.028s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+______________ ERROR at setup of TestUserBalance.test_get_balance ______________
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:16,441 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,442 - api.middleware.logging - INFO - [logging.py:31] - [bba84c7d] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:16,453 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:16,453 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:16,454 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:16,454 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:16,454 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:16,454 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170616454772，包含 1 个操作
+2025-08-22 17:06:16,455 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170616454772 中的操作 1/1
+2025-08-22 17:06:16,466 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170616454772 提交成功
+2025-08-22 17:06:16,466 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,466 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,467 - api.middleware.logging - INFO - [logging.py:44] - [bba84c7d] 200 - Time: 0.025s
+2025-08-22 17:06:16,492 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,495 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [bba84c7d] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170616454772，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170616454772 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170616454772 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [bba84c7d] 200 - Time: 0.025s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+___________ ERROR at setup of TestUserLedger.test_get_ledger_history ___________
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:16,508 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,509 - api.middleware.logging - INFO - [logging.py:31] - [34b08e6a] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:16,518 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:16,519 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:16,519 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:16,520 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:16,520 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:16,520 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170616520281，包含 1 个操作
+2025-08-22 17:06:16,520 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170616520281 中的操作 1/1
+2025-08-22 17:06:16,529 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170616520281 提交成功
+2025-08-22 17:06:16,529 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,529 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,530 - api.middleware.logging - INFO - [logging.py:44] - [34b08e6a] 200 - Time: 0.021s
+2025-08-22 17:06:16,560 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,562 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [34b08e6a] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170616520281，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170616520281 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170616520281 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [34b08e6a] 200 - Time: 0.021s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+___ ERROR at setup of TestUserLedger.test_get_ledger_history_with_pagination ___
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:16,567 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,568 - api.middleware.logging - INFO - [logging.py:31] - [a2c3bfbf] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:16,580 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:16,581 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:16,582 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:16,582 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:16,582 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:16,582 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170616582550，包含 1 个操作
+2025-08-22 17:06:16,583 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170616582550 中的操作 1/1
+2025-08-22 17:06:16,592 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170616582550 提交成功
+2025-08-22 17:06:16,592 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,593 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,593 - api.middleware.logging - INFO - [logging.py:44] - [a2c3bfbf] 200 - Time: 0.025s
+2025-08-22 17:06:16,635 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,638 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [a2c3bfbf] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170616582550，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170616582550 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170616582550 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [a2c3bfbf] 200 - Time: 0.025s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+____________ ERROR at setup of TestUserOrders.test_get_user_orders _____________
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:16,652 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,653 - api.middleware.logging - INFO - [logging.py:31] - [65c7448a] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:16,663 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:16,663 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:16,664 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:16,664 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:16,664 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:16,664 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170616664739，包含 1 个操作
+2025-08-22 17:06:16,665 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170616664739 中的操作 1/1
+2025-08-22 17:06:16,674 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170616664739 提交成功
+2025-08-22 17:06:16,674 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,674 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,675 - api.middleware.logging - INFO - [logging.py:44] - [65c7448a] 200 - Time: 0.022s
+2025-08-22 17:06:16,705 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,708 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [65c7448a] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170616664739，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170616664739 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170616664739 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [65c7448a] 200 - Time: 0.022s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+____ ERROR at setup of TestUserOrders.test_get_user_orders_with_pagination _____
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:16,713 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,714 - api.middleware.logging - INFO - [logging.py:31] - [82356b33] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:16,725 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:16,726 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:16,726 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:16,727 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:16,727 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:16,727 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170616727306，包含 1 个操作
+2025-08-22 17:06:16,727 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170616727306 中的操作 1/1
+2025-08-22 17:06:16,736 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170616727306 提交成功
+2025-08-22 17:06:16,736 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,736 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,737 - api.middleware.logging - INFO - [logging.py:44] - [82356b33] 200 - Time: 0.022s
+2025-08-22 17:06:16,757 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,760 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [82356b33] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170616727306，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170616727306 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170616727306 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [82356b33] 200 - Time: 0.022s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+________ ERROR at setup of TestUserStatistics.test_get_order_statistics ________
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:16,773 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,774 - api.middleware.logging - INFO - [logging.py:31] - [586525ad] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:16,785 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:16,786 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:16,786 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:16,786 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:16,787 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:16,787 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170616787157，包含 1 个操作
+2025-08-22 17:06:16,787 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170616787157 中的操作 1/1
+2025-08-22 17:06:16,796 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170616787157 提交成功
+2025-08-22 17:06:16,796 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,796 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,797 - api.middleware.logging - INFO - [logging.py:44] - [586525ad] 200 - Time: 0.023s
+2025-08-22 17:06:16,810 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,813 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [586525ad] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170616787157，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170616787157 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170616787157 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [586525ad] 200 - Time: 0.023s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_____ ERROR at setup of TestUserStatistics.test_get_transaction_statistics _____
+tests/test_api/conftest.py:31: in auth_token
+    return response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+---------------------------- Captured stderr setup -----------------------------
+2025-08-22 17:06:16,819 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,819 - api.middleware.logging - INFO - [logging.py:31] - [9814c08d] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:16,830 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:16,830 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:16,831 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:16,831 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:16,831 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_user_code
+2025-08-22 17:06:16,831 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170616831566，包含 1 个操作
+2025-08-22 17:06:16,831 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170616831566 中的操作 1/1
+2025-08-22 17:06:16,841 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170616831566 提交成功
+2025-08-22 17:06:16,841 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_520202aa9e114da5)
+2025-08-22 17:06:16,842 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:16,842 - api.middleware.logging - INFO - [logging.py:44] - [9814c08d] 200 - Time: 0.023s
+2025-08-22 17:06:16,867 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:16,870 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [9814c08d] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_user_code
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170616831566，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170616831566 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170616831566 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_520202aa9e114da5)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [9814c08d] 200 - Time: 0.023s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+=================================== FAILURES ===================================
+___________ TestAdminPermissions.test_unauthenticated_access_denied ____________
+tests/test_api/test_admin.py:341: in test_unauthenticated_access_denied
+    assert response.status_code == 401
+E   assert 403 == 401
+E    +  where 403 = <Response [403 Forbidden]>.status_code
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:14,945 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,947 - api.middleware.logging - INFO - [logging.py:31] - [6546ae9b] GET /api/admin/users - Client: testclient
+2025-08-22 17:06:14,948 - api.middleware.logging - INFO - [logging.py:44] - [6546ae9b] 403 - Time: 0.002s
+2025-08-22 17:06:14,950 - httpx - INFO - [_client.py:1013] - HTTP Request: GET http://testserver/api/admin/users "HTTP/1.1 403 Forbidden"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [6546ae9b] GET /api/admin/users - Client: testclient
+INFO     api.middleware.logging:logging.py:44 [6546ae9b] 403 - Time: 0.002s
+INFO     httpx:_client.py:1013 HTTP Request: GET http://testserver/api/admin/users "HTTP/1.1 403 Forbidden"
+___________________ TestAuthRoutes.test_wechat_auth_success ____________________
+tests/test_api/test_auth.py:25: in test_wechat_auth_success
+    assert data["success"] is True
+E   assert False is True
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:14,956 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:14,957 - api.middleware.logging - INFO - [logging.py:31] - [4835f3aa] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:14,967 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:14,968 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:14,968 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:14,969 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:14,969 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_code_12345
+2025-08-22 17:06:14,969 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170614969244，包含 1 个操作
+2025-08-22 17:06:14,969 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170614969244 中的操作 1/1
+2025-08-22 17:06:14,978 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170614969244 提交成功
+2025-08-22 17:06:14,978 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_dd26c0e17bf6adba)
+2025-08-22 17:06:14,979 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:14,980 - api.middleware.logging - INFO - [logging.py:44] - [4835f3aa] 200 - Time: 0.022s
+2025-08-22 17:06:15,019 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,022 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [4835f3aa] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_code_12345
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170614969244，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170614969244 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170614969244 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_dd26c0e17bf6adba)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [4835f3aa] 200 - Time: 0.022s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+______________________ TestAuthRoutes.test_token_refresh _______________________
+tests/test_api/test_auth.py:53: in test_token_refresh
+    token = login_response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:15,041 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,041 - api.middleware.logging - INFO - [logging.py:31] - [aedec058] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,051 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,051 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,052 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,052 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,052 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_code_refresh
+2025-08-22 17:06:15,052 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615052630，包含 1 个操作
+2025-08-22 17:06:15,052 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615052630 中的操作 1/1
+2025-08-22 17:06:15,062 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615052630 提交成功
+2025-08-22 17:06:15,062 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_04d7fd42b15ab205)
+2025-08-22 17:06:15,062 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,063 - api.middleware.logging - INFO - [logging.py:44] - [aedec058] 200 - Time: 0.022s
+2025-08-22 17:06:15,091 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,094 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [aedec058] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_code_refresh
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615052630，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615052630 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615052630 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_04d7fd42b15ab205)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [aedec058] 200 - Time: 0.022s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+_______________ TestAuthRoutes.test_token_refresh_missing_token ________________
+tests/test_api/test_auth.py:84: in test_token_refresh_missing_token
+    assert response.status_code == 401
+E   assert 403 == 401
+E    +  where 403 = <Response [403 Forbidden]>.status_code
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:15,115 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,116 - api.middleware.logging - INFO - [logging.py:31] - [cd47bcc5] POST /api/auth/refresh - Client: testclient
+2025-08-22 17:06:15,118 - api.middleware.logging - INFO - [logging.py:44] - [cd47bcc5] 403 - Time: 0.002s
+2025-08-22 17:06:15,119 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/refresh "HTTP/1.1 403 Forbidden"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [cd47bcc5] POST /api/auth/refresh - Client: testclient
+INFO     api.middleware.logging:logging.py:44 [cd47bcc5] 403 - Time: 0.002s
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/refresh "HTTP/1.1 403 Forbidden"
+_________________ TestTokenValidation.test_valid_token_access __________________
+tests/test_api/test_auth.py:102: in test_valid_token_access
+    token = login_response.json()["data"]["access_token"]
+E   TypeError: 'NoneType' object is not subscriptable
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:15,123 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,124 - api.middleware.logging - INFO - [logging.py:31] - [93d84425] POST /api/auth/wechat/login - Client: testclient
+2025-08-22 17:06:15,132 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-22 17:06:15,132 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-22 17:06:15,133 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-22 17:06:15,133 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-22 17:06:15,133 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_code_valid
+2025-08-22 17:06:15,133 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250822170615133749，包含 1 个操作
+2025-08-22 17:06:15,134 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250822170615133749 中的操作 1/1
+2025-08-22 17:06:15,145 - DatabaseManager - INFO - [manager.py:156] - 事务 20250822170615133749 提交成功
+2025-08-22 17:06:15,145 - api.auth.routes - INFO - [routes.py:112] - 现有用户登录: None (mock_openid_77cce12ce5eed027)
+2025-08-22 17:06:15,145 - api.auth.routes - ERROR - [routes.py:161] - 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+2025-08-22 17:06:15,146 - api.middleware.logging - INFO - [logging.py:44] - [93d84425] 200 - Time: 0.022s
+2025-08-22 17:06:15,165 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-22 17:06:15,168 - httpx - INFO - [_client.py:1013] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [93d84425] POST /api/auth/wechat/login - Client: testclient
+INFO     DatabaseManager:manager.py:60 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+DEBUG    DatabaseManager:manager.py:99 数据库优化参数配置完成
+INFO     root:config.py:71 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+WARNING  api.auth.wechat_service:wechat_service.py:21 微信配置缺失，将使用模拟模式
+INFO     api.auth.wechat_service:wechat_service.py:91 使用模拟微信认证，code: test_code_valid
+DEBUG    DatabaseManager:manager.py:147 开始事务 20250822170615133749，包含 1 个操作
+DEBUG    DatabaseManager:manager.py:151 执行事务 20250822170615133749 中的操作 1/1
+INFO     DatabaseManager:manager.py:156 事务 20250822170615133749 提交成功
+INFO     api.auth.routes:routes.py:112 现有用户登录: None (mock_openid_77cce12ce5eed027)
+ERROR    api.auth.routes:routes.py:161 微信登录失败: 1 validation error for UserInfo
+wechat_name
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+INFO     api.middleware.logging:logging.py:44 [93d84425] 200 - Time: 0.022s
+INFO     DatabaseManager:manager.py:78 数据库连接已关闭
+INFO     httpx:_client.py:1013 HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+________________ TestTokenValidation.test_missing_token_access _________________
+tests/test_api/test_auth.py:129: in test_missing_token_access
+    assert response.status_code == 401
+E   assert 403 == 401
+E    +  where 403 = <Response [403 Forbidden]>.status_code
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:15,190 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,190 - api.middleware.logging - INFO - [logging.py:31] - [8587ab99] GET /api/users/profile - Client: testclient
+2025-08-22 17:06:15,192 - api.middleware.logging - INFO - [logging.py:44] - [8587ab99] 403 - Time: 0.001s
+2025-08-22 17:06:15,193 - httpx - INFO - [_client.py:1013] - HTTP Request: GET http://testserver/api/users/profile "HTTP/1.1 403 Forbidden"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [8587ab99] GET /api/users/profile - Client: testclient
+INFO     api.middleware.logging:logging.py:44 [8587ab99] 403 - Time: 0.001s
+INFO     httpx:_client.py:1013 HTTP Request: GET http://testserver/api/users/profile "HTTP/1.1 403 Forbidden"
+__________________ TestMealsList.test_get_meals_unauthorized ___________________
+tests/test_api/test_meals.py:69: in test_get_meals_unauthorized
+    assert response.status_code == 401
+E   assert 403 == 401
+E    +  where 403 = <Response [403 Forbidden]>.status_code
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:15,412 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,413 - api.middleware.logging - INFO - [logging.py:31] - [b799a273] GET /api/meals - Client: testclient
+2025-08-22 17:06:15,415 - api.middleware.logging - INFO - [logging.py:44] - [b799a273] 403 - Time: 0.002s
+2025-08-22 17:06:15,416 - httpx - INFO - [_client.py:1013] - HTTP Request: GET http://testserver/api/meals?start_date=2024-12-01&end_date=2024-12-31 "HTTP/1.1 403 Forbidden"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [b799a273] GET /api/meals - Client: testclient
+INFO     api.middleware.logging:logging.py:44 [b799a273] 403 - Time: 0.002s
+INFO     httpx:_client.py:1013 HTTP Request: GET http://testserver/api/meals?start_date=2024-12-01&end_date=2024-12-31 "HTTP/1.1 403 Forbidden"
+_______________ TestMealDetail.test_get_meal_detail_unauthorized _______________
+tests/test_api/test_meals.py:110: in test_get_meal_detail_unauthorized
+    assert response.status_code == 401
+E   assert 403 == 401
+E    +  where 403 = <Response [403 Forbidden]>.status_code
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:15,515 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,515 - api.middleware.logging - INFO - [logging.py:31] - [0d4a8974] GET /api/meals/1 - Client: testclient
+2025-08-22 17:06:15,517 - api.middleware.logging - INFO - [logging.py:44] - [0d4a8974] 403 - Time: 0.002s
+2025-08-22 17:06:15,519 - httpx - INFO - [_client.py:1013] - HTTP Request: GET http://testserver/api/meals/1 "HTTP/1.1 403 Forbidden"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [0d4a8974] GET /api/meals/1 - Client: testclient
+INFO     api.middleware.logging:logging.py:44 [0d4a8974] 403 - Time: 0.002s
+INFO     httpx:_client.py:1013 HTTP Request: GET http://testserver/api/meals/1 "HTTP/1.1 403 Forbidden"
+____________ TestMealOrder.test_check_user_meal_order_unauthorized _____________
+tests/test_api/test_meals.py:150: in test_check_user_meal_order_unauthorized
+    assert response.status_code == 401
+E   assert 404 == 401
+E    +  where 404 = <Response [404 Not Found]>.status_code
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:15,633 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:15,634 - api.middleware.logging - INFO - [logging.py:31] - [563e76d9] GET /api/meals/1/order - Client: testclient
+2025-08-22 17:06:15,636 - api.middleware.logging - INFO - [logging.py:44] - [563e76d9] 404 - Time: 0.002s
+2025-08-22 17:06:15,638 - httpx - INFO - [_client.py:1013] - HTTP Request: GET http://testserver/api/meals/1/order "HTTP/1.1 404 Not Found"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [563e76d9] GET /api/meals/1/order - Client: testclient
+INFO     api.middleware.logging:logging.py:44 [563e76d9] 404 - Time: 0.002s
+INFO     httpx:_client.py:1013 HTTP Request: GET http://testserver/api/meals/1/order "HTTP/1.1 404 Not Found"
+_____________ TestOrderCancellation.test_cancel_order_unauthorized _____________
+tests/test_api/test_orders.py:187: in test_cancel_order_unauthorized
+    response = client.delete("/api/orders/1", json=cancel_data)
+E   TypeError: TestClient.delete() got an unexpected keyword argument 'json'
+______________ TestOrderDetail.test_get_order_detail_unauthorized ______________
+tests/test_api/test_orders.py:228: in test_get_order_detail_unauthorized
+    assert response.status_code == 401
+E   assert 405 == 401
+E    +  where 405 = <Response [405 Method Not Allowed]>.status_code
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:16,348 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,349 - api.middleware.logging - INFO - [logging.py:31] - [eb7d7974] GET /api/orders/1 - Client: testclient
+2025-08-22 17:06:16,350 - api.middleware.logging - INFO - [logging.py:44] - [eb7d7974] 405 - Time: 0.002s
+2025-08-22 17:06:16,352 - httpx - INFO - [_client.py:1013] - HTTP Request: GET http://testserver/api/orders/1 "HTTP/1.1 405 Method Not Allowed"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [eb7d7974] GET /api/orders/1 - Client: testclient
+INFO     api.middleware.logging:logging.py:44 [eb7d7974] 405 - Time: 0.002s
+INFO     httpx:_client.py:1013 HTTP Request: GET http://testserver/api/orders/1 "HTTP/1.1 405 Method Not Allowed"
+________________ TestUserProfile.test_get_profile_unauthorized _________________
+tests/test_api/test_users.py:31: in test_get_profile_unauthorized
+    assert response.status_code == 401
+E   assert 403 == 401
+E    +  where 403 = <Response [403 Forbidden]>.status_code
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:16,432 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,433 - api.middleware.logging - INFO - [logging.py:31] - [559121c1] GET /api/users/profile - Client: testclient
+2025-08-22 17:06:16,435 - api.middleware.logging - INFO - [logging.py:44] - [559121c1] 403 - Time: 0.001s
+2025-08-22 17:06:16,436 - httpx - INFO - [_client.py:1013] - HTTP Request: GET http://testserver/api/users/profile "HTTP/1.1 403 Forbidden"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [559121c1] GET /api/users/profile - Client: testclient
+INFO     api.middleware.logging:logging.py:44 [559121c1] 403 - Time: 0.001s
+INFO     httpx:_client.py:1013 HTTP Request: GET http://testserver/api/users/profile "HTTP/1.1 403 Forbidden"
+________________ TestUserBalance.test_get_balance_unauthorized _________________
+tests/test_api/test_users.py:59: in test_get_balance_unauthorized
+    assert response.status_code == 401
+E   assert 404 == 401
+E    +  where 404 = <Response [404 Not Found]>.status_code
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:16,500 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,501 - api.middleware.logging - INFO - [logging.py:31] - [82c80017] GET /api/users/balance - Client: testclient
+2025-08-22 17:06:16,502 - api.middleware.logging - INFO - [logging.py:44] - [82c80017] 404 - Time: 0.002s
+2025-08-22 17:06:16,504 - httpx - INFO - [_client.py:1013] - HTTP Request: GET http://testserver/api/users/balance "HTTP/1.1 404 Not Found"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [82c80017] GET /api/users/balance - Client: testclient
+INFO     api.middleware.logging:logging.py:44 [82c80017] 404 - Time: 0.002s
+INFO     httpx:_client.py:1013 HTTP Request: GET http://testserver/api/users/balance "HTTP/1.1 404 Not Found"
+_________________ TestUserLedger.test_get_ledger_unauthorized __________________
+tests/test_api/test_users.py:101: in test_get_ledger_unauthorized
+    assert response.status_code == 401
+E   assert 403 == 401
+E    +  where 403 = <Response [403 Forbidden]>.status_code
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:16,643 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,644 - api.middleware.logging - INFO - [logging.py:31] - [c711cf42] GET /api/users/ledger - Client: testclient
+2025-08-22 17:06:16,646 - api.middleware.logging - INFO - [logging.py:44] - [c711cf42] 403 - Time: 0.002s
+2025-08-22 17:06:16,647 - httpx - INFO - [_client.py:1013] - HTTP Request: GET http://testserver/api/users/ledger "HTTP/1.1 403 Forbidden"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [c711cf42] GET /api/users/ledger - Client: testclient
+INFO     api.middleware.logging:logging.py:44 [c711cf42] 403 - Time: 0.002s
+INFO     httpx:_client.py:1013 HTTP Request: GET http://testserver/api/users/ledger "HTTP/1.1 403 Forbidden"
+_______________ TestUserOrders.test_get_user_orders_unauthorized _______________
+tests/test_api/test_users.py:139: in test_get_user_orders_unauthorized
+    assert response.status_code == 401
+E   assert 403 == 401
+E    +  where 403 = <Response [403 Forbidden]>.status_code
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:16,765 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,766 - api.middleware.logging - INFO - [logging.py:31] - [3ca14057] GET /api/users/orders - Client: testclient
+2025-08-22 17:06:16,767 - api.middleware.logging - INFO - [logging.py:44] - [3ca14057] 403 - Time: 0.001s
+2025-08-22 17:06:16,769 - httpx - INFO - [_client.py:1013] - HTTP Request: GET http://testserver/api/users/orders "HTTP/1.1 403 Forbidden"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [3ca14057] GET /api/users/orders - Client: testclient
+INFO     api.middleware.logging:logging.py:44 [3ca14057] 403 - Time: 0.001s
+INFO     httpx:_client.py:1013 HTTP Request: GET http://testserver/api/users/orders "HTTP/1.1 403 Forbidden"
+_____________ TestUserStatistics.test_get_statistics_unauthorized ______________
+tests/test_api/test_users.py:182: in test_get_statistics_unauthorized
+    assert response.status_code == 401
+E   assert 404 == 401
+E    +  where 404 = <Response [404 Not Found]>.status_code
+----------------------------- Captured stderr call -----------------------------
+2025-08-22 17:06:16,875 - asyncio - DEBUG - [selector_events.py:54] - Using selector: EpollSelector
+2025-08-22 17:06:16,876 - api.middleware.logging - INFO - [logging.py:31] - [3e4c01d8] GET /api/users/statistics/orders - Client: testclient
+2025-08-22 17:06:16,878 - api.middleware.logging - INFO - [logging.py:44] - [3e4c01d8] 404 - Time: 0.002s
+2025-08-22 17:06:16,880 - httpx - INFO - [_client.py:1013] - HTTP Request: GET http://testserver/api/users/statistics/orders "HTTP/1.1 404 Not Found"
+------------------------------ Captured log call -------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     api.middleware.logging:logging.py:31 [3e4c01d8] GET /api/users/statistics/orders - Client: testclient
+INFO     api.middleware.logging:logging.py:44 [3e4c01d8] 404 - Time: 0.002s
+INFO     httpx:_client.py:1013 HTTP Request: GET http://testserver/api/users/statistics/orders "HTTP/1.1 404 Not Found"
+=============================== warnings summary ===============================
+../../../miniconda3/envs/ganghaofan_test/lib/python3.11/site-packages/passlib/utils/__init__.py:854
+  /home/pp/miniconda3/envs/ganghaofan_test/lib/python3.11/site-packages/passlib/utils/__init__.py:854: DeprecationWarning: 'crypt' is deprecated and slated for removal in Python 3.13
+    from crypt import crypt as _crypt
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_api/test_admin.py::TestAdminPermissions::test_unauthenticated_access_denied
+FAILED tests/test_api/test_auth.py::TestAuthRoutes::test_wechat_auth_success
+FAILED tests/test_api/test_auth.py::TestAuthRoutes::test_token_refresh - Type...
+FAILED tests/test_api/test_auth.py::TestAuthRoutes::test_token_refresh_missing_token
+FAILED tests/test_api/test_auth.py::TestTokenValidation::test_valid_token_access
+FAILED tests/test_api/test_auth.py::TestTokenValidation::test_missing_token_access
+FAILED tests/test_api/test_meals.py::TestMealsList::test_get_meals_unauthorized
+FAILED tests/test_api/test_meals.py::TestMealDetail::test_get_meal_detail_unauthorized
+FAILED tests/test_api/test_meals.py::TestMealOrder::test_check_user_meal_order_unauthorized
+FAILED tests/test_api/test_orders.py::TestOrderCancellation::test_cancel_order_unauthorized
+FAILED tests/test_api/test_orders.py::TestOrderDetail::test_get_order_detail_unauthorized
+FAILED tests/test_api/test_users.py::TestUserProfile::test_get_profile_unauthorized
+FAILED tests/test_api/test_users.py::TestUserBalance::test_get_balance_unauthorized
+FAILED tests/test_api/test_users.py::TestUserLedger::test_get_ledger_unauthorized
+FAILED tests/test_api/test_users.py::TestUserOrders::test_get_user_orders_unauthorized
+FAILED tests/test_api/test_users.py::TestUserStatistics::test_get_statistics_unauthorized
+ERROR tests/test_api/test_admin.py::TestAdminAddons::test_create_addon_success
+ERROR tests/test_api/test_admin.py::TestAdminAddons::test_create_addon_duplicate_name
+ERROR tests/test_api/test_admin.py::TestAdminAddons::test_create_addon_unauthorized
+ERROR tests/test_api/test_admin.py::TestAdminAddons::test_deactivate_addon_success
+ERROR tests/test_api/test_admin.py::TestAdminAddons::test_deactivate_addon_nonexistent
+ERROR tests/test_api/test_admin.py::TestAdminMeals::test_publish_meal_success
+ERROR tests/test_api/test_admin.py::TestAdminMeals::test_publish_meal_duplicate_slot
+ERROR tests/test_api/test_admin.py::TestAdminMeals::test_lock_meal_success - ...
+ERROR tests/test_api/test_admin.py::TestAdminMeals::test_complete_meal_success
+ERROR tests/test_api/test_admin.py::TestAdminMeals::test_cancel_meal_success
+ERROR tests/test_api/test_admin.py::TestAdminUsers::test_get_users_list - Typ...
+ERROR tests/test_api/test_admin.py::TestAdminUsers::test_get_users_list_with_filters
+ERROR tests/test_api/test_admin.py::TestAdminUsers::test_set_user_admin_status
+ERROR tests/test_api/test_admin.py::TestAdminUsers::test_set_user_status - Ty...
+ERROR tests/test_api/test_admin.py::TestAdminUsers::test_adjust_user_balance
+ERROR tests/test_api/test_admin.py::TestAdminPermissions::test_non_admin_access_denied
+ERROR tests/test_api/test_meals.py::TestMealsList::test_get_meals_list - Type...
+ERROR tests/test_api/test_meals.py::TestMealsList::test_get_meals_list_with_pagination
+ERROR tests/test_api/test_meals.py::TestMealsList::test_get_meals_missing_dates
+ERROR tests/test_api/test_meals.py::TestMealsList::test_get_meals_invalid_date_range
+ERROR tests/test_api/test_meals.py::TestMealDetail::test_get_meal_detail - Ty...
+ERROR tests/test_api/test_meals.py::TestMealDetail::test_get_meal_detail_nonexistent
+ERROR tests/test_api/test_meals.py::TestMealOrder::test_check_user_meal_order
+ERROR tests/test_api/test_meals.py::TestMealOrder::test_check_user_meal_order_nonexistent_meal
+ERROR tests/test_api/test_orders.py::TestOrderCreation::test_create_order_success
+ERROR tests/test_api/test_orders.py::TestOrderCreation::test_create_order_missing_meal_id
+ERROR tests/test_api/test_orders.py::TestOrderCreation::test_create_order_nonexistent_meal
+ERROR tests/test_api/test_orders.py::TestOrderCreation::test_create_order_insufficient_balance
+ERROR tests/test_api/test_orders.py::TestOrderCreation::test_create_order_duplicate
+ERROR tests/test_api/test_orders.py::TestOrderCreation::test_create_order_unauthorized
+ERROR tests/test_api/test_orders.py::TestOrderCancellation::test_cancel_order_success
+ERROR tests/test_api/test_orders.py::TestOrderCancellation::test_cancel_order_nonexistent
+ERROR tests/test_api/test_orders.py::TestOrderCancellation::test_cancel_order_not_owned
+ERROR tests/test_api/test_orders.py::TestOrderCancellation::test_cancel_order_missing_reason
+ERROR tests/test_api/test_orders.py::TestOrderDetail::test_get_order_detail
+ERROR tests/test_api/test_orders.py::TestOrderDetail::test_get_order_detail_nonexistent
+ERROR tests/test_api/test_users.py::TestUserProfile::test_get_profile_success
+ERROR tests/test_api/test_users.py::TestUserBalance::test_get_balance - TypeE...
+ERROR tests/test_api/test_users.py::TestUserLedger::test_get_ledger_history
+ERROR tests/test_api/test_users.py::TestUserLedger::test_get_ledger_history_with_pagination
+ERROR tests/test_api/test_users.py::TestUserOrders::test_get_user_orders - Ty...
+ERROR tests/test_api/test_users.py::TestUserOrders::test_get_user_orders_with_pagination
+ERROR tests/test_api/test_users.py::TestUserStatistics::test_get_order_statistics
+ERROR tests/test_api/test_users.py::TestUserStatistics::test_get_transaction_statistics
+============== 16 failed, 3 passed, 1 warning, 44 errors in 2.96s ==============
