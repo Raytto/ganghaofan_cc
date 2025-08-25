@@ -190,12 +190,33 @@ Page({
    */
   onPriceInput(e) {
     let value = parseFloat(e.detail.value) || 0
-    // 限制价格范围：0-999.99
-    if (value < 0) value = 0
+    // 限制价格范围：-999.99 到 999.99（支持负价格，如"不要鸡腿"）
+    if (value < -999.99) value = -999.99
     if (value > 999.99) value = 999.99
     
     this.setData({
       'newAddon.price_yuan': value
+    })
+  },
+
+  /**
+   * 价格-1按钮
+   */
+  onPriceMinus() {
+    let currentPrice = this.data.newAddon.price_yuan || 0
+    let newPrice = currentPrice - 1
+    
+    // 限制最小价格（支持负价格，如"不要鸡腿"可以是负数）
+    if (newPrice < -999.99) {
+      wx.showToast({
+        title: '价格不能低于-999.99元',
+        icon: 'none'
+      })
+      return
+    }
+    
+    this.setData({
+      'newAddon.price_yuan': newPrice
     })
   },
 
@@ -235,9 +256,10 @@ Page({
       return
     }
     
-    if (price_yuan < 0) {
+    // 检查价格范围（支持负价格，如减价附加项）
+    if (price_yuan < -999.99 || price_yuan > 999.99) {
       wx.showToast({
-        title: '价格不能为负数',
+        title: '价格范围应在-999.99到999.99元之间',
         icon: 'none'
       })
       return

@@ -83,16 +83,13 @@ async def deactivate_addon(
     参考文档: doc/api.md - 5.1.2 停用附加项
     """
     try:
+        # 使用修复后的core_operations方法
         core_ops = CoreOperations(db)
         
-        # 停用附加项
         deactivate_result = core_ops.admin_deactivate_addon(
             admin_user_id=current_admin.user_id,
             addon_id=addon_id
         )
-        
-        if not deactivate_result.get("success", True):
-            return create_error_response(deactivate_result.get("message", "附加项停用失败"))
         
         response_data = {
             "addon_id": deactivate_result["addon_id"],

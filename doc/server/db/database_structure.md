@@ -61,10 +61,15 @@ CREATE TABLE addons (
     name VARCHAR(100) NOT NULL,                -- 附加项名称（如"加鸡腿"、"不要鸡腿"、"加饮料"）
     price_cents INTEGER NOT NULL,              -- 附加项价格（单位：分，可以为负数）
     display_order INTEGER DEFAULT 0,           -- 显示顺序
-    is_default BOOLEAN DEFAULT FALSE           -- 是否默认选中
+    is_default BOOLEAN DEFAULT FALSE,          -- 是否默认选中
     status VARCHAR(20) DEFAULT 'active',       -- 状态: active/inactive
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- 记录创建时间，方便审计
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 记录创建时间，方便审计
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP  -- 记录更新时间
 );
+
+-- 索引
+CREATE INDEX idx_addons_status ON addons(status);
+CREATE INDEX idx_addons_display_order ON addons(display_order);
 ```
 
 ### 2.4 订单表（orders）

@@ -139,6 +139,17 @@ page {
   color: #666;
 }
 
+.price-minus-btn {
+  font-size: 24rpx;
+  padding: 15rpx 25rpx;
+  background: #f0f0f0;
+  color: #333;
+}
+
+.price-minus-btn:active {
+  background: #e0e0e0;
+}
+
 .price-plus-btn {
   font-size: 24rpx;
   padding: 15rpx 25rpx;

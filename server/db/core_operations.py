@@ -295,32 +295,42 @@ class CoreOperations:
             操作结果
         """
         
-        def deactivate_addon_operation():
-            # 验证管理员权限
-            self._verify_admin_permission(admin_user_id)
-            
-            # 检查附加项是否存在且为active状态
-            addon_info = self._verify_addon_exists_and_active(addon_id)
-            
-            # 检查是否有活跃状态的餐次正在使用该附加项
-            meal_details = self._check_addon_used_by_active_meals(addon_id)
-            if meal_details:
-                raise ValueError(f"附加项 '{addon_info['name']}' 正被以下活跃餐次使用，无法停用: {', '.join(meal_details)}")
-            
-            # 停用附加项
-            self.db.conn.execute("""
-                UPDATE addons 
-                SET status = 'inactive', updated_at = CURRENT_TIMESTAMP
-                WHERE addon_id = ?
-            """, [addon_id])
-            
-            return {
-                'addon_id': addon_id,
-                'addon_name': addon_info['name'],
-                'message': f'附加项 "{addon_info["name"]}" 已停用'
-            }
+        # 验证管理员权限
+        self._verify_admin_permission(admin_user_id)
         
-        return self.db.execute_transaction([deactivate_addon_operation])[0]
+        # 检查附加项是否存在且为active状态
+        addon_info = self._verify_addon_exists_and_active(addon_id)
+        
+        # 检查是否有活跃状态的餐次正在使用该附加项
+        meal_details = self._check_addon_used_by_active_meals(addon_id)
+        if meal_details:
+            raise ValueError(f"附加项 '{addon_info['name']}' 正被以下活跃餐次使用，无法停用: {', '.join(meal_details)}")
+        
+        # 停用附加项 - 使用DELETE+INSERT方式避免DuckDB UPDATE约束bug
+        # 首先获取当前记录的所有数据
+        current_record = self.db.conn.execute("""
+            SELECT addon_id, name, price_cents, display_order, is_default, created_at
+            FROM addons WHERE addon_id = ?
+        """, [addon_id]).fetchone()
+        
+        if not current_record:
+            raise ValueError(f"附加项 {addon_id} 不存在")
+        
+        # 删除旧记录
+        self.db.conn.execute("DELETE FROM addons WHERE addon_id = ?", [addon_id])
+        
+        # 插入新记录，状态改为inactive，时间戳更新
+        self.db.conn.execute("""
+            INSERT INTO addons (addon_id, name, price_cents, display_order, is_default, status, created_at, updated_at)
+            VALUES (?, ?, ?, ?, ?, 'inactive', ?, CURRENT_TIMESTAMP)
+        """, [current_record[0], current_record[1], current_record[2], current_record[3], 
+              current_record[4], current_record[5]])
+        
+        return {
+            'addon_id': addon_id,
+            'addon_name': addon_info['name'],
+            'message': f'附加项 "{addon_info["name"]}" 已停用'
+        }
 
     # 管理员发布餐次操作
     def admin_publish_meal(self, admin_user_id: int, date: str, slot: str, 
