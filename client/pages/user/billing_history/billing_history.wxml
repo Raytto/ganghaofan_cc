@@ -1,0 +1,228 @@
+<!--用户账单历史页面-->
+<!--参考文档: doc/client/page_billing_history.md-->
+
+<view class="container">
+  <!-- 账户信息卡片 -->
+  <view class="balance-card">
+    <view class="balance-header">
+      <text class="balance-title">💰 账户余额</text>
+      <button class="recharge-btn" bind:tap="onShowRecharge">
+        + 充值
+      </button>
+    </view>
+    <view class="balance-amount">
+      <text class="amount-symbol">¥</text>
+      <text class="amount-value">{{balance}}</text>
+    </view>
+    <view wx:if="{{userInfo}}" class="user-info">
+      <text class="user-name">{{userInfo.name}}</text>
+      <text class="user-id">ID: {{userInfo.user_id}}</text>
+    </view>
+  </view>
+
+  <!-- 功能按钮栏 -->
+  <view class="function-bar">
+    <view class="function-toggle" bind:tap="onToggleFilters">
+      <text class="function-text">🔍 筛选</text>
+      <text class="function-icon {{showFilters ? 'active' : ''}}">▼</text>
+    </view>
+    <view class="function-actions">
+      <button class="export-btn" bind:tap="onExportTransactions">
+        📊 导出
+      </button>
+    </view>
+  </view>
+
+  <!-- 筛选面板 -->
+  <view wx:if="{{showFilters}}" class="filter-panel">
+    <view class="filter-section">
+      <view class="filter-item">
+        <text class="filter-label">交易类型：</text>
+        <picker
+          range="{{transactionTypes}}"
+          range-key="label"
+          value="{{transactionTypes.findIndex(item => item.value === filters.transaction_type)}}"
+          bind:change="onFilterChange"
+          data-field="transaction_type"
+        >
+          <view class="picker-value">
+            {{transactionTypes[transactionTypes.findIndex(item => item.value === filters.transaction_type)]?.label || '请选择'}}
+          </view>
+        </picker>
+      </view>
+      
+      <view class="filter-item">
+        <text class="filter-label">开始日期：</text>
+        <picker
+          mode="date"
+          value="{{filters.date_from}}"
+          bind:change="onFilterChange"
+          data-field="date_from"
+        >
+          <view class="picker-value">
+            {{filters.date_from || '请选择'}}
+          </view>
+        </picker>
+      </view>
+      
+      <view class="filter-item">
+        <text class="filter-label">结束日期：</text>
+        <picker
+          mode="date"
+          value="{{filters.date_to}}"
+          bind:change="onFilterChange"
+          data-field="date_to"
+        >
+          <view class="picker-value">
+            {{filters.date_to || '请选择'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    
+    <view class="filter-actions">
+      <button class="filter-btn reset" bind:tap="onResetFilters">重置</button>
+      <button class="filter-btn apply" bind:tap="onApplyFilters">应用</button>
+    </view>
+  </view>
+
+  <!-- 交易记录列表 -->
+  <view class="transactions-section">
+    <view class="section-title">
+      <text class="title-text">📋 交易记录</text>
+      <text wx:if="{{pagination.total > 0}}" class="title-count">共{{pagination.total}}笔</text>
+    </view>
+
+    <!-- 加载状态 -->
+    <view wx:if="{{loading && transactions.length === 0}}" class="loading-container">
+      <view class="loading-content">
+        <text class="loading-text">加载中...</text>
+      </view>
+    </view>
+
+    <!-- 交易记录列表 -->
+    <view wx:elif="{{transactions.length > 0}}" class="transaction-list">
+      <view 
+        wx:for="{{transactions}}" 
+        wx:key="transaction_id" 
+        class="transaction-item"
+        bind:tap="onTransactionTap"
+        data-transaction-id="{{item.transaction_id}}"
+      >
+        <!-- 交易基本信息 -->
+        <view class="transaction-header">
+          <view class="transaction-info">
+            <text class="transaction-type">{{formatTransactionType(item.transaction_type)}}</text>
+            <text class="transaction-time">{{formatDateTime(item.created_at)}}</text>
+          </view>
+          <view class="transaction-amount {{formatTransactionAmount(item.amount_yuan, item.transaction_type).color}}">
+            <text class="amount-text">{{formatTransactionAmount(item.amount_yuan, item.transaction_type).text}}</text>
+          </view>
+        </view>
+
+        <!-- 交易详情 -->
+        <view wx:if="{{item.description}}" class="transaction-description">
+          <text class="description-text">{{item.description}}</text>
+        </view>
+
+        <!-- 订单相关信息 -->
+        <view wx:if="{{item.related_order_id}}" class="related-info">
+          <text class="related-label">相关订单：</text>
+          <text class="related-value">#{{item.related_order_id}}</text>
+        </view>
+
+        <!-- 交易编号和余额 -->
+        <view class="transaction-footer">
+          <text class="transaction-number">{{item.transaction_number}}</text>
+          <text class="balance-after">余额：¥{{item.balance_after_yuan}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:elif="{{!loading}}" class="empty-container">
+      <view class="empty-content">
+        <text class="empty-icon">💳</text>
+        <text class="empty-text">暂无交易记录</text>
+        <text class="empty-tip">快去下单或充值吧</text>
+      </view>
+    </view>
+
+    <!-- 加载更多 -->
+    <view wx:if="{{loadingMore}}" class="loading-more">
+      <text class="loading-more-text">加载更多...</text>
+    </view>
+
+    <!-- 没有更多 -->
+    <view wx:elif="{{transactions.length > 0 && !pagination.has_more}}" class="no-more">
+      <text class="no-more-text">没有更多记录了</text>
+    </view>
+  </view>
+
+  <!-- 充值弹窗 -->
+  <view wx:if="{{showRecharge}}" class="recharge-modal">
+    <view class="modal-mask" bind:tap="onHideRecharge"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">💰 账户充值</text>
+        <text class="modal-close" bind:tap="onHideRecharge">✕</text>
+      </view>
+      
+      <view class="modal-body">
+        <!-- 当前余额 -->
+        <view class="current-balance">
+          <text class="balance-label">当前余额：</text>
+          <text class="balance-value">¥{{balance}}</text>
+        </view>
+        
+        <!-- 充值金额输入 -->
+        <view class="amount-input-section">
+          <text class="input-label">充值金额（元）</text>
+          <input
+            class="amount-input"
+            type="digit"
+            placeholder="请输入充值金额"
+            value="{{rechargeAmount}}"
+            bind:input="onRechargeAmountInput"
+            maxlength="6"
+          />
+        </view>
+        
+        <!-- 快捷金额选择 -->
+        <view class="quick-amounts">
+          <text class="quick-label">快捷选择：</text>
+          <view class="quick-buttons">
+            <button
+              wx:for="{{quickRechargeAmounts}}"
+              wx:key="*this"
+              class="quick-btn {{rechargeAmount === item ? 'active' : ''}}"
+              data-amount="{{item}}"
+              bind:tap="onQuickAmountSelect"
+            >
+              ¥{{item}}
+            </button>
+          </view>
+        </view>
+        
+        <!-- 充值说明 -->
+        <view class="recharge-notice">
+          <text class="notice-text">• 单次充值限额：1000元</text>
+          <text class="notice-text">• 充值后立即到账</text>
+          <text class="notice-text">• 如有疑问请联系管理员</text>
+        </view>
+      </view>
+      
+      <view class="modal-footer">
+        <button class="modal-btn cancel" bind:tap="onHideRecharge">取消</button>
+        <button 
+          class="modal-btn confirm" 
+          loading="{{submittingRecharge}}"
+          disabled="{{submittingRecharge || !rechargeAmount || rechargeAmount <= 0}}"
+          bind:tap="onSubmitRecharge"
+        >
+          确认充值
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

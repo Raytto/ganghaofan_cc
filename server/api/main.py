@@ -18,6 +18,7 @@ from api.users import users_router
 from api.meals import meals_router
 from api.orders import orders_router
 from api.admin import admin_router
+from api.addons import addons_router
 
 # 全局配置实例
 config = Config()
@@ -58,6 +59,7 @@ app.include_router(auth_router, tags=["认证"])
 app.include_router(users_router, tags=["用户"])
 app.include_router(meals_router, tags=["餐次"])
 app.include_router(orders_router, tags=["订单"])
+app.include_router(addons_router, tags=["附加项"])
 app.include_router(admin_router, tags=["管理员"])
 
 

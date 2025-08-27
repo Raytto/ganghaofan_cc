@@ -4,7 +4,12 @@
     "pages/register/register",
     "pages/calendar/calendar",
     "pages/profile/profile",
-    "pages/admin/addon_manage/addon_manage"
+    "pages/admin/addon_manage/addon_manage",
+    "pages/admin/meal_publish/meal_publish",
+    "pages/user/meal_order/meal_order",
+    "pages/common/order_list/order_list",
+    "pages/user/billing_history/billing_history",
+    "pages/admin/user_manage/user_manage"
   ],
   "tabBar": {
     "color": "#666666",

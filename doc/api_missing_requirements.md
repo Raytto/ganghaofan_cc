@@ -2,6 +2,14 @@
 
 基于新编写的页面需求文档，与现有的 `api.md` 对比分析，发现以下接口需要补充或调整。
 
+## 重要说明：多附加项支持
+
+**附加项多选机制**：
+- **管理员发布餐次**：可以选择多个不同附加项（如加鸡腿、不要米饭、少盐等），并为每个附加项设置最大可选数量
+- **用户下单时**：可以同时选择多个附加项，每个附加项可选择 0 到最大数量范围内的任意数量
+- **支持负价格**：附加项可以是负价格（如“不要米饭”-¥1.00）
+- **数据结构**：JSON 格式 `{"addon_id": quantity}` 支持多附加项选择
+
 ## 接口分析总结
 
 ### 已存在的接口（无需补充）
@@ -32,8 +40,10 @@ PUT /api/admin/meals/{meal_id}
     "description": "更新后的餐次描述",
     "base_price_cents": 1800,
     "addon_config": {
-        "1": 3,
-        "2": 2
+        "1": 3,     // 加鸡腿最多3个
+        "2": 1,     // 加饮料最多1个  
+        "3": 1,     // 不要米饭最多1个
+        "4": 1      // 少盐最多1个
     },
     "max_orders": 60
 }
@@ -49,7 +59,7 @@ PUT /api/admin/meals/{meal_id}
         "slot": "lunch",
         "description": "更新后的餐次描述",
         "base_price_yuan": 18.0,
-        "addon_config": {"1": 3, "2": 2},
+        "addon_config": {"1": 3, "2": 1, "3": 1, "4": 1},
         "max_orders": 60,
         "status": "published",
         "updated_at": "2024-12-01T15:30:00Z"
@@ -139,8 +149,10 @@ PUT /api/orders/{order_id}
 ```json
 {
     "addon_selections": {
-        "1": 1,
-        "2": 2
+        "1": 2,     // 选择加鸡腿 2个
+        "2": 1,     // 选择加饮料 1个
+        "3": 1,     // 选择不要米饭 1个
+        "4": 0      // 不选择少盐
     }
 }
 ```
@@ -155,7 +167,7 @@ PUT /api/orders/{order_id}
         "old_amount_yuan": 21.0,
         "new_amount_yuan": 23.0,
         "amount_difference_yuan": 2.0,
-        "addon_selections": {"1": 1, "2": 2},
+        "addon_selections": {"1": 2, "2": 1, "3": 1, "4": 0},
         "transaction_no": "TXN20241201000006",
         "remaining_balance_yuan": 27.0,
         "updated_at": "2024-12-01T16:30:00Z"
@@ -201,7 +213,7 @@ size: 每页大小，默认20
                 "meal_slot_text": "午餐",
                 "meal_description": "红烧肉套餐",
                 "amount_yuan": 21.0,
-                "addon_selections": {"1": 2, "2": 1},
+                "addon_selections": {"1": 2, "2": 1, "3": 1, "4": 0},
                 "addon_details": [
                     {
                         "addon_id": 1,
@@ -209,6 +221,20 @@ size: 每页大小，默认20
                         "price_yuan": 3.0,
                         "quantity": 2,
                         "total_yuan": 6.0
+                    },
+                    {
+                        "addon_id": 2,
+                        "name": "加饮料",
+                        "price_yuan": 2.0,
+                        "quantity": 1,
+                        "total_yuan": 2.0
+                    },
+                    {
+                        "addon_id": 3,
+                        "name": "不要米饭",
+                        "price_yuan": -1.0,
+                        "quantity": 1,
+                        "total_yuan": -1.0
                     }
                 ],
                 "status": "active",
@@ -306,7 +332,7 @@ size: 每页大小，默认20
                     "meal_date": "2024-12-01",
                     "meal_slot": "lunch",
                     "meal_description": "红烧肉套餐",
-                    "addon_summary": "加鸡腿×2"
+                    "addon_summary": "加鸡腿×2,加饮料×1,不要米饭×1"
                 },
                 "description": "订餐扣费",
                 "operator_id": null,
@@ -660,6 +686,30 @@ status: 状态筛选，默认active
                 "price_cents": 300,
                 "price_yuan": 3.0,
                 "display_order": 1,
+                "is_default": false
+            },
+            {
+                "addon_id": 2,
+                "name": "加饮料",
+                "price_cents": 200,
+                "price_yuan": 2.0,
+                "display_order": 2,
+                "is_default": false
+            },
+            {
+                "addon_id": 3,
+                "name": "不要米饭",
+                "price_cents": -100,
+                "price_yuan": -1.0,
+                "display_order": 3,
+                "is_default": false
+            },
+            {
+                "addon_id": 4,
+                "name": "少盐",
+                "price_cents": 0,
+                "price_yuan": 0.0,
+                "display_order": 4,
                 "is_default": false
             }
         ]

@@ -1,0 +1,206 @@
+<!--用户下单页面-->
+<!--参考文档: doc/client/page_meal_order.md-->
+
+<!-- 加载状态 -->
+<view wx:if="{{loading}}" class="loading-container">
+  <view class="loading-content">
+    <text class="loading-text">加载中...</text>
+  </view>
+</view>
+
+<view wx:else class="container">
+  <!-- 页面头部信息 -->
+  <view class="header-section">
+    <view class="date-info">
+      <text class="date-text">📅 {{date}}</text>
+      <text class="slot-text">{{slot === 'lunch' ? '午餐' : '晚餐'}}</text>
+    </view>
+    <view class="balance-info">
+      <text class="balance-label">账户余额：</text>
+      <text class="balance-amount {{priceCalculation.is_affordable ? '' : 'insufficient'}}">¥{{balance}}</text>
+      <button wx:if="{{!priceCalculation.is_affordable}}" class="recharge-btn" bind:tap="onGoToRecharge">
+        💰 充值
+      </button>
+    </view>
+  </view>
+
+  <!-- 餐次信息区域 -->
+  <view wx:if="{{meal}}" class="meal-info-section">
+    <view class="section-title">🍽️ 餐次信息</view>
+    <view class="meal-info">
+      <view class="meal-description">
+        <text class="description-text">{{meal.description}}</text>
+      </view>
+      <view class="meal-details">
+        <view class="detail-item">
+          <text class="detail-label">基础价格：</text>
+          <text class="detail-value">¥{{meal.base_price_yuan}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="detail-label">剩余份数：</text>
+          <text class="detail-value">{{meal.max_orders - meal.current_orders}}/{{meal.max_orders}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 已有订单信息 -->
+  <view wx:if="{{existingOrder && pageMode === 'view'}}" class="existing-order-section">
+    <view class="section-title">📋 我的订单</view>
+    <view class="order-info">
+      <view class="order-status">
+        <text class="status-label">状态：</text>
+        <text class="status-value status-{{existingOrder.status}}">
+          {{existingOrder.status === 'placed' ? '已下单 🟡' : existingOrder.status === 'confirmed' ? '已确认 🟢' : existingOrder.status === 'completed' ? '已完成 ✅' : existingOrder.status === 'canceled' ? '已取消 ❌' : '未知状态'}}
+        </text>
+      </view>
+      <view class="order-detail">
+        <text class="order-label">总价格：</text>
+        <text class="order-value">¥{{existingOrder.total_price_yuan}}</text>
+      </view>
+      <view wx:if="{{existingOrder.addon_selections && Object.keys(existingOrder.addon_selections).length > 0}}" class="order-addons">
+        <text class="addons-title">附加项：</text>
+        <view class="addon-list">
+          <view 
+            wx:for="{{addons}}" 
+            wx:key="addon_id"
+            wx:if="{{existingOrder.addon_selections[item.addon_id] > 0}}"
+            class="addon-item"
+          >
+            <text class="addon-name">{{item.name}}</text>
+            <text class="addon-quantity">×{{existingOrder.addon_selections[item.addon_id]}}</text>
+          </view>
+        </view>
+      </view>
+      <button class="view-details-btn" bind:tap="onViewOrderDetails">
+        📊 查看详情 →
+      </button>
+    </view>
+  </view>
+
+  <!-- 附加项选择区域 -->
+  <view wx:if="{{addons.length > 0 && (pageMode === 'order' || pageMode === 'modify')}}" class="addons-section">
+    <view class="section-title">🍖 附加项选择</view>
+    <view class="addons-list">
+      <view 
+        wx:for="{{addons}}" 
+        wx:key="addon_id"
+        class="addon-item"
+      >
+        <view class="addon-info">
+          <view class="addon-header">
+            <text class="addon-name">{{item.name}}</text>
+            <text class="addon-price">¥{{item.price_yuan}}</text>
+          </view>
+          <view wx:if="{{item.description}}" class="addon-description">
+            <text class="description-text">{{item.description}}</text>
+          </view>
+        </view>
+        <view class="addon-controls">
+          <text class="max-hint">最多{{item.max_quantity}}份</text>
+          <view class="quantity-controls">
+            <button 
+              class="quantity-btn"
+              data-addon-id="{{item.addon_id}}"
+              data-type="decrease"
+              bind:tap="onAddonQuantityChange"
+              disabled="{{(orderForm.addon_selections[item.addon_id] || 0) <= 0}}"
+            >
+              -
+            </button>
+            <text class="quantity-value">{{orderForm.addon_selections[item.addon_id] || 0}}</text>
+            <button 
+              class="quantity-btn"
+              data-addon-id="{{item.addon_id}}"
+              data-type="increase"
+              bind:tap="onAddonQuantityChange"
+              disabled="{{(orderForm.addon_selections[item.addon_id] || 0) >= item.max_quantity}}"
+            >
+              +
+            </button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 价格计算区域 -->
+  <view wx:if="{{pageMode === 'order' || pageMode === 'modify'}}" class="price-section">
+    <view class="section-title">💰 价格明细</view>
+    <view class="price-details">
+      <view class="price-item">
+        <text class="price-label">基础价格：</text>
+        <text class="price-value">¥{{priceCalculation.base_price_yuan}}</text>
+      </view>
+      <view wx:if="{{priceCalculation.addon_price_yuan !== 0}}" class="price-item">
+        <text class="price-label">附加项：</text>
+        <text class="price-value {{priceCalculation.addon_price_yuan < 0 ? 'discount' : ''}}">
+          {{priceCalculation.addon_price_yuan >= 0 ? '+' : ''}}¥{{priceCalculation.addon_price_yuan}}
+        </text>
+      </view>
+      <view class="price-divider"></view>
+      <view class="price-total">
+        <text class="total-label">总价格：</text>
+        <text class="total-value">¥{{priceCalculation.total_price_yuan}}</text>
+      </view>
+      <view wx:if="{{!priceCalculation.is_affordable}}" class="insufficient-notice">
+        <text class="notice-text">⚠️ 余额不足，请先充值</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮区域 -->
+  <view class="actions-section">
+    <!-- 下单模式 -->
+    <button
+      wx:if="{{pageMode === 'order'}}"
+      class="action-btn primary"
+      loading="{{submitting}}"
+      disabled="{{submitting || !priceCalculation.is_affordable}}"
+      bind:tap="onPlaceOrder"
+    >
+      🛒 立即下单
+    </button>
+
+    <!-- 查看订单模式 -->
+    <view wx:elif="{{pageMode === 'view' && existingOrder.status === 'placed'}}" class="view-actions">
+      <button
+        class="action-btn secondary"
+        bind:tap="onStartModifyOrder"
+      >
+        ✏️ 修改订单
+      </button>
+      <button
+        class="action-btn danger"
+        loading="{{submitting}}"
+        disabled="{{submitting}}"
+        bind:tap="onCancelOrder"
+      >
+        ❌ 取消订单
+      </button>
+    </view>
+
+    <!-- 已确认订单 -->
+    <view wx:elif="{{pageMode === 'view' && existingOrder.status === 'confirmed'}}" class="confirmed-notice">
+      <text class="notice-text">订单已确认，无法修改或取消 ✅</text>
+    </view>
+
+    <!-- 修改订单模式 -->
+    <view wx:elif="{{pageMode === 'modify'}}" class="modify-actions">
+      <button
+        class="action-btn secondary"
+        bind:tap="onCancelModify"
+      >
+        取消
+      </button>
+      <button
+        class="action-btn primary"
+        loading="{{submitting}}"
+        disabled="{{submitting || !priceCalculation.is_affordable}}"
+        bind:tap="onModifyOrder"
+      >
+        保存修改
+      </button>
+    </view>
+  </view>
+</view>

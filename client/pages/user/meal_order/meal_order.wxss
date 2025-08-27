@@ -1,0 +1,565 @@
+/* 用户下单页面样式 */
+/* 参考文档: doc/client/page_meal_order.md */
+
+/* 基础容器 */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.loading-content {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 60rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.1);
+}
+
+.loading-text {
+  font-size: 32rpx;
+  color: #666;
+  text-align: center;
+}
+
+/* 页面头部 */
+.header-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 25rpx rgba(0, 0, 0, 0.1);
+}
+
+.date-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.date-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.slot-text {
+  font-size: 32rpx;
+  color: #666;
+  background: #f0f0f0;
+  padding: 8rpx 16rpx;
+  border-radius: 16rpx;
+}
+
+.balance-info {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.balance-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.balance-amount {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.balance-amount.insufficient {
+  color: #F44336;
+}
+
+.recharge-btn {
+  font-size: 24rpx;
+  color: #2196F3;
+  background: rgba(33, 150, 243, 0.1);
+  border: 2rpx solid #2196F3;
+  padding: 8rpx 16rpx;
+  border-radius: 16rpx;
+  margin: 0;
+}
+
+/* 餐次信息区域 */
+.meal-info-section,
+.existing-order-section,
+.addons-section,
+.price-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 25rpx rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 25rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 3rpx solid #eee;
+}
+
+/* 餐次信息 */
+.meal-info {
+  background: #f9f9f9;
+  border-radius: 16rpx;
+  padding: 25rpx;
+}
+
+.meal-description {
+  margin-bottom: 20rpx;
+}
+
+.description-text {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 1.5;
+}
+
+.meal-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.detail-label {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.detail-value {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 已有订单信息 */
+.order-info {
+  background: #f9f9f9;
+  border-radius: 16rpx;
+  padding: 25rpx;
+}
+
+.order-status {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.status-label {
+  font-size: 28rpx;
+  color: #666;
+  margin-right: 15rpx;
+}
+
+.status-value {
+  font-size: 28rpx;
+  font-weight: bold;
+  padding: 8rpx 16rpx;
+  border-radius: 16rpx;
+}
+
+.status-placed {
+  color: #FF9800;
+  background: rgba(255, 152, 0, 0.1);
+}
+
+.status-confirmed {
+  color: #4CAF50;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.status-completed {
+  color: #2196F3;
+  background: rgba(33, 150, 243, 0.1);
+}
+
+.status-canceled {
+  color: #F44336;
+  background: rgba(244, 67, 54, 0.1);
+}
+
+.order-detail {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.order-label {
+  font-size: 28rpx;
+  color: #666;
+  margin-right: 15rpx;
+}
+
+.order-value {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.order-addons {
+  margin-bottom: 20rpx;
+}
+
+.addons-title {
+  font-size: 28rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.addon-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.addon-list .addon-item {
+  display: flex;
+  align-items: center;
+  background: rgba(33, 150, 243, 0.1);
+  padding: 8rpx 12rpx;
+  border-radius: 16rpx;
+  font-size: 24rpx;
+  color: #2196F3;
+}
+
+.addon-quantity {
+  margin-left: 8rpx;
+  font-weight: bold;
+}
+
+.view-details-btn {
+  font-size: 26rpx;
+  color: #2196F3;
+  background: rgba(33, 150, 243, 0.1);
+  border: 2rpx solid #2196F3;
+  padding: 12rpx 20rpx;
+  border-radius: 20rpx;
+  margin: 0;
+}
+
+/* 附加项选择 */
+.addons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.addons-list .addon-item {
+  background: #f9f9f9;
+  border-radius: 16rpx;
+  padding: 25rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+}
+
+.addon-info {
+  margin-bottom: 15rpx;
+}
+
+.addon-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.addon-name {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.addon-price {
+  font-size: 28rpx;
+  color: #666;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 8rpx 12rpx;
+  border-radius: 12rpx;
+}
+
+.addon-description {
+  margin-top: 10rpx;
+}
+
+.addon-description .description-text {
+  font-size: 24rpx;
+  color: #999;
+  line-height: 1.4;
+}
+
+.addon-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.max-hint {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.quantity-btn {
+  width: 60rpx;
+  height: 60rpx;
+  font-size: 28rpx;
+  color: #2196F3;
+  background: rgba(33, 150, 243, 0.1);
+  border: 2rpx solid #2196F3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.quantity-btn[disabled] {
+  color: #ccc;
+  background: #f5f5f5;
+  border-color: #ccc;
+}
+
+.quantity-value {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: bold;
+  min-width: 40rpx;
+  text-align: center;
+}
+
+/* 价格明细 */
+.price-details {
+  background: #f9f9f9;
+  border-radius: 16rpx;
+  padding: 25rpx;
+}
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.price-item:last-child {
+  margin-bottom: 0;
+}
+
+.price-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.price-value {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.price-value.discount {
+  color: #4CAF50;
+}
+
+.price-divider {
+  height: 2rpx;
+  background: #eee;
+  margin: 20rpx 0;
+}
+
+.price-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 0;
+  background: rgba(33, 150, 243, 0.05);
+  border-radius: 12rpx;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+}
+
+.total-label {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.total-value {
+  font-size: 36rpx;
+  color: #2196F3;
+  font-weight: bold;
+}
+
+.insufficient-notice {
+  margin-top: 15rpx;
+  text-align: center;
+  padding: 15rpx;
+  background: rgba(244, 67, 54, 0.1);
+  border-radius: 12rpx;
+}
+
+.notice-text {
+  font-size: 26rpx;
+  color: #F44336;
+  font-weight: 500;
+}
+
+/* 操作按钮区域 */
+.actions-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 8rpx 25rpx rgba(0, 0, 0, 0.1);
+}
+
+.action-btn {
+  width: 100%;
+  height: 90rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 20rpx;
+  border: none;
+  margin-bottom: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4rpx 15rpx rgba(0, 0, 0, 0.1);
+}
+
+.action-btn:last-child {
+  margin-bottom: 0;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+}
+
+.action-btn.secondary {
+  background: #f0f0f0;
+  color: #666;
+  border: 2rpx solid #ddd;
+}
+
+.action-btn.danger {
+  background: linear-gradient(135deg, #F44336 0%, #d32f2f 100%);
+  color: white;
+}
+
+.action-btn[disabled] {
+  background: #ccc !important;
+  color: #999 !important;
+  border-color: #ccc !important;
+}
+
+.action-btn:active:not([disabled]) {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+/* 查看订单模式按钮组 */
+.view-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+/* 修改订单模式按钮组 */
+.modify-actions {
+  display: flex;
+  gap: 15rpx;
+}
+
+.modify-actions .action-btn {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* 已确认订单通知 */
+.confirmed-notice {
+  text-align: center;
+  padding: 40rpx;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 16rpx;
+}
+
+.confirmed-notice .notice-text {
+  font-size: 30rpx;
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 600rpx) {
+  .container {
+    padding: 15rpx;
+  }
+  
+  .header-section,
+  .meal-info-section,
+  .existing-order-section,
+  .addons-section,
+  .price-section,
+  .actions-section {
+    padding: 20rpx;
+    margin-bottom: 15rpx;
+  }
+  
+  .date-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10rpx;
+  }
+  
+  .meal-details {
+    flex-direction: column;
+    gap: 15rpx;
+  }
+  
+  .addon-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15rpx;
+  }
+  
+  .quantity-controls {
+    justify-content: center;
+  }
+  
+  .quantity-btn {
+    width: 50rpx;
+    height: 50rpx;
+    font-size: 24rpx;
+  }
+}

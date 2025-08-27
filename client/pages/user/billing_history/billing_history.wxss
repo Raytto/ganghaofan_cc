@@ -1,0 +1,685 @@
+/* 用户账单历史页面样式 */
+/* 参考文档: doc/client/page_billing_history.md */
+
+/* 基础容器 */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+/* 账户余额卡片 */
+.balance-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25rpx;
+  padding: 40rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.balance-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rpx;
+  background: linear-gradient(90deg, #4CAF50 0%, #2196F3 50%, #FF9800 100%);
+}
+
+.balance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.balance-title {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.recharge-btn {
+  font-size: 26rpx;
+  color: white;
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  border: none;
+  padding: 12rpx 25rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 15rpx rgba(76, 175, 80, 0.3);
+  margin: 0;
+}
+
+.balance-amount {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 20rpx;
+}
+
+.amount-symbol {
+  font-size: 40rpx;
+  color: #4CAF50;
+  font-weight: bold;
+  margin-right: 8rpx;
+}
+
+.amount-value {
+  font-size: 60rpx;
+  color: #4CAF50;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20rpx;
+  border-top: 2rpx solid #f0f0f0;
+}
+
+.user-name {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.user-id {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 功能按钮栏 */
+.function-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  padding: 20rpx 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 15rpx rgba(0, 0, 0, 0.1);
+}
+
+.function-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.function-text {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.function-icon {
+  font-size: 24rpx;
+  color: #666;
+  transition: transform 0.3s ease;
+}
+
+.function-icon.active {
+  transform: rotate(180deg);
+}
+
+.function-actions {
+  display: flex;
+  gap: 10rpx;
+}
+
+.export-btn {
+  font-size: 24rpx;
+  color: #2196F3;
+  background: rgba(33, 150, 243, 0.1);
+  border: 2rpx solid #2196F3;
+  padding: 8rpx 16rpx;
+  border-radius: 16rpx;
+  margin: 0;
+}
+
+/* 筛选面板 */
+.filter-panel {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 15rpx rgba(0, 0, 0, 0.1);
+}
+
+.filter-section {
+  margin-bottom: 25rpx;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding: 15rpx 0;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.filter-item:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.filter-label {
+  font-size: 28rpx;
+  color: #333;
+  min-width: 160rpx;
+  flex-shrink: 0;
+}
+
+.picker-value {
+  font-size: 28rpx;
+  color: #666;
+  flex: 1;
+  padding: 10rpx 15rpx;
+  background: #f9f9f9;
+  border-radius: 8rpx;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 15rpx;
+  justify-content: flex-end;
+}
+
+.filter-btn {
+  font-size: 26rpx;
+  padding: 12rpx 25rpx;
+  border-radius: 20rpx;
+  border: none;
+  margin: 0;
+}
+
+.filter-btn.reset {
+  color: #666;
+  background: #f0f0f0;
+}
+
+.filter-btn.apply {
+  color: white;
+  background: linear-gradient(135deg, #2196F3 0%, #1976d2 100%);
+}
+
+/* 交易记录区域 */
+.transactions-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 8rpx 25rpx rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 3rpx solid #eee;
+}
+
+.title-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.title-count {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200rpx;
+}
+
+.loading-content {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 交易记录列表 */
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.transaction-item {
+  background: #f9f9f9;
+  border-radius: 16rpx;
+  padding: 25rpx;
+  border-left: 6rpx solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.transaction-item:active {
+  transform: scale(0.98);
+  background: #f0f0f0;
+}
+
+/* 交易头部 */
+.transaction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15rpx;
+}
+
+.transaction-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.transaction-type {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.transaction-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.transaction-amount {
+  display: flex;
+  align-items: center;
+}
+
+.amount-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.transaction-amount.positive .amount-text {
+  color: #4CAF50;
+}
+
+.transaction-amount.negative .amount-text {
+  color: #F44336;
+}
+
+/* 交易描述 */
+.transaction-description {
+  margin-bottom: 15rpx;
+  padding: 12rpx 16rpx;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12rpx;
+}
+
+.description-text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* 相关信息 */
+.related-info {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  margin-bottom: 15rpx;
+}
+
+.related-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.related-value {
+  font-size: 26rpx;
+  color: #2196F3;
+  font-weight: 500;
+}
+
+/* 交易底部 */
+.transaction-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15rpx;
+  border-top: 2rpx solid #f0f0f0;
+}
+
+.transaction-number {
+  font-size: 22rpx;
+  color: #999;
+  font-family: monospace;
+}
+
+.balance-after {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 空状态 */
+.empty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200rpx;
+}
+
+.empty-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  opacity: 0.3;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #666;
+  font-weight: 500;
+}
+
+.empty-tip {
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* 加载更多 */
+.loading-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80rpx;
+  margin-top: 20rpx;
+}
+
+.loading-more-text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 没有更多 */
+.no-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60rpx;
+  margin-top: 20rpx;
+}
+
+.no-more-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 充值弹窗 */
+.recharge-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background: white;
+  border-radius: 20rpx;
+  width: 600rpx;
+  max-height: 80vh;
+  overflow: hidden;
+  position: relative;
+  z-index: 1001;
+  box-shadow: 0 20rpx 40rpx rgba(0, 0, 0, 0.2);
+}
+
+/* 弹窗头部 */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.modal-close {
+  font-size: 40rpx;
+  color: #999;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 弹窗主体 */
+.modal-body {
+  padding: 30rpx;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.current-balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: #f9f9f9;
+  border-radius: 12rpx;
+  margin-bottom: 30rpx;
+}
+
+.balance-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.balance-value {
+  font-size: 32rpx;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+/* 金额输入 */
+.amount-input-section {
+  margin-bottom: 30rpx;
+}
+
+.input-label {
+  font-size: 28rpx;
+  color: #333;
+  display: block;
+  margin-bottom: 15rpx;
+}
+
+.amount-input {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 20rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  background: #fafafa;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.amount-input:focus {
+  border-color: #2196F3;
+  background: #fff;
+}
+
+/* 快捷金额 */
+.quick-amounts {
+  margin-bottom: 30rpx;
+}
+
+.quick-label {
+  font-size: 28rpx;
+  color: #333;
+  display: block;
+  margin-bottom: 15rpx;
+}
+
+.quick-buttons {
+  display: flex;
+  gap: 10rpx;
+  flex-wrap: wrap;
+}
+
+.quick-btn {
+  font-size: 26rpx;
+  color: #666;
+  background: #f0f0f0;
+  border: 2rpx solid transparent;
+  padding: 15rpx 25rpx;
+  border-radius: 20rpx;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.quick-btn.active {
+  color: #2196F3;
+  background: rgba(33, 150, 243, 0.1);
+  border-color: #2196F3;
+}
+
+/* 充值说明 */
+.recharge-notice {
+  padding: 20rpx;
+  background: rgba(255, 152, 0, 0.05);
+  border-radius: 12rpx;
+  border-left: 6rpx solid #FF9800;
+}
+
+.notice-text {
+  display: block;
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 8rpx;
+}
+
+.notice-text:last-child {
+  margin-bottom: 0;
+}
+
+/* 弹窗底部 */
+.modal-footer {
+  display: flex;
+  gap: 15rpx;
+  padding: 30rpx;
+  border-top: 2rpx solid #f0f0f0;
+}
+
+.modal-btn {
+  flex: 1;
+  height: 80rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 20rpx;
+  border: none;
+  margin: 0;
+}
+
+.modal-btn.cancel {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.modal-btn.confirm {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+}
+
+.modal-btn[disabled] {
+  background: #ccc !important;
+  color: #999 !important;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 600rpx) {
+  .container {
+    padding: 15rpx;
+  }
+  
+  .balance-card,
+  .function-bar,
+  .filter-panel,
+  .transactions-section {
+    padding: 20rpx;
+    margin-bottom: 15rpx;
+  }
+  
+  .balance-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15rpx;
+  }
+  
+  .recharge-btn {
+    align-self: flex-end;
+    width: 120rpx;
+  }
+  
+  .amount-value {
+    font-size: 48rpx;
+  }
+  
+  .transaction-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10rpx;
+  }
+  
+  .transaction-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8rpx;
+  }
+  
+  .modal-content {
+    width: 90vw;
+  }
+  
+  .quick-buttons {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,310 @@
+<!--管理员用户管理页面-->
+<!--参考文档: doc/client/page_user_manage.md-->
+
+<view class="container">
+  <!-- 功能栏 -->
+  <view class="function-bar">
+    <view class="function-left">
+      <view class="search-box">
+        <input
+          class="search-input"
+          placeholder="🔍 搜索用户名或ID"
+          value="{{filters.search}}"
+          bind:input="onSearchInput"
+        />
+      </view>
+      <view class="filter-toggle" bind:tap="onToggleFilters">
+        <text class="filter-icon {{showFilters ? 'active' : ''}}">⚙️</text>
+      </view>
+    </view>
+    <view class="function-actions">
+      <button wx:if="{{users.length > 0}}" class="export-btn" bind:tap="onExportUsers">
+        📊 导出
+      </button>
+    </view>
+  </view>
+
+  <!-- 筛选面板 -->
+  <view wx:if="{{showFilters}}" class="filter-panel">
+    <view class="filter-section">
+      <view class="filter-item">
+        <text class="filter-label">用户状态：</text>
+        <picker
+          range="{{statusOptions}}"
+          range-key="label"
+          value="{{statusOptions.findIndex(item => item.value === filters.status)}}"
+          bind:change="onFilterChange"
+          data-field="status"
+        >
+          <view class="picker-value">
+            {{statusOptions[statusOptions.findIndex(item => item.value === filters.status)]?.label || '请选择'}}
+          </view>
+        </picker>
+      </view>
+      
+      <view class="filter-item">
+        <text class="filter-label">用户角色：</text>
+        <picker
+          range="{{roleOptions}}"
+          range-key="label"
+          value="{{roleOptions.findIndex(item => item.value === filters.role)}}"
+          bind:change="onFilterChange"
+          data-field="role"
+        >
+          <view class="picker-value">
+            {{roleOptions[roleOptions.findIndex(item => item.value === filters.role)]?.label || '请选择'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    
+    <view class="filter-actions">
+      <button class="filter-btn reset" bind:tap="onResetFilters">重置</button>
+      <button class="filter-btn apply" bind:tap="onApplyFilters">应用</button>
+    </view>
+  </view>
+
+  <!-- 批量操作栏 -->
+  <view wx:if="{{showBatchActions}}" class="batch-actions-bar">
+    <view class="batch-info">
+      <text class="selected-count">已选择 {{selectedUsers.length}} 位用户</text>
+      <button class="select-all-btn" bind:tap="onToggleSelectAll">
+        {{selectedUsers.length === users.length ? '取消全选' : '全选'}}
+      </button>
+    </view>
+    <view class="batch-buttons">
+      <button class="batch-btn activate" data-action="activate" bind:tap="onBatchAction">
+        激活用户
+      </button>
+      <button class="batch-btn suspend" data-action="suspend" bind:tap="onBatchAction">
+        暂停用户
+      </button>
+    </view>
+  </view>
+
+  <!-- 统计信息 -->
+  <view wx:if="{{pagination.total > 0}}" class="stats-bar">
+    <text class="stats-text">共 {{pagination.total}} 位用户</text>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading && users.length === 0}}" class="loading-container">
+    <view class="loading-content">
+      <text class="loading-text">加载中...</text>
+    </view>
+  </view>
+
+  <!-- 用户列表 -->
+  <view wx:elif="{{users.length > 0}}" class="user-list">
+    <view 
+      wx:for="{{users}}" 
+      wx:key="user_id" 
+      class="user-item {{selectedUsers.includes(item.user_id) ? 'selected' : ''}}"
+      bind:tap="onUserItemTap"
+      data-user-id="{{item.user_id}}"
+    >
+      <!-- 多选框 -->
+      <view class="selection-checkbox" 
+            bind:tap="onToggleUserSelection" 
+            data-user-id="{{item.user_id}}"
+            catchtap="true">
+        <text class="checkbox-icon">
+          {{selectedUsers.includes(item.user_id) ? '☑️' : '☐'}}
+        </text>
+      </view>
+
+      <!-- 用户基本信息 -->
+      <view class="user-header">
+        <view class="user-avatar">
+          <text class="avatar-text">{{item.name.charAt(0)}}</text>
+        </view>
+        <view class="user-info">
+          <view class="user-name-row">
+            <text class="user-name">{{item.name}}</text>
+            <text class="user-role">{{formatUserRole(item.role)}}</text>
+          </view>
+          <view class="user-details">
+            <text class="user-id">ID: {{item.user_id}}</text>
+            <text class="user-status">{{formatUserStatus(item.status)}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 用户数据 -->
+      <view class="user-data">
+        <view class="data-item">
+          <text class="data-label">余额</text>
+          <text class="data-value balance">¥{{item.balance_yuan}}</text>
+        </view>
+        <view class="data-item">
+          <text class="data-label">订单数</text>
+          <text class="data-value">{{item.order_count || 0}}</text>
+        </view>
+        <view class="data-item">
+          <text class="data-label">最后登录</text>
+          <text class="data-value">{{formatLastLogin(item.last_login_at)}}</text>
+        </view>
+      </view>
+
+      <!-- 联系信息 -->
+      <view wx:if="{{item.phone || item.email}}" class="user-contact">
+        <text wx:if="{{item.phone}}" class="contact-item">📱 {{item.phone}}</text>
+        <text wx:if="{{item.email}}" class="contact-item">📧 {{item.email}}</text>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="user-actions">
+        <button class="action-btn view-orders" 
+                data-user-id="{{item.user_id}}"
+                bind:tap="onViewUserOrders"
+                catchtap="true">
+          📋 订单
+        </button>
+        
+        <button wx:if="{{item.status === 'active'}}" 
+                class="action-btn suspend" 
+                data-user-id="{{item.user_id}}"
+                data-action="suspend"
+                bind:tap="onUserStatusAction"
+                catchtap="true">
+          暂停
+        </button>
+        
+        <button wx:if="{{item.status === 'suspended'}}" 
+                class="action-btn activate" 
+                data-user-id="{{item.user_id}}"
+                data-action="activate"
+                bind:tap="onUserStatusAction"
+                catchtap="true">
+          激活
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:elif="{{!loading}}" class="empty-container">
+    <view class="empty-content">
+      <text class="empty-icon">👥</text>
+      <text class="empty-text">暂无用户数据</text>
+      <text class="empty-tip">等待用户注册</text>
+    </view>
+  </view>
+
+  <!-- 加载更多 -->
+  <view wx:if="{{loadingMore}}" class="loading-more">
+    <text class="loading-more-text">加载更多...</text>
+  </view>
+
+  <!-- 没有更多 -->
+  <view wx:elif="{{users.length > 0 && !pagination.has_more}}" class="no-more">
+    <text class="no-more-text">没有更多用户了</text>
+  </view>
+
+  <!-- 用户操作弹窗 -->
+  <view wx:if="{{showUserModal && currentUser}}" class="user-modal">
+    <view class="modal-mask" bind:tap="onHideUserModal"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">👤 {{currentUser.name}}</text>
+        <text class="modal-close" bind:tap="onHideUserModal">✕</text>
+      </view>
+      
+      <view class="modal-body">
+        <!-- 用户基本信息 -->
+        <view class="user-summary">
+          <view class="summary-item">
+            <text class="summary-label">用户ID：</text>
+            <text class="summary-value">{{currentUser.user_id}}</text>
+          </view>
+          <view class="summary-item">
+            <text class="summary-label">当前余额：</text>
+            <text class="summary-value balance">¥{{currentUser.balance_yuan}}</text>
+          </view>
+          <view class="summary-item">
+            <text class="summary-label">用户状态：</text>
+            <text class="summary-value">{{formatUserStatus(currentUser.status)}}</text>
+          </view>
+        </view>
+        
+        <!-- 余额操作 -->
+        <view class="balance-operation">
+          <text class="operation-title">💰 余额操作</text>
+          
+          <view class="operation-type">
+            <view class="type-buttons">
+              <button 
+                class="type-btn {{userOperationForm.operation_type === 'recharge' ? 'active' : ''}}"
+                data-field="operation_type"
+                data-value="recharge"
+                bind:tap="onOperationFormChange"
+              >
+                充值
+              </button>
+              <button 
+                class="type-btn {{userOperationForm.operation_type === 'deduct' ? 'active' : ''}}"
+                data-field="operation_type" 
+                data-value="deduct"
+                bind:tap="onOperationFormChange"
+              >
+                扣费
+              </button>
+            </view>
+          </view>
+          
+          <view class="amount-input-section">
+            <text class="input-label">金额（元）</text>
+            <input
+              class="amount-input"
+              type="digit"
+              placeholder="请输入金额"
+              value="{{userOperationForm.balance_change}}"
+              data-field="balance_change"
+              bind:input="onOperationFormChange"
+              maxlength="6"
+            />
+          </view>
+          
+          <view class="quick-amounts">
+            <text class="quick-label">快捷选择：</text>
+            <view class="quick-buttons">
+              <button
+                wx:for="{{quickAmounts}}"
+                wx:key="*this"
+                class="quick-btn {{userOperationForm.balance_change === item ? 'active' : ''}}"
+                data-amount="{{item}}"
+                bind:tap="onQuickAmountSelect"
+              >
+                ¥{{item}}
+              </button>
+            </view>
+          </view>
+          
+          <view class="reason-input-section">
+            <text class="input-label">操作原因</text>
+            <textarea
+              class="reason-input"
+              placeholder="请输入操作原因"
+              value="{{userOperationForm.reason}}"
+              data-field="reason"
+              bind:input="onOperationFormChange"
+              maxlength="200"
+            />
+          </view>
+        </view>
+      </view>
+      
+      <view class="modal-footer">
+        <button class="modal-btn cancel" bind:tap="onHideUserModal">取消</button>
+        <button 
+          class="modal-btn confirm" 
+          loading="{{submittingOperation}}"
+          disabled="{{submittingOperation || !userOperationForm.balance_change || !userOperationForm.reason}}"
+          bind:tap="onSubmitUserOperation"
+        >
+          确认操作
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

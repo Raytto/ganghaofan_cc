@@ -236,6 +236,101 @@ async def publish_meal(
         return create_error_response(f"发布餐次失败: {str(e)}")
 
 
+@router.put("/meals/{meal_id}", response_model=Dict[str, Any])
+async def update_meal(
+    meal_id: int = Path(..., description="餐次ID"),
+    meal_request: CreateMealRequest = None,
+    current_admin: TokenData = Depends(get_admin_user),
+    db: DatabaseManager = Depends(get_database)
+):
+    """
+    修改餐次信息
+    
+    需求: 管理员发布餐页面需要能够修改已发布餐次的配置
+    """
+    try:
+        # 转换附加项配置格式（字符串键转整数键）
+        addon_config = {}
+        if meal_request.addon_config:
+            for addon_id_str, max_quantity in meal_request.addon_config.items():
+                try:
+                    addon_id = int(addon_id_str)
+                    addon_config[addon_id] = max_quantity
+                except ValueError:
+                    return create_error_response(f"无效的附加项ID: {addon_id_str}")
+
+        # 构建更新数据
+        update_data = {
+            "description": meal_request.description,
+            "base_price_cents": meal_request.base_price_cents,
+            "max_orders": meal_request.max_orders
+        }
+        
+        if addon_config:
+            import json
+            update_data["addon_config"] = json.dumps(addon_config)
+        
+        # 执行更新
+        set_clauses = []
+        params = []
+        for key, value in update_data.items():
+            set_clauses.append(f"{key} = ?")
+            params.append(value)
+        params.append("now")  # updated_at
+        params.append(meal_id)
+        
+        update_query = f"""
+            UPDATE meals 
+            SET {', '.join(set_clauses)}, updated_at = ?
+            WHERE meal_id = ? AND status = 'published'
+        """
+        
+        cursor = db.conn.execute(update_query, params)
+        if cursor.rowcount == 0:
+            return create_error_response("餐次不存在或状态不允许修改")
+        
+        # 获取更新后的餐次信息
+        meal_query = """
+            SELECT meal_id, date, slot, description, base_price_cents, addon_config, max_orders, updated_at
+            FROM meals WHERE meal_id = ?
+        """
+        meal_result = db.conn.execute(meal_query, [meal_id]).fetchone()
+        
+        if not meal_result:
+            return create_error_response("餐次信息获取失败")
+        
+        # 格式化响应数据
+        formatted_addon_config = {}
+        if meal_result[5]:  # addon_config
+            import json
+            try:
+                addon_config_dict = json.loads(meal_result[5])
+                formatted_addon_config = {str(k): v for k, v in addon_config_dict.items()}
+            except (json.JSONDecodeError, TypeError):
+                pass
+
+        response_data = {
+            "meal_id": meal_result[0],
+            "date": meal_result[1],
+            "slot": meal_result[2], 
+            "description": meal_result[3],
+            "base_price_yuan": meal_result[4] / 100.0,
+            "addon_config": formatted_addon_config,
+            "max_orders": meal_result[6],
+            "status": "published",
+            "updated_at": meal_result[7]
+        }
+        
+        return create_success_response(
+            data=response_data,
+            message="餐次信息更新成功"
+        )
+        
+    except Exception as e:
+        logger.error(f"修改餐次失败: {str(e)}")
+        return create_error_response(f"修改餐次失败: {str(e)}")
+
+
 @router.put("/meals/{meal_id}/lock", response_model=Dict[str, Any])
 async def lock_meal(
     meal_id: int = Path(..., description="餐次ID"),
@@ -274,6 +369,56 @@ async def lock_meal(
     except Exception as e:
         logger.error(f"锁定餐次失败: {str(e)}")
         return create_error_response(f"锁定餐次失败: {str(e)}")
+
+
+@router.put("/meals/{meal_id}/unlock", response_model=Dict[str, Any])
+async def unlock_meal(
+    meal_id: int = Path(..., description="餐次ID"),
+    current_admin: TokenData = Depends(get_admin_user),
+    db: DatabaseManager = Depends(get_database)
+):
+    """
+    取消餐次锁定
+    
+    需求: 管理员需要能够将锁定状态的餐次恢复为发布状态
+    """
+    try:
+        # 检查餐次状态并更新
+        update_query = """
+            UPDATE meals 
+            SET status = 'published', updated_at = CURRENT_TIMESTAMP
+            WHERE meal_id = ? AND status = 'locked'
+        """
+        
+        cursor = db.conn.execute(update_query, [meal_id])
+        if cursor.rowcount == 0:
+            return create_error_response("餐次不存在或状态不允许取消锁定")
+        
+        # 获取更新后的餐次信息
+        meal_query = """
+            SELECT meal_id, date, slot
+            FROM meals WHERE meal_id = ?
+        """
+        meal_result = db.conn.execute(meal_query, [meal_id]).fetchone()
+        
+        if not meal_result:
+            return create_error_response("餐次信息获取失败")
+        
+        response_data = {
+            "meal_id": meal_result[0],
+            "meal_date": meal_result[1],
+            "meal_slot": meal_result[2],
+            "status": "published"
+        }
+        
+        return create_success_response(
+            data=response_data,
+            message="餐次锁定已取消，恢复为已发布状态"
+        )
+        
+    except Exception as e:
+        logger.error(f"取消餐次锁定失败: {str(e)}")
+        return create_error_response(f"取消餐次锁定失败: {str(e)}")
 
 
 @router.put("/meals/{meal_id}/complete", response_model=Dict[str, Any])
@@ -358,6 +503,94 @@ async def cancel_meal(
     except Exception as e:
         logger.error(f"取消餐次失败: {str(e)}")
         return create_error_response(f"取消餐次失败: {str(e)}")
+
+
+@router.get("/meals/{meal_id}/statistics", response_model=Dict[str, Any])
+async def get_meal_statistics(
+    meal_id: int = Path(..., description="餐次ID"),
+    current_admin: TokenData = Depends(get_admin_user),
+    db: DatabaseManager = Depends(get_database)
+):
+    """
+    获取餐次订单统计信息
+    
+    需求: 管理员需要查看特定餐次的订单统计信息
+    """
+    try:
+        # 获取餐次基本信息
+        meal_query = """
+            SELECT meal_id, date, slot, description
+            FROM meals WHERE meal_id = ?
+        """
+        meal_result = db.conn.execute(meal_query, [meal_id]).fetchone()
+        
+        if not meal_result:
+            return create_error_response("餐次不存在")
+        
+        # 获取订单统计
+        order_stats_query = """
+            SELECT 
+                COUNT(*) as total_orders,
+                COUNT(CASE WHEN status = 'active' THEN 1 END) as active_orders,
+                COUNT(CASE WHEN status = 'canceled' THEN 1 END) as canceled_orders,
+                COALESCE(SUM(amount_cents), 0) as total_amount_cents,
+                COALESCE(SUM(CASE WHEN status = 'active' THEN amount_cents ELSE 0 END), 0) as active_amount_cents
+            FROM orders WHERE meal_id = ?
+        """
+        order_stats = db.conn.execute(order_stats_query, [meal_id]).fetchone()
+        
+        # 获取附加项统计
+        addon_stats_query = """
+            SELECT 
+                a.addon_id,
+                a.name as addon_name,
+                COALESCE(SUM(CAST(json_extract(o.addon_selections, '$.' || a.addon_id) AS INTEGER)), 0) as total_quantity,
+                COALESCE(SUM(CAST(json_extract(o.addon_selections, '$.' || a.addon_id) AS INTEGER) * a.price_cents), 0) as total_amount_cents
+            FROM addons a
+            LEFT JOIN orders o ON o.meal_id = ? AND o.status = 'active'
+                AND json_extract(o.addon_selections, '$.' || a.addon_id) IS NOT NULL
+            WHERE a.status = 'active'
+            GROUP BY a.addon_id, a.name
+            HAVING total_quantity > 0
+            ORDER BY total_quantity DESC
+        """
+        addon_stats = db.conn.execute(addon_stats_query, [meal_id]).fetchall()
+        
+        # 构建响应数据
+        addon_statistics = []
+        for addon in addon_stats:
+            addon_statistics.append({
+                "addon_id": addon[0],
+                "addon_name": addon[1],
+                "total_quantity": addon[2],
+                "total_amount_yuan": addon[3] / 100.0
+            })
+        
+        response_data = {
+            "meal_info": {
+                "meal_id": meal_result[0],
+                "date": meal_result[1],
+                "slot": meal_result[2],
+                "description": meal_result[3]
+            },
+            "order_statistics": {
+                "total_orders": order_stats[0] if order_stats else 0,
+                "active_orders": order_stats[1] if order_stats else 0,
+                "canceled_orders": order_stats[2] if order_stats else 0,
+                "total_amount_yuan": (order_stats[3] if order_stats else 0) / 100.0,
+                "active_amount_yuan": (order_stats[4] if order_stats else 0) / 100.0
+            },
+            "addon_statistics": addon_statistics
+        }
+        
+        return create_success_response(
+            data=response_data,
+            message="餐次统计查询成功"
+        )
+        
+    except Exception as e:
+        logger.error(f"获取餐次统计失败: {str(e)}")
+        return create_error_response(f"获取餐次统计失败: {str(e)}")
 
 
 # ===== 用户管理 =====
@@ -445,6 +678,108 @@ async def adjust_user_balance(
     except Exception as e:
         logger.error(f"调整用户余额失败: {str(e)}")
         return create_error_response(f"调整用户余额失败: {str(e)}")
+
+
+@router.post("/users/{user_id}/recharge", response_model=Dict[str, Any])
+async def recharge_user(
+    user_id: int = Path(..., description="用户ID"),
+    recharge_request: AdjustBalanceRequest = None,
+    current_admin: TokenData = Depends(get_admin_user),
+    db: DatabaseManager = Depends(get_database)
+):
+    """
+    用户充值接口
+    
+    需求: 管理员用户管理页面需要独立的充值接口
+    """
+    try:
+        if recharge_request.amount_cents <= 0:
+            return create_error_response("充值金额必须大于0")
+            
+        core_ops = CoreOperations(db)
+        
+        # 执行充值操作（使用正数金额）
+        recharge_result = core_ops.admin_adjust_balance(
+            admin_user_id=current_admin.user_id,
+            target_user_id=user_id,
+            amount_cents=abs(recharge_request.amount_cents),  # 确保为正数
+            reason=recharge_request.reason or "管理员充值"
+        )
+        
+        if not recharge_result.get("success", True):
+            return create_error_response(recharge_result.get("message", "充值失败"))
+        
+        response_data = {
+            "user_id": recharge_result["target_user_id"],
+            "user_name": recharge_result["target_user_name"],
+            "recharge_amount_yuan": recharge_result["adjustment_amount"] / 100.0,
+            "balance_before_yuan": recharge_result["balance_before"] / 100.0,
+            "balance_after_yuan": recharge_result["balance_after"] / 100.0,
+            "transaction_no": recharge_result["transaction_no"],
+            "reason": recharge_result["reason"],
+            "operator_id": current_admin.user_id,
+            "operator_name": recharge_result.get("operator_name", "管理员")
+        }
+        
+        return create_success_response(
+            data=response_data,
+            message=f"用户充值成功，充值金额 {recharge_result['adjustment_amount'] / 100.0:.2f} 元"
+        )
+        
+    except Exception as e:
+        logger.error(f"用户充值失败: {str(e)}")
+        return create_error_response(f"用户充值失败: {str(e)}")
+
+
+@router.post("/users/{user_id}/deduct", response_model=Dict[str, Any])
+async def deduct_user(
+    user_id: int = Path(..., description="用户ID"),
+    deduct_request: AdjustBalanceRequest = None,
+    current_admin: TokenData = Depends(get_admin_user),
+    db: DatabaseManager = Depends(get_database)
+):
+    """
+    用户扣款接口
+    
+    需求: 管理员需要能够扣减用户余额
+    """
+    try:
+        if deduct_request.amount_cents <= 0:
+            return create_error_response("扣款金额必须大于0")
+            
+        core_ops = CoreOperations(db)
+        
+        # 执行扣款操作（使用负数金额）
+        deduct_result = core_ops.admin_adjust_balance(
+            admin_user_id=current_admin.user_id,
+            target_user_id=user_id,
+            amount_cents=-abs(deduct_request.amount_cents),  # 确保为负数
+            reason=deduct_request.reason or "管理员扣款"
+        )
+        
+        if not deduct_result.get("success", True):
+            return create_error_response(deduct_result.get("message", "扣款失败"))
+        
+        response_data = {
+            "user_id": deduct_result["target_user_id"],
+            "user_name": deduct_result["target_user_name"],
+            "deduct_amount_yuan": abs(deduct_result["adjustment_amount"]) / 100.0,
+            "balance_before_yuan": deduct_result["balance_before"] / 100.0,
+            "balance_after_yuan": deduct_result["balance_after"] / 100.0,
+            "transaction_no": deduct_result["transaction_no"],
+            "reason": deduct_result["reason"],
+            "operator_id": current_admin.user_id,
+            "operator_name": deduct_result.get("operator_name", "管理员")
+        }
+        
+        return create_success_response(
+            data=response_data,
+            message=f"用户扣款成功，扣款金额 {abs(deduct_result['adjustment_amount']) / 100.0:.2f} 元"
+        )
+        
+    except Exception as e:
+        logger.error(f"用户扣款失败: {str(e)}")
+        return create_error_response(f"用户扣款失败: {str(e)}")
 
 
 @router.put("/users/{user_id}/admin", response_model=Dict[str, Any])

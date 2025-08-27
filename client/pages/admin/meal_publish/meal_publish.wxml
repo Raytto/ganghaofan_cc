@@ -1,0 +1,240 @@
+<!--管理员发布餐页面-->
+<!--参考文档: doc/client/page_meal_publish.md-->
+
+<!-- 加载状态 -->
+<view wx:if="{{loading}}" class="loading-container">
+  <view class="loading-content">
+    <text class="loading-text">加载中...</text>
+  </view>
+</view>
+
+<view wx:else class="container">
+  <!-- 页面头部信息 -->
+  <view class="header-section">
+    <view class="date-info">
+      <text class="date-text">📅 {{date}}</text>
+      <text class="slot-text">{{slot === 'lunch' ? '午餐' : '晚餐'}}</text>
+    </view>
+    <view wx:if="{{meal}}" class="status-info">
+      <text class="status-text status-{{meal.status}}">
+        {{meal.status === 'published' ? '已发布 🟢' : meal.status === 'locked' ? '已锁定 🟡' : meal.status === 'completed' ? '已完成 ✅' : meal.status === 'canceled' ? '已取消 ❌' : '未知状态'}}
+      </text>
+    </view>
+  </view>
+
+  <!-- 餐次信息区域 -->
+  <view wx:if="{{meal && pageMode !== 'publish'}}" class="meal-info-section">
+    <view class="section-title">📝 餐次信息</view>
+    <view class="meal-info">
+      <view class="info-row">
+        <text class="info-label">描述：</text>
+        <text class="info-value">{{meal.description}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">基础价格：</text>
+        <text class="info-value">¥{{meal.base_price_yuan}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">订餐情况：</text>
+        <text class="info-value">{{orderStats.active_orders || 0}}/{{meal.max_orders}} 人</text>
+      </view>
+      <view wx:if="{{orderStats.total_orders > 0}}" class="info-row">
+        <button class="view-details-btn" bind:tap="onViewOrderDetails">
+          📊 查看下单详情 →
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 餐次表单区域 -->
+  <view wx:if="{{pageMode === 'publish' || editing}}" class="form-section">
+    <view class="section-title">
+      {{pageMode === 'publish' ? '📝 发布餐次' : '✏️ 编辑餐次'}}
+    </view>
+    
+    <!-- 餐次描述 -->
+    <view class="form-item">
+      <text class="form-label">餐次描述</text>
+      <textarea
+        class="form-textarea"
+        placeholder="请输入餐次描述（如：红烧肉套餐，配白米饭和汤）"
+        value="{{mealForm.description}}"
+        bind:input="onDescriptionInput"
+        maxlength="200"
+        auto-height="{{true}}"
+      />
+    </view>
+
+    <!-- 基础价格 -->
+    <view class="form-item">
+      <text class="form-label">基础价格（元）</text>
+      <view class="price-input-container">
+        <input
+          class="form-input price-input"
+          type="digit"
+          placeholder="18"
+          value="{{mealForm.base_price_yuan}}"
+          bind:input="onPriceInput"
+        />
+        <view class="quick-prices">
+          <button
+            wx:for="{{quickPrices}}"
+            wx:key="*this"
+            class="quick-price-btn {{mealForm.base_price_yuan === item ? 'active' : ''}}"
+            data-price="{{item}}"
+            bind:tap="onQuickPriceSelect"
+          >
+            ¥{{item}}
+          </button>
+        </view>
+      </view>
+    </view>
+
+    <!-- 订餐上限 -->
+    <view class="form-item">
+      <text class="form-label">订餐上限（人）</text>
+      <input
+        class="form-input"
+        type="number"
+        placeholder="50"
+        value="{{mealForm.max_orders}}"
+        bind:input="onMaxOrdersInput"
+      />
+    </view>
+
+    <!-- 附加项配置 -->
+    <view class="form-item">
+      <text class="form-label">🍖 附加项配置（可多选）</text>
+      <view class="addons-config">
+        <view
+          wx:for="{{addons}}"
+          wx:key="addon_id"
+          class="addon-item"
+        >
+          <view class="addon-info" bind:tap="onAddonToggle" data-addon-id="{{item.addon_id}}">
+            <text class="addon-checkbox">
+              {{mealForm.addon_config[item.addon_id] ? '☑️' : '☐'}}
+            </text>
+            <text class="addon-name">{{item.name}}</text>
+            <text class="addon-price">¥{{item.price_yuan}}</text>
+          </view>
+          <view wx:if="{{mealForm.addon_config[item.addon_id]}}" class="addon-quantity">
+            <text class="quantity-label">最多:</text>
+            <button
+              class="quantity-btn"
+              data-addon-id="{{item.addon_id}}"
+              data-type="decrease"
+              bind:tap="onAddonQuantityChange"
+            >
+              -
+            </button>
+            <text class="quantity-value">{{mealForm.addon_config[item.addon_id]}}</text>
+            <button
+              class="quantity-btn"
+              data-addon-id="{{item.addon_id}}"
+              data-type="increase"
+              bind:tap="onAddonQuantityChange"
+            >
+              +
+            </button>
+            <text class="quantity-unit">份</text>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 预估总价范围 -->
+      <view wx:if="{{priceRange}}" class="price-range">
+        <text class="price-range-text">
+          预估总价范围：¥{{priceRange.min}} - ¥{{priceRange.max}}
+        </text>
+        <view wx:if="{{priceRange.min < mealForm.base_price_yuan}}" class="price-note">
+          (含负价格附加项)
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮区域 -->
+  <view class="actions-section">
+    <!-- 发布餐次 -->
+    <button
+      wx:if="{{pageMode === 'publish'}}"
+      class="action-btn primary"
+      loading="{{submitting}}"
+      disabled="{{submitting}}"
+      bind:tap="onPublishMeal"
+    >
+      📝 发布餐次
+    </button>
+
+    <!-- 编辑模式按钮 -->
+    <view wx:elif="{{editing}}" class="edit-actions">
+      <button
+        class="action-btn secondary"
+        bind:tap="onCancelEdit"
+      >
+        取消
+      </button>
+      <button
+        class="action-btn primary"
+        loading="{{submitting}}"
+        disabled="{{submitting}}"
+        bind:tap="onSaveMeal"
+      >
+        保存
+      </button>
+    </view>
+
+    <!-- 已发布状态按钮 -->
+    <view wx:elif="{{pageMode === 'view' && meal.status === 'published'}}" class="view-actions">
+      <button
+        class="action-btn secondary"
+        bind:tap="onEditMeal"
+      >
+        ✏️ 编辑
+      </button>
+      <button
+        class="action-btn warning"
+        data-action="lock"
+        bind:tap="onMealStatusAction"
+      >
+        🔒 锁定
+      </button>
+      <button
+        class="action-btn danger"
+        data-action="cancel"
+        bind:tap="onMealStatusAction"
+      >
+        ❌ 取消
+      </button>
+    </view>
+
+    <!-- 锁定状态按钮 -->
+    <view wx:elif="{{pageMode === 'view' && meal.status === 'locked'}}" class="locked-actions">
+      <button
+        class="action-btn success"
+        data-action="complete"
+        bind:tap="onMealStatusAction"
+      >
+        ✅ 完成
+      </button>
+      <button
+        class="action-btn secondary"
+        data-action="unlock"
+        bind:tap="onMealStatusAction"
+      >
+        🔓 取消锁定
+      </button>
+    </view>
+
+    <!-- 已完成状态 -->
+    <view wx:elif="{{pageMode === 'readonly' && meal.status === 'completed'}}" class="readonly-status">
+      <text class="status-message">餐次已完成 ✅</text>
+    </view>
+
+    <!-- 已取消状态 -->
+    <view wx:elif="{{pageMode === 'readonly' && meal.status === 'canceled'}}" class="readonly-status">
+      <text class="status-message">餐次已取消 ❌</text>
+    </view>
+  </view>
+</view>
