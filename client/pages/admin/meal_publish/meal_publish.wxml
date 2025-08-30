@@ -23,7 +23,7 @@
   </view>
 
   <!-- 餐次信息区域 -->
-  <view wx:if="{{meal && pageMode !== 'publish'}}" class="meal-info-section">
+  <view wx:if="{{meal && pageMode !== 'publish' && !editing}}" class="meal-info-section">
     <view class="section-title">📝 餐次信息</view>
     <view class="meal-info">
       <view class="info-row">

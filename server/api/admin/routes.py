@@ -239,7 +239,7 @@ async def publish_meal(
 @router.put("/meals/{meal_id}", response_model=Dict[str, Any])
 async def update_meal(
     meal_id: int = Path(..., description="餐次ID"),
-    meal_request: CreateMealRequest = None,
+    meal_request: CreateMealRequest,
     current_admin: TokenData = Depends(get_admin_user),
     db: DatabaseManager = Depends(get_database)
 ):
