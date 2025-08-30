@@ -180,13 +180,16 @@ class CoreOperations:
             WHERE user_id = ?
         """, [new_balance, user_id])
         
-        # 记录账本（使用自动生成的主键）
+        # 生成新的账本ID（使用事务确保原子性）
+        ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+        
+        # 记录账本
         self.db.conn.execute("""
-            INSERT INTO ledger (transaction_no, user_id, type, direction, amount_cents,
+            INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
                               balance_before_cents, balance_after_cents, order_id, 
                               description, created_at)
-            VALUES (?, ?, 'order', 'out', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-        """, [transaction_no, user_id, amount_cents, current_balance, new_balance, 
+            VALUES (?, ?, ?, 'order', 'out', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+        """, [ledger_id, transaction_no, user_id, amount_cents, current_balance, new_balance, 
               order_id, description])
         
         return {
@@ -214,13 +217,16 @@ class CoreOperations:
             WHERE user_id = ?
         """, [new_balance, user_id])
         
-        # 记录账本（使用自动生成的主键）
+        # 生成新的账本ID（使用事务确保原子性）
+        ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+        
+        # 记录账本
         self.db.conn.execute("""
-            INSERT INTO ledger (transaction_no, user_id, type, direction, amount_cents,
+            INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
                               balance_before_cents, balance_after_cents, order_id, 
                               description, created_at)
-            VALUES (?, ?, 'refund', 'in', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-        """, [transaction_no, user_id, amount_cents, current_balance, new_balance, 
+            VALUES (?, ?, ?, 'refund', 'in', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+        """, [ledger_id, transaction_no, user_id, amount_cents, current_balance, new_balance, 
               order_id, description])
         
         return {
@@ -786,13 +792,16 @@ class CoreOperations:
             direction = "in" if amount_cents > 0 else "out"
             ledger_amount = abs(amount_cents)
             
-            # 记录账本（使用自动生成的主键）
+            # 生成新的账本ID（使用事务确保原子性）
+            ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+            
+            # 记录账本
             self.db.conn.execute("""
-                INSERT INTO ledger (transaction_no, user_id, type, direction, amount_cents,
+                INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
                                   balance_before_cents, balance_after_cents, 
                                   description, operator_id, created_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-            """, [transaction_no, target_user_id, ledger_type, direction, ledger_amount,
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            """, [ledger_id, transaction_no, target_user_id, ledger_type, direction, ledger_amount,
                   current_balance, new_balance, f"管理员余额调整-{reason}", admin_user_id])
             
             # 获取目标用户信息用于返回
