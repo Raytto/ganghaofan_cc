@@ -205,6 +205,29 @@ Page({
     console.log('用户状态:', userInfo.status)
     console.log('is_registered字段:', userInfo.is_registered)
     
+    // 检查Token与用户信息的一致性
+    const currentToken = wx.getStorageSync('access_token')
+    if (currentToken) {
+      try {
+        // 简单解析JWT token (不验证签名)
+        const tokenParts = currentToken.split('.')
+        const payload = JSON.parse(wx.base64decode(tokenParts[1]))
+        console.log('Token中的open_id:', payload.open_id)
+        console.log('API返回的open_id:', userInfo.open_id)
+        
+        if (payload.open_id !== userInfo.open_id) {
+          console.warn('Token与用户信息不匹配，清除Token重新登录')
+          wx.removeStorageSync('access_token')
+          wx.removeStorageSync('userInfo')
+          // 重新开始登录流程
+          this.getOpenIdAndFetchUserInfo()
+          return
+        }
+      } catch (e) {
+        console.warn('Token解析失败，可能需要重新登录:', e)
+      }
+    }
+    
     const isRegistered = userInfo.wechat_name && userInfo.wechat_name.trim() !== ''
     console.log('最终判断isRegistered:', isRegistered)
     

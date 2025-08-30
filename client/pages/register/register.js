@@ -222,10 +222,29 @@ Page({
           icon: 'none'
         })
       } else {
-        wx.showToast({
-          title: error.message || '注册失败',
-          icon: 'none'
-        })
+        // 检查是否是Token不匹配问题
+        if (error.message.includes('请求失败') || error.message.includes('不存在')) {
+          wx.showModal({
+            title: '注册失败',
+            content: '登录信息可能过期，是否重新登录？',
+            confirmText: '重新登录',
+            cancelText: '取消',
+            success: (res) => {
+              if (res.confirm) {
+                // 清除所有登录信息并重启
+                wx.clearStorageSync()
+                wx.reLaunch({
+                  url: '../welcome/welcome'
+                })
+              }
+            }
+          })
+        } else {
+          wx.showToast({
+            title: error.message || '注册失败',
+            icon: 'none'
+          })
+        }
       }
     } finally {
       this.setData({ registering: false })

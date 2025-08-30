@@ -66,6 +66,7 @@ class Request {
           if (res.statusCode >= 200 && res.statusCode < 300) {
             // 检查业务状态码
             if (res.data && res.data.success === false) {
+              console.log('[Request] 业务失败响应:', res.data)
               reject(new Error(res.data.message || '请求失败'))
             } else {
               resolve(res.data)

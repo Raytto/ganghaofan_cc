@@ -186,10 +186,19 @@ async def complete_user_registration(
     参考文档: doc/api.md - 1.2 完成用户注册
     """
     try:
-        # 完成用户注册
+        # 完成用户注册 - 使用数据库中的实际open_id而不是token中的
         support_ops = SupportingOperations(db)
+        
+        # 先通过user_id获取用户的实际open_id
+        user_info = support_ops.get_user_by_id(current_user.user_id)
+        if not user_info:
+            return create_error_response("用户不存在")
+        
+        actual_open_id = user_info["open_id"]
+        logger.info(f"使用实际的open_id进行注册: {actual_open_id} (token中为: {current_user.open_id})")
+        
         register_result = support_ops.complete_user_registration(
-            open_id=current_user.open_id,
+            open_id=actual_open_id,
             wechat_name=register_request.wechat_name,
             avatar_url=register_request.avatar_url
         )
