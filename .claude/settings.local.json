@@ -3,7 +3,10 @@
     "allow": [
       "Bash(find:*)",
       "Bash(python -m pytest tests/test_api/test_meals.py::TestMealDetail::test_get_meal_detail -v)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(./scripts/start_dev.sh:*)",
+      "Bash(pkill:*)",
+      "Bash(netstat:*)"
     ],
     "deny": [],
     "ask": [],

@@ -666,8 +666,35 @@ class SupportingOperations:
             # 检查用户状态
             if existing_user.get('status') == 'suspended':
                 raise ValueError("用户账户已停用")
-            if existing_user.get('status') == 'active':
-                raise ValueError("用户已完成注册")
+            
+            # 如果用户已经是active状态但缺少基本信息，允许更新
+            is_info_complete = (existing_user.get('wechat_name') and 
+                              existing_user.get('wechat_name').strip())
+            
+            if existing_user.get('status') == 'active' and is_info_complete:
+                # 用户信息完整，只允许更新头像
+                if avatar_url:
+                    self.db.conn.execute("""
+                        UPDATE users 
+                        SET avatar_url = ?, updated_at = CURRENT_TIMESTAMP
+                        WHERE open_id = ?
+                    """, [avatar_url, open_id])
+                
+                updated_user = self._check_user_exists(open_id)
+                return {
+                    'success': True,
+                    'data': {
+                        'user_id': updated_user['user_id'],
+                        'open_id': open_id,
+                        'wechat_name': updated_user['wechat_name'],
+                        'avatar_url': updated_user['avatar_url'],
+                        'balance_cents': updated_user['balance_cents'],
+                        'balance_yuan': updated_user['balance_cents'] / 100.0,
+                        'is_admin': updated_user['is_admin'],
+                        'status': updated_user['status']
+                    },
+                    'message': '头像更新成功'
+                }
                 
             def update_user_operation():
                 # 更新用户信息，并将状态改为active

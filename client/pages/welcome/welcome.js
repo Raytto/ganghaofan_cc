@@ -198,7 +198,15 @@ Page({
    * 更新用户信息到页面
    */
   updateUserInfo(userInfo) {
+    // 添加详细调试信息
+    console.log('用户信息详情:', JSON.stringify(userInfo, null, 2))
+    console.log('wechat_name字段:', userInfo.wechat_name)
+    console.log('wechat_name类型:', typeof userInfo.wechat_name)
+    console.log('用户状态:', userInfo.status)
+    console.log('is_registered字段:', userInfo.is_registered)
+    
     const isRegistered = userInfo.wechat_name && userInfo.wechat_name.trim() !== ''
+    console.log('最终判断isRegistered:', isRegistered)
     
     this.setData({
       userInfo: {

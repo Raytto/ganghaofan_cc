@@ -195,8 +195,10 @@ async def complete_user_registration(
         )
         
         if not register_result["success"]:
-            logger.error(f"完成用户注册失败: {register_result.get('error')}")
-            return create_error_response(register_result.get('error', '注册失败'))
+            error_msg = register_result.get('error', '注册失败')
+            logger.error(f"完成用户注册失败: {error_msg}")
+            logger.error(f"注册参数 - open_id: {current_user.open_id}, wechat_name: {register_request.wechat_name}")
+            return create_error_response(error_msg)
         
         user_data = register_result["data"]
         
