@@ -1,5 +1,4 @@
 <view class="calendar-container">
-  <!-- CACHE-BUSTER: 2025-08-30-19:13:00 -->
   <!-- 日历头部 -->
   <view class="calendar-header">
     <text class="current-date">{{currentDate}}</text>
