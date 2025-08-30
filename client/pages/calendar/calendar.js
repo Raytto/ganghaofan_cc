@@ -73,11 +73,17 @@ Page({
         
         const isToday = this.isSameDay(dayDate, today)
         
+        // 手动格式化日期字符串
+        const year = dayDate.getFullYear()
+        const month = String(dayDate.getMonth() + 1).padStart(2, '0')
+        const day = String(dayDate.getDate()).padStart(2, '0')
+        const dateString = `${year}-${month}-${day}`
+
         week.days.push({
           dayIndex,
           date: dayDate.getDate(),
           fullDate: dayDate,
-          dateString: this.formatDate(dayDate), // 添加格式化的日期字符串
+          dateString: dateString,
           isToday,
           lunch: {
             meal_status: 'unpublished',
