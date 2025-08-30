@@ -1,17 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mkdir:*)",
-      "Bash(python:*)",
-      "Bash(conda activate:*)",
-      "Bash(./scripts/start_dev.sh:*)",
-      "Bash(/cygdrive/c/ProgramData/anaconda3/Scripts/conda.exe run -n ganghaofan_dev pip install -r requirements.txt)",
-      "Bash(/cygdrive/c/ProgramData/anaconda3/Scripts/conda.exe run -n ganghaofan_dev uvicorn api.main:app --host 0.0.0.0 --port 8000 --env-file config/config-dev.json --reload)",
-      "Bash(curl:*)",
-      "Bash(/cygdrive/c/ProgramData/anaconda3/Scripts/conda.exe run -n ganghaofan_dev python -c \"\nimport duckdb\nimport sys\nconn = duckdb.connect(''../data/gang_hao_fan_dev.db'')\nresult = conn.execute(''SELECT * FROM addons WHERE addon_id = 5'').fetchone()\nif result:\n    print(''Addon 5 exists:'', result)\nelse:\n    print(''Addon 5 does not exist'')\nconn.execute(''PRAGMA table_info(addons)'').fetchall()\n\")",
-      "Bash(/cygdrive/c/ProgramData/anaconda3/Scripts/conda.exe run -n ganghaofan_dev uvicorn api.main:app --host 0.0.0.0 --port 8000 --env-file config/config-dev.json)",
-      "Bash(/cygdrive/c/Users/pangruitao/.conda/envs/ganghaofan_dev/python.exe test_existing_addon.py)",
-      "Bash(/cygdrive/c/Users/pangruitao/.conda/envs/ganghaofan_dev/python.exe test_addon5.py)"
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": [],

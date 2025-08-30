@@ -9,10 +9,10 @@ Page({
   },
 
   onLoad() {
-    console.log('=== Calendar页面 onLoad 开始 ===')
+    console.log('【新版本】Calendar页面 onLoad 开始')
     this.initCalendar()
     this.loadMealData()
-    console.log('=== Calendar页面 onLoad 结束 ===')
+    console.log('【新版本】Calendar页面 onLoad 结束')
   },
 
   onShow() {
@@ -34,9 +34,8 @@ Page({
    * 初始化日历结构
    */
   initCalendar() {
-    console.log('=== initCalendar 开始 ===')
+    console.log('【新版本】initCalendar 开始')
     const today = new Date()
-    console.log('今天的日期:', today)
     this.setData({ today })
     
     // 设置当前日期显示
@@ -44,22 +43,16 @@ Page({
     const month = today.getMonth() + 1
     const date = today.getDate()
     const currentDate = `${year}年${month}月${date}日`
-    console.log('当前日期显示:', currentDate)
     this.setData({ currentDate })
 
     // 生成三周日历结构
-    console.log('开始生成三周日历数据...')
     const weeks = this.generateThreeWeeks(today)
-    console.log('生成的weeks数据:', weeks)
-    console.log('weeks数组长度:', weeks.length)
-    if (weeks.length > 0) {
-      console.log('第一周数据示例:', weeks[0])
-      if (weeks[0].days.length > 0) {
-        console.log('第一天数据示例:', weeks[0].days[0])
-      }
+    console.log('【新版本】生成的weeks数据长度:', weeks.length)
+    if (weeks.length > 0 && weeks[0].days.length > 0) {
+      console.log('【新版本】第一天dateString:', weeks[0].days[0].dateString)
     }
     this.setData({ weeks })
-    console.log('=== initCalendar 结束 ===')
+    console.log('【新版本】initCalendar 完成')
   },
 
   /**
@@ -253,13 +246,7 @@ Page({
    * 日期点击事件（预留扩展）
    */
   onDayTap(e) {
-    console.log('=== onDayTap 被触发 ===')
-    console.log('完整的事件对象:', e)
-    console.log('currentTarget.dataset:', e.currentTarget.dataset)
-    console.log('target.dataset:', e.target.dataset)
-    const date = e.currentTarget.dataset.date
-    console.log('解构出的date:', date)
-    console.log('注意：如果onDayTap被触发而不是onMealTap，说明事件冒泡没有被正确阻止')
+    console.log('【新版】onDayTap被触发，数据:', e.currentTarget.dataset)
     // 可扩展：跳转到具体日期的订餐页面
   },
 
@@ -267,7 +254,7 @@ Page({
    * 餐次点击事件
    */
   onMealTap(e) {
-    console.log('onMealTap 事件数据:', e.currentTarget.dataset)
+    console.log('【新版】onMealTap被触发！数据:', e.currentTarget.dataset)
     const { date, slot, status } = e.currentTarget.dataset
     console.log('解构出的数据 - date:', date, 'slot:', slot, 'status:', status)
     
