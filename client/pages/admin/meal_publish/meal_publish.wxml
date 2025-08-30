@@ -44,6 +44,23 @@
         </button>
       </view>
     </view>
+    
+    <!-- 附加项信息显示（查看模式） -->
+    <view wx:if="{{meal.addon_config}}" class="addon-info-section">
+      <view class="section-subtitle">🍖 已配置附加项</view>
+      <view class="addon-display">
+        <view
+          wx:for="{{addons}}"
+          wx:key="addon_id"
+          wx:if="{{meal.addon_config[item.addon_id]}}"
+          class="addon-display-item"
+        >
+          <text class="addon-display-name">{{item.name}}</text>
+          <text class="addon-display-price">¥{{item.price_yuan}}</text>
+          <text class="addon-display-quantity">最多 {{meal.addon_config[item.addon_id]}} 份</text>
+        </view>
+      </view>
+    </view>
   </view>
 
   <!-- 餐次表单区域 -->
