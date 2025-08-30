@@ -32,12 +32,12 @@
         <picker
           range="{{statusOptions}}"
           range-key="label"
-          value="{{statusOptions.findIndex(item => item.value === filters.status)}}"
+          value="{{statusIndex}}"
           bind:change="onFilterChange"
           data-field="status"
         >
           <view class="picker-value">
-            {{statusOptions[statusOptions.findIndex(item => item.value === filters.status)]?.label || '请选择'}}
+            {{statusOptions[statusIndex].label}}
           </view>
         </picker>
       </view>
@@ -47,12 +47,12 @@
         <picker
           range="{{roleOptions}}"
           range-key="label"
-          value="{{roleOptions.findIndex(item => item.value === filters.role)}}"
+          value="{{roleIndex}}"
           bind:change="onFilterChange"
           data-field="role"
         >
           <view class="picker-value">
-            {{roleOptions[roleOptions.findIndex(item => item.value === filters.role)]?.label || '请选择'}}
+            {{roleOptions[roleIndex].label}}
           </view>
         </picker>
       </view>

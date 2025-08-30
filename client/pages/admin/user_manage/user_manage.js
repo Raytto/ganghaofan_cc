@@ -46,6 +46,10 @@ Page({
       { value: 'admin', label: '管理员' }
     ],
     
+    // 计算的索引值（用于picker组件）
+    statusIndex: 0,
+    roleIndex: 0,
+    
     // 显示筛选面板
     showFilters: false,
     
@@ -199,11 +203,13 @@ Page({
     
     if (field === 'status') {
       this.setData({
-        'filters.status': this.data.statusOptions[value].value
+        'filters.status': this.data.statusOptions[value].value,
+        statusIndex: value
       })
     } else if (field === 'role') {
       this.setData({
-        'filters.role': this.data.roleOptions[value].value
+        'filters.role': this.data.roleOptions[value].value,
+        roleIndex: value
       })
     } else {
       this.setData({
@@ -245,7 +251,9 @@ Page({
         status: '',
         role: '',
         search: ''
-      }
+      },
+      statusIndex: 0,
+      roleIndex: 0
     })
   },
 
