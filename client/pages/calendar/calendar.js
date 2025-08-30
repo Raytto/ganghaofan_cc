@@ -76,6 +76,7 @@ Page({
           dayIndex,
           date: dayDate.getDate(),
           fullDate: dayDate,
+          dateString: this.formatDate(dayDate), // 添加格式化的日期字符串
           isToday,
           lunch: {
             meal_status: 'unpublished',
@@ -225,27 +226,26 @@ Page({
   onMealTap(e) {
     const { date, slot, status } = e.currentTarget.dataset
     
+    // date 现在已经是格式化的字符串了，直接使用
+    
     // 检查是否为管理员模式
     if (adminUtils.isAdminModeEnabled()) {
       // 管理员模式下，未发布的餐次跳转到发布页面
       if (status === 'unpublished') {
-        const formattedDate = this.formatDate(new Date(date))
         wx.navigateTo({
-          url: `/pages/admin/meal_publish/meal_publish?date=${formattedDate}&slot=${slot}`
+          url: `/pages/admin/meal_publish/meal_publish?date=${date}&slot=${slot}`
         })
       } else if (status === 'published' || status === 'locked' || status === 'completed') {
         // 已发布的餐次跳转到查看/编辑页面
-        const formattedDate = this.formatDate(new Date(date))
         // 需要先获取meal_id
-        this.getMealIdAndNavigate(formattedDate, slot)
+        this.getMealIdAndNavigate(date, slot)
       }
     } else {
       // 普通用户模式
       if (status === 'published') {
         // 跳转到订餐页面
-        const formattedDate = this.formatDate(new Date(date))
         wx.navigateTo({
-          url: `/pages/order/order?date=${formattedDate}&slot=${slot}`
+          url: `/pages/order/order?date=${date}&slot=${slot}`
         })
       }
     }
