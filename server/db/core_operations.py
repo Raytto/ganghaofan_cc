@@ -121,14 +121,21 @@ class CoreOperations:
             raise ValueError(f"无效或非活跃的附加项ID: {list(invalid_addon_ids)}")
     
     def _check_meal_slot_available(self, date: str, slot: str):
-        """检查餐次时段是否可用"""
+        """检查餐次时段是否可用，返回已存在的餐次信息"""
         existing_meal = self.db.conn.execute("""
-            SELECT meal_id FROM meals 
-            WHERE date = ? AND slot = ? AND status != 'canceled'
+            SELECT meal_id, status FROM meals 
+            WHERE date = ? AND slot = ?
         """, [date, slot]).fetchone()
         
         if existing_meal:
-            raise ValueError(f"{date} {slot} 时段已存在有效餐次")
+            meal_id, status = existing_meal
+            if status != 'canceled':
+                raise ValueError(f"{date} {slot} 时段已存在有效餐次")
+            else:
+                # 返回已取消的餐次ID，可以重用
+                return meal_id
+        
+        return None
     
     def _check_addon_used_by_active_meals(self, addon_id: int):
         """检查附加项是否被活跃餐次使用"""
@@ -357,8 +364,8 @@ class CoreOperations:
             # 验证管理员权限
             self._verify_admin_permission(admin_user_id)
             
-            # 检查该日期时段是否已有非取消状态的餐次
-            self._check_meal_slot_available(date, slot)
+            # 检查该日期时段是否已有非取消状态的餐次，或获取可重用的已取消餐次ID
+            existing_canceled_meal_id = self._check_meal_slot_available(date, slot)
             
             # 验证所有addon_ids都是活跃状态
             if addon_config:
@@ -368,23 +375,40 @@ class CoreOperations:
             # 将addon_config转换为JSON字符串
             addon_config_json = json.dumps({str(k): v for k, v in addon_config.items()}) if addon_config else None
             
-            # 生成新的餐次ID（使用事务确保原子性）
-            meal_id = self.db.conn.execute("SELECT COALESCE(MAX(meal_id), 0) + 1 FROM meals").fetchone()[0]
-            
-            # 创建餐次
-            self.db.conn.execute("""
-                INSERT INTO meals (meal_id, date, slot, description, base_price_cents, addon_config, 
-                                 max_orders, current_orders, status, created_at, updated_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, 0, 'published', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-            """, [meal_id, date, slot, description, base_price_cents, addon_config_json, max_orders])
-            created_at = datetime.now().isoformat()
+            if existing_canceled_meal_id:
+                # 重用已取消的餐次：更新其信息为新餐次
+                meal_id = existing_canceled_meal_id
+                self.db.conn.execute("""
+                    UPDATE meals 
+                    SET description = ?, base_price_cents = ?, addon_config = ?, 
+                        max_orders = ?, current_orders = 0, status = 'published', 
+                        updated_at = CURRENT_TIMESTAMP,
+                        canceled_at = NULL, canceled_by = NULL, canceled_reason = NULL
+                    WHERE meal_id = ?
+                """, [description, base_price_cents, addon_config_json, max_orders, meal_id])
+                created_at = datetime.now().isoformat()
+                message = f'{date} {slot} 餐次重新发布成功（重用已取消餐次）'
+            else:
+                # 创建全新餐次
+                # 生成新的餐次ID（使用事务确保原子性）
+                meal_id = self.db.conn.execute("SELECT COALESCE(MAX(meal_id), 0) + 1 FROM meals").fetchone()[0]
+                
+                # 创建餐次
+                self.db.conn.execute("""
+                    INSERT INTO meals (meal_id, date, slot, description, base_price_cents, addon_config, 
+                                     max_orders, current_orders, status, created_at, updated_at)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, 0, 'published', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+                """, [meal_id, date, slot, description, base_price_cents, addon_config_json, max_orders])
+                created_at = datetime.now().isoformat()
+                message = f'{date} {slot} 餐次发布成功'
             
             return {
                 'meal_id': meal_id,
                 'date': date,
                 'slot': slot,
                 'created_at': created_at,
-                'message': f'{date} {slot} 餐次发布成功'
+                'message': message,
+                'is_new_meal': existing_canceled_meal_id is None  # True if new, False if reused
             }
         
         return self.db.execute_transaction([publish_meal_operation])[0]

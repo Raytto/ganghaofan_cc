@@ -3,7 +3,7 @@
 
 import logging
 from typing import Dict, Any, Optional
-from fastapi import APIRouter, HTTPException, Depends, Query, Path
+from fastapi import APIRouter, HTTPException, Depends, Query, Path, Response
 
 from .models import (
     CreateAddonRequest, AddonInfo, CreateMealRequest, MealInfo,
@@ -174,6 +174,7 @@ async def get_addons_list(
 @router.post("/meals", response_model=Dict[str, Any])
 async def publish_meal(
     meal_request: CreateMealRequest,
+    response: Response,
     current_admin: TokenData = Depends(get_admin_user),
     db: DatabaseManager = Depends(get_database)
 ):
@@ -208,6 +209,12 @@ async def publish_meal(
         
         if not meal_result.get("success", True):
             return create_error_response(meal_result.get("message", "餐次发布失败"))
+        
+        # 设置正确的HTTP状态码
+        if meal_result.get("is_new_meal", True):
+            response.status_code = 201  # Created - new meal
+        else:
+            response.status_code = 200  # OK - reused/updated existing meal
         
         # 转换附加项配置格式（整数键转字符串键）
         formatted_addon_config = {}

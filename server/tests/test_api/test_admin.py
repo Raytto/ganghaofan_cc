@@ -108,8 +108,12 @@ class TestAdminMeals:
     
     def test_publish_meal_success(self, client, admin_auth_token, sample_addon_id):
         """测试成功发布餐次"""
+        import time
+        import random
+        unique_day = random.randint(1, 28)  # Random day between 1-28 to avoid month end issues
+        unique_month = random.randint(1, 12)  # Random month 1-12
         meal_data = {
-            "date": "2024-12-30",
+            "date": f"2026-{unique_month:02d}-{unique_day:02d}",  # Use future date to avoid conflicts
             "slot": "lunch",
             "description": "测试午餐",
             "base_price_cents": 1500,
@@ -130,13 +134,16 @@ class TestAdminMeals:
         
         assert data["success"] is True
         assert "meal_id" in data["data"]
-        assert data["data"]["date"] == "2024-12-30"
+        assert data["data"]["date"] == meal_data["date"]
         assert data["data"]["slot"] == "lunch"
     
     def test_publish_meal_duplicate_slot(self, client, admin_auth_token):
         """测试发布重复时段的餐次"""
+        import random
+        unique_day = random.randint(1, 28)  # Random day between 1-28
+        unique_month = random.randint(1, 12)  # Random month 1-12
         meal_data = {
-            "date": "2024-12-30",
+            "date": f"2027-{unique_month:02d}-{unique_day:02d}",  # Use different year to avoid conflicts
             "slot": "lunch",
             "description": "重复午餐",
             "base_price_cents": 1200,
