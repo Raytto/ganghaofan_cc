@@ -41,6 +41,7 @@ Page({
 
     // 生成三周日历结构
     const weeks = this.generateThreeWeeks(today)
+    console.log('生成的weeks数据:', weeks)
     this.setData({ weeks })
   },
 
@@ -224,7 +225,9 @@ Page({
    * 餐次点击事件
    */
   onMealTap(e) {
+    console.log('onMealTap 事件数据:', e.currentTarget.dataset)
     const { date, slot, status } = e.currentTarget.dataset
+    console.log('解构出的数据 - date:', date, 'slot:', slot, 'status:', status)
     
     // date 现在已经是格式化的字符串了，直接使用
     
@@ -232,6 +235,7 @@ Page({
     if (adminUtils.isAdminModeEnabled()) {
       // 管理员模式下，未发布的餐次跳转到发布页面
       if (status === 'unpublished') {
+        console.log('跳转到发布页面，URL:', `/pages/admin/meal_publish/meal_publish?date=${date}&slot=${slot}`)
         wx.navigateTo({
           url: `/pages/admin/meal_publish/meal_publish?date=${date}&slot=${slot}`
         })
