@@ -19,7 +19,6 @@ Page({
     
     // 页面状态
     loading: false,
-    editing: false,
     submitting: false,
     
     // 餐次表单数据
@@ -40,7 +39,7 @@ Page({
     // 快捷价格选项
     quickPrices: [15, 18, 20, 25],
     
-    // 页面模式：publish（发布）、view（查看）、edit（编辑）
+    // 页面模式：publish（发布）、view（查看）、readonly（只读）
     pageMode: 'publish'
   },
 
@@ -398,67 +397,6 @@ Page({
     }
   },
 
-  /**
-   * 编辑餐次
-   */
-  onEditMeal() {
-    this.setData({ editing: true })
-  },
-
-  /**
-   * 保存餐次修改
-   */
-  async onSaveMeal() {
-    if (!this.validateForm()) {
-      return
-    }
-    
-    try {
-      this.setData({ submitting: true })
-      
-      const { meal, mealForm } = this.data
-      const requestData = {
-        description: mealForm.description.trim(),
-        base_price_cents: Math.round(mealForm.base_price_yuan * 100),
-        addon_config: mealForm.addon_config,
-        max_orders: mealForm.max_orders
-      }
-      
-      const response = await request.put(`/admin/meals/${meal.meal_id}`, requestData)
-      
-      if (response.success) {
-        wx.showToast({
-          title: '保存成功',
-          icon: 'success'
-        })
-        
-        this.setData({ editing: false })
-        
-        // 刷新页面数据
-        setTimeout(() => {
-          this.loadPageData(meal.meal_id)
-        }, 1500)
-      }
-      
-    } catch (error) {
-      console.error('[meal_publish] saveMeal error:', error)
-      wx.showToast({
-        title: error.message || '保存失败',
-        icon: 'error'
-      })
-    } finally {
-      this.setData({ submitting: false })
-    }
-  },
-
-  /**
-   * 取消编辑
-   */
-  onCancelEdit() {
-    // 恢复原始数据
-    this.loadMealData(this.data.meal.meal_id)
-    this.setData({ editing: false })
-  },
 
   /**
    * 餐次状态操作

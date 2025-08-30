@@ -6,7 +6,7 @@ from typing import Dict, Any, Optional
 from fastapi import APIRouter, HTTPException, Depends, Query, Path
 
 from .models import (
-    CreateAddonRequest, AddonInfo, CreateMealRequest, UpdateMealRequest, MealInfo,
+    CreateAddonRequest, AddonInfo, CreateMealRequest, MealInfo,
     AdjustBalanceRequest, SetUserAdminRequest, SetUserStatusRequest,
     CancelMealRequest, UserListItem
 )
@@ -235,100 +235,6 @@ async def publish_meal(
         logger.error(f"发布餐次失败: {str(e)}")
         return create_error_response(f"发布餐次失败: {str(e)}")
 
-
-@router.put("/meals/{meal_id}", response_model=Dict[str, Any])
-async def update_meal(
-    meal_request: UpdateMealRequest,
-    meal_id: int = Path(..., description="餐次ID"),
-    current_admin: TokenData = Depends(get_admin_user),
-    db: DatabaseManager = Depends(get_database)
-):
-    """
-    修改餐次信息
-    
-    需求: 管理员发布餐页面需要能够修改已发布餐次的配置
-    """
-    try:
-        # 转换附加项配置格式（字符串键转整数键）
-        addon_config = {}
-        if meal_request.addon_config:
-            for addon_id_str, max_quantity in meal_request.addon_config.items():
-                try:
-                    addon_id = int(addon_id_str)
-                    addon_config[addon_id] = max_quantity
-                except ValueError:
-                    return create_error_response(f"无效的附加项ID: {addon_id_str}")
-
-        # 构建更新数据
-        update_data = {
-            "description": meal_request.description,
-            "base_price_cents": meal_request.base_price_cents,
-            "max_orders": meal_request.max_orders
-        }
-        
-        if addon_config:
-            import json
-            update_data["addon_config"] = json.dumps(addon_config)
-        
-        # 执行更新
-        set_clauses = []
-        params = []
-        for key, value in update_data.items():
-            set_clauses.append(f"{key} = ?")
-            params.append(value)
-        params.append("now")  # updated_at
-        params.append(meal_id)
-        
-        update_query = f"""
-            UPDATE meals 
-            SET {', '.join(set_clauses)}, updated_at = ?
-            WHERE meal_id = ? AND status = 'published'
-        """
-        
-        cursor = db.conn.execute(update_query, params)
-        if cursor.rowcount == 0:
-            return create_error_response("餐次不存在或状态不允许修改")
-        
-        # 获取更新后的餐次信息
-        meal_query = """
-            SELECT meal_id, date, slot, description, base_price_cents, addon_config, max_orders, updated_at
-            FROM meals WHERE meal_id = ?
-        """
-        meal_result = db.conn.execute(meal_query, [meal_id]).fetchone()
-        
-        if not meal_result:
-            return create_error_response("餐次信息获取失败")
-        
-        # 格式化响应数据
-        formatted_addon_config = {}
-        if meal_result[5]:  # addon_config
-            import json
-            try:
-                addon_config_dict = json.loads(meal_result[5])
-                formatted_addon_config = {str(k): v for k, v in addon_config_dict.items()}
-            except (json.JSONDecodeError, TypeError):
-                pass
-
-        response_data = {
-            "meal_id": meal_result[0],
-            "date": meal_result[1],
-            "slot": meal_result[2], 
-            "description": meal_result[3],
-            "base_price_yuan": meal_result[4] / 100.0,
-            "addon_config": formatted_addon_config,
-            "max_orders": meal_result[6],
-            "status": "published",
-            "updated_at": meal_result[7]
-        }
-        
-        return create_success_response(
-            data=response_data,
-            message="餐次信息更新成功"
-        )
-        
-    except Exception as e:
-        logger.error(f"修改餐次失败: {str(e)}")
-        return create_error_response(f"修改餐次失败: {str(e)}")
 
 
 @router.put("/meals/{meal_id}/lock", response_model=Dict[str, Any])

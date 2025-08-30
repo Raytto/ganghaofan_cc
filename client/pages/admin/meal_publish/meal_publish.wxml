@@ -23,7 +23,7 @@
   </view>
 
   <!-- 餐次信息区域 -->
-  <view wx:if="{{meal && pageMode !== 'publish' && !editing}}" class="meal-info-section">
+  <view wx:if="{{meal && pageMode !== 'publish'}}" class="meal-info-section">
     <view class="section-title">📝 餐次信息</view>
     <view class="meal-info">
       <view class="info-row">
@@ -64,9 +64,9 @@
   </view>
 
   <!-- 餐次表单区域 -->
-  <view wx:if="{{pageMode === 'publish' || editing}}" class="form-section">
+  <view wx:if="{{pageMode === 'publish'}}" class="form-section">
     <view class="section-title">
-      {{pageMode === 'publish' ? '📝 发布餐次' : '✏️ 编辑餐次'}}
+      📝 发布餐次
     </view>
     
     <!-- 餐次描述 -->
@@ -184,32 +184,8 @@
       📝 发布餐次
     </button>
 
-    <!-- 编辑模式按钮 -->
-    <view wx:elif="{{editing}}" class="edit-actions">
-      <button
-        class="action-btn secondary"
-        bind:tap="onCancelEdit"
-      >
-        取消
-      </button>
-      <button
-        class="action-btn primary"
-        loading="{{submitting}}"
-        disabled="{{submitting}}"
-        bind:tap="onSaveMeal"
-      >
-        保存
-      </button>
-    </view>
-
     <!-- 已发布状态按钮 -->
     <view wx:elif="{{pageMode === 'view' && meal.status === 'published'}}" class="view-actions">
-      <button
-        class="action-btn secondary"
-        bind:tap="onEditMeal"
-      >
-        ✏️ 编辑
-      </button>
       <button
         class="action-btn warning"
         data-action="lock"
