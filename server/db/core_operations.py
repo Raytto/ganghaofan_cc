@@ -187,17 +187,32 @@ class CoreOperations:
             WHERE user_id = ?
         """, [new_balance, user_id])
         
-        # 生成新的账本ID（使用事务确保原子性）
-        ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+        # 创建账本记录 - 使用重试机制处理ID冲突
+        max_retries = 5
+        ledger_id = None
         
-        # 记录账本
-        self.db.conn.execute("""
-            INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
-                              balance_before_cents, balance_after_cents, order_id, 
-                              description, created_at)
-            VALUES (?, ?, ?, 'order', 'out', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-        """, [ledger_id, transaction_no, user_id, amount_cents, current_balance, new_balance, 
-              order_id, description])
+        for attempt in range(max_retries):
+            try:
+                # 生成新的账本ID
+                ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+                
+                # 记录账本
+                self.db.conn.execute("""
+                    INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
+                                      balance_before_cents, balance_after_cents, order_id, 
+                                      description, created_at)
+                    VALUES (?, ?, ?, 'order', 'out', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+                """, [ledger_id, transaction_no, user_id, amount_cents, current_balance, new_balance, 
+                      order_id, description])
+                break  # Success, exit retry loop
+                
+            except Exception as e:
+                if "primary key constraint" in str(e).lower() or "duplicate key" in str(e).lower():
+                    if attempt == max_retries - 1:
+                        raise e  # Last attempt failed, re-raise
+                    continue  # Retry with new ID
+                else:
+                    raise e  # Different error, re-raise immediately
         
         return {
             'transaction_no': transaction_no,
@@ -224,17 +239,32 @@ class CoreOperations:
             WHERE user_id = ?
         """, [new_balance, user_id])
         
-        # 生成新的账本ID（使用事务确保原子性）
-        ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+        # 创建账本记录 - 使用重试机制处理ID冲突
+        max_retries = 5
+        ledger_id = None
         
-        # 记录账本
-        self.db.conn.execute("""
-            INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
-                              balance_before_cents, balance_after_cents, order_id, 
-                              description, created_at)
-            VALUES (?, ?, ?, 'refund', 'in', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-        """, [ledger_id, transaction_no, user_id, amount_cents, current_balance, new_balance, 
-              order_id, description])
+        for attempt in range(max_retries):
+            try:
+                # 生成新的账本ID
+                ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+                
+                # 记录账本
+                self.db.conn.execute("""
+                    INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
+                                      balance_before_cents, balance_after_cents, order_id, 
+                                      description, created_at)
+                    VALUES (?, ?, ?, 'refund', 'in', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+                """, [ledger_id, transaction_no, user_id, amount_cents, current_balance, new_balance, 
+                      order_id, description])
+                break  # Success, exit retry loop
+                
+            except Exception as e:
+                if "primary key constraint" in str(e).lower() or "duplicate key" in str(e).lower():
+                    if attempt == max_retries - 1:
+                        raise e  # Last attempt failed, re-raise
+                    continue  # Retry with new ID
+                else:
+                    raise e  # Different error, re-raise immediately
         
         return {
             'transaction_no': transaction_no,
@@ -272,14 +302,29 @@ class CoreOperations:
             if existing_addon:
                 raise ValueError(f"附加项名称 '{name}' 已存在")
             
-            # 生成新的附加项ID（使用事务确保原子性）
-            addon_id = self.db.conn.execute("SELECT COALESCE(MAX(addon_id), 0) + 1 FROM addons").fetchone()[0]
+            # 创建新附加项 - 使用重试机制处理ID冲突
+            max_retries = 5
+            addon_id = None
             
-            # 创建新附加项
-            self.db.conn.execute("""
-                INSERT INTO addons (addon_id, name, price_cents, display_order, is_default, status, created_at)
-                VALUES (?, ?, ?, ?, ?, 'active', CURRENT_TIMESTAMP)
-            """, [addon_id, name, price_cents, display_order, is_default])
+            for attempt in range(max_retries):
+                try:
+                    # 生成新的附加项ID
+                    addon_id = self.db.conn.execute("SELECT COALESCE(MAX(addon_id), 0) + 1 FROM addons").fetchone()[0]
+                    
+                    # 创建新附加项
+                    self.db.conn.execute("""
+                        INSERT INTO addons (addon_id, name, price_cents, display_order, is_default, status, created_at)
+                        VALUES (?, ?, ?, ?, ?, 'active', CURRENT_TIMESTAMP)
+                    """, [addon_id, name, price_cents, display_order, is_default])
+                    break  # Success, exit retry loop
+                    
+                except Exception as e:
+                    if "primary key constraint" in str(e).lower() or "duplicate key" in str(e).lower():
+                        if attempt == max_retries - 1:
+                            raise e  # Last attempt failed, re-raise
+                        continue  # Retry with new ID
+                    else:
+                        raise e  # Different error, re-raise immediately
             created_at = datetime.now().isoformat()
             
             return {
@@ -389,16 +434,30 @@ class CoreOperations:
                 created_at = datetime.now().isoformat()
                 message = f'{date} {slot} 餐次重新发布成功（重用已取消餐次）'
             else:
-                # 创建全新餐次
-                # 生成新的餐次ID（使用事务确保原子性）
-                meal_id = self.db.conn.execute("SELECT COALESCE(MAX(meal_id), 0) + 1 FROM meals").fetchone()[0]
+                # 创建全新餐次 - 使用重试机制处理ID冲突
+                max_retries = 5
+                meal_id = None
                 
-                # 创建餐次
-                self.db.conn.execute("""
-                    INSERT INTO meals (meal_id, date, slot, description, base_price_cents, addon_config, 
-                                     max_orders, current_orders, status, created_at, updated_at)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, 0, 'published', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-                """, [meal_id, date, slot, description, base_price_cents, addon_config_json, max_orders])
+                for attempt in range(max_retries):
+                    try:
+                        # 生成新的餐次ID
+                        meal_id = self.db.conn.execute("SELECT COALESCE(MAX(meal_id), 0) + 1 FROM meals").fetchone()[0]
+                        
+                        # 创建餐次
+                        self.db.conn.execute("""
+                            INSERT INTO meals (meal_id, date, slot, description, base_price_cents, addon_config, 
+                                             max_orders, current_orders, status, created_at, updated_at)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, 0, 'published', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+                        """, [meal_id, date, slot, description, base_price_cents, addon_config_json, max_orders])
+                        break  # Success, exit retry loop
+                        
+                    except Exception as e:
+                        if "primary key constraint" in str(e).lower() or "duplicate key" in str(e).lower():
+                            if attempt == max_retries - 1:
+                                raise e  # Last attempt failed, re-raise
+                            continue  # Retry with new ID
+                        else:
+                            raise e  # Different error, re-raise immediately
                 created_at = datetime.now().isoformat()
                 message = f'{date} {slot} 餐次发布成功'
             
@@ -666,15 +725,30 @@ class CoreOperations:
             # 将addon_selections转换为JSON字符串
             addon_selections_json = json.dumps({str(k): v for k, v in addon_selections.items()}) if addon_selections else None
             
-            # 生成新的订单ID（使用事务确保原子性）
-            order_id = self.db.conn.execute("SELECT COALESCE(MAX(order_id), 0) + 1 FROM orders").fetchone()[0]
+            # 创建订单 - 使用重试机制处理ID冲突
+            max_retries = 5
+            order_id = None
             
-            # 创建订单
-            self.db.conn.execute("""
-                INSERT INTO orders (order_id, user_id, meal_id, amount_cents, addon_selections, status, 
-                                  created_at, updated_at)
-                VALUES (?, ?, ?, ?, ?, 'active', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-            """, [order_id, user_id, meal_id, total_amount, addon_selections_json])
+            for attempt in range(max_retries):
+                try:
+                    # 生成新的订单ID
+                    order_id = self.db.conn.execute("SELECT COALESCE(MAX(order_id), 0) + 1 FROM orders").fetchone()[0]
+                    
+                    # 创建订单
+                    self.db.conn.execute("""
+                        INSERT INTO orders (order_id, user_id, meal_id, amount_cents, addon_selections, status, 
+                                          created_at, updated_at)
+                        VALUES (?, ?, ?, ?, ?, 'active', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+                    """, [order_id, user_id, meal_id, total_amount, addon_selections_json])
+                    break  # Success, exit retry loop
+                    
+                except Exception as e:
+                    if "primary key constraint" in str(e).lower() or "duplicate key" in str(e).lower():
+                        if attempt == max_retries - 1:
+                            raise e  # Last attempt failed, re-raise
+                        continue  # Retry with new ID
+                    else:
+                        raise e  # Different error, re-raise immediately
             created_at = datetime.now().isoformat()
             
             # 扣款处理
@@ -816,17 +890,32 @@ class CoreOperations:
             direction = "in" if amount_cents > 0 else "out"
             ledger_amount = abs(amount_cents)
             
-            # 生成新的账本ID（使用事务确保原子性）
-            ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+            # 创建账本记录 - 使用重试机制处理ID冲突
+            max_retries = 5
+            ledger_id = None
             
-            # 记录账本
-            self.db.conn.execute("""
-                INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
-                                  balance_before_cents, balance_after_cents, 
-                                  description, operator_id, created_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-            """, [ledger_id, transaction_no, target_user_id, ledger_type, direction, ledger_amount,
-                  current_balance, new_balance, f"管理员余额调整-{reason}", admin_user_id])
+            for attempt in range(max_retries):
+                try:
+                    # 生成新的账本ID
+                    ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+                    
+                    # 记录账本
+                    self.db.conn.execute("""
+                        INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
+                                          balance_before_cents, balance_after_cents, 
+                                          description, operator_id, created_at)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+                    """, [ledger_id, transaction_no, target_user_id, ledger_type, direction, ledger_amount,
+                          current_balance, new_balance, f"管理员余额调整-{reason}", admin_user_id])
+                    break  # Success, exit retry loop
+                    
+                except Exception as e:
+                    if "primary key constraint" in str(e).lower() or "duplicate key" in str(e).lower():
+                        if attempt == max_retries - 1:
+                            raise e  # Last attempt failed, re-raise
+                        continue  # Retry with new ID
+                    else:
+                        raise e  # Different error, re-raise immediately
             
             # 获取目标用户信息用于返回
             target_user = self.db.conn.execute("""
