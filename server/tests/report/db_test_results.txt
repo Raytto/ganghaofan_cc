@@ -58,4 +58,4 @@ tests/test_db/test_supporting_operations.py::TestValidations::test_invalid_pagin
     from crypt import crypt as _crypt
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-======================== 45 passed, 1 warning in 1.02s =========================
+======================== 45 passed, 1 warning in 1.63s =========================

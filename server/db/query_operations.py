@@ -227,6 +227,7 @@ class QueryOperations:
             "description": meal_result[3],
             "base_price_cents": meal_result[4],
             "base_price_yuan": meal_result[4] / 100,
+            "addon_config": addon_config,
             "max_orders": meal_result[6],
             "current_orders": meal_result[7],
             "available_slots": meal_result[6] - meal_result[7],

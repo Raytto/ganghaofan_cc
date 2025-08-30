@@ -118,7 +118,7 @@ async def get_meal_detail(
         meal_result = query_ops.query_meal_detail(meal_id)
         
         if not meal_result["success"]:
-            return create_error_response(meal_result["message"])
+            return create_error_response(meal_result["error"])
         
         meal_data = meal_result["data"]
         
@@ -169,6 +169,7 @@ async def get_meal_detail(
             "description": meal_data["description"],
             "base_price_cents": meal_data["base_price_cents"],
             "base_price_yuan": meal_data["base_price_cents"] / 100.0,
+            "addon_config": meal_data.get("addon_config", {}),
             "max_orders": meal_data["max_orders"],
             "current_orders": meal_data["current_orders"],
             "available_slots": meal_data["max_orders"] - meal_data["current_orders"],
