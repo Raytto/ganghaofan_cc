@@ -46,6 +46,9 @@ Page({
       { value: 'admin_recharge', label: '管理员充值' }
     ],
     
+    // 计算的索引值（用于picker组件）
+    transactionTypeIndex: 0,
+    
     // 显示筛选面板
     showFilters: false,
     
@@ -243,9 +246,16 @@ Page({
     const { field } = e.currentTarget.dataset
     const value = e.detail.value
     
-    this.setData({
-      [`filters.${field}`]: value
-    })
+    if (field === 'transaction_type') {
+      this.setData({
+        'filters.transaction_type': this.data.transactionTypes[value].value,
+        transactionTypeIndex: value
+      })
+    } else {
+      this.setData({
+        [`filters.${field}`]: value
+      })
+    }
   },
 
   /**
@@ -271,7 +281,8 @@ Page({
         transaction_type: '',
         date_from: '',
         date_to: ''
-      }
+      },
+      transactionTypeIndex: 0
     })
   },
 

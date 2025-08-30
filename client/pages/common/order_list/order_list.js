@@ -46,6 +46,9 @@ Page({
       { value: 'canceled', label: '已取消' }
     ],
     
+    // 计算的索引值（用于picker组件）
+    statusIndex: 0,
+    
     // 显示筛选面板
     showFilters: false,
     
@@ -233,9 +236,16 @@ Page({
     const { field } = e.currentTarget.dataset
     const value = e.detail.value
     
-    this.setData({
-      [`filters.${field}`]: value
-    })
+    if (field === 'status') {
+      this.setData({
+        'filters.status': this.data.statusOptions[value].value,
+        statusIndex: value
+      })
+    } else {
+      this.setData({
+        [`filters.${field}`]: value
+      })
+    }
   },
 
   /**
@@ -262,7 +272,8 @@ Page({
         date_from: '',
         date_to: '',
         meal_id: null
-      }
+      },
+      statusIndex: 0
     })
   },
 

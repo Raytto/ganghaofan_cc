@@ -41,12 +41,12 @@
         <picker
           range="{{transactionTypes}}"
           range-key="label"
-          value="{{transactionTypes.findIndex(item => item.value === filters.transaction_type)}}"
+          value="{{transactionTypeIndex}}"
           bind:change="onFilterChange"
           data-field="transaction_type"
         >
           <view class="picker-value">
-            {{transactionTypes[transactionTypes.findIndex(item => item.value === filters.transaction_type)]?.label || '请选择'}}
+            {{transactionTypes[transactionTypeIndex].label}}
           </view>
         </picker>
       </view>
