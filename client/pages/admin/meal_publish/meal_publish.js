@@ -381,9 +381,9 @@ Page({
           icon: 'success'
         })
         
-        // 刷新页面数据
+        // 发布成功后返回日历页面，触发数据刷新
         setTimeout(() => {
-          this.loadPageData(response.data.meal_id)
+          wx.navigateBack()
         }, 1500)
       }
       
