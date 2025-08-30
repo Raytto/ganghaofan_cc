@@ -5,14 +5,18 @@ Page({
   data: {
     currentDate: '',
     weeks: [],
-    today: null
+    today: null,
+    cacheVersion: '2025-08-30-19:13:00' // 强制刷新标识
   },
 
   onLoad() {
-    console.log('【新版本】Calendar页面 onLoad 开始')
+    const timestamp = new Date().toLocaleString()
+    console.log('🚀 CACHE-BUSTER 2025-08-30-19:13:00 🚀')
+    console.log('📅 Calendar页面 onLoad 开始 - 时间:', timestamp)
+    console.log('🔧 缓存版本:', this.data.cacheVersion)
     this.initCalendar()
     this.loadMealData()
-    console.log('【新版本】Calendar页面 onLoad 结束')
+    console.log('✅ Calendar页面 onLoad 结束')
   },
 
   onShow() {
@@ -246,17 +250,21 @@ Page({
    * 日期点击事件（预留扩展）
    */
   onDayTap(e) {
-    console.log('【新版】onDayTap被触发，数据:', e.currentTarget.dataset)
-    // 可扩展：跳转到具体日期的订餐页面
+    console.log('🔴 ERROR: onDayTap被触发了！这说明事件冒泡没有被阻止！')
+    console.log('🔴 缓存版本:', this.data.cacheVersion)
+    console.log('🔴 数据:', e.currentTarget.dataset)
+    console.log('🔴 如果看到这个日志，说明 catchtap 修复没有生效，需要清除缓存！')
   },
 
   /**
    * 餐次点击事件
    */
   onMealTap(e) {
-    console.log('【新版】onMealTap被触发！数据:', e.currentTarget.dataset)
+    console.log('🎉 SUCCESS: onMealTap被触发！缓存已更新！')
+    console.log('🎉 缓存版本:', this.data.cacheVersion)
+    console.log('🎉 事件数据:', e.currentTarget.dataset)
     const { date, slot, status } = e.currentTarget.dataset
-    console.log('解构出的数据 - date:', date, 'slot:', slot, 'status:', status)
+    console.log('📋 解构数据 - date:', date, 'slot:', slot, 'status:', status)
     
     // date 现在已经是格式化的字符串了，直接使用
     
