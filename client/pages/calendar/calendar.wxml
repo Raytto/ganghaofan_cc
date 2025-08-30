@@ -23,7 +23,7 @@
         <text class="day-number">{{item.date}}</text>
         
         <!-- 午餐信息 -->
-        <view class="meal-info lunch">
+        <view class="meal-info lunch" catch:tap="onMealTap" data-date="{{item.fullDate}}" data-slot="lunch" data-status="{{item.lunch.meal_status || 'unpublished'}}">
           <text class="meal-label">午</text>
           <text class="meal-status">{{item.lunch.meal_status || '未发布'}}</text>
           <text class="meal-orders">{{item.lunch.left_orders || 0}}/{{item.lunch.max_orders || 0}}</text>
@@ -31,7 +31,7 @@
         </view>
         
         <!-- 晚餐信息 -->
-        <view class="meal-info dinner">
+        <view class="meal-info dinner" catch:tap="onMealTap" data-date="{{item.fullDate}}" data-slot="dinner" data-status="{{item.dinner.meal_status || 'unpublished'}}">
           <text class="meal-label">晚</text>
           <text class="meal-status">{{item.dinner.meal_status || '未发布'}}</text>
           <text class="meal-orders">{{item.dinner.left_orders || 0}}/{{item.dinner.max_orders || 0}}</text>

@@ -1,4 +1,5 @@
 const request = require('../../utils/request.js')
+const adminUtils = require('../../utils/admin.js')
 
 Page({
   data: {
@@ -216,5 +217,62 @@ Page({
     const date = e.currentTarget.dataset.date
     console.log('点击日期:', date)
     // 可扩展：跳转到具体日期的订餐页面
+  },
+
+  /**
+   * 餐次点击事件
+   */
+  onMealTap(e) {
+    const { date, slot, status } = e.currentTarget.dataset
+    
+    // 检查是否为管理员模式
+    if (adminUtils.isAdminModeEnabled()) {
+      // 管理员模式下，未发布的餐次跳转到发布页面
+      if (status === 'unpublished') {
+        const formattedDate = this.formatDate(new Date(date))
+        wx.navigateTo({
+          url: `/pages/admin/meal_publish/meal_publish?date=${formattedDate}&slot=${slot}`
+        })
+      } else if (status === 'published' || status === 'locked' || status === 'completed') {
+        // 已发布的餐次跳转到查看/编辑页面
+        const formattedDate = this.formatDate(new Date(date))
+        // 需要先获取meal_id
+        this.getMealIdAndNavigate(formattedDate, slot)
+      }
+    } else {
+      // 普通用户模式
+      if (status === 'published') {
+        // 跳转到订餐页面
+        const formattedDate = this.formatDate(new Date(date))
+        wx.navigateTo({
+          url: `/pages/order/order?date=${formattedDate}&slot=${slot}`
+        })
+      }
+    }
+  },
+
+  /**
+   * 获取餐次ID并跳转
+   */
+  async getMealIdAndNavigate(date, slot) {
+    try {
+      const response = await request.get('/meals', {
+        date: date,
+        slot: slot
+      })
+      
+      if (response.success && response.data.meals && response.data.meals.length > 0) {
+        const meal = response.data.meals[0]
+        wx.navigateTo({
+          url: `/pages/admin/meal_publish/meal_publish?date=${date}&slot=${slot}&meal_id=${meal.meal_id}`
+        })
+      }
+    } catch (error) {
+      console.error('获取餐次ID失败:', error)
+      wx.showToast({
+        title: '获取餐次信息失败',
+        icon: 'none'
+      })
+    }
   }
 })
