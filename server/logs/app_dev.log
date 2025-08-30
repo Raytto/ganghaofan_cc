@@ -9213,3 +9213,306 @@ last_login_at
 2025-08-30 11:54:51,999 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
 2025-08-30 11:54:51,999 - api.middleware.logging - INFO - [logging.py:44] - [8c86f404] 200 - Time: 0.024s
 2025-08-30 11:54:52,000 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/meals "HTTP/1.1 200 OK"
+2025-08-30 12:44:57,149 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-30 12:45:06,744 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-30 12:45:14,944 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-30 12:45:14,992 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:45:14,993 - api.middleware.logging - INFO - [logging.py:31] - [c19f3a89] POST /api/auth/wechat/login - Client: testclient
+2025-08-30 12:45:15,009 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:45:15,011 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:45:15,012 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-30 12:45:15,012 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-30 12:45:15,012 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-30 12:45:15,014 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124515014067，包含 1 个操作
+2025-08-30 12:45:15,014 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124515014067 中的操作 1/1
+2025-08-30 12:45:15,015 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-30 12:45:15,015 - DatabaseManager - DEBUG - [supporting_operations.py:74] - 开发模式: __any__ 存在于白名单，mock_openid_3b77fd501946df1a 设为管理员
+2025-08-30 12:45:15,023 - DatabaseManager - INFO - [manager.py:156] - 事务 20250830124515014067 提交成功
+2025-08-30 12:45:15,023 - api.auth.routes - INFO - [routes.py:165] - 未注册用户登录: mock_openid_3b77fd501946df1a
+2025-08-30 12:45:15,044 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:45:15,045 - api.middleware.logging - INFO - [logging.py:44] - [c19f3a89] 200 - Time: 0.052s
+2025-08-30 12:45:15,047 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+2025-08-30 12:45:15,047 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:45:15,048 - api.middleware.logging - INFO - [logging.py:31] - [1481ff0d] POST /api/admin/addons - Client: testclient
+2025-08-30 12:45:15,065 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:45:15,069 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:45:15,069 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:45:15,069 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:45:15,071 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:45:15,071 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:45:15,072 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124515072558，包含 1 个操作
+2025-08-30 12:45:15,073 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124515072558 中的操作 1/1
+2025-08-30 12:45:15,074 - DatabaseManager - ERROR - [manager.py:161] - 事务 20250830124515072558 执行失败: 用户不是管理员或账户已停用
+2025-08-30 12:45:15,074 - DatabaseManager - INFO - [manager.py:164] - 事务 20250830124515072558 已回滚
+2025-08-30 12:45:15,074 - api.admin.routes - ERROR - [routes.py:70] - 创建附加项失败: 用户不是管理员或账户已停用
+2025-08-30 12:45:15,076 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:45:15,077 - api.middleware.logging - INFO - [logging.py:44] - [1481ff0d] 200 - Time: 0.029s
+2025-08-30 12:45:15,078 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/addons "HTTP/1.1 200 OK"
+2025-08-30 12:45:15,079 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:45:15,080 - api.middleware.logging - INFO - [logging.py:31] - [2ebe7b1b] POST /api/admin/meals - Client: testclient
+2025-08-30 12:45:15,096 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:45:15,099 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:45:15,100 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:45:15,100 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:45:15,101 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:45:15,101 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:45:15,103 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124515103699，包含 1 个操作
+2025-08-30 12:45:15,104 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124515103699 中的操作 1/1
+2025-08-30 12:45:15,105 - DatabaseManager - ERROR - [manager.py:161] - 事务 20250830124515103699 执行失败: 用户不是管理员或账户已停用
+2025-08-30 12:45:15,105 - DatabaseManager - INFO - [manager.py:164] - 事务 20250830124515103699 已回滚
+2025-08-30 12:45:15,105 - api.admin.routes - ERROR - [routes.py:235] - 发布餐次失败: 用户不是管理员或账户已停用
+2025-08-30 12:45:15,107 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:45:15,107 - api.middleware.logging - INFO - [logging.py:44] - [2ebe7b1b] 200 - Time: 0.028s
+2025-08-30 12:45:15,108 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/meals "HTTP/1.1 200 OK"
+2025-08-30 12:46:31,057 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-30 12:46:31,106 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:46:31,107 - api.middleware.logging - INFO - [logging.py:31] - [94e13c5e] POST /api/auth/wechat/login - Client: testclient
+2025-08-30 12:46:31,125 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:46:31,126 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:46:31,127 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-30 12:46:31,127 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-30 12:46:31,127 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-30 12:46:31,133 - api.auth.routes - INFO - [routes.py:165] - 未注册用户登录: mock_openid_3b77fd501946df1a
+2025-08-30 12:46:31,151 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:46:31,151 - api.middleware.logging - INFO - [logging.py:44] - [94e13c5e] 200 - Time: 0.045s
+2025-08-30 12:46:31,153 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+2025-08-30 12:46:31,154 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:46:31,154 - api.middleware.logging - INFO - [logging.py:31] - [6305ce6a] POST /api/admin/addons - Client: testclient
+2025-08-30 12:46:31,170 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:46:31,171 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:46:31,171 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:46:31,171 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:46:31,173 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:46:31,173 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:46:31,174 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124631174473，包含 1 个操作
+2025-08-30 12:46:31,175 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124631174473 中的操作 1/1
+2025-08-30 12:46:31,178 - DatabaseManager - ERROR - [manager.py:161] - 事务 20250830124631174473 执行失败: Constraint Error: NOT NULL constraint failed: addons.addon_id
+2025-08-30 12:46:31,178 - DatabaseManager - INFO - [manager.py:164] - 事务 20250830124631174473 已回滚
+2025-08-30 12:46:31,178 - api.admin.routes - ERROR - [routes.py:70] - 创建附加项失败: Constraint Error: NOT NULL constraint failed: addons.addon_id
+2025-08-30 12:46:31,180 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:46:31,180 - api.middleware.logging - INFO - [logging.py:44] - [6305ce6a] 200 - Time: 0.026s
+2025-08-30 12:46:31,181 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/addons "HTTP/1.1 200 OK"
+2025-08-30 12:46:31,182 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:46:31,183 - api.middleware.logging - INFO - [logging.py:31] - [323f7add] POST /api/admin/meals - Client: testclient
+2025-08-30 12:46:31,198 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:46:31,200 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:46:31,200 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:46:31,200 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:46:31,202 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:46:31,202 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:46:31,210 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124631210697，包含 1 个操作
+2025-08-30 12:46:31,211 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124631210697 中的操作 1/1
+2025-08-30 12:46:31,215 - DatabaseManager - ERROR - [manager.py:161] - 事务 20250830124631210697 执行失败: Constraint Error: NOT NULL constraint failed: meals.meal_id
+2025-08-30 12:46:31,215 - DatabaseManager - INFO - [manager.py:164] - 事务 20250830124631210697 已回滚
+2025-08-30 12:46:31,215 - api.admin.routes - ERROR - [routes.py:235] - 发布餐次失败: Constraint Error: NOT NULL constraint failed: meals.meal_id
+2025-08-30 12:46:31,217 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:46:31,218 - api.middleware.logging - INFO - [logging.py:44] - [323f7add] 200 - Time: 0.035s
+2025-08-30 12:46:31,221 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/meals "HTTP/1.1 200 OK"
+2025-08-30 12:47:43,580 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-30 12:47:43,631 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:47:43,632 - api.middleware.logging - INFO - [logging.py:31] - [6b3c3786] POST /api/auth/wechat/login - Client: testclient
+2025-08-30 12:47:43,650 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:47:43,652 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:47:43,653 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-30 12:47:43,653 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-30 12:47:43,653 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-30 12:47:43,674 - api.auth.routes - INFO - [routes.py:165] - 未注册用户登录: mock_openid_3b77fd501946df1a
+2025-08-30 12:47:43,691 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:47:43,692 - api.middleware.logging - INFO - [logging.py:44] - [6b3c3786] 200 - Time: 0.060s
+2025-08-30 12:47:43,693 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+2025-08-30 12:47:43,694 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:47:43,695 - api.middleware.logging - INFO - [logging.py:31] - [b0e3b894] POST /api/admin/addons - Client: testclient
+2025-08-30 12:47:43,710 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:47:43,711 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:47:43,711 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:47:43,711 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:47:43,713 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:47:43,713 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:47:43,714 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124743714859，包含 1 个操作
+2025-08-30 12:47:43,715 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124743714859 中的操作 1/1
+2025-08-30 12:47:43,723 - DatabaseManager - INFO - [manager.py:156] - 事务 20250830124743714859 提交成功
+2025-08-30 12:47:43,745 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:47:43,746 - api.middleware.logging - INFO - [logging.py:44] - [b0e3b894] 200 - Time: 0.050s
+2025-08-30 12:47:43,747 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/addons "HTTP/1.1 200 OK"
+2025-08-30 12:47:43,748 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:47:43,750 - api.middleware.logging - INFO - [logging.py:31] - [dc244261] POST /api/admin/meals - Client: testclient
+2025-08-30 12:47:43,764 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:47:43,765 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:47:43,765 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:47:43,765 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:47:43,767 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:47:43,767 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:47:43,769 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124743769688，包含 1 个操作
+2025-08-30 12:47:43,770 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124743769688 中的操作 1/1
+2025-08-30 12:47:43,778 - DatabaseManager - INFO - [manager.py:156] - 事务 20250830124743769688 提交成功
+2025-08-30 12:47:43,803 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:47:43,803 - api.middleware.logging - INFO - [logging.py:44] - [dc244261] 200 - Time: 0.054s
+2025-08-30 12:47:43,805 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/meals "HTTP/1.1 200 OK"
+2025-08-30 12:47:53,752 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-30 12:47:53,799 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:47:53,801 - api.middleware.logging - INFO - [logging.py:31] - [b0f5417a] POST /api/auth/wechat/login - Client: testclient
+2025-08-30 12:47:53,817 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:47:53,820 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:47:53,821 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-30 12:47:53,821 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-30 12:47:53,821 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-30 12:47:53,827 - api.auth.routes - INFO - [routes.py:165] - 未注册用户登录: mock_openid_3b77fd501946df1a
+2025-08-30 12:47:53,870 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:47:53,871 - api.middleware.logging - INFO - [logging.py:44] - [b0f5417a] 200 - Time: 0.070s
+2025-08-30 12:47:53,873 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+2025-08-30 12:47:53,874 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:47:53,874 - api.middleware.logging - INFO - [logging.py:31] - [27992687] POST /api/admin/addons - Client: testclient
+2025-08-30 12:47:53,891 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:47:53,892 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:47:53,893 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:47:53,893 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:47:53,895 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:47:53,895 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:47:53,896 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124753896159，包含 1 个操作
+2025-08-30 12:47:53,896 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124753896159 中的操作 1/1
+2025-08-30 12:47:53,898 - DatabaseManager - ERROR - [manager.py:161] - 事务 20250830124753896159 执行失败: 附加项名称 'API测试附加项' 已存在
+2025-08-30 12:47:53,898 - DatabaseManager - INFO - [manager.py:164] - 事务 20250830124753896159 已回滚
+2025-08-30 12:47:53,898 - api.admin.routes - ERROR - [routes.py:70] - 创建附加项失败: 附加项名称 'API测试附加项' 已存在
+2025-08-30 12:47:53,900 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:47:53,901 - api.middleware.logging - INFO - [logging.py:44] - [27992687] 200 - Time: 0.026s
+2025-08-30 12:47:53,902 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/addons "HTTP/1.1 200 OK"
+2025-08-30 12:47:53,903 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:47:53,903 - api.middleware.logging - INFO - [logging.py:31] - [a20e2908] POST /api/admin/meals - Client: testclient
+2025-08-30 12:47:53,918 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:47:53,920 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:47:53,920 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:47:53,920 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:47:53,922 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:47:53,922 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:47:53,924 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124753924758，包含 1 个操作
+2025-08-30 12:47:53,925 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124753924758 中的操作 1/1
+2025-08-30 12:47:53,926 - DatabaseManager - ERROR - [manager.py:161] - 事务 20250830124753924758 执行失败: 2024-12-25 lunch 时段已存在有效餐次
+2025-08-30 12:47:53,927 - DatabaseManager - INFO - [manager.py:164] - 事务 20250830124753924758 已回滚
+2025-08-30 12:47:53,927 - api.admin.routes - ERROR - [routes.py:235] - 发布餐次失败: 2024-12-25 lunch 时段已存在有效餐次
+2025-08-30 12:47:53,929 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:47:53,929 - api.middleware.logging - INFO - [logging.py:44] - [a20e2908] 200 - Time: 0.026s
+2025-08-30 12:47:53,930 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/meals "HTTP/1.1 200 OK"
+2025-08-30 12:48:21,975 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-30 12:48:22,024 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:48:22,025 - api.middleware.logging - INFO - [logging.py:31] - [839d1de6] POST /api/auth/wechat/login - Client: testclient
+2025-08-30 12:48:22,045 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:48:22,061 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:48:22,061 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-30 12:48:22,062 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-30 12:48:22,062 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-30 12:48:22,074 - api.auth.routes - INFO - [routes.py:165] - 未注册用户登录: mock_openid_3b77fd501946df1a
+2025-08-30 12:48:22,098 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:48:22,099 - api.middleware.logging - INFO - [logging.py:44] - [839d1de6] 200 - Time: 0.074s
+2025-08-30 12:48:22,100 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+2025-08-30 12:48:22,101 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:48:22,102 - api.middleware.logging - INFO - [logging.py:31] - [b505ab00] POST /api/admin/addons - Client: testclient
+2025-08-30 12:48:22,116 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:48:22,117 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:48:22,118 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:48:22,118 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:48:22,120 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:48:22,120 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:48:22,121 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124822121931，包含 1 个操作
+2025-08-30 12:48:22,122 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124822121931 中的操作 1/1
+2025-08-30 12:48:22,134 - DatabaseManager - INFO - [manager.py:156] - 事务 20250830124822121931 提交成功
+2025-08-30 12:48:22,192 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:48:22,193 - api.middleware.logging - INFO - [logging.py:44] - [b505ab00] 200 - Time: 0.091s
+2025-08-30 12:48:22,194 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/addons "HTTP/1.1 200 OK"
+2025-08-30 12:48:22,195 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:48:22,195 - api.middleware.logging - INFO - [logging.py:31] - [815dc249] POST /api/admin/meals - Client: testclient
+2025-08-30 12:48:22,210 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:48:22,211 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:48:22,212 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:48:22,212 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:48:22,214 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:48:22,214 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:48:22,216 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124822216185，包含 1 个操作
+2025-08-30 12:48:22,216 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124822216185 中的操作 1/1
+2025-08-30 12:48:22,227 - DatabaseManager - INFO - [manager.py:156] - 事务 20250830124822216185 提交成功
+2025-08-30 12:48:22,308 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:48:22,308 - api.middleware.logging - INFO - [logging.py:44] - [815dc249] 200 - Time: 0.113s
+2025-08-30 12:48:22,310 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/meals "HTTP/1.1 200 OK"
+2025-08-30 12:48:51,808 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-30 12:48:51,857 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:48:51,858 - api.middleware.logging - INFO - [logging.py:31] - [15e16f71] POST /api/auth/wechat/login - Client: testclient
+2025-08-30 12:48:51,876 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:48:51,878 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:48:51,879 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-30 12:48:51,879 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-30 12:48:51,879 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-30 12:48:51,885 - api.auth.routes - INFO - [routes.py:165] - 未注册用户登录: mock_openid_3b77fd501946df1a
+2025-08-30 12:48:51,901 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:48:51,902 - api.middleware.logging - INFO - [logging.py:44] - [15e16f71] 200 - Time: 0.043s
+2025-08-30 12:48:51,903 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+2025-08-30 12:48:51,904 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:48:51,905 - api.middleware.logging - INFO - [logging.py:31] - [a9adf23c] POST /api/admin/addons - Client: testclient
+2025-08-30 12:48:51,919 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:48:51,920 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:48:51,920 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:48:51,920 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:48:51,922 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:48:51,922 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:48:51,923 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124851923201，包含 1 个操作
+2025-08-30 12:48:51,923 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124851923201 中的操作 1/1
+2025-08-30 12:48:51,925 - DatabaseManager - ERROR - [manager.py:161] - 事务 20250830124851923201 执行失败: 附加项名称 'API测试附加项' 已存在
+2025-08-30 12:48:51,925 - DatabaseManager - INFO - [manager.py:164] - 事务 20250830124851923201 已回滚
+2025-08-30 12:48:51,925 - api.admin.routes - ERROR - [routes.py:70] - 创建附加项失败: 附加项名称 'API测试附加项' 已存在
+2025-08-30 12:48:51,927 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:48:51,928 - api.middleware.logging - INFO - [logging.py:44] - [a9adf23c] 200 - Time: 0.023s
+2025-08-30 12:48:51,929 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/addons "HTTP/1.1 200 OK"
+2025-08-30 12:48:51,929 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:48:51,930 - api.middleware.logging - INFO - [logging.py:31] - [2005a789] POST /api/admin/meals - Client: testclient
+2025-08-30 12:48:51,946 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:48:51,949 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:48:51,949 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:48:51,949 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:48:51,951 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:48:51,951 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:48:51,952 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124851952900，包含 1 个操作
+2025-08-30 12:48:51,953 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124851952900 中的操作 1/1
+2025-08-30 12:48:51,955 - DatabaseManager - ERROR - [manager.py:161] - 事务 20250830124851952900 执行失败: 2024-12-25 lunch 时段已存在有效餐次
+2025-08-30 12:48:51,956 - DatabaseManager - INFO - [manager.py:164] - 事务 20250830124851952900 已回滚
+2025-08-30 12:48:51,956 - api.admin.routes - ERROR - [routes.py:235] - 发布餐次失败: 2024-12-25 lunch 时段已存在有效餐次
+2025-08-30 12:48:51,958 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:48:51,959 - api.middleware.logging - INFO - [logging.py:44] - [2005a789] 200 - Time: 0.028s
+2025-08-30 12:48:51,960 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/meals "HTTP/1.1 200 OK"
+2025-08-30 12:49:16,518 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-08-30 12:49:16,568 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:49:16,569 - api.middleware.logging - INFO - [logging.py:31] - [aa3ca5ee] POST /api/auth/wechat/login - Client: testclient
+2025-08-30 12:49:16,587 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:49:16,589 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:49:16,592 - root - INFO - [config.py:71] - 成功加载配置文件: /home/pp/mp/ganghaofan_cc/server/config/config-dev.json
+2025-08-30 12:49:16,592 - api.auth.wechat_service - WARNING - [wechat_service.py:21] - 微信配置缺失，将使用模拟模式
+2025-08-30 12:49:16,592 - api.auth.wechat_service - INFO - [wechat_service.py:91] - 使用模拟微信认证，code: test_admin_code
+2025-08-30 12:49:16,599 - api.auth.routes - INFO - [routes.py:165] - 未注册用户登录: mock_openid_3b77fd501946df1a
+2025-08-30 12:49:16,625 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:49:16,626 - api.middleware.logging - INFO - [logging.py:44] - [aa3ca5ee] 200 - Time: 0.056s
+2025-08-30 12:49:16,628 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/auth/wechat/login "HTTP/1.1 200 OK"
+2025-08-30 12:49:16,629 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:49:16,630 - api.middleware.logging - INFO - [logging.py:31] - [be0c1be3] POST /api/admin/addons - Client: testclient
+2025-08-30 12:49:16,645 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:49:16,647 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:49:16,647 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:49:16,647 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:49:16,649 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:49:16,649 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:49:16,650 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124916650446，包含 1 个操作
+2025-08-30 12:49:16,650 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124916650446 中的操作 1/1
+2025-08-30 12:49:16,658 - DatabaseManager - INFO - [manager.py:156] - 事务 20250830124916650446 提交成功
+2025-08-30 12:49:16,697 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:49:16,698 - api.middleware.logging - INFO - [logging.py:44] - [be0c1be3] 200 - Time: 0.068s
+2025-08-30 12:49:16,699 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/addons "HTTP/1.1 200 OK"
+2025-08-30 12:49:16,700 - asyncio - DEBUG - [selector_events.py:64] - Using selector: EpollSelector
+2025-08-30 12:49:16,701 - api.middleware.logging - INFO - [logging.py:31] - [ac539070] POST /api/admin/meals - Client: testclient
+2025-08-30 12:49:16,716 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-08-30 12:49:16,718 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-08-30 12:49:16,718 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-08-30 12:49:16,718 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=2, open_id=mock_openid_3b77fd501946df1a
+2025-08-30 12:49:16,720 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=2, found=True
+2025-08-30 12:49:16,720 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=2
+2025-08-30 12:49:16,722 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250830124916722116，包含 1 个操作
+2025-08-30 12:49:16,722 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250830124916722116 中的操作 1/1
+2025-08-30 12:49:16,732 - DatabaseManager - INFO - [manager.py:156] - 事务 20250830124916722116 提交成功
+2025-08-30 12:49:16,756 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-08-30 12:49:16,757 - api.middleware.logging - INFO - [logging.py:44] - [ac539070] 200 - Time: 0.056s
+2025-08-30 12:49:16,758 - httpx - INFO - [_client.py:1025] - HTTP Request: POST http://testserver/api/admin/meals "HTTP/1.1 200 OK"

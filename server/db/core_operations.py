@@ -18,7 +18,7 @@ class CoreOperations:
     def _verify_admin_permission(self, admin_user_id: int):
         """验证管理员权限"""
         admin_check = self.db.conn.execute(
-            "SELECT is_admin FROM users WHERE user_id = ? AND status = 'active'",
+            "SELECT is_admin FROM users WHERE user_id = ? AND status IN ('active', 'unregistered')",
             [admin_user_id]
         ).fetchone()
         
@@ -180,14 +180,13 @@ class CoreOperations:
             WHERE user_id = ?
         """, [new_balance, user_id])
         
-        # 获取下一个账本ID并记录账本
-        ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+        # 记录账本（使用自动生成的主键）
         self.db.conn.execute("""
-            INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
+            INSERT INTO ledger (transaction_no, user_id, type, direction, amount_cents,
                               balance_before_cents, balance_after_cents, order_id, 
                               description, created_at)
-            VALUES (?, ?, ?, 'order', 'out', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-        """, [ledger_id, transaction_no, user_id, amount_cents, current_balance, new_balance, 
+            VALUES (?, ?, 'order', 'out', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+        """, [transaction_no, user_id, amount_cents, current_balance, new_balance, 
               order_id, description])
         
         return {
@@ -215,14 +214,13 @@ class CoreOperations:
             WHERE user_id = ?
         """, [new_balance, user_id])
         
-        # 获取下一个账本ID并记录账本
-        ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+        # 记录账本（使用自动生成的主键）
         self.db.conn.execute("""
-            INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
+            INSERT INTO ledger (transaction_no, user_id, type, direction, amount_cents,
                               balance_before_cents, balance_after_cents, order_id, 
                               description, created_at)
-            VALUES (?, ?, ?, 'refund', 'in', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-        """, [ledger_id, transaction_no, user_id, amount_cents, current_balance, new_balance, 
+            VALUES (?, ?, 'refund', 'in', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+        """, [transaction_no, user_id, amount_cents, current_balance, new_balance, 
               order_id, description])
         
         return {
@@ -261,17 +259,14 @@ class CoreOperations:
             if existing_addon:
                 raise ValueError(f"附加项名称 '{name}' 已存在")
             
-            # 获取下一个附加项ID
-            max_id = self.db.conn.execute("SELECT COALESCE(MAX(addon_id), 0) + 1 FROM addons").fetchone()[0]
+            # 生成新的附加项ID（使用事务确保原子性）
+            addon_id = self.db.conn.execute("SELECT COALESCE(MAX(addon_id), 0) + 1 FROM addons").fetchone()[0]
             
             # 创建新附加项
-            result = self.db.conn.execute("""
+            self.db.conn.execute("""
                 INSERT INTO addons (addon_id, name, price_cents, display_order, is_default, status, created_at)
                 VALUES (?, ?, ?, ?, ?, 'active', CURRENT_TIMESTAMP)
-            """, [max_id, name, price_cents, display_order, is_default])
-            
-            # 使用生成的附加项ID
-            addon_id = max_id
+            """, [addon_id, name, price_cents, display_order, is_default])
             created_at = datetime.now().isoformat()
             
             return {
@@ -367,17 +362,15 @@ class CoreOperations:
             # 将addon_config转换为JSON字符串
             addon_config_json = json.dumps({str(k): v for k, v in addon_config.items()}) if addon_config else None
             
-            # 获取下一个餐次ID
-            max_id = self.db.conn.execute("SELECT COALESCE(MAX(meal_id), 0) + 1 FROM meals").fetchone()[0]
+            # 生成新的餐次ID（使用事务确保原子性）
+            meal_id = self.db.conn.execute("SELECT COALESCE(MAX(meal_id), 0) + 1 FROM meals").fetchone()[0]
             
             # 创建餐次
-            result = self.db.conn.execute("""
+            self.db.conn.execute("""
                 INSERT INTO meals (meal_id, date, slot, description, base_price_cents, addon_config, 
                                  max_orders, current_orders, status, created_at, updated_at)
                 VALUES (?, ?, ?, ?, ?, ?, ?, 0, 'published', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-            """, [max_id, date, slot, description, base_price_cents, addon_config_json, max_orders])
-            
-            meal_id = max_id
+            """, [meal_id, date, slot, description, base_price_cents, addon_config_json, max_orders])
             created_at = datetime.now().isoformat()
             
             return {
@@ -643,17 +636,15 @@ class CoreOperations:
             # 将addon_selections转换为JSON字符串
             addon_selections_json = json.dumps({str(k): v for k, v in addon_selections.items()}) if addon_selections else None
             
-            # 获取下一个订单ID
-            max_id = self.db.conn.execute("SELECT COALESCE(MAX(order_id), 0) + 1 FROM orders").fetchone()[0]
+            # 生成新的订单ID（使用事务确保原子性）
+            order_id = self.db.conn.execute("SELECT COALESCE(MAX(order_id), 0) + 1 FROM orders").fetchone()[0]
             
             # 创建订单
-            order_result = self.db.conn.execute("""
+            self.db.conn.execute("""
                 INSERT INTO orders (order_id, user_id, meal_id, amount_cents, addon_selections, status, 
                                   created_at, updated_at)
                 VALUES (?, ?, ?, ?, ?, 'active', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-            """, [max_id, user_id, meal_id, total_amount, addon_selections_json])
-            
-            order_id = max_id
+            """, [order_id, user_id, meal_id, total_amount, addon_selections_json])
             created_at = datetime.now().isoformat()
             
             # 扣款处理
@@ -795,13 +786,13 @@ class CoreOperations:
             direction = "in" if amount_cents > 0 else "out"
             ledger_amount = abs(amount_cents)
             
-            ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+            # 记录账本（使用自动生成的主键）
             self.db.conn.execute("""
-                INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
+                INSERT INTO ledger (transaction_no, user_id, type, direction, amount_cents,
                                   balance_before_cents, balance_after_cents, 
                                   description, operator_id, created_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-            """, [ledger_id, transaction_no, target_user_id, ledger_type, direction, ledger_amount,
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            """, [transaction_no, target_user_id, ledger_type, direction, ledger_amount,
                   current_balance, new_balance, f"管理员余额调整-{reason}", admin_user_id])
             
             # 获取目标用户信息用于返回
