@@ -36,6 +36,14 @@ class CreateMealRequest(BaseModel):
     max_orders: int = Field(50, ge=1, description="最大订餐数量")
 
 
+class UpdateMealRequest(BaseModel):
+    """更新餐次请求模型"""
+    description: str = Field(..., min_length=1, description="餐次描述")
+    base_price_cents: int = Field(..., ge=0, description="基础价格（分）")
+    addon_config: Optional[Dict[str, int]] = Field(default_factory=dict, description="附加项配置")
+    max_orders: int = Field(50, ge=1, description="最大订餐数量")
+
+
 class MealInfo(BaseModel):
     """餐次信息模型"""
     meal_id: int

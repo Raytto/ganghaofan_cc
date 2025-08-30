@@ -6,7 +6,7 @@ from typing import Dict, Any, Optional
 from fastapi import APIRouter, HTTPException, Depends, Query, Path
 
 from .models import (
-    CreateAddonRequest, AddonInfo, CreateMealRequest, MealInfo,
+    CreateAddonRequest, AddonInfo, CreateMealRequest, UpdateMealRequest, MealInfo,
     AdjustBalanceRequest, SetUserAdminRequest, SetUserStatusRequest,
     CancelMealRequest, UserListItem
 )
@@ -238,7 +238,7 @@ async def publish_meal(
 
 @router.put("/meals/{meal_id}", response_model=Dict[str, Any])
 async def update_meal(
-    meal_request: CreateMealRequest,
+    meal_request: UpdateMealRequest,
     meal_id: int = Path(..., description="餐次ID"),
     current_admin: TokenData = Depends(get_admin_user),
     db: DatabaseManager = Depends(get_database)
