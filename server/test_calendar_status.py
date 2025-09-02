@@ -37,7 +37,7 @@ def test_calendar_status():
         logger.info("=== 创建测试餐次 ===")
         
         meal_result = core_ops.admin_publish_meal(
-            admin_user_id=3,
+            admin_user_id=1,
             date="2025-12-28", 
             slot="dinner",
             description="日历状态测试餐次",
@@ -74,7 +74,7 @@ def test_calendar_status():
         logger.info("=== 取消餐次并测试状态映射 ===")
         
         cancel_result = core_ops.admin_cancel_meal(
-            admin_user_id=3,
+            admin_user_id=1,
             meal_id=meal_id,
             cancel_reason="测试日历状态映射"
         )

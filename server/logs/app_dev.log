@@ -11962,3 +11962,379 @@ Error: TransactionContext Error: Current transaction is aborted (please ROLLBACK
 2025-09-02 12:01:23,495 - api.main - INFO - [main.py:37] - 调试模式: True
 2025-09-02 12:02:19,777 - api.middleware.logging - INFO - [logging.py:31] - [c7ef885c] GET /api/meals/calendar - Client: 127.0.0.1
 2025-09-02 12:02:19,779 - api.middleware.logging - INFO - [logging.py:44] - [c7ef885c] 403 - Time: 0.002s
+2025-09-02 12:03:35,162 - api.middleware.logging - INFO - [logging.py:31] - [81342acc] GET /api/auth/me - Client: 188.253.4.203
+2025-09-02 12:03:35,172 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:03:35,174 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:03:35,175 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:03:35,175 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:03:35,177 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:03:35,178 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:03:35,180 - api.middleware.logging - INFO - [logging.py:44] - [81342acc] 200 - Time: 0.018s
+2025-09-02 12:03:35,182 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:03:36,977 - api.middleware.logging - INFO - [logging.py:31] - [8647d477] GET /api/meals - Client: 188.253.4.203
+2025-09-02 12:03:36,986 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:03:36,987 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:03:36,987 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:03:36,988 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:03:36,990 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:03:36,990 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:03:36,997 - api.middleware.logging - INFO - [logging.py:44] - [8647d477] 200 - Time: 0.020s
+2025-09-02 12:03:37,000 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:03:37,412 - api.middleware.logging - INFO - [logging.py:31] - [857e3272] GET /api/meals - Client: 188.253.4.203
+2025-09-02 12:03:37,421 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:03:37,422 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:03:37,423 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:03:37,423 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:03:37,425 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:03:37,425 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:03:37,432 - api.middleware.logging - INFO - [logging.py:44] - [857e3272] 200 - Time: 0.020s
+2025-09-02 12:03:37,434 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:03:39,364 - api.middleware.logging - INFO - [logging.py:31] - [9171f99f] GET /api/meals - Client: 188.253.4.203
+2025-09-02 12:03:39,372 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:03:39,373 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:03:39,373 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:03:39,373 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:03:39,375 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:03:39,375 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:03:39,382 - api.middleware.logging - INFO - [logging.py:44] - [9171f99f] 200 - Time: 0.018s
+2025-09-02 12:03:39,383 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:03:40,229 - api.middleware.logging - INFO - [logging.py:31] - [c94a804b] GET /api/meals/2 - Client: 188.253.4.203
+2025-09-02 12:03:40,230 - api.middleware.logging - INFO - [logging.py:31] - [56de428b] GET /api/admin/addons - Client: 188.253.4.203
+2025-09-02 12:03:40,242 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:03:40,242 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:03:40,244 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:03:40,244 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:03:40,244 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:03:40,244 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:03:40,245 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:03:40,245 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:03:40,248 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:03:40,248 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:03:40,248 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:03:40,248 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:03:40,257 - api.middleware.logging - INFO - [logging.py:44] - [56de428b] 200 - Time: 0.027s
+2025-09-02 12:03:40,257 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:03:40,259 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:03:40,259 - api.middleware.logging - INFO - [logging.py:44] - [c94a804b] 200 - Time: 0.030s
+2025-09-02 12:03:40,568 - api.middleware.logging - INFO - [logging.py:31] - [5030e7f5] GET /api/admin/meals/2/statistics - Client: 188.253.4.205
+2025-09-02 12:03:40,576 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:03:40,577 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:03:40,578 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:03:40,578 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:03:40,580 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:03:40,580 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:03:40,590 - api.middleware.logging - INFO - [logging.py:44] - [5030e7f5] 200 - Time: 0.022s
+2025-09-02 12:03:40,592 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:08,913 - api.middleware.logging - INFO - [logging.py:31] - [d2bd0411] GET /api/auth/me - Client: 188.253.4.205
+2025-09-02 12:04:08,920 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:08,924 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:08,925 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:08,925 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:08,927 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:08,927 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:08,929 - api.middleware.logging - INFO - [logging.py:44] - [d2bd0411] 200 - Time: 0.017s
+2025-09-02 12:04:08,931 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:10,467 - api.middleware.logging - INFO - [logging.py:31] - [45f0b9e0] GET /api/meals - Client: 188.253.4.205
+2025-09-02 12:04:10,474 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:10,476 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:10,476 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:10,476 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:10,478 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:10,478 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:10,483 - api.middleware.logging - INFO - [logging.py:44] - [45f0b9e0] 200 - Time: 0.017s
+2025-09-02 12:04:10,485 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:11,859 - api.middleware.logging - INFO - [logging.py:31] - [6703340a] GET /api/meals - Client: 188.253.4.205
+2025-09-02 12:04:11,866 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:11,867 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:11,868 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:11,868 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:11,870 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:11,870 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:11,877 - api.middleware.logging - INFO - [logging.py:44] - [6703340a] 200 - Time: 0.018s
+2025-09-02 12:04:11,879 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:12,272 - api.middleware.logging - INFO - [logging.py:31] - [041128b8] GET /api/meals - Client: 188.253.4.205
+2025-09-02 12:04:12,282 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:12,298 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:12,299 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:12,299 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:12,301 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:12,301 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:12,306 - api.middleware.logging - INFO - [logging.py:44] - [041128b8] 200 - Time: 0.033s
+2025-09-02 12:04:12,308 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:12,517 - api.middleware.logging - INFO - [logging.py:31] - [31eabf73] GET /api/admin/addons - Client: 188.253.4.205
+2025-09-02 12:04:12,525 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:12,526 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:12,527 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:12,527 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:12,529 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:12,529 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:12,533 - api.middleware.logging - INFO - [logging.py:44] - [31eabf73] 200 - Time: 0.016s
+2025-09-02 12:04:12,535 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:12,877 - api.middleware.logging - INFO - [logging.py:31] - [0aebea57] GET /api/admin/meals/2/statistics - Client: 188.253.4.203
+2025-09-02 12:04:12,877 - api.middleware.logging - INFO - [logging.py:31] - [2774afae] GET /api/meals/2 - Client: 188.253.4.205
+2025-09-02 12:04:12,891 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:12,891 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:12,893 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:12,893 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:12,893 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:12,894 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:12,894 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:12,894 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:12,897 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:12,897 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:12,897 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:12,897 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:12,910 - api.middleware.logging - INFO - [logging.py:44] - [0aebea57] 200 - Time: 0.033s
+2025-09-02 12:04:12,910 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:12,913 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:12,914 - api.middleware.logging - INFO - [logging.py:44] - [2774afae] 200 - Time: 0.036s
+2025-09-02 12:04:15,551 - api.middleware.logging - INFO - [logging.py:31] - [896ef7cf] GET /api/meals - Client: 188.253.4.205
+2025-09-02 12:04:15,560 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:15,567 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:15,570 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:15,570 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:15,573 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:15,573 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:15,584 - api.middleware.logging - INFO - [logging.py:44] - [896ef7cf] 200 - Time: 0.034s
+2025-09-02 12:04:15,588 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:20,251 - api.middleware.logging - INFO - [logging.py:31] - [5acbc035] GET /api/admin/addons - Client: 188.253.4.205
+2025-09-02 12:04:20,259 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:20,261 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:20,261 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:20,262 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:20,264 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:20,264 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:20,268 - api.middleware.logging - INFO - [logging.py:44] - [5acbc035] 200 - Time: 0.017s
+2025-09-02 12:04:20,270 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:27,911 - api.middleware.logging - INFO - [logging.py:31] - [f859d9bc] POST /api/admin/meals - Client: 188.253.4.205
+2025-09-02 12:04:27,919 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:27,923 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:27,923 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:27,924 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:27,926 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:27,926 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:27,926 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250902120427926716，包含 1 个操作
+2025-09-02 12:04:27,927 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250902120427926716 中的操作 1/1
+2025-09-02 12:04:27,939 - DatabaseManager - INFO - [manager.py:156] - 事务 20250902120427926716 提交成功
+2025-09-02 12:04:27,940 - api.middleware.logging - INFO - [logging.py:44] - [f859d9bc] 201 - Time: 0.029s
+2025-09-02 12:04:28,042 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:29,947 - api.middleware.logging - INFO - [logging.py:31] - [0f5e7473] GET /api/meals - Client: 188.253.4.205
+2025-09-02 12:04:29,955 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:29,962 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:29,964 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:29,964 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:29,966 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:29,966 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:29,973 - api.middleware.logging - INFO - [logging.py:44] - [0f5e7473] 200 - Time: 0.026s
+2025-09-02 12:04:29,977 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:31,122 - api.middleware.logging - INFO - [logging.py:31] - [7bd662e5] GET /api/meals - Client: 188.253.4.205
+2025-09-02 12:04:31,132 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:31,139 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:31,143 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:31,143 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:31,145 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:31,145 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:31,157 - api.middleware.logging - INFO - [logging.py:44] - [7bd662e5] 200 - Time: 0.036s
+2025-09-02 12:04:31,160 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:31,875 - api.middleware.logging - INFO - [logging.py:31] - [4afcf27a] GET /api/admin/addons - Client: 188.253.4.205
+2025-09-02 12:04:31,883 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:31,884 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:31,884 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:31,885 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:31,887 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:31,887 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:31,890 - api.middleware.logging - INFO - [logging.py:44] - [4afcf27a] 200 - Time: 0.015s
+2025-09-02 12:04:31,892 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:32,461 - api.middleware.logging - INFO - [logging.py:31] - [878444aa] GET /api/admin/meals/2/statistics - Client: 188.253.4.206
+2025-09-02 12:04:32,471 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:32,473 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:32,473 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:32,473 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:32,476 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:32,476 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:32,485 - api.middleware.logging - INFO - [logging.py:44] - [878444aa] 200 - Time: 0.024s
+2025-09-02 12:04:32,488 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:33,308 - api.middleware.logging - INFO - [logging.py:31] - [dbc4e85a] GET /api/meals/2 - Client: 188.253.4.206
+2025-09-02 12:04:33,317 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:33,323 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:33,331 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:33,331 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:33,333 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:33,334 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:33,342 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:33,342 - api.middleware.logging - INFO - [logging.py:44] - [dbc4e85a] 200 - Time: 0.034s
+2025-09-02 12:04:36,751 - api.middleware.logging - INFO - [logging.py:31] - [88930477] GET /api/meals - Client: 188.253.4.206
+2025-09-02 12:04:36,760 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:36,761 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:36,761 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:36,762 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:36,763 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:36,764 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:36,773 - api.middleware.logging - INFO - [logging.py:44] - [88930477] 200 - Time: 0.022s
+2025-09-02 12:04:36,775 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:38,515 - api.middleware.logging - INFO - [logging.py:31] - [002cb804] GET /api/meals - Client: 188.253.4.206
+2025-09-02 12:04:38,523 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:38,524 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:38,525 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:38,525 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:38,527 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:38,527 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:38,533 - api.middleware.logging - INFO - [logging.py:44] - [002cb804] 200 - Time: 0.018s
+2025-09-02 12:04:38,537 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:39,202 - api.middleware.logging - INFO - [logging.py:31] - [abbbcbbe] GET /api/admin/addons - Client: 188.253.4.206
+2025-09-02 12:04:39,211 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:39,212 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:39,212 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:39,213 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:39,215 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:39,215 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:39,219 - api.middleware.logging - INFO - [logging.py:44] - [abbbcbbe] 200 - Time: 0.017s
+2025-09-02 12:04:39,221 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:39,550 - api.middleware.logging - INFO - [logging.py:31] - [85deb993] GET /api/meals/2 - Client: 188.253.4.205
+2025-09-02 12:04:39,558 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:39,563 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:39,564 - api.middleware.logging - INFO - [logging.py:31] - [2b20bfe4] GET /api/admin/meals/2/statistics - Client: 188.253.4.205
+2025-09-02 12:04:39,565 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:39,566 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:39,566 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:39,568 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:39,568 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:39,569 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:39,570 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:39,570 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:39,573 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:39,574 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:39,576 - api.middleware.logging - INFO - [logging.py:44] - [85deb993] 200 - Time: 0.026s
+2025-09-02 12:04:39,576 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:39,584 - api.middleware.logging - INFO - [logging.py:44] - [2b20bfe4] 200 - Time: 0.020s
+2025-09-02 12:04:39,588 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:41,016 - api.middleware.logging - INFO - [logging.py:31] - [ff283799] GET /api/meals - Client: 188.253.4.205
+2025-09-02 12:04:41,024 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:41,025 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:41,025 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:41,025 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:41,027 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:41,027 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:41,059 - api.middleware.logging - INFO - [logging.py:44] - [ff283799] 200 - Time: 0.042s
+2025-09-02 12:04:41,068 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:43,216 - api.middleware.logging - INFO - [logging.py:31] - [f5f3475a] GET /api/meals - Client: 188.253.4.205
+2025-09-02 12:04:43,225 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:43,227 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:43,227 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:43,228 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:43,230 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:43,230 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:43,237 - api.middleware.logging - INFO - [logging.py:44] - [f5f3475a] 200 - Time: 0.021s
+2025-09-02 12:04:43,242 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:43,867 - api.middleware.logging - INFO - [logging.py:31] - [2614845d] GET /api/admin/meals/2/statistics - Client: 188.253.4.206
+2025-09-02 12:04:43,868 - api.middleware.logging - INFO - [logging.py:31] - [be1ab2fd] GET /api/meals/2 - Client: 188.253.4.205
+2025-09-02 12:04:43,878 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:43,878 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:43,878 - api.middleware.logging - INFO - [logging.py:31] - [e2cf5332] GET /api/admin/addons - Client: 188.253.4.205
+2025-09-02 12:04:43,880 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:43,883 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:43,883 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:43,883 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:43,884 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:43,884 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:43,884 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:43,885 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:43,885 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:43,885 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:43,888 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:43,888 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:43,889 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:43,889 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:43,889 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:43,889 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:43,894 - api.middleware.logging - INFO - [logging.py:44] - [be1ab2fd] 200 - Time: 0.026s
+2025-09-02 12:04:43,895 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:43,907 - api.middleware.logging - INFO - [logging.py:44] - [2614845d] 200 - Time: 0.040s
+2025-09-02 12:04:43,907 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:43,910 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:43,913 - api.middleware.logging - INFO - [logging.py:44] - [e2cf5332] 200 - Time: 0.034s
+2025-09-02 12:04:45,629 - api.middleware.logging - INFO - [logging.py:31] - [247715bb] GET /api/meals - Client: 188.253.4.205
+2025-09-02 12:04:45,638 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:45,643 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:45,644 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:45,644 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:45,646 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:45,647 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:45,653 - api.middleware.logging - INFO - [logging.py:44] - [247715bb] 200 - Time: 0.024s
+2025-09-02 12:04:45,656 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:47,330 - api.middleware.logging - INFO - [logging.py:31] - [967647fb] GET /api/admin/addons - Client: 188.253.4.205
+2025-09-02 12:04:47,339 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:47,340 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:47,341 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:47,341 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:47,343 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:47,343 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:47,346 - api.middleware.logging - INFO - [logging.py:44] - [967647fb] 200 - Time: 0.016s
+2025-09-02 12:04:47,348 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:55,397 - api.middleware.logging - INFO - [logging.py:31] - [c2120dea] POST /api/admin/meals - Client: 188.253.4.204
+2025-09-02 12:04:55,407 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:55,408 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:55,409 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:55,409 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:55,412 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:55,412 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:55,412 - DatabaseManager - DEBUG - [manager.py:147] - 开始事务 20250902120455412927，包含 1 个操作
+2025-09-02 12:04:55,413 - DatabaseManager - DEBUG - [manager.py:151] - 执行事务 20250902120455412927 中的操作 1/1
+2025-09-02 12:04:55,426 - DatabaseManager - INFO - [manager.py:156] - 事务 20250902120455412927 提交成功
+2025-09-02 12:04:55,426 - api.middleware.logging - INFO - [logging.py:44] - [c2120dea] 201 - Time: 0.029s
+2025-09-02 12:04:55,492 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:57,412 - api.middleware.logging - INFO - [logging.py:31] - [7e76d162] GET /api/meals - Client: 188.253.4.204
+2025-09-02 12:04:57,421 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:57,425 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:57,425 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:57,425 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:57,428 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:57,428 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:57,436 - api.middleware.logging - INFO - [logging.py:44] - [7e76d162] 200 - Time: 0.024s
+2025-09-02 12:04:57,439 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:04:59,407 - api.middleware.logging - INFO - [logging.py:31] - [3161a96f] GET /api/meals - Client: 188.253.4.204
+2025-09-02 12:04:59,417 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:04:59,418 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:04:59,419 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:04:59,419 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:04:59,421 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:04:59,421 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:04:59,426 - api.middleware.logging - INFO - [logging.py:44] - [3161a96f] 200 - Time: 0.019s
+2025-09-02 12:04:59,432 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:05:00,199 - api.middleware.logging - INFO - [logging.py:31] - [d06c1e85] GET /api/admin/addons - Client: 188.253.4.204
+2025-09-02 12:05:00,209 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:05:00,211 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:05:00,211 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:05:00,212 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:05:00,214 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:05:00,214 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:05:00,218 - api.middleware.logging - INFO - [logging.py:44] - [d06c1e85] 200 - Time: 0.020s
+2025-09-02 12:05:00,221 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:05:00,549 - api.middleware.logging - INFO - [logging.py:31] - [3f24beee] GET /api/meals/2 - Client: 188.253.4.203
+2025-09-02 12:05:00,549 - api.middleware.logging - INFO - [logging.py:31] - [33eb5872] GET /api/admin/meals/2/statistics - Client: 188.253.4.203
+2025-09-02 12:05:00,558 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:05:00,558 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:05:00,560 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:05:00,561 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:05:00,562 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:05:00,562 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:05:00,562 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:05:00,563 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:05:00,566 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:05:00,566 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:05:00,566 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:05:00,567 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:05:00,573 - api.middleware.logging - INFO - [logging.py:44] - [3f24beee] 200 - Time: 0.024s
+2025-09-02 12:05:00,573 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:05:00,582 - api.middleware.logging - INFO - [logging.py:44] - [33eb5872] 200 - Time: 0.033s
+2025-09-02 12:05:00,585 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:05:34,625 - api.middleware.logging - INFO - [logging.py:31] - [63f9ff22] GET /api/meals - Client: 188.253.4.206
+2025-09-02 12:05:34,632 - DatabaseManager - INFO - [manager.py:60] - 成功连接到数据库: /home/pp/mp/ganghaofan_cc/data/gang_hao_fan_dev.db
+2025-09-02 12:05:34,633 - DatabaseManager - DEBUG - [manager.py:99] - 数据库优化参数配置完成
+2025-09-02 12:05:34,633 - api.auth.routes - DEBUG - [routes.py:48] - 收到Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkI...
+2025-09-02 12:05:34,634 - api.auth.routes - DEBUG - [routes.py:53] - JWT解码成功: user_id=3, open_id=mock_openid_d547a2d9e720f839
+2025-09-02 12:05:34,636 - api.auth.routes - DEBUG - [routes.py:62] - 数据库查询用户: user_id=3, found=True
+2025-09-02 12:05:34,636 - api.auth.routes - DEBUG - [routes.py:81] - 用户认证成功: user_id=3
+2025-09-02 12:05:34,641 - api.middleware.logging - INFO - [logging.py:44] - [63f9ff22] 200 - Time: 0.016s
+2025-09-02 12:05:34,643 - DatabaseManager - INFO - [manager.py:78] - 数据库连接已关闭
+2025-09-02 12:06:52,468 - api.main - INFO - [main.py:42] - 罡好饭API服务关闭中...
