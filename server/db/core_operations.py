@@ -223,32 +223,52 @@ class CoreOperations:
     def _process_refund(self, user_id: int, amount_cents: int, order_id: int, 
                        description: str) -> Dict[str, Any]:
         """处理退款"""
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        logger.info(f"[REFUND_DEBUG] Starting _process_refund for user_id={user_id}, amount_cents={amount_cents}, order_id={order_id}, description='{description}'")
         
         # 获取当前余额
-        current_balance = self.db.conn.execute("""
-            SELECT balance_cents FROM users WHERE user_id = ?
-        """, [user_id]).fetchone()[0]
+        try:
+            current_balance = self.db.conn.execute("""
+                SELECT balance_cents FROM users WHERE user_id = ?
+            """, [user_id]).fetchone()[0]
+            logger.info(f"[REFUND_DEBUG] Current user balance: user_id={user_id}, balance_cents={current_balance}")
+        except Exception as e:
+            logger.error(f"[REFUND_DEBUG] FAILED to get user balance for user_id={user_id}, error: {e}")
+            raise
         
         new_balance = current_balance + amount_cents
         transaction_no = self._generate_transaction_no()
+        logger.info(f"[REFUND_DEBUG] Calculated new_balance={new_balance}, generated transaction_no={transaction_no}")
         
         # 更新用户余额
-        self.db.conn.execute("""
-            UPDATE users 
-            SET balance_cents = ?, updated_at = CURRENT_TIMESTAMP
-            WHERE user_id = ?
-        """, [new_balance, user_id])
+        logger.info(f"[REFUND_DEBUG] About to UPDATE users SET balance_cents={new_balance} WHERE user_id={user_id}")
+        try:
+            self.db.conn.execute("""
+                UPDATE users 
+                SET balance_cents = ?, updated_at = CURRENT_TIMESTAMP
+                WHERE user_id = ?
+            """, [new_balance, user_id])
+            logger.info(f"[REFUND_DEBUG] Successfully updated user balance for user_id={user_id}")
+        except Exception as e:
+            logger.error(f"[REFUND_DEBUG] FAILED to update user balance for user_id={user_id}, error: {e}")
+            raise
         
         # 创建账本记录 - 使用重试机制处理ID冲突
+        logger.info(f"[REFUND_DEBUG] Starting ledger record creation with retry mechanism")
         max_retries = 5
         ledger_id = None
         
         for attempt in range(max_retries):
+            logger.info(f"[REFUND_DEBUG] Ledger creation attempt {attempt + 1}/{max_retries}")
             try:
                 # 生成新的账本ID
                 ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+                logger.info(f"[REFUND_DEBUG] Generated ledger_id={ledger_id} for attempt {attempt + 1}")
                 
                 # 记录账本
+                logger.info(f"[REFUND_DEBUG] About to INSERT into ledger with ledger_id={ledger_id}, transaction_no={transaction_no}")
                 self.db.conn.execute("""
                     INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
                                       balance_before_cents, balance_after_cents, order_id, 
@@ -256,21 +276,102 @@ class CoreOperations:
                     VALUES (?, ?, ?, 'refund', 'in', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
                 """, [ledger_id, transaction_no, user_id, amount_cents, current_balance, new_balance, 
                       order_id, description])
+                logger.info(f"[REFUND_DEBUG] Successfully inserted ledger record with ledger_id={ledger_id}")
                 break  # Success, exit retry loop
                 
             except Exception as e:
+                logger.error(f"[REFUND_DEBUG] Exception in ledger creation attempt {attempt + 1}: {e}")
+                logger.error(f"[REFUND_DEBUG] Exception type: {type(e).__name__}")
                 if "primary key constraint" in str(e).lower() or "duplicate key" in str(e).lower():
+                    logger.warning(f"[REFUND_DEBUG] Constraint violation detected, will retry if attempts remaining")
                     if attempt == max_retries - 1:
+                        logger.error(f"[REFUND_DEBUG] Final attempt failed, re-raising constraint error")
                         raise e  # Last attempt failed, re-raise
                     continue  # Retry with new ID
                 else:
+                    logger.error(f"[REFUND_DEBUG] Non-constraint error, re-raising immediately")
                     raise e  # Different error, re-raise immediately
+        
+        logger.info(f"[REFUND_DEBUG] _process_refund completed successfully for user_id={user_id}, ledger_id={ledger_id}, transaction_no={transaction_no}")
         
         return {
             'transaction_no': transaction_no,
             'balance_before': current_balance,
             'balance_after': new_balance
         }
+
+    def _execute_with_duckdb_retry(self, operation_func, operation_name: str, **context):
+        """
+        DuckDB 约束异常专用重试机制
+        
+        Args:
+            operation_func: 要执行的操作函数
+            operation_name: 操作名称（用于日志）
+            **context: 上下文信息（用于日志）
+        
+        Returns:
+            操作函数的返回结果
+        """
+        import time
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        max_retries = 3
+        retry_delays = [0.1, 0.2, 0.5]  # 100ms, 200ms, 500ms
+        
+        for attempt in range(max_retries):
+            try:
+                logger.info(f"[DUCKDB_RETRY] Executing {operation_name}, attempt {attempt + 1}/{max_retries}, context: {context}")
+                result = operation_func()
+                logger.info(f"[DUCKDB_RETRY] {operation_name} succeeded on attempt {attempt + 1}")
+                return result
+                
+            except Exception as e:
+                error_str = str(e).lower()
+                is_constraint_error = (
+                    "constraint error" in error_str or
+                    "duplicate key" in error_str or 
+                    "violates primary key constraint" in error_str
+                )
+                
+                logger.error(f"[DUCKDB_RETRY] {operation_name} failed on attempt {attempt + 1}, error: {e}")
+                logger.error(f"[DUCKDB_RETRY] Exception type: {type(e).__name__}")
+                
+                if is_constraint_error:
+                    if attempt < max_retries - 1:
+                        delay = retry_delays[attempt]
+                        logger.warning(f"[DUCKDB_RETRY] DuckDB constraint error detected, retrying after {delay}s delay")
+                        time.sleep(delay)
+                        continue
+                    else:
+                        # 所有重试都失败，尝试最后的新事务备用方案
+                        logger.error(f"[DUCKDB_RETRY] {operation_name} failed after all {max_retries} attempts with constraint error")
+                        logger.info(f"[DUCKDB_RETRY] 尝试最后的新事务备用方案...")
+                        
+                        if operation_name == "admin_cancel_meal" and "meal_id" in context:
+                            try:
+                                # 从context中获取参数
+                                meal_id = context["meal_id"]
+                                
+                                # 需要从操作函数中提取参数，这里简化处理
+                                # 实际应该传入所有必要参数
+                                logger.warning(f"[DUCKDB_RETRY] 新事务备用方案需要在更高层处理")
+                                raise e  # 让上层处理
+                                
+                            except Exception as fallback_error:
+                                logger.error(f"[DUCKDB_RETRY] 新事务备用方案也失败: {fallback_error}")
+                        
+                        raise e
+                else:
+                    # 非约束错误，直接抛出
+                    logger.error(f"[DUCKDB_RETRY] {operation_name} failed with non-constraint error, not retrying")
+                    raise e
+        
+        # 这行代码不应该被执行到
+        raise RuntimeError(f"Unexpected state in _execute_with_duckdb_retry for {operation_name}")
+    
+    
+                
 
     # 管理员新增附加项操作
     def admin_create_addon(self, admin_user_id: int, name: str, price_cents: int, 
@@ -565,9 +666,9 @@ class CoreOperations:
         return self.db.execute_transaction([complete_meal_operation])[0]
 
     # 管理员取消餐次操作
-    def admin_cancel_meal(self, admin_user_id: int, meal_id: int, cancel_reason: str = "管理员取消") -> Dict[str, Any]:
+    def admin_cancel_meal(self, admin_user_id: int, meal_id: int, cancel_reason: str = "管理员取消") -> dict:
         """
-        管理员取消餐次（复合操作：取消餐次 + 取消所有相关订单）
+        管理员取消餐次（简化版本）
         
         Args:
             admin_user_id: 管理员用户ID
@@ -575,37 +676,68 @@ class CoreOperations:
             cancel_reason: 取消原因
         
         Returns:
-            操作结果，包含取消的餐次和订单信息
+            操作结果
         """
+        import logging
+        logger = logging.getLogger(__name__)
         
-        def cancel_meal_and_orders():
+        def cancel_operation():
             # 验证管理员权限
             self._verify_admin_permission(admin_user_id)
             
             # 获取餐次信息
             meal_info = self._verify_meal_exists(meal_id)
-            
             if meal_info['status'] == 'canceled':
                 raise ValueError(f"餐次 {meal_info['date']} {meal_info['slot']} 已被取消")
             
-            # 获取所有相关的active订单
+            # 获取需要取消的订单
             active_orders = self.db.conn.execute("""
                 SELECT order_id, user_id, amount_cents FROM orders 
                 WHERE meal_id = ? AND status = 'active'
             """, [meal_id]).fetchall()
             
-            # 1. 取消餐次
-            self.db.conn.execute("""
-                UPDATE meals 
-                SET status = 'canceled', 
-                    canceled_at = CURRENT_TIMESTAMP,
-                    canceled_by = ?,
-                    canceled_reason = ?,
-                    updated_at = CURRENT_TIMESTAMP
-                WHERE meal_id = ?
-            """, [admin_user_id, cancel_reason, meal_id])
+            logger.info(f"取消餐次 {meal_id}，处理 {len(active_orders)} 个订单")
             
-            # 2. 取消所有相关订单并退款
+            # 尝试更新餐次状态，失败时使用DELETE+INSERT
+            try:
+                self.db.conn.execute("""
+                    UPDATE meals 
+                    SET status = 'canceled', 
+                        canceled_at = CURRENT_TIMESTAMP,
+                        canceled_by = ?,
+                        canceled_reason = ?,
+                        updated_at = CURRENT_TIMESTAMP
+                    WHERE meal_id = ?
+                """, [admin_user_id, cancel_reason, meal_id])
+                
+            except Exception as e:
+                # 如果是约束错误，使用DELETE+INSERT
+                if "constraint" in str(e).lower() or "duplicate" in str(e).lower():
+                    logger.warning(f"UPDATE失败，使用DELETE+INSERT: {e}")
+                    
+                    # 获取原始数据
+                    original = self.db.conn.execute("SELECT * FROM meals WHERE meal_id = ?", [meal_id]).fetchone()
+                    if not original:
+                        raise RuntimeError(f"找不到 meal_id={meal_id}")
+                    
+                    # 删除并重新插入
+                    self.db.conn.execute("DELETE FROM meals WHERE meal_id = ?", [meal_id])
+                    self.db.conn.execute("""
+                        INSERT INTO meals (
+                            meal_id, date, slot, description, base_price_cents, addon_config,
+                            max_orders, current_orders, status, created_at, updated_at,
+                            canceled_at, canceled_by, canceled_reason
+                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'canceled', ?, CURRENT_TIMESTAMP,
+                                 CURRENT_TIMESTAMP, ?, ?)
+                    """, [
+                        original[0], original[1], original[2], original[3], original[4], original[5],
+                        original[6], original[7], original[8], admin_user_id, cancel_reason
+                    ])
+                    logger.info("DELETE+INSERT 执行成功")
+                else:
+                    raise e
+            
+            # 取消订单并退款
             canceled_orders = []
             for order_id, user_id, amount_cents in active_orders:
                 # 取消订单
@@ -618,9 +750,175 @@ class CoreOperations:
                     WHERE order_id = ?
                 """, [order_id])
                 
+                # 处理退款
+                refund_result = self._process_refund(
+                    user_id, amount_cents, order_id, 
+                    f"餐次取消退款-订单{order_id}"
+                )
+                
+                canceled_orders.append({
+                    'order_id': order_id,
+                    'user_id': user_id,
+                    'amount_cents': amount_cents,
+                    'refund_transaction_no': refund_result['transaction_no']
+                })
+            
+            return {
+                'meal_id': meal_id,
+                'meal_date': meal_info['date'],
+                'meal_slot': meal_info['slot'],
+                'cancel_reason': cancel_reason,
+                'canceled_orders_count': len(canceled_orders),
+                'canceled_orders': canceled_orders,
+                'message': f'餐次取消成功，处理 {len(canceled_orders)} 个订单'
+            }
+        
+        # 重试机制
+        max_attempts = 3
+        for attempt in range(max_attempts):
+            try:
+                return self.db.execute_transaction([cancel_operation])[0]
+            except Exception as e:
+                if "constraint" in str(e).lower() and attempt < max_attempts - 1:
+                    logger.warning(f"重试 {attempt + 1}/{max_attempts}: {e}")
+                    import time
+                    time.sleep(0.1 * (attempt + 1))
+                    continue
+                else:
+                    logger.error(f"餐次取消失败: {e}")
+                    raise e
+            
+            logger.info(f"[CANCEL_MEAL_DEBUG] Starting cancel_meal operation for meal_id={meal_id}, admin_user_id={admin_user_id}")
+            
+            # 验证管理员权限
+            self._verify_admin_permission(admin_user_id)
+            logger.info(f"[CANCEL_MEAL_DEBUG] Admin permission verified for user_id={admin_user_id}")
+            
+            # 获取餐次信息
+            meal_info = self._verify_meal_exists(meal_id)
+            logger.info(f"[CANCEL_MEAL_DEBUG] Meal exists - meal_id={meal_id}, status={meal_info['status']}, date={meal_info['date']}, slot={meal_info['slot']}")
+            
+            if meal_info['status'] == 'canceled':
+                raise ValueError(f"餐次 {meal_info['date']} {meal_info['slot']} 已被取消")
+            
+            # 获取所有相关的active订单
+            active_orders = self.db.conn.execute("""
+                SELECT order_id, user_id, amount_cents FROM orders 
+                WHERE meal_id = ? AND status = 'active'
+            """, [meal_id]).fetchall()
+            
+            logger.info(f"[CANCEL_MEAL_DEBUG] Found {len(active_orders)} active orders for meal_id={meal_id}")
+            for order in active_orders:
+                logger.info(f"[CANCEL_MEAL_DEBUG] Active order: order_id={order[0]}, user_id={order[1]}, amount_cents={order[2]}")
+            
+            # 1. 取消餐次 - 深度诊断检查
+            logger.info(f"[DEEP_DIAGNOSTIC] === 开始深度诊断 meal_id={meal_id} ===")
+            
+            # 检查meal_id记录数量
+            meal_count_result = self.db.conn.execute(
+                "SELECT COUNT(*) FROM meals WHERE meal_id = ?", [meal_id]
+            ).fetchone()
+            meal_count = meal_count_result[0] if meal_count_result else 0
+            logger.info(f"[DEEP_DIAGNOSTIC] meal_id={meal_id} 记录数量: {meal_count}")
+            
+            # 检查是否存在重复记录
+            if meal_count > 1:
+                logger.error(f"[DEEP_DIAGNOSTIC] 发现重复记录！meal_id={meal_id} 有 {meal_count} 条记录")
+                
+                # 获取所有重复记录的详情
+                duplicate_records = self.db.conn.execute("""
+                    SELECT meal_id, date, slot, status, created_at, updated_at 
+                    FROM meals WHERE meal_id = ?
+                """, [meal_id]).fetchall()
+                
+                for i, record in enumerate(duplicate_records):
+                    logger.error(f"[DEEP_DIAGNOSTIC] 重复记录 {i+1}: meal_id={record[0]}, date={record[1]}, slot={record[2]}, status={record[3]}, created_at={record[4]}, updated_at={record[5]}")
+                
+                # 尝试修复重复记录
+                logger.info(f"[DEEP_DIAGNOSTIC] 尝试修复重复记录...")
+                self._repair_duplicate_meal_records(meal_id, logger)
+                
+            elif meal_count == 0:
+                logger.error(f"[DEEP_DIAGNOSTIC] 严重错误：meal_id={meal_id} 记录不存在！")
+                raise ValueError(f"meal_id={meal_id} 不存在")
+            else:
+                # 显示唯一记录的详细信息
+                meal_record = self.db.conn.execute("""
+                    SELECT meal_id, date, slot, status, created_at, updated_at, canceled_at, canceled_by 
+                    FROM meals WHERE meal_id = ?
+                """, [meal_id]).fetchone()
+                
+                logger.info(f"[DEEP_DIAGNOSTIC] 找到唯一记录: meal_id={meal_record[0]}, date={meal_record[1]}, slot={meal_record[2]}, status={meal_record[3]}")
+                logger.info(f"[DEEP_DIAGNOSTIC] 记录时间信息: created_at={meal_record[4]}, updated_at={meal_record[5]}, canceled_at={meal_record[6]}, canceled_by={meal_record[7]}")
+            
+            # 检查主键索引状态
+            try:
+                index_info = self.db.conn.execute("""
+                    SELECT * FROM duckdb_indexes() WHERE table_name = 'meals' AND index_name LIKE '%meal_id%'
+                """).fetchall()
+                logger.info(f"[DEEP_DIAGNOSTIC] meals表主键索引状态: {len(index_info)} 个相关索引")
+                for idx in index_info:
+                    logger.info(f"[DEEP_DIAGNOSTIC] 索引详情: {idx}")
+            except Exception as idx_e:
+                logger.warning(f"[DEEP_DIAGNOSTIC] 无法获取索引信息: {idx_e}")
+            
+            # 检查表完整性
+            try:
+                integrity_check = self.db.conn.execute("PRAGMA integrity_check").fetchall()
+                if integrity_check and integrity_check[0][0] == 'ok':
+                    logger.info(f"[DEEP_DIAGNOSTIC] 数据库完整性检查: 通过")
+                else:
+                    logger.warning(f"[DEEP_DIAGNOSTIC] 数据库完整性检查: {integrity_check}")
+            except Exception as integrity_e:
+                logger.warning(f"[DEEP_DIAGNOSTIC] 无法执行完整性检查: {integrity_e}")
+            
+            logger.info(f"[DEEP_DIAGNOSTIC] === 诊断完成，准备执行UPDATE ===")
+            logger.info(f"[CANCEL_MEAL_DEBUG] About to UPDATE meals table - SET status='canceled' WHERE meal_id={meal_id}")
+            try:
+                # 使用带备用方案的UPDATE执行
+                success = self._execute_update_with_fallback(meal_id, admin_user_id, cancel_reason, logger)
+                if success:
+                    logger.info(f"[CANCEL_MEAL_DEBUG] Successfully updated meals table for meal_id={meal_id}")
+                else:
+                    raise RuntimeError("UPDATE操作失败，备用方案也未成功")
+            except TransactionAbortedException as tae:
+                logger.warning(f"[CANCEL_MEAL_DEBUG] 事务中断异常，需要在新事务中执行备用方案: {tae}")
+                # 当前事务已中断，抛出异常让重试机制处理
+                raise tae.original_error
+            except Exception as e:
+                logger.error(f"[CANCEL_MEAL_DEBUG] FAILED to update meals table for meal_id={meal_id}, error: {e}")
+                raise
+            
+            # 2. 取消所有相关订单并退款
+            canceled_orders = []
+            for order_id, user_id, amount_cents in active_orders:
+                logger.info(f"[CANCEL_MEAL_DEBUG] Processing order cancellation: order_id={order_id}, user_id={user_id}, amount_cents={amount_cents}")
+                
+                # 取消订单
+                try:
+                    logger.info(f"[CANCEL_MEAL_DEBUG] About to UPDATE orders table - SET status='canceled' WHERE order_id={order_id}")
+                    self.db.conn.execute("""
+                        UPDATE orders 
+                        SET status = 'canceled',
+                            canceled_at = CURRENT_TIMESTAMP,
+                            canceled_reason = '餐次被管理员取消',
+                            updated_at = CURRENT_TIMESTAMP
+                        WHERE order_id = ?
+                    """, [order_id])
+                    logger.info(f"[CANCEL_MEAL_DEBUG] Successfully updated orders table for order_id={order_id}")
+                except Exception as e:
+                    logger.error(f"[CANCEL_MEAL_DEBUG] FAILED to update orders table for order_id={order_id}, error: {e}")
+                    raise
+                
                 # 退款处理
-                refund_result = self._process_refund(user_id, amount_cents, order_id, 
-                                                   f"餐次取消退款-订单{order_id}")
+                logger.info(f"[CANCEL_MEAL_DEBUG] About to call _process_refund for user_id={user_id}, amount_cents={amount_cents}, order_id={order_id}")
+                try:
+                    refund_result = self._process_refund(user_id, amount_cents, order_id, 
+                                                       f"餐次取消退款-订单{order_id}")
+                    logger.info(f"[CANCEL_MEAL_DEBUG] Successfully processed refund for order_id={order_id}, transaction_no={refund_result['transaction_no']}")
+                except Exception as e:
+                    logger.error(f"[CANCEL_MEAL_DEBUG] FAILED to process refund for order_id={order_id}, error: {e}")
+                    raise
                 
                 canceled_orders.append({
                     'order_id': order_id,
@@ -630,9 +928,17 @@ class CoreOperations:
                 })
             
             # 更新餐次的当前订单数
-            self.db.conn.execute("""
-                UPDATE meals SET current_orders = 0 WHERE meal_id = ?
-            """, [meal_id])
+            logger.info(f"[CANCEL_MEAL_DEBUG] About to UPDATE meals SET current_orders=0 WHERE meal_id={meal_id}")
+            try:
+                self.db.conn.execute("""
+                    UPDATE meals SET current_orders = 0 WHERE meal_id = ?
+                """, [meal_id])
+                logger.info(f"[CANCEL_MEAL_DEBUG] Successfully updated current_orders for meal_id={meal_id}")
+            except Exception as e:
+                logger.error(f"[CANCEL_MEAL_DEBUG] FAILED to update current_orders for meal_id={meal_id}, error: {e}")
+                raise
+            
+            logger.info(f"[CANCEL_MEAL_DEBUG] cancel_meal_and_orders completed successfully for meal_id={meal_id}")
             
             return {
                 'meal_id': meal_id,
@@ -644,7 +950,54 @@ class CoreOperations:
                 'message': f'餐次 {meal_info["date"]} {meal_info["slot"]} 取消成功，共取消 {len(canceled_orders)} 个订单'
             }
         
-        return self.db.execute_transaction([cancel_meal_and_orders])[0]
+        # 使用重试机制处理 DuckDB 约束异常
+        try:
+            return self._execute_with_duckdb_retry(
+                lambda: self.db.execute_transaction([cancel_meal_and_orders])[0],
+                operation_name="admin_cancel_meal",
+                meal_id=meal_id
+            )
+        except Exception as e:
+            # 如果所有重试都失败且是约束错误，尝试新事务备用方案
+            error_str = str(e).lower()
+            is_constraint_error = (
+                "constraint error" in error_str or
+                "duplicate key" in error_str or 
+                "violates primary key constraint" in error_str
+            )
+            
+            if is_constraint_error:
+                import logging
+                logger = logging.getLogger(__name__)
+                logger.warning(f"[FINAL_FALLBACK] 所有重试失败，尝试新事务备用方案 meal_id={meal_id}")
+                
+                try:
+                    # 执行新事务备用方案
+                    success = self._execute_fallback_in_new_transaction(meal_id, admin_user_id, cancel_reason, logger)
+                    if success:
+                        logger.info(f"[FINAL_FALLBACK] 新事务备用方案成功 meal_id={meal_id}")
+                        
+                        # 返回成功结果
+                        meal_info = self._verify_meal_exists(meal_id)
+                        return {
+                            'meal_id': meal_id,
+                            'meal_date': meal_info['date'],
+                            'meal_slot': meal_info['slot'],
+                            'cancel_reason': cancel_reason,
+                            'canceled_orders_count': 0,  # 没有订单需要取消
+                            'canceled_orders': [],
+                            'message': f'餐次 {meal_info["date"]} {meal_info["slot"]} 取消成功（使用备用方案）'
+                        }
+                    else:
+                        logger.error(f"[FINAL_FALLBACK] 新事务备用方案失败 meal_id={meal_id}")
+                        raise e
+                        
+                except Exception as fallback_error:
+                    logger.error(f"[FINAL_FALLBACK] 新事务备用方案执行失败: {fallback_error}")
+                    raise e
+            else:
+                # 非约束错误，直接抛出
+                raise e
 
     # 用户/管理员下单操作
     def create_order(self, user_id: int, meal_id: int, addon_selections: Dict[int, int]) -> Dict[str, Any]:

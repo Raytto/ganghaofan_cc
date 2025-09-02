@@ -265,6 +265,14 @@ def main():
         logging.info("插入初始数据...")
         insert_initial_data(db_manager)
         
+        # 执行数据库维护操作
+        logging.info("执行数据库维护...")
+        try:
+            db_manager.perform_maintenance()
+            logging.info("数据库维护完成")
+        except Exception as e:
+            logging.warning(f"数据库维护失败（不影响初始化）: {e}")
+        
         # 获取数据库信息
         tables_info = []
         table_names = ['users', 'meals', 'addons', 'orders', 'ledger']

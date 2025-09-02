@@ -159,6 +159,8 @@ class DatabaseManager:
             
         except Exception as e:
             self.logger.error(f"事务 {transaction_id} 执行失败: {str(e)}")
+            self.logger.error(f"[TRANSACTION_DEBUG] Exception type: {type(e).__name__}")
+            self.logger.error(f"[TRANSACTION_DEBUG] Exception details: {repr(e)}")
             try:
                 self.conn.rollback()
                 self.logger.info(f"事务 {transaction_id} 已回滚")
@@ -275,6 +277,311 @@ class DatabaseManager:
             self.logger.error(f"数据库清理优化失败: {str(e)}")
             raise e
     
+    def analyze(self):
+        """
+        分析数据库统计信息，优化查询计划
+        """
+        self.ensure_connected()
+        
+        try:
+            self.logger.info("开始数据库统计分析")
+            self.conn.execute("ANALYZE")
+            self.logger.info("数据库统计分析完成")
+        except Exception as e:
+            self.logger.error(f"数据库统计分析失败: {str(e)}")
+            raise e
+    
+    def perform_maintenance(self):
+        """
+        执行完整的数据库维护操作
+        """
+        self.ensure_connected()
+        
+        try:
+            self.logger.info("开始数据库维护操作")
+            
+            # 1. 清理和压缩
+            self.vacuum()
+            
+            # 2. 更新统计信息
+            self.analyze()
+            
+            # 3. 检查数据库完整性
+            self.check_integrity()
+            
+            self.logger.info("数据库维护操作全部完成")
+            
+        except Exception as e:
+            self.logger.error(f"数据库维护操作失败: {str(e)}")
+            raise e
+    
+    def check_integrity(self):
+        """
+        检查数据库完整性
+        """
+        self.ensure_connected()
+        
+        try:
+            self.logger.info("开始数据库完整性检查")
+            
+            # 检查核心表是否存在
+            core_tables = ['users', 'meals', 'addons', 'orders', 'ledger']
+            
+            for table in core_tables:
+                result = self.conn.execute(f"""
+                    SELECT COUNT(*) FROM information_schema.tables 
+                    WHERE table_name = '{table}'
+                """).fetchone()
+                
+                if not result or result[0] == 0:
+                    raise RuntimeError(f"核心表 {table} 不存在")
+            
+            # 检查主键约束
+            integrity_issues = []
+            
+            # 检查 meals 表主键唯一性
+            duplicate_meals = self.conn.execute("""
+                SELECT meal_id, COUNT(*) as count 
+                FROM meals 
+                GROUP BY meal_id 
+                HAVING COUNT(*) > 1
+            """).fetchall()
+            
+            if duplicate_meals:
+                integrity_issues.extend([f"meals表存在重复的meal_id: {row[0]} (出现{row[1]}次)" for row in duplicate_meals])
+            
+            # 检查 orders 表主键唯一性
+            duplicate_orders = self.conn.execute("""
+                SELECT order_id, COUNT(*) as count 
+                FROM orders 
+                GROUP BY order_id 
+                HAVING COUNT(*) > 1
+            """).fetchall()
+            
+            if duplicate_orders:
+                integrity_issues.extend([f"orders表存在重复的order_id: {row[0]} (出现{row[1]}次)" for row in duplicate_orders])
+            
+            # 检查 ledger 表主键唯一性
+            duplicate_ledger = self.conn.execute("""
+                SELECT ledger_id, COUNT(*) as count 
+                FROM ledger 
+                GROUP BY ledger_id 
+                HAVING COUNT(*) > 1
+            """).fetchall()
+            
+            if duplicate_ledger:
+                integrity_issues.extend([f"ledger表存在重复的ledger_id: {row[0]} (出现{row[1]}次)" for row in duplicate_ledger])
+            
+            if integrity_issues:
+                error_msg = "数据库完整性检查发现问题:\n" + "\n".join(integrity_issues)
+                self.logger.error(error_msg)
+                raise RuntimeError(error_msg)
+            
+            self.logger.info("数据库完整性检查通过")
+            
+        except Exception as e:
+            self.logger.error(f"数据库完整性检查失败: {str(e)}")
+            raise e
+    
+    def check_table_constraints(self, table_name: str = None):
+        """
+        检查表约束定义
+        
+        Args:
+            table_name: 指定表名，None则检查所有核心表
+        """
+        self.ensure_connected()
+        
+        try:
+            core_tables = [table_name] if table_name else ['users', 'meals', 'addons', 'orders', 'ledger']
+            
+            for table in core_tables:
+                self.logger.info(f"=== 检查表 {table} 的约束 ===")
+                
+                # 1. 检查表结构
+                try:
+                    columns_info = self.conn.execute(f"PRAGMA table_info('{table}')").fetchall()
+                    self.logger.info(f"表 {table} 列信息:")
+                    for col in columns_info:
+                        pk_status = "PRIMARY KEY" if col[5] else ""
+                        not_null = "NOT NULL" if col[3] else ""
+                        self.logger.info(f"  - {col[1]}: {col[2]} {not_null} {pk_status}")
+                except Exception as e:
+                    self.logger.error(f"无法获取表 {table} 的列信息: {e}")
+                
+                # 2. 检查索引
+                try:
+                    # DuckDB 使用不同的系统表来查询索引
+                    indexes_info = self.conn.execute("""
+                        SELECT * FROM duckdb_indexes() 
+                        WHERE database_name = 'main' AND table_name = ?
+                    """, [table]).fetchall()
+                    
+                    self.logger.info(f"表 {table} 索引信息 ({len(indexes_info)} 个索引):")
+                    for idx in indexes_info:
+                        self.logger.info(f"  - 索引: {idx}")
+                        
+                except Exception as e:
+                    self.logger.warning(f"无法获取表 {table} 的索引信息: {e}")
+                
+                # 3. 检查约束
+                try:
+                    # DuckDB 的约束检查
+                    constraints_info = self.conn.execute("""
+                        SELECT * FROM duckdb_constraints() 
+                        WHERE database_name = 'main' AND table_name = ?
+                    """, [table]).fetchall()
+                    
+                    self.logger.info(f"表 {table} 约束信息 ({len(constraints_info)} 个约束):")
+                    for constraint in constraints_info:
+                        self.logger.info(f"  - 约束: {constraint}")
+                        
+                except Exception as e:
+                    self.logger.warning(f"无法获取表 {table} 的约束信息: {e}")
+                
+                self.logger.info(f"=== 表 {table} 检查完成 ===\n")
+                
+        except Exception as e:
+            self.logger.error(f"检查表约束失败: {str(e)}")
+            raise e
+    
+    def repair_table_constraints(self):
+        """
+        修复表约束问题
+        """
+        self.ensure_connected()
+        
+        try:
+            self.logger.info("开始修复数据库表约束...")
+            
+            # 检查并修复 meals 表主键约束
+            self.logger.info("检查 meals 表主键约束...")
+            
+            # 先检查当前约束状态
+            constraints = self.conn.execute("""
+                SELECT * FROM duckdb_constraints() 
+                WHERE database_name = 'main' AND table_name = 'meals'
+                AND constraint_type = 'PRIMARY KEY'
+            """).fetchall()
+            
+            if not constraints:
+                self.logger.warning("meals 表缺少主键约束，尝试修复...")
+                
+                # 检查是否有重复的 meal_id
+                duplicates = self.conn.execute("""
+                    SELECT meal_id, COUNT(*) 
+                    FROM meals 
+                    GROUP BY meal_id 
+                    HAVING COUNT(*) > 1
+                """).fetchall()
+                
+                if duplicates:
+                    self.logger.error(f"发现重复的 meal_id: {duplicates}")
+                    # 这里可以添加重复数据清理逻辑
+                    raise RuntimeError("存在重复数据，无法创建主键约束")
+                
+                # 尝试添加主键约束
+                # 注意：DuckDB 可能不支持在已有表上添加主键约束
+                # 可能需要重建表
+                self.logger.info("尝试重建 meals 表以确保主键约束...")
+                self._rebuild_meals_table_with_constraints()
+                
+            else:
+                self.logger.info(f"meals 表主键约束正常: {constraints}")
+            
+            # 检查其他核心表
+            for table in ['users', 'addons', 'orders', 'ledger']:
+                self._check_and_repair_table_pk(table)
+            
+            self.logger.info("表约束修复完成")
+            
+        except Exception as e:
+            self.logger.error(f"修复表约束失败: {str(e)}")
+            raise e
+    
+    def _rebuild_meals_table_with_constraints(self):
+        """
+        重建 meals 表以确保约束正确
+        """
+        self.logger.info("开始重建 meals 表...")
+        
+        try:
+            # 1. 备份现有数据
+            existing_data = self.conn.execute("SELECT * FROM meals").fetchall()
+            self.logger.info(f"备份了 {len(existing_data)} 条 meals 记录")
+            
+            # 2. 创建临时表
+            self.conn.execute("""
+                CREATE TABLE meals_backup AS SELECT * FROM meals
+            """)
+            
+            # 3. 删除原表
+            self.conn.execute("DROP TABLE meals")
+            
+            # 4. 重新创建表（确保主键约束）
+            self.conn.execute("""
+                CREATE TABLE meals (
+                    meal_id INTEGER PRIMARY KEY,
+                    date DATE NOT NULL,
+                    slot VARCHAR(20) NOT NULL,
+                    description TEXT,
+                    base_price_cents INTEGER NOT NULL,
+                    addon_config JSON,
+                    max_orders INTEGER DEFAULT 50,
+                    current_orders INTEGER DEFAULT 0,
+                    status VARCHAR(20) DEFAULT 'published',
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    locked_at TIMESTAMP,
+                    completed_at TIMESTAMP,
+                    canceled_at TIMESTAMP,
+                    canceled_by INTEGER,
+                    canceled_reason TEXT,
+                    UNIQUE(date, slot)
+                )
+            """)
+            
+            # 5. 恢复数据
+            for row in existing_data:
+                self.conn.execute("""
+                    INSERT INTO meals VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, row)
+            
+            # 6. 删除备份表
+            self.conn.execute("DROP TABLE meals_backup")
+            
+            self.logger.info("meals 表重建完成")
+            
+        except Exception as e:
+            self.logger.error(f"重建 meals 表失败: {e}")
+            # 尝试恢复
+            try:
+                self.conn.execute("DROP TABLE IF EXISTS meals")
+                self.conn.execute("ALTER TABLE meals_backup RENAME TO meals")
+                self.logger.info("已恢复原始 meals 表")
+            except:
+                pass
+            raise e
+    
+    def _check_and_repair_table_pk(self, table_name: str):
+        """
+        检查并修复指定表的主键约束
+        """
+        try:
+            constraints = self.conn.execute("""
+                SELECT * FROM duckdb_constraints() 
+                WHERE database_name = 'main' AND table_name = ?
+                AND constraint_type = 'PRIMARY KEY'
+            """, [table_name]).fetchall()
+            
+            if constraints:
+                self.logger.info(f"表 {table_name} 主键约束正常")
+            else:
+                self.logger.warning(f"表 {table_name} 缺少主键约束")
+                
+        except Exception as e:
+            self.logger.warning(f"检查表 {table_name} 约束失败: {e}")
+
     def backup(self, backup_path: str):
         """
         备份数据库

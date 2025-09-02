@@ -29,15 +29,8 @@ echo -e "${CYAN}Conda environment name: $ENV_NAME${NC}"
 
 # Function to find and initialize conda
 initialize_conda() {
-    local conda_paths=(
-        "/home/pp/miniconda3"
-        "$HOME/miniconda3"
-        "$HOME/anaconda3"
-        "/opt/conda"
-        "/usr/local/miniconda3"
-    )
-    
-    for conda_path in "${conda_paths[@]}"; do
+    # Check common conda installation paths
+    for conda_path in "/home/pp/miniconda3" "$HOME/miniconda3" "$HOME/anaconda3" "/opt/conda" "/usr/local/miniconda3"; do
         if [ -f "$conda_path/etc/profile.d/conda.sh" ]; then
             echo -e "${YELLOW}Found conda at: $conda_path${NC}"
             source "$conda_path/etc/profile.d/conda.sh"
