@@ -763,6 +763,9 @@ class CoreOperations:
                     'refund_transaction_no': refund_result['transaction_no']
                 })
             
+            # 计算总退款金额
+            total_refund_amount = sum(order['amount_cents'] for order in canceled_orders)
+            
             return {
                 'meal_id': meal_id,
                 'meal_date': meal_info['date'],
@@ -770,6 +773,7 @@ class CoreOperations:
                 'cancel_reason': cancel_reason,
                 'canceled_orders_count': len(canceled_orders),
                 'canceled_orders': canceled_orders,
+                'total_refund_amount': total_refund_amount,
                 'message': f'餐次取消成功，处理 {len(canceled_orders)} 个订单'
             }
         
@@ -940,6 +944,9 @@ class CoreOperations:
             
             logger.info(f"[CANCEL_MEAL_DEBUG] cancel_meal_and_orders completed successfully for meal_id={meal_id}")
             
+            # 计算总退款金额
+            total_refund_amount = sum(order['amount_cents'] for order in canceled_orders)
+            
             return {
                 'meal_id': meal_id,
                 'meal_date': meal_info['date'],
@@ -947,6 +954,7 @@ class CoreOperations:
                 'cancel_reason': cancel_reason,
                 'canceled_orders_count': len(canceled_orders),
                 'canceled_orders': canceled_orders,
+                'total_refund_amount': total_refund_amount,
                 'message': f'餐次 {meal_info["date"]} {meal_info["slot"]} 取消成功，共取消 {len(canceled_orders)} 个订单'
             }
         
@@ -986,6 +994,7 @@ class CoreOperations:
                             'cancel_reason': cancel_reason,
                             'canceled_orders_count': 0,  # 没有订单需要取消
                             'canceled_orders': [],
+                            'total_refund_amount': 0,  # 没有退款
                             'message': f'餐次 {meal_info["date"]} {meal_info["slot"]} 取消成功（使用备用方案）'
                         }
                     else:

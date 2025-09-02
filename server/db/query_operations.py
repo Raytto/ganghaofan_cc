@@ -67,7 +67,6 @@ class QueryOperations:
                 updated_at
             FROM meals
             WHERE date BETWEEN ? AND ? 
-            AND status != 'canceled'
             ORDER BY date ASC, slot ASC
             LIMIT ? OFFSET ?
         """
@@ -78,7 +77,6 @@ class QueryOperations:
         count_query = """
             SELECT COUNT(*) FROM meals
             WHERE date BETWEEN ? AND ? 
-            AND status != 'canceled'
         """
         total_count = self.db.conn.execute(count_query, [start_date, end_date]).fetchone()[0]
         
