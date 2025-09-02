@@ -18,7 +18,9 @@
       "Bash(tmux list-sessions:*)",
       "Bash(tmux capture-pane:*)",
       "Bash(tmux kill-session:*)",
-      "Bash(tmux new-session:*)"
+      "Bash(tmux new-session:*)",
+      "Bash(./run_scene2_test.sh:*)",
+      "Bash(tmux kill-server:*)"
     ],
     "deny": [],
     "ask": [],

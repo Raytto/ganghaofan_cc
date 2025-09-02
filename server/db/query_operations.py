@@ -51,7 +51,7 @@ class QueryOperations:
         self._validate_date_range(start_date, end_date)
         self._validate_pagination(offset, limit, 60)
         
-        # 查询餐次信息
+        # 查询餐次信息 - 对于每个日期+时段，只返回最新创建的餐次
         meals_query = """
             SELECT 
                 meal_id,
@@ -65,18 +65,30 @@ class QueryOperations:
                 status,
                 created_at,
                 updated_at
-            FROM meals
+            FROM meals m1
             WHERE date BETWEEN ? AND ? 
+              AND created_at = (
+                SELECT MAX(created_at) 
+                FROM meals m2 
+                WHERE m1.date = m2.date AND m1.slot = m2.slot
+              )
             ORDER BY date ASC, slot ASC
             LIMIT ? OFFSET ?
         """
         
         meals_result = self.db.conn.execute(meals_query, [start_date, end_date, limit, offset]).fetchall()
         
-        # 获取总数用于分页
+        # 获取总数用于分页 - 只计算每个日期+时段的最新餐次
         count_query = """
-            SELECT COUNT(*) FROM meals
-            WHERE date BETWEEN ? AND ? 
+            SELECT COUNT(*) FROM (
+                SELECT DISTINCT date, slot FROM meals m1
+                WHERE date BETWEEN ? AND ? 
+                  AND created_at = (
+                    SELECT MAX(created_at) 
+                    FROM meals m2 
+                    WHERE m1.date = m2.date AND m1.slot = m2.slot
+                  )
+            )
         """
         total_count = self.db.conn.execute(count_query, [start_date, end_date]).fetchone()[0]
         

@@ -43,7 +43,7 @@ def create_tables(db_manager: DatabaseManager):
         slot VARCHAR(20) NOT NULL,                 -- 时段: lunch/dinner
         description TEXT,                          -- 餐次描述（菜品信息等）
         base_price_cents INTEGER NOT NULL,         -- 不含附加项的基础价格（单位：分）
-        addon_config JSON,                         -- 附加项配置：{"addon_id": max_quantity, "addon_id2": max_quantity}
+        addon_config TEXT,                         -- 附加项配置：{"addon_id": max_quantity, "addon_id2": max_quantity} (SQLite使用TEXT存储JSON)
         max_orders INTEGER DEFAULT 50,             -- 最大订餐数量
         current_orders INTEGER DEFAULT 0,          -- 当前已订数量
         status VARCHAR(20) DEFAULT 'published',    -- 状态: published/locked/completed/canceled
@@ -77,7 +77,7 @@ def create_tables(db_manager: DatabaseManager):
         user_id INTEGER NOT NULL,                  -- 用户ID
         meal_id INTEGER NOT NULL,                  -- 餐次ID
         amount_cents INTEGER NOT NULL,             -- 订单金额（单位：分，包含基础价格和选中附加项的价格）
-        addon_selections JSON,                     -- 附加项选择：{"addon_id": quantity, "addon_id2": quantity}
+        addon_selections TEXT,                     -- 附加项选择：{"addon_id": quantity, "addon_id2": quantity} (SQLite使用TEXT存储JSON)
         status VARCHAR(20) DEFAULT 'active',       -- 状态: active/canceled/completed
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -243,7 +243,7 @@ def main():
         db_path = "data/gang_hao_fan_dev.db"
     
     # 转换为绝对路径
-    db_path = os.path.join(project_root.parent, db_path)
+    db_path = os.path.join(project_root, db_path)
     
     logging.info(f"开始初始化数据库: {db_path}")
     logging.info(f"配置环境: {config_env}")

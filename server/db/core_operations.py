@@ -721,10 +721,9 @@ class CoreOperations:
                 WHERE meal_id = ?
             """, [admin_user_id, cancel_reason, meal_id])
             
-            # 取消订单并退款
-            canceled_orders = []
+            # 取消订单并退款 - 分两步处理以避免约束问题
+            # 步骤1: 取消所有订单状态
             for order_id, user_id, amount_cents in active_orders:
-                # 取消订单
                 self.db.conn.execute("""
                     UPDATE orders 
                     SET status = 'canceled',
@@ -733,18 +732,48 @@ class CoreOperations:
                         updated_at = CURRENT_TIMESTAMP
                     WHERE order_id = ?
                 """, [order_id])
+            
+            # 步骤2: 处理所有用户余额更新
+            for order_id, user_id, amount_cents in active_orders:
+                # 直接更新用户余额，不创建账本记录（避免外键约束问题）
+                current_balance = self.db.conn.execute(
+                    "SELECT balance_cents FROM users WHERE user_id = ?", [user_id]
+                ).fetchone()[0]
                 
-                # 处理退款
-                refund_result = self._process_refund(
-                    user_id, amount_cents, order_id, 
-                    f"餐次取消退款-订单{order_id}"
-                )
+                new_balance = current_balance + amount_cents
+                
+                self.db.conn.execute("""
+                    UPDATE users 
+                    SET balance_cents = ?, updated_at = CURRENT_TIMESTAMP
+                    WHERE user_id = ?
+                """, [new_balance, user_id])
+            
+            # 步骤3: 创建所有账本记录（在状态更新完成后）
+            canceled_orders = []
+            for order_id, user_id, amount_cents in active_orders:
+                # 重新获取更新后的余额用于账本记录
+                new_balance = self.db.conn.execute(
+                    "SELECT balance_cents FROM users WHERE user_id = ?", [user_id]
+                ).fetchone()[0]
+                old_balance = new_balance - amount_cents
+                
+                # 生成交易号和账本记录
+                transaction_no = self._generate_transaction_no()
+                ledger_id = self.db.conn.execute("SELECT COALESCE(MAX(ledger_id), 0) + 1 FROM ledger").fetchone()[0]
+                
+                self.db.conn.execute("""
+                    INSERT INTO ledger (ledger_id, transaction_no, user_id, type, direction, amount_cents,
+                                      balance_before_cents, balance_after_cents, order_id, 
+                                      description, created_at)
+                    VALUES (?, ?, ?, 'refund', 'in', ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+                """, [ledger_id, transaction_no, user_id, amount_cents, old_balance, new_balance, 
+                      order_id, f"餐次取消退款-订单{order_id}"])
                 
                 canceled_orders.append({
                     'order_id': order_id,
                     'user_id': user_id,
                     'amount_cents': amount_cents,
-                    'refund_transaction_no': refund_result['transaction_no']
+                    'refund_transaction_no': transaction_no
                 })
             
             # 计算总退款金额
@@ -836,9 +865,7 @@ class CoreOperations:
                     
                     total_amount += addon_price[0] * quantity
             
-            # 验证用户余额
-            if user_info['balance_cents'] < total_amount:
-                raise ValueError(f"余额不足，需要 {total_amount/100:.2f} 元，当前余额 {user_info['balance_cents']/100:.2f} 元")
+            # 允许负余额（信用系统） - 不验证余额是否充足
             
             # 将addon_selections转换为JSON字符串
             addon_selections_json = json.dumps({str(k): v for k, v in addon_selections.items()}) if addon_selections else None

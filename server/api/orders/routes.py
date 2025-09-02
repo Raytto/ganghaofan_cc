@@ -133,12 +133,12 @@ async def update_order(
         new_amount_cents = price_result["total_amount"]
         amount_difference = new_amount_cents - old_amount_cents
         
-        # 检查余额（如果需要补费）
-        if amount_difference > 0:
-            user_query = "SELECT balance_cents FROM users WHERE user_id = ?"
-            user_result = db.conn.execute(user_query, [current_user.user_id]).fetchone()
-            if not user_result or user_result[0] < amount_difference:
-                return create_error_response("余额不足，无法修改订单")
+        # 允许负余额（信用系统） - 不验证余额是否充足
+        # if amount_difference > 0:
+        #     user_query = "SELECT balance_cents FROM users WHERE user_id = ?"
+        #     user_result = db.conn.execute(user_query, [current_user.user_id]).fetchone()
+        #     if not user_result or user_result[0] < amount_difference:
+        #         return create_error_response("余额不足，无法修改订单")
         
         # 更新订单
         import json

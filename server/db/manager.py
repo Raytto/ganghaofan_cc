@@ -1,7 +1,7 @@
 # 参考文档: doc/db/db_manager.md
 # 数据库连接和事务管理的核心组件
 
-import duckdb
+import sqlite3
 import logging
 import os
 from datetime import datetime
@@ -12,7 +12,7 @@ class DatabaseManager:
     """
     数据库管理器
     
-    负责DuckDB数据库连接管理、事务处理和基础操作
+    负责SQLite数据库连接管理、事务处理和基础操作
     参考文档: doc/db/db_manager.md
     """
     
@@ -34,12 +34,12 @@ class DatabaseManager:
         if auto_connect:
             self.connect()
     
-    def connect(self) -> duckdb.DuckDBPyConnection:
+    def connect(self) -> sqlite3.Connection:
         """
         建立数据库连接
         
         Returns:
-            DuckDB连接对象
+            SQLite连接对象
         
         Raises:
             ConnectionError: 连接失败时抛出异常
@@ -55,11 +55,12 @@ class DatabaseManager:
                 os.makedirs(db_dir, exist_ok=True)
                 self.logger.info(f"创建数据库目录: {db_dir}")
             
-            self.conn = duckdb.connect(self.db_path)
+            self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
+            self.conn.row_factory = sqlite3.Row
             self._is_connected = True
             self.logger.info(f"成功连接到数据库: {self.db_path}")
             
-            # 设置DuckDB优化参数
+            # 设置SQLite优化参数
             self._configure_database()
             
             return self.conn
@@ -84,13 +85,16 @@ class DatabaseManager:
     
     def _configure_database(self):
         """
-        配置DuckDB优化参数
+        配置SQLite优化参数
         """
         try:
-            # 设置内存限制和并发参数
+            # 设置SQLite优化参数
             optimizations = [
-                "PRAGMA memory_limit='1GB'",
-                "PRAGMA threads=4"
+                "PRAGMA foreign_keys = ON",        # 启用外键约束
+                "PRAGMA journal_mode = WAL",       # 使用WAL模式提高并发性能
+                "PRAGMA synchronous = NORMAL",     # 平衡性能和安全性
+                "PRAGMA cache_size = -64000",      # 设置缓存大小为64MB
+                "PRAGMA temp_store = MEMORY"       # 临时表存储在内存中
             ]
             
             for opt in optimizations:
@@ -145,7 +149,6 @@ class DatabaseManager:
         
         try:
             self.logger.debug(f"开始事务 {transaction_id}，包含 {len(operations)} 个操作")
-            self.conn.begin()
             
             for i, operation in enumerate(operations):
                 self.logger.debug(f"执行事务 {transaction_id} 中的操作 {i+1}/{len(operations)}")
@@ -184,9 +187,15 @@ class DatabaseManager:
         
         try:
             if params:
-                return self.conn.execute(query, params)
+                result = self.conn.execute(query, params)
             else:
-                return self.conn.execute(query)
+                result = self.conn.execute(query)
+            
+            # For SQLite, auto-commit DDL and DML statements
+            if query.strip().upper().startswith(('CREATE', 'DROP', 'ALTER', 'INSERT', 'UPDATE', 'DELETE')):
+                self.conn.commit()
+                
+            return result
                 
         except Exception as e:
             self.logger.error(f"执行SQL查询失败: {query[:100]}..., 错误: {str(e)}")
@@ -206,7 +215,6 @@ class DatabaseManager:
         self.ensure_connected()
         
         try:
-            self.conn.begin()
             self.logger.debug("手动事务开始")
             yield self.conn
             self.conn.commit()
@@ -328,10 +336,10 @@ class DatabaseManager:
             core_tables = ['users', 'meals', 'addons', 'orders', 'ledger']
             
             for table in core_tables:
-                result = self.conn.execute(f"""
-                    SELECT COUNT(*) FROM information_schema.tables 
-                    WHERE table_name = '{table}'
-                """).fetchone()
+                result = self.conn.execute("""
+                    SELECT COUNT(*) FROM sqlite_master 
+                    WHERE type='table' AND name=?
+                """, (table,)).fetchone()
                 
                 if not result or result[0] == 0:
                     raise RuntimeError(f"核心表 {table} 不存在")
@@ -411,30 +419,27 @@ class DatabaseManager:
                 
                 # 2. 检查索引
                 try:
-                    # DuckDB 使用不同的系统表来查询索引
+                    # SQLite 查询索引信息
                     indexes_info = self.conn.execute("""
-                        SELECT * FROM duckdb_indexes() 
-                        WHERE database_name = 'main' AND table_name = ?
-                    """, [table]).fetchall()
+                        SELECT name, sql FROM sqlite_master 
+                        WHERE type='index' AND tbl_name=?
+                    """, (table,)).fetchall()
                     
                     self.logger.info(f"表 {table} 索引信息 ({len(indexes_info)} 个索引):")
                     for idx in indexes_info:
-                        self.logger.info(f"  - 索引: {idx}")
+                        self.logger.info(f"  - 索引: {idx[0]} -> {idx[1]}")
                         
                 except Exception as e:
                     self.logger.warning(f"无法获取表 {table} 的索引信息: {e}")
                 
-                # 3. 检查约束
+                # 3. 检查约束（SQLite约束信息较难获取，主要通过表结构检查）
                 try:
-                    # DuckDB 的约束检查
-                    constraints_info = self.conn.execute("""
-                        SELECT * FROM duckdb_constraints() 
-                        WHERE database_name = 'main' AND table_name = ?
-                    """, [table]).fetchall()
+                    # 获取外键约束信息
+                    foreign_keys = self.conn.execute(f"PRAGMA foreign_key_list({table})").fetchall()
                     
-                    self.logger.info(f"表 {table} 约束信息 ({len(constraints_info)} 个约束):")
-                    for constraint in constraints_info:
-                        self.logger.info(f"  - 约束: {constraint}")
+                    self.logger.info(f"表 {table} 外键约束信息 ({len(foreign_keys)} 个外键):")
+                    for fk in foreign_keys:
+                        self.logger.info(f"  - 外键: {fk}")
                         
                 except Exception as e:
                     self.logger.warning(f"无法获取表 {table} 的约束信息: {e}")
@@ -457,14 +462,11 @@ class DatabaseManager:
             # 检查并修复 meals 表主键约束
             self.logger.info("检查 meals 表主键约束...")
             
-            # 先检查当前约束状态
-            constraints = self.conn.execute("""
-                SELECT * FROM duckdb_constraints() 
-                WHERE database_name = 'main' AND table_name = 'meals'
-                AND constraint_type = 'PRIMARY KEY'
-            """).fetchall()
+            # 检查当前主键约束状态（通过表结构信息）
+            table_info = self.conn.execute("PRAGMA table_info(meals)").fetchall()
+            has_primary_key = any(col[5] for col in table_info)  # col[5] 是 pk 字段
             
-            if not constraints:
+            if not has_primary_key:
                 self.logger.warning("meals 表缺少主键约束，尝试修复...")
                 
                 # 检查是否有重复的 meal_id
@@ -480,14 +482,12 @@ class DatabaseManager:
                     # 这里可以添加重复数据清理逻辑
                     raise RuntimeError("存在重复数据，无法创建主键约束")
                 
-                # 尝试添加主键约束
-                # 注意：DuckDB 可能不支持在已有表上添加主键约束
-                # 可能需要重建表
+                # SQLite 不支持在已有表上添加主键约束，需要重建表
                 self.logger.info("尝试重建 meals 表以确保主键约束...")
                 self._rebuild_meals_table_with_constraints()
                 
             else:
-                self.logger.info(f"meals 表主键约束正常: {constraints}")
+                self.logger.info("meals 表主键约束正常")
             
             # 检查其他核心表
             for table in ['users', 'addons', 'orders', 'ledger']:
@@ -568,13 +568,11 @@ class DatabaseManager:
         检查并修复指定表的主键约束
         """
         try:
-            constraints = self.conn.execute("""
-                SELECT * FROM duckdb_constraints() 
-                WHERE database_name = 'main' AND table_name = ?
-                AND constraint_type = 'PRIMARY KEY'
-            """, [table_name]).fetchall()
+            # 通过PRAGMA table_info检查主键约束
+            table_info = self.conn.execute(f"PRAGMA table_info({table_name})").fetchall()
+            has_primary_key = any(col[5] for col in table_info)  # col[5] 是 pk 字段
             
-            if constraints:
+            if has_primary_key:
                 self.logger.info(f"表 {table_name} 主键约束正常")
             else:
                 self.logger.warning(f"表 {table_name} 缺少主键约束")
@@ -584,7 +582,7 @@ class DatabaseManager:
 
     def backup(self, backup_path: str):
         """
-        备份数据库
+        备份数据库（SQLite文件复制方式）
         
         Args:
             backup_path: 备份文件路径
@@ -592,8 +590,16 @@ class DatabaseManager:
         self.ensure_connected()
         
         try:
+            import shutil
             self.logger.info(f"开始备份数据库到: {backup_path}")
-            self.conn.execute(f"EXPORT DATABASE '{backup_path}'")
+            
+            # 确保备份目录存在
+            backup_dir = os.path.dirname(backup_path)
+            if backup_dir and not os.path.exists(backup_dir):
+                os.makedirs(backup_dir, exist_ok=True)
+            
+            # SQLite通过文件复制进行备份
+            shutil.copy2(self.db_path, backup_path)
             self.logger.info("数据库备份完成")
         except Exception as e:
             self.logger.error(f"数据库备份失败: {str(e)}")

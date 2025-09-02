@@ -94,11 +94,10 @@ def get_database_path(config: Dict[str, Any]) -> str:
     db_path = config.get('database', {}).get('path', 'data/gang_hao_fan.db')
     
     if not os.path.isabs(db_path):
-        # 从项目根目录计算路径
+        # 从server目录计算路径
         script_dir = os.path.dirname(os.path.abspath(__file__))
         server_dir = os.path.dirname(script_dir)  # server目录
-        project_dir = os.path.dirname(server_dir)  # 项目根目录
-        db_path = os.path.join(project_dir, db_path)
+        db_path = os.path.join(server_dir, db_path)
     
     return db_path
 

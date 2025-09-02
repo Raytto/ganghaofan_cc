@@ -192,7 +192,7 @@ Page({
         mealMap[dateKey] = {}
       }
       mealMap[dateKey][meal.slot] = {
-        meal_status: meal.status,
+        meal_status: meal.calendar_status || meal.status,
         max_orders: meal.max_orders,
         left_orders: meal.available_slots,
         myorder_status: meal.user_ordered ? 'ordered' : 'unordered'
@@ -234,8 +234,8 @@ Page({
     // 检查是否为管理员模式
     const isAdminMode = adminUtils.isAdminModeEnabled()
     if (isAdminMode) {
-      // 管理员模式下，未发布的餐次跳转到发布页面
-      if (status === 'unpublished') {
+      // 管理员模式下，未发布或已取消的餐次跳转到发布页面
+      if (status === 'unpublished' || status === 'canceled') {
         wx.navigateTo({
           url: `/pages/admin/meal_publish/meal_publish?date=${date}&slot=${slot}`
         })

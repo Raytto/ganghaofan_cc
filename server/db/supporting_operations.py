@@ -610,12 +610,15 @@ class SupportingOperations:
             # 检查是否在管理员白名单中
             is_admin = self._check_admin_whitelist(open_id)
             
-            # 创建未注册用户（status为'unregistered'）
+            # 管理员自动激活，普通用户为未注册状态
+            user_status = 'active' if is_admin else 'unregistered'
+            
+            # 创建用户
             self.db.conn.execute("""
                 INSERT INTO users (user_id, open_id, wechat_name, avatar_url, balance_cents, 
                                  is_admin, status, created_at, updated_at, last_login_at)
-                VALUES (?, ?, NULL, NULL, 0, ?, 'unregistered', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-            """, [max_id, open_id, is_admin])
+                VALUES (?, ?, NULL, NULL, 0, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+            """, [max_id, open_id, is_admin, user_status])
             
             return {
                 'success': True,
@@ -627,12 +630,12 @@ class SupportingOperations:
                     'balance_cents': 0,
                     'balance_yuan': 0.0,
                     'is_admin': is_admin,
-                    'status': 'unregistered',
-                    'is_registered': False,
+                    'status': user_status,
+                    'is_registered': user_status == 'active',
                     'created_at': datetime.now(),
                     'last_login_at': datetime.now()
                 },
-                'message': "登录成功，请完善个人信息"
+                'message': "登录成功" if user_status == 'active' else "登录成功，请完善个人信息"
             }
         
         return self.db.execute_transaction([create_user_operation])[0]

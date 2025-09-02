@@ -63,8 +63,8 @@ async def get_user_profile(
             balance_cents=user_info["balance_cents"],
             balance_yuan=user_info["balance_cents"] / 100.0,
             is_admin=user_info["is_admin"],
-            created_at=user_info["created_at"].isoformat() + "Z" if user_info["created_at"] else None,
-            last_login_at=user_info["last_login_at"].isoformat() + "Z" if user_info.get("last_login_at") else None,
+            created_at=user_info["created_at"] + "Z" if user_info["created_at"] else None,
+            last_login_at=user_info["last_login_at"] + "Z" if user_info.get("last_login_at") else None,
             order_statistics=order_statistics,
             transaction_statistics=transaction_statistics
         )
