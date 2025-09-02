@@ -10520,3 +10520,7 @@ last_login_at
 2025-08-30 13:35:36,137 - api.middleware.logging - INFO - [logging.py:31] - [af30be46] PATCH /api/admin/meals/1/lock - Client: testclient
 2025-08-30 13:35:36,138 - api.middleware.logging - INFO - [logging.py:44] - [af30be46] 405 - Time: 0.001s
 2025-08-30 13:35:36,139 - httpx - INFO - [_client.py:1025] - HTTP Request: PATCH http://testserver/api/admin/meals/1/lock "HTTP/1.1 405 Method Not Allowed"
+2025-09-02 10:40:18,605 - root - INFO - [logger.py:67] - 日志系统初始化完成，级别: DEBUG
+2025-09-02 10:40:18,638 - api.main - INFO - [main.py:35] - 罡好饭API服务启动中...
+2025-09-02 10:40:18,638 - api.main - INFO - [main.py:36] - 环境: development
+2025-09-02 10:40:18,639 - api.main - INFO - [main.py:37] - 调试模式: True

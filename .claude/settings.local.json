@@ -8,7 +8,8 @@
       "Bash(pkill:*)",
       "Bash(netstat:*)",
       "Bash(fuser:*)",
-      "Bash(export CONFIG_ENV=development)"
+      "Bash(export CONFIG_ENV=development)",
+      "Bash(chmod:*)"
     ],
     "deny": [],
     "ask": [],
