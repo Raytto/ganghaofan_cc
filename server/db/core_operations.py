@@ -698,44 +698,16 @@ class CoreOperations:
             
             logger.info(f"取消餐次 {meal_id}，处理 {len(active_orders)} 个订单")
             
-            # 尝试更新餐次状态，失败时使用DELETE+INSERT
-            try:
-                self.db.conn.execute("""
-                    UPDATE meals 
-                    SET status = 'canceled', 
-                        canceled_at = CURRENT_TIMESTAMP,
-                        canceled_by = ?,
-                        canceled_reason = ?,
-                        updated_at = CURRENT_TIMESTAMP
-                    WHERE meal_id = ?
-                """, [admin_user_id, cancel_reason, meal_id])
-                
-            except Exception as e:
-                # 如果是约束错误，使用DELETE+INSERT
-                if "constraint" in str(e).lower() or "duplicate" in str(e).lower():
-                    logger.warning(f"UPDATE失败，使用DELETE+INSERT: {e}")
-                    
-                    # 获取原始数据
-                    original = self.db.conn.execute("SELECT * FROM meals WHERE meal_id = ?", [meal_id]).fetchone()
-                    if not original:
-                        raise RuntimeError(f"找不到 meal_id={meal_id}")
-                    
-                    # 删除并重新插入
-                    self.db.conn.execute("DELETE FROM meals WHERE meal_id = ?", [meal_id])
-                    self.db.conn.execute("""
-                        INSERT INTO meals (
-                            meal_id, date, slot, description, base_price_cents, addon_config,
-                            max_orders, current_orders, status, created_at, updated_at,
-                            canceled_at, canceled_by, canceled_reason
-                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'canceled', ?, CURRENT_TIMESTAMP,
-                                 CURRENT_TIMESTAMP, ?, ?)
-                    """, [
-                        original[0], original[1], original[2], original[3], original[4], original[5],
-                        original[6], original[7], original[8], admin_user_id, cancel_reason
-                    ])
-                    logger.info("DELETE+INSERT 执行成功")
-                else:
-                    raise e
+            # 更新餐次状态为取消
+            self.db.conn.execute("""
+                UPDATE meals 
+                SET status = 'canceled', 
+                    canceled_at = CURRENT_TIMESTAMP,
+                    canceled_by = ?,
+                    canceled_reason = ?,
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE meal_id = ?
+            """, [admin_user_id, cancel_reason, meal_id])
             
             # 取消订单并退款
             canceled_orders = []
