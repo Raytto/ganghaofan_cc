@@ -67,6 +67,9 @@ async def get_meals_list(
                 "canceled": "已取消"
             }
             
+            # 日历页面状态映射：将canceled映射为unpublished
+            calendar_status = "unpublished" if meal["status"] == "canceled" else meal["status"]
+            
             formatted_meal = {
                 "meal_id": meal["meal_id"],
                 "date": meal["date"],
@@ -81,6 +84,7 @@ async def get_meals_list(
                 "available_slots": meal["max_orders"] - meal["current_orders"],
                 "status": meal["status"],
                 "status_text": status_text_map.get(meal["status"], meal["status"]),
+                "calendar_status": calendar_status,  # 日历页面专用状态
                 "created_at": meal["created_at"]
             }
             formatted_meals.append(formatted_meal)
@@ -160,6 +164,9 @@ async def get_meal_detail(
             }
             ordered_users.append(formatted_user)
         
+        # 日历页面状态映射：将canceled映射为unpublished  
+        calendar_status = "unpublished" if meal_data["status"] == "canceled" else meal_data["status"]
+        
         # 构建详情响应
         detail_data = {
             "meal_id": meal_data["meal_id"],
@@ -175,6 +182,7 @@ async def get_meal_detail(
             "available_slots": meal_data["max_orders"] - meal_data["current_orders"],
             "status": meal_data["status"],
             "status_text": status_text_map.get(meal_data["status"], meal_data["status"]),
+            "calendar_status": calendar_status,  # 日历页面专用状态
             "available_addons": available_addons,
             "ordered_users": ordered_users
         }
