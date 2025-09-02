@@ -668,7 +668,7 @@ class CoreOperations:
     # 管理员取消餐次操作
     def admin_cancel_meal(self, admin_user_id: int, meal_id: int, cancel_reason: str = "管理员取消") -> dict:
         """
-        管理员取消餐次
+        管理员取消餐次 - 使用DELETE+INSERT避免UPDATE约束问题
         
         Args:
             admin_user_id: 管理员用户ID
@@ -685,8 +685,20 @@ class CoreOperations:
             # 验证管理员权限
             self._verify_admin_permission(admin_user_id)
             
-            # 获取餐次信息
-            meal_info = self._verify_meal_exists(meal_id)
+            # 获取餐次完整信息
+            meal_row = self.db.conn.execute("SELECT * FROM meals WHERE meal_id = ?", [meal_id]).fetchone()
+            if not meal_row:
+                raise ValueError(f"餐次 {meal_id} 不存在")
+            
+            # 转换为字典形式
+            meal_info = {
+                'meal_id': meal_row[0], 'date': meal_row[1], 'slot': meal_row[2],
+                'description': meal_row[3], 'base_price_cents': meal_row[4],
+                'addon_config': meal_row[5], 'max_orders': meal_row[6],
+                'current_orders': meal_row[7], 'status': meal_row[8],
+                'created_at': meal_row[9], 'updated_at': meal_row[10]
+            }
+            
             if meal_info['status'] == 'canceled':
                 raise ValueError(f"餐次 {meal_info['date']} {meal_info['slot']} 已被取消")
             
@@ -698,14 +710,14 @@ class CoreOperations:
             
             logger.info(f"取消餐次 {meal_id}，处理 {len(active_orders)} 个订单")
             
-            # 更新餐次状态为取消
+            # 简单直接的UPDATE方法 - 不涉及主键修改
             self.db.conn.execute("""
                 UPDATE meals 
-                SET status = 'canceled', 
+                SET status = 'canceled',
+                    updated_at = CURRENT_TIMESTAMP,
                     canceled_at = CURRENT_TIMESTAMP,
                     canceled_by = ?,
-                    canceled_reason = ?,
-                    updated_at = CURRENT_TIMESTAMP
+                    canceled_reason = ?
                 WHERE meal_id = ?
             """, [admin_user_id, cancel_reason, meal_id])
             
@@ -749,7 +761,7 @@ class CoreOperations:
                 'message': f'餐次取消成功，处理 {len(canceled_orders)} 个订单'
             }
         
-        # 直接执行，不再使用复杂的重试机制
+        # 直接执行事务
         return self.db.execute_transaction([cancel_operation])[0]
 
     # 用户/管理员下单操作

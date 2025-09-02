@@ -3,7 +3,7 @@
 
 import logging
 from typing import Dict, Any, Optional
-from fastapi import APIRouter, HTTPException, Depends, Query, Path, Response
+from fastapi import APIRouter, HTTPException, Depends, Query, Path, Response, Body
 
 from .models import (
     CreateAddonRequest, AddonInfo, CreateMealRequest, MealInfo,
@@ -378,9 +378,9 @@ async def complete_meal(
 @router.delete("/meals/{meal_id}", response_model=Dict[str, Any])
 async def cancel_meal(
     meal_id: int = Path(..., description="餐次ID"),
-    cancel_request: CancelMealRequest = CancelMealRequest(),
     current_admin: TokenData = Depends(get_admin_user),
-    db: DatabaseManager = Depends(get_database)
+    db: DatabaseManager = Depends(get_database),
+    cancel_request: CancelMealRequest = Body(default=CancelMealRequest(cancel_reason="管理员取消"))
 ):
     """
     取消餐次

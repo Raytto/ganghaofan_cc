@@ -12,7 +12,13 @@
       "Bash(chmod:*)",
       "Bash(export CONFIG_ENV=production)",
       "Bash(curl:*)",
-      "Bash(/dev/null)"
+      "Bash(/dev/null)",
+      "Bash(sed:*)",
+      "Bash(timeout:*)",
+      "Bash(tmux list-sessions:*)",
+      "Bash(tmux capture-pane:*)",
+      "Bash(tmux kill-session:*)",
+      "Bash(tmux new-session:*)"
     ],
     "deny": [],
     "ask": [],

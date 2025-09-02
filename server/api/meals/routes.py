@@ -104,6 +104,107 @@ async def get_meals_list(
         return create_error_response(f"获取餐次列表失败: {str(e)}")
 
 
+@router.get("/calendar", response_model=Dict[str, Any])
+async def get_calendar_meals(
+    start_date: Optional[str] = Query(None, description="开始日期 (YYYY-MM-DD)"),
+    end_date: Optional[str] = Query(None, description="结束日期 (YYYY-MM-DD)"),
+    offset: int = Query(0, ge=0, description="偏移量"),
+    limit: int = Query(60, ge=1, le=60, description="每页条数"),
+    current_user: TokenData = Depends(get_current_user),
+    db: DatabaseManager = Depends(get_database)
+):
+    """
+    获取日历页面的餐次列表
+    
+    专门为日历页面优化的API端点，将canceled状态映射为unpublished
+    """
+    try:
+        # 设置默认日期范围（三周：上周、本周、下周）
+        if not start_date:
+            # 获取上周周日
+            today = datetime.now()
+            days_since_sunday = (today.weekday() + 1) % 7  # 周日=0，周一=1...
+            last_sunday = today - timedelta(days=days_since_sunday + 7)
+            start_date = last_sunday.strftime("%Y-%m-%d")
+            
+        if not end_date:
+            # 获取下周周六  
+            today = datetime.now()
+            days_since_sunday = (today.weekday() + 1) % 7
+            next_saturday = today + timedelta(days=13 - days_since_sunday)
+            end_date = next_saturday.strftime("%Y-%m-%d")
+        
+        query_ops = QueryOperations(db)
+        
+        # 查询餐次列表
+        meals_result = query_ops.query_meals_by_date_range(
+            start_date=start_date,
+            end_date=end_date,
+            offset=offset,
+            limit=limit
+        )
+        
+        if not meals_result["success"]:
+            return create_error_response(meals_result["message"])
+        
+        meals_data = meals_result["data"]
+        
+        # 格式化餐次数据（专门为日历页面优化）
+        formatted_meals = []
+        for meal in meals_data["meals"]:
+            # 时段文本
+            slot_text = "午餐" if meal["slot"] == "lunch" else "晚餐" if meal["slot"] == "dinner" else meal["slot"]
+            
+            # 日历页面状态映射：canceled -> unpublished
+            calendar_status = "unpublished" if meal["status"] == "canceled" else meal["status"]
+            
+            # 状态文本映射（日历页面专用）
+            calendar_status_text_map = {
+                "published": "已发布",
+                "locked": "已锁定", 
+                "completed": "已完成",
+                "unpublished": "未发布"  # canceled状态映射后的显示文本
+            }
+            
+            formatted_meal = {
+                "meal_id": meal["meal_id"],
+                "date": meal["date"],
+                "slot": meal["slot"],
+                "slot_text": slot_text,
+                "description": meal["description"],
+                "base_price_cents": meal["base_price_cents"],
+                "base_price_yuan": meal["base_price_cents"] / 100.0,
+                "addon_config": meal.get("addon_config"),
+                "max_orders": meal["max_orders"],
+                "current_orders": meal["current_orders"],
+                "available_slots": meal["max_orders"] - meal["current_orders"],
+                "status": calendar_status,  # 日历页面使用映射后的状态
+                "status_text": calendar_status_text_map.get(calendar_status, calendar_status),
+                "original_status": meal["status"],  # 保留原始状态用于调试
+                "created_at": meal["created_at"]
+            }
+            formatted_meals.append(formatted_meal)
+        
+        response_data = {
+            "meals": formatted_meals,
+            "pagination": meals_data["pagination"],
+            "calendar_info": {
+                "start_date": start_date,
+                "end_date": end_date,
+                "status_mapping": "canceled -> unpublished"
+            }
+        }
+        
+        return create_success_response(
+            data=response_data,
+            message="日历餐次列表查询成功"
+        )
+        
+    except Exception as e:
+        logger.error(f"获取日历餐次列表失败: {str(e)}")
+        return create_error_response(f"获取日历餐次列表失败: {str(e)}")
+
+
 @router.get("/{meal_id}", response_model=Dict[str, Any])
 async def get_meal_detail(
     meal_id: int = Path(..., description="餐次ID"),
@@ -249,102 +350,3 @@ async def get_my_meal_order(
         return create_error_response(f"获取用户餐次订单失败: {str(e)}")
 
 
-@router.get("/calendar", response_model=Dict[str, Any])
-async def get_calendar_meals(
-    start_date: Optional[str] = Query(None, description="开始日期 (YYYY-MM-DD)"),
-    end_date: Optional[str] = Query(None, description="结束日期 (YYYY-MM-DD)"),
-    offset: int = Query(0, ge=0, description="偏移量"),
-    limit: int = Query(60, ge=1, le=60, description="每页条数"),
-    current_user: TokenData = Depends(get_current_user),
-    db: DatabaseManager = Depends(get_database)
-):
-    """
-    获取日历页面的餐次列表
-    
-    专门为日历页面优化的API端点，将canceled状态映射为unpublished
-    """
-    try:
-        # 设置默认日期范围（三周：上周、本周、下周）
-        if not start_date:
-            # 获取上周周日
-            today = datetime.now()
-            days_since_sunday = (today.weekday() + 1) % 7  # 周日=0，周一=1...
-            last_sunday = today - timedelta(days=days_since_sunday + 7)
-            start_date = last_sunday.strftime("%Y-%m-%d")
-            
-        if not end_date:
-            # 获取下周周六  
-            today = datetime.now()
-            days_since_sunday = (today.weekday() + 1) % 7
-            next_saturday = today + timedelta(days=13 - days_since_sunday)
-            end_date = next_saturday.strftime("%Y-%m-%d")
-        
-        query_ops = QueryOperations(db)
-        
-        # 查询餐次列表
-        meals_result = query_ops.query_meals_by_date_range(
-            start_date=start_date,
-            end_date=end_date,
-            offset=offset,
-            limit=limit
-        )
-        
-        if not meals_result["success"]:
-            return create_error_response(meals_result["message"])
-        
-        meals_data = meals_result["data"]
-        
-        # 格式化餐次数据（专门为日历页面优化）
-        formatted_meals = []
-        for meal in meals_data["meals"]:
-            # 时段文本
-            slot_text = "午餐" if meal["slot"] == "lunch" else "晚餐" if meal["slot"] == "dinner" else meal["slot"]
-            
-            # 日历页面状态映射：canceled -> unpublished
-            calendar_status = "unpublished" if meal["status"] == "canceled" else meal["status"]
-            
-            # 状态文本映射（日历页面专用）
-            calendar_status_text_map = {
-                "published": "已发布",
-                "locked": "已锁定", 
-                "completed": "已完成",
-                "unpublished": "未发布"  # canceled状态映射后的显示文本
-            }
-            
-            formatted_meal = {
-                "meal_id": meal["meal_id"],
-                "date": meal["date"],
-                "slot": meal["slot"],
-                "slot_text": slot_text,
-                "description": meal["description"],
-                "base_price_cents": meal["base_price_cents"],
-                "base_price_yuan": meal["base_price_cents"] / 100.0,
-                "addon_config": meal.get("addon_config"),
-                "max_orders": meal["max_orders"],
-                "current_orders": meal["current_orders"],
-                "available_slots": meal["max_orders"] - meal["current_orders"],
-                "status": calendar_status,  # 日历页面使用映射后的状态
-                "status_text": calendar_status_text_map.get(calendar_status, calendar_status),
-                "original_status": meal["status"],  # 保留原始状态用于调试
-                "created_at": meal["created_at"]
-            }
-            formatted_meals.append(formatted_meal)
-        
-        response_data = {
-            "meals": formatted_meals,
-            "pagination": meals_data["pagination"],
-            "calendar_info": {
-                "start_date": start_date,
-                "end_date": end_date,
-                "status_mapping": "canceled -> unpublished"
-            }
-        }
-        
-        return create_success_response(
-            data=response_data,
-            message="日历餐次列表查询成功"
-        )
-        
-    except Exception as e:
-        logger.error(f"获取日历餐次列表失败: {str(e)}")
-        return create_error_response(f"获取日历餐次列表失败: {str(e)}")
